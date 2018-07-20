@@ -1,0 +1,3 @@
+converting
+asPlaygroundSnippet
+	^ self

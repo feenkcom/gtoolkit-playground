@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GtPlaygroundSnippet",
+	"category" : "GToolkit-Playground-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"contents"
+	],
+	"name" : "GtPharoSnippet",
+	"type" : "normal"
+}
