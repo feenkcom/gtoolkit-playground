@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrStencil",
+	"category" : "GToolkit-Playground-Brick",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snippet"
+	],
+	"name" : "GtPlaygroundSnippetContainerStencil",
+	"type" : "normal"
+}

@@ -4,4 +4,5 @@ create
 
 	^ BrSimpleList new 
 		display: self page snippets;
-		stencil: [ :eachSnippet | eachSnippet asElement ].
+		stencil: [ :eachSnippet | 
+			(GtPlaygroundSnippetContainerStencil new snippet: eachSnippet) asElement ].
