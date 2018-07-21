@@ -1,4 +1,4 @@
-gt-extension
+*GToolkit-Playground-Brick
 gtStencilFor: aView
 	<gtView: 1>
 	^ aView

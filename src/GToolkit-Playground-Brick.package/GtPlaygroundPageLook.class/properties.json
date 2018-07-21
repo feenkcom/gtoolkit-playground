@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BrLook",
+	"category" : "GToolkit-Playground-Brick",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtPlaygroundPageLook",
+	"type" : "normal"
+}
