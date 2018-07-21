@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	pages := GtPages new.
+	page := GtPage new.

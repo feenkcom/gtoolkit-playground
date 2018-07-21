@@ -1,4 +1,4 @@
 accessing
 pages
-	<return: #GtPlaygroundPages>
+	<return: #GtPages>
 	^ pages

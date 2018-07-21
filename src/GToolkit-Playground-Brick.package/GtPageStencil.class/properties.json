@@ -1,13 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "GtSnippet",
-	"category" : "GToolkit-Playground-Model",
+	"super" : "BrStencil",
+	"category" : "GToolkit-Playground-Brick",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"contents"
+		"page"
 	],
-	"name" : "GtPharoSnippet",
+	"name" : "GtPageStencil",
 	"type" : "normal"
 }
