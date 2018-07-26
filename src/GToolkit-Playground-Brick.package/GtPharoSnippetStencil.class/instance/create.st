@@ -3,5 +3,5 @@ create
 	<return: #BrEditorElement>
 
 	^ BrEditorElement new 
-		editor: (BrTextEditor new text: self snippet contents asRopedText);
+		editor: (BrTextEditor new text: self text);
 		look: GtPharoSnippetLook.

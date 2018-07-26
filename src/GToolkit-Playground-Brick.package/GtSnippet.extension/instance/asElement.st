@@ -1,4 +1,4 @@
 *GToolkit-Playground-Brick
 asElement
 	<return: #BlElement>
-	^ self stencil asElement
+	^ self asStencilBuilder asElement

@@ -2,5 +2,5 @@ accessing
 snippet: aGtSnippet
 	self 
 		assert: [ aGtSnippet notNil ] 
-		description: [ 'Playground snippet has to be initialized' ].
+		description: [ 'Snippet has to be initialized' ].
 	snippet := aGtSnippet

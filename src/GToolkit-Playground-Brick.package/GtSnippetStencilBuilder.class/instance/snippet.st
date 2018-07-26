@@ -1,4 +1,4 @@
 accessing
 snippet
-	<return: #GtPharoSnippet>
+	<return: #GtSnippet>
 	^ snippet

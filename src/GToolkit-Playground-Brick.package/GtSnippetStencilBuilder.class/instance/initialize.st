@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	values := #().
+	snippet := self defaultSnippet.

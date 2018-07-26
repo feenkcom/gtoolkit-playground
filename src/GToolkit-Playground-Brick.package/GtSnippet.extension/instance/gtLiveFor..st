@@ -1,6 +1,6 @@
 *GToolkit-Playground-Brick
-gtStencilFor: aView
+gtLiveFor: aView
 	<gtView: 1>
 	^ aView
 		title: 'Live' translated;
-		stencil: self stencil
+		stencil: self

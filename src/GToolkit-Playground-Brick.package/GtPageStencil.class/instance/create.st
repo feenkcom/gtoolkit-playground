@@ -3,6 +3,6 @@ create
 	<return: #BrSimpleList>
 
 	^ BrSimpleList new 
-		display: self page snippets;
+		display: self values;
 		stencil: [ :eachSnippet | 
-			(GtSnippetContainerStencil new snippet: eachSnippet) asElement ].
+			(GtSnippetContainerStencil new snippet: eachSnippet) ].

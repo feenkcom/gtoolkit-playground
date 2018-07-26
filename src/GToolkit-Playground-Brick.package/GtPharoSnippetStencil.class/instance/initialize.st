@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	snippet := GtPharoSnippet new.
+	text := '' asRopedText
