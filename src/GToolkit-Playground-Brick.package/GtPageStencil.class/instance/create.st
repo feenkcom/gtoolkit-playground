@@ -4,5 +4,4 @@ create
 
 	^ BrSimpleList new 
 		display: self values;
-		stencil: [ :eachSnippet | 
-			(GtSnippetContainerStencil new snippet: eachSnippet) ].
+		stencil: self stencil.

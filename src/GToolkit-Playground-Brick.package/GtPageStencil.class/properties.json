@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"values"
+		"values",
+		"stencil"
 	],
 	"name" : "GtPageStencil",
 	"type" : "normal"

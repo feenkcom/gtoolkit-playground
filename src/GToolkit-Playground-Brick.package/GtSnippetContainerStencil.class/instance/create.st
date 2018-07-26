@@ -4,4 +4,4 @@ create
 
 	^ BlElement new
 		look: GtSnippetContainterLook;
-		addChild: self snippet asElement
+		addChild: self child asElement
