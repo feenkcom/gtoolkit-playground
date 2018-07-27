@@ -1,0 +1,15 @@
+{
+	"classtraitcomposition" : "GtBindingsTrait classTrait + GtAssertingTrait classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"bindings"
+	],
+	"name" : "GtPlaygroundBindings",
+	"commentStamp" : "",
+	"super" : "Object",
+	"traitcomposition" : "GtBindingsTrait + GtAssertingTrait",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "GToolkit-VariableBindings"
+}
