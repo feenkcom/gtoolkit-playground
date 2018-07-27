@@ -8,6 +8,8 @@ baseline: spec
 				loads: #core ];
 			baseline: 'GToolkitUtility' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit/src' ];
+			baseline: 'GToolkitVariableBindings' with: [ spec 
+				repository: 'github://feenkcom/gtoolkit-playground/src' ];
 			baseline: 'GToolkitExamples' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit-examples/src' ];
 			"baseline: 'GToolkitInspector' with: [ spec
