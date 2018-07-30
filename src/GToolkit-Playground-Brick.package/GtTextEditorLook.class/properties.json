@@ -1,14 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "BrStencil",
+	"super" : "BrLook",
 	"category" : "GToolkit-Playground-Brick",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"text",
-		"toolbar"
-	],
-	"name" : "GtPharoSnippetStencil",
+	"instvars" : [ ],
+	"name" : "GtTextEditorLook",
 	"type" : "normal"
 }

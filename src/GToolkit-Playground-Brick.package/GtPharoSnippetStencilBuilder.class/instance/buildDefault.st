@@ -3,4 +3,5 @@ buildDefault
 	<return: #BrStencil>
 
 	^ GtPharoSnippetStencil new 
-			text: self snippet contents
+			text: self snippet contents;
+			toolbar: self toolbar

@@ -1,4 +1,5 @@
 initialization
 initialize
 	super initialize.
-	text := '' asRopedText
+	text := '' asRopedText.
+	toolbar := nil.

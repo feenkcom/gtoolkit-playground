@@ -20,10 +20,11 @@ baseline: spec
 			package: 'GToolkit-Playground-Model' with: [ 
 				spec requires: #( #GToolkitUtility ) ];
 			package: 'GToolkit-Playground-Brick' with: [ 
-				spec requires: #( #Brick #'GToolkit-Playground-Model' ) ];
+				spec requires: #( 
+					#Brick #'GToolkit-Playground-Model' #'GToolkit-Playground-Commands' ) ];
 			package: 'GToolkit-Playground-Commands' with: [ 
 				spec requires: #( 
-					#Commander #GToolkitVariableBindings #GToolkitUtility ) ];
+					#Commander #Brick #GToolkitVariableBindings #GToolkitUtility ) ];
 			package: 'GToolkit-Playground-Examples' with: [ 
 				spec requires: #( 
 					#'GToolkitExamples' 

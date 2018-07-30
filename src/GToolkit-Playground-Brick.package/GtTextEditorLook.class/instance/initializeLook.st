@@ -4,5 +4,7 @@ initializeLook
 
 	self widgetDo: [ :anElement | 
 		anElement 
-			constraintsDo: [ :c | 	
+			constraintsDo: [ :c | 
+				c vertical fitContent. 
+				c horizontal matchParent.		
 				c padding: (BlInsets all: 5) ] ]
