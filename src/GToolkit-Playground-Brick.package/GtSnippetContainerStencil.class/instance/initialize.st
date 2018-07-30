@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	child := BlElement new.
+	content := BlElement new.

@@ -1,6 +1,6 @@
 accessing
-child: aStencil
+child: aBlElement
 	self 
-		assert: [ aStencil notNil ] 
-		description: [ 'Child stencil has to be initialized' ].
-	child := aStencil
+		assert: [ aBlElement notNil ] 
+		description: [ 'Child element must be non-nil' ].
+	content := aBlElement asElement

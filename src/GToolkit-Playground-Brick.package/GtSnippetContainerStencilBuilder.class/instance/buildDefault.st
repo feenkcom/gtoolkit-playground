@@ -1,6 +1,4 @@
 api - instantiation
 buildDefault
 	<return: #BrStencil>
-
-	^ GtSnippetContainerStencil new
-		child: self snippet asStencilBuilder
+	^ GtSnippetContainerStencil new child: self rowValue asElement

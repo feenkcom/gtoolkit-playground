@@ -4,5 +4,4 @@ buildDefault
 
 	^ GtPageStencil new 
 		values: self page snippets;
-		stencil: [ :eachSnippet | 
-			(GtSnippetContainerStencilBuilder new snippet: eachSnippet) ].
+		stencil: GtSnippetContainerStencilBuilder new.

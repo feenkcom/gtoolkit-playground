@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"child"
+		"content"
 	],
 	"name" : "GtSnippetContainerStencil",
 	"type" : "normal"

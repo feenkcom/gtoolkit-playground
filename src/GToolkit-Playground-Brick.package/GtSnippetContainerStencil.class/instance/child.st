@@ -1,4 +1,4 @@
 accessing
 child
-	<return: #BrStencil>
-	^ child
+	<return: #BlElement>
+	^ content

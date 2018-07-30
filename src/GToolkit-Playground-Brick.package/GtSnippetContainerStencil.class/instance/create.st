@@ -3,5 +3,5 @@ create
 	<return: #BlElement>
 
 	^ BlElement new
-		look: GtSnippetContainterLook;
+		look: GtSnippetContainerLook;
 		addChild: self child asElement
