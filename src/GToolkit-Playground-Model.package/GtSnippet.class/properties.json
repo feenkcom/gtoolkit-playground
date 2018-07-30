@@ -1,7 +1,9 @@
 {
 	"classtraitcomposition" : "GtAssertingTrait classTrait",
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"bindings"
+	],
 	"name" : "GtSnippet",
 	"commentStamp" : "",
 	"super" : "Object",

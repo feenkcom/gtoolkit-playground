@@ -2,8 +2,8 @@ private
 toolbar
 	<return: #BlElement or: nil>
 	| aMenu anElements aContainer |
-	aMenu := CmdMenu activatedBy: GtPharoSnippetActivation.
-	aMenu buildInContext: GtPlaygroundContext new.
+	aMenu := CmdMenu activatedBy: GtVerticalToolbarActivation.
+	aMenu buildInContext: self context.
 	anElements := aMenu buildToolbarElements.
 	anElements ifEmpty: [ ^ nil ].
 	aContainer := BlElement new

@@ -1,4 +1,4 @@
 activation
 toolbarActivation
   <classAnnotation>
-  ^ GtPharoSnippetActivation for: GtPlaygroundContext
+  ^ GtVerticalToolbarActivation for: GtPharoSnippetContext

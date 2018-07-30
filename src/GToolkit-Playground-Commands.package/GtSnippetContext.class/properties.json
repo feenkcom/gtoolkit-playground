@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "GtPlaygroundContext",
+	"instvars" : [
+		"snippet"
+	],
+	"name" : "GtSnippetContext",
 	"type" : "normal"
 }

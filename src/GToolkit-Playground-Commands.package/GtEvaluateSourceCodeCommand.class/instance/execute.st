@@ -24,3 +24,4 @@ execute
 		result := anException.
 		isException := true.
 	].
+	self inform: result printString.

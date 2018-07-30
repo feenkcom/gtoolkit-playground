@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "GtToolContext",
+	"super" : "GtSnippetContext",
 	"category" : "GToolkit-Playground-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "GtPlaygroundContext",
+	"name" : "GtPharoSnippetContext",
 	"type" : "normal"
 }

@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	collection := OrderedCollection new.
+	bindings := GtNoBindings uniqueInstance.

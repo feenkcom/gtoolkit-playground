@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "GtToolContext",
+	"super" : "CmdToolContext",
 	"category" : "GToolkit-Playground-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "GtPlaygroundContext",
+	"name" : "GtToolContext",
 	"type" : "normal"
 }

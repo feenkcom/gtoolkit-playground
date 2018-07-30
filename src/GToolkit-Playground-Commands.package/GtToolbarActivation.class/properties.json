@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "GtToolContext",
+	"super" : "CmdMenuCommandActivationStrategy",
 	"category" : "GToolkit-Playground-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "GtPlaygroundContext",
+	"name" : "GtToolbarActivation",
 	"type" : "normal"
 }

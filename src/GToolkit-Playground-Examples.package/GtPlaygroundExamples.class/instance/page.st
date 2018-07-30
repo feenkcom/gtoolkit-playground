@@ -7,4 +7,6 @@ page
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first typeName equals: 'pharo'.
 	self assert: aPage snippets first contents asString equals: ''.
+	self assert: aPage bindings class equals: GtPlaygroundBindings.
+	self assert: aPage snippets first bindings equals: aPage bindings.
 	^ aPage

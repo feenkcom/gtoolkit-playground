@@ -2,7 +2,8 @@
 	"classtraitcomposition" : "GtAssertingTrait classTrait",
 	"classvars" : [ ],
 	"instvars" : [
-		"snippets"
+		"snippets",
+		"bindings"
 	],
 	"name" : "GtPage",
 	"commentStamp" : "",
