@@ -1,3 +1,4 @@
 accessing
 stencil: aBrStencilBuilder
-	contentStencilBuilder := aBrStencilBuilder asStencilBuilder
+	contentStencilBuilder := aBrStencilBuilder asStencilBuilder.
+	self notifyContentChanged.
