@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BrRequest",
+	"category" : "BrickToolbar-Events",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BrToolbarItemContentRequest",
+	"type" : "normal"
+}

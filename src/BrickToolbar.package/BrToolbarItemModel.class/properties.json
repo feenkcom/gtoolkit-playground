@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrWidgetModel",
+	"category" : "BrickToolbar-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"contentStencilBuilder"
+	],
+	"name" : "BrToolbarItemModel",
+	"type" : "normal"
+}
