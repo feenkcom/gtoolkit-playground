@@ -1,4 +1,4 @@
 *GToolkit-Playground-Commands
-buildToolbarElements
+buildToolbarItems
 	self canExecuteCommand ifFalse: [ ^#() ].	
-	^ command buildToolbarElementsUsing: self
+	^ command buildToolbarItemsUsing: self

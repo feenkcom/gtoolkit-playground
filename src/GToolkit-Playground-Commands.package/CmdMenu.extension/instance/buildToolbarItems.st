@@ -1,4 +1,4 @@
 *GToolkit-Playground-Commands
-buildToolbarElements
+buildToolbarItems
 	<return: #Array of: #BlElement>
-	^ rootGroup buildToolbarElements
+	^ rootGroup buildToolbarItems

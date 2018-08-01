@@ -4,7 +4,7 @@ toolbar
 	| aMenu anElements aContainer |
 	aMenu := CmdMenu activatedBy: GtVerticalToolbarActivation.
 	aMenu buildInContext: self context.
-	anElements := aMenu buildToolbarElements.
+	anElements := aMenu buildToolbarItems.
 	anElements ifEmpty: [ ^ nil ].
 	aContainer := BlElement new
 		layout: BlLinearLayout vertical alignTopCenter;

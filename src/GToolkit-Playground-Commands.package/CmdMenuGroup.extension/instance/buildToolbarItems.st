@@ -1,5 +1,5 @@
 *GToolkit-Playground-Commands
-buildToolbarElements
+buildToolbarItems
 	<return: #Array of: #BlElement>
 	self isActive ifFalse: [ ^#()].
-	^ contents flatCollect: [ :each | each buildToolbarElements ]
+	^ contents flatCollect: [ :each | each buildToolbarItems ]

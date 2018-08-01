@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "BrStencil",
+	"category" : "GToolkit-Playground-Brick",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"text",
+		"bindingsStrategy",
+		"classOrMetaClass",
+		"look"
+	],
+	"name" : "BrPharoTextEditorStencil",
+	"type" : "normal"
+}
