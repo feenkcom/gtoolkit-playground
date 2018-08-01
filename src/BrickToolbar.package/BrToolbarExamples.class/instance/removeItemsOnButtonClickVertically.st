@@ -1,9 +1,9 @@
 accessing
-removeItemsOnButtonClick
+removeItemsOnButtonClickVertically
 	<gtExample>
 	<label: 'Add toolbar items on a button click'>
 	| aToolbar aToolbarItem |
-	aToolbar := self addItemsOnButtonClick.
+	aToolbar := self addItemsOnButtonClickVertically.
 	aToolbarItem := self toolbarItem.
 	aToolbarItem stencil: [ 
 		BrButton new 

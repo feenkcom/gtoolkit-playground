@@ -1,10 +1,10 @@
 accessing
-addItemsOnButtonClick
+addItemsOnButtonClickVertically
 	<gtExample>
 	<label: 'Add toolbar items on a button click'>
 	| aToolbar aToolbarItem |
 	aToolbar := BrToolbar new.
-	aToolbar look: BrToolbarLook horizontal.
+	aToolbar look: BrToolbarLook vertical.
 	aToolbarItem := self toolbarItem.
 	aToolbarItem stencil: [ 
 		BrButton new 
