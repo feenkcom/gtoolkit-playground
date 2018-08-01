@@ -1,22 +1,10 @@
 accessing
 toolbar
 	<gtExample>
-	| aToolbar aToolbarItem |
+	| aToolbar |
 	aToolbar := BrToolbar new.
 	aToolbar look: BrToolbarLook.
-	aToolbarItem := BrToolbarItem new.
-	aToolbarItem look: BrToolbarItemLook.
-	aToolbarItem stencil: [ 
-		BrButton new 
-			look: BrMaterialToggleLabelledLook;
-			label: 'Hello'; 
-			action: [ self inform: 'Click on Hello' ] ].
-	aToolbarItem := BrToolbarItem new.
-	aToolbarItem look: BrToolbarItemLook.
-	aToolbarItem stencil: [ 
-		BrButton new 
-			look: BrMaterialToggleLabelledLook;
-			label: 'GToolkit'; 
-			action: [ self inform: 'Click on GToolkit' ] ].
-	aToolbar addItem: aToolbarItem.
+	aToolbar addItem: self toolbarItemHello.
+	aToolbar addItem: self toolbarItemGToolkit.
+	self assert: aToolbar viewModel items size equals: 2.
 	^ aToolbar
