@@ -29,5 +29,7 @@ baseline: spec
 				spec requires: #( 
 					#'GToolkitExamples' 
 					#'GToolkit-Playground-Model' 
-					#'GToolkit-Playground-Brick' ) ]
+					#'GToolkit-Playground-Brick' ) ];
+			package: 'BrickToolbar' with: [ 
+				spec requires: #( #Brick ) ]
 	]
