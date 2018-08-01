@@ -9,12 +9,12 @@ removeItemsOnButtonClick
 		BrButton new 
 			look: BrMaterialToggleLabelledLook;
 			label: 'Remove'; 
-			action: [ | aSize anIndex aModel |
+			action: [ | aSize anIndex aWidget |
 				aSize := aToolbar numberOfItems.
 				anIndex := ((aSize - 3) max: 0) atRandom + 3.
 				anIndex <= aSize ifTrue: [ 
-					aModel := aToolbar items at: anIndex.
-					aModel widgetDo: [ :aWidget |
+					aWidget := aToolbar itemAt: anIndex.
+					aWidget ifNotNil: [
 						aToolbar removeItem: aWidget.
 						self inform: 'Item at index ', anIndex asString, ' removed'.
 						self assert: aToolbar numberOfItems equals: aSize - 1 ] ] ] ].
