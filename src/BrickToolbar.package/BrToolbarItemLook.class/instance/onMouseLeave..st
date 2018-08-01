@@ -1,3 +1,4 @@
 hooks
 onMouseLeave: anElement
-	anElement effect: (BlNullEffect new)
+	self widgetDo: [
+		self widgetContent effect: (BlNullEffect new) ]
