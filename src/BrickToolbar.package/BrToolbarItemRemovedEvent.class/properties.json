@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BrToolbarItemEvent",
+	"category" : "BrickToolbar-Events",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BrToolbarItemRemovedEvent",
+	"type" : "normal"
+}
