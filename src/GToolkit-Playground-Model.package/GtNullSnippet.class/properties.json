@@ -11,5 +11,5 @@
 		"uniqueInstance"
 	],
 	"pools" : [ ],
-	"category" : "GToolkit-Playground-Model"
+	"category" : "GToolkit-Playground-Model-Core"
 }

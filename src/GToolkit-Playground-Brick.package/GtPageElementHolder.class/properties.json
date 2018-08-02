@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BlInfiniteHolder",
+	"category" : "GToolkit-Playground-Brick-Page",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtPageElementHolder",
+	"type" : "normal"
+}

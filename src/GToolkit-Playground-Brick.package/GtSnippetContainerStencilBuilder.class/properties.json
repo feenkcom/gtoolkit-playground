@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "BrColumnedListCellStencilBuilder",
-	"category" : "GToolkit-Playground-Brick",
+	"category" : "GToolkit-Playground-Brick-Snippet",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

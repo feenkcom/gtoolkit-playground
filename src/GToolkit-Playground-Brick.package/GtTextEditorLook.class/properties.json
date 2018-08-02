@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "BrLook",
-	"category" : "GToolkit-Playground-Brick",
+	"category" : "GToolkit-Playground-Brick-Support",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

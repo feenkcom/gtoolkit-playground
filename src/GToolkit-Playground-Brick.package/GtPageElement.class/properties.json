@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BlElement",
+	"category" : "GToolkit-Playground-Brick-Page",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"list"
+	],
+	"name" : "GtPageElement",
+	"type" : "normal"
+}

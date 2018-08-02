@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "BrStencil",
-	"category" : "GToolkit-Playground-Brick",
+	"category" : "GToolkit-Playground-Brick-Support",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

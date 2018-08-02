@@ -1,16 +1,17 @@
 {
-	"classtraitcomposition" : "GtAssertingTrait classTrait",
+	"classtraitcomposition" : "GtAssertingTrait classTrait + GtAnnouncerTrait classTrait",
 	"classvars" : [ ],
 	"instvars" : [
 		"snippets",
-		"bindings"
+		"bindings",
+		"announcer"
 	],
 	"name" : "GtPage",
 	"commentStamp" : "",
 	"super" : "Object",
-	"traitcomposition" : "GtAssertingTrait",
+	"traitcomposition" : "GtAssertingTrait + GtAnnouncerTrait",
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"category" : "GToolkit-Playground-Model"
+	"category" : "GToolkit-Playground-Model-Core"
 }
