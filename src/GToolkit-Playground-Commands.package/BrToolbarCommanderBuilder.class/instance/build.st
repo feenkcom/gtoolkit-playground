@@ -8,6 +8,6 @@ build
 	anElements do: [ :eachElement | 
 		eachElement look: BrToolbarItemLook ].
 	aToolbar := BrToolbar new.
-	aToolbar look: BrMaterialToolbarLook vertical.
+	aToolbar look: BrToolbarLook vertical.
 	aToolbar addChildren: anElements.
 	^ aToolbar
