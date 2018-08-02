@@ -4,7 +4,7 @@ addItemsOnButtonClickVertically
 	<label: 'Add toolbar items on a button click'>
 	| aToolbar aToolbarItem |
 	aToolbar := BrToolbar new.
-	aToolbar look: BrMaterialToolbarLook vertical.
+	aToolbar look: BrMaterialToolbarLook + BrToolbarLook vertical.
 	aToolbarItem := self toolbarItem.
 	aToolbarItem stencil: [ 
 		BrButton new 
