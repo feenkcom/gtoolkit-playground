@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	self add: (BrLayoutLook linearHorizontal vFitContent vFitContent)
+	self add: (BrLayoutLook linearHorizontal fitContent)

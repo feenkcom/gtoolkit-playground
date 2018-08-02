@@ -2,5 +2,5 @@ initialization
 initializeListeners
 	super initializeListeners.
 	self
-		when: BrToolbarItemContentChanged 
+		addEventHandlerOn: BrToolbarItemContentChanged 
 		do: [ :anEvent | self onItemContentChanged: anEvent stencil ]

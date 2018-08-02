@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "BrRequest",
+	"super" : "BlEvent",
 	"category" : "BrickToolbar-Events",
 	"classinstvars" : [ ],
 	"pools" : [ ],

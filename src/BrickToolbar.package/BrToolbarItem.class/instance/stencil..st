@@ -1,3 +1,3 @@
 accessing
-stencil: aStencilBuilder
-	self viewModel stencil: aStencilBuilder
+stencil: aBrStencilBuilder
+	self viewModel stencil: aBrStencilBuilder
