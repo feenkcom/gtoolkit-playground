@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"contents"
+		"content"
 	],
 	"name" : "GtPharoSnippet",
 	"type" : "normal"

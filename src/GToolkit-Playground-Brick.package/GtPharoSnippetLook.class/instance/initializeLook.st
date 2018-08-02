@@ -1,8 +1,5 @@
 initialization
 initializeLook
 	super initializeLook.
-
-	self widgetDo: [ :anElement | 
-		anElement 
-			constraintsDo: [ :c | 	
-				c padding: (BlInsets all: 5) ] ]
+ 	self widget constraintsDo: [ :c | 	
+				c padding: (BlInsets all: 5) ]

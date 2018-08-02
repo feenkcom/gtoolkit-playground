@@ -1,4 +1,6 @@
 api - instantiation
 buildDefault
-	<return: #BrStencil>
-	^ GtSnippetContainerStencil new child: self rowValue asElement
+	<return: #BlElement>
+	^ BlElement new
+		look: GtSnippetContainerLook;
+		addChild: self rowValue asElement

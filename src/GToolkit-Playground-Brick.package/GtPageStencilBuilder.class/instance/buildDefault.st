@@ -1,7 +1,6 @@
 api - instantiation
 buildDefault
 	<return: #BrStencil>
-
-	^ GtPageStencil new 
-		values: self page snippets;
+	BrSimpleList new 
+		display: self page snippets;
 		stencil: GtSnippetContainerStencilBuilder new.

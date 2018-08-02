@@ -1,4 +1,5 @@
 initialization
 initialize
 	super initialize.
-	self contents: ''.
+	self content: ''.
+	self bindings: GtPlaygroundBindings new.

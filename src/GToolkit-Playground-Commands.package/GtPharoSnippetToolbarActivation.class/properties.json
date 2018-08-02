@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GtToolbarActivation",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtPharoSnippetToolbarActivation",
+	"type" : "normal"
+}

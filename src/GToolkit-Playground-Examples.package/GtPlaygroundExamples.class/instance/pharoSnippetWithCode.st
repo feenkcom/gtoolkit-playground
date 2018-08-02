@@ -4,6 +4,6 @@ pharoSnippetWithCode
 	<label: 'A Pharo snippet with a code'>
 	| aSnippet |
 	aSnippet := self pharoSnippet.
-	aSnippet contents: 'aValue := 42'.
-	self assert: aSnippet contents asString equals: 'aValue := 42'.
+	aSnippet content: 'aValue := 42'.
+	self assert: aSnippet content asString equals: 'aValue := 42'.
 	^ aSnippet

@@ -1,0 +1,4 @@
+accessing
+content
+	<return: #Object>
+	^ ''

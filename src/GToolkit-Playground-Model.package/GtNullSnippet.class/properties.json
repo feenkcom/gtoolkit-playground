@@ -1,16 +1,15 @@
 {
 	"classtraitcomposition" : "GtAssertingTrait classTrait",
 	"classvars" : [ ],
-	"instvars" : [
-		"bindings",
-		"classOrMetaClass"
-	],
-	"name" : "GtSnippet",
+	"instvars" : [ ],
+	"name" : "GtNullSnippet",
 	"commentStamp" : "",
 	"super" : "Object",
 	"traitcomposition" : "GtAssertingTrait",
 	"type" : "normal",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"uniqueInstance"
+	],
 	"pools" : [ ],
 	"category" : "GToolkit-Playground-Model"
 }
