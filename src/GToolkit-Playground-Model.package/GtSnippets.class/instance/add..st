@@ -1,4 +1,4 @@
-adding
+api - adding / removing
 add: aGtSnippet 
 	self 
 		assert: [ aGtSnippet notNil ] 

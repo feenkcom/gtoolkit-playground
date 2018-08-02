@@ -1,13 +1,13 @@
 model - updates
-addSnippet
+removeSnippetAtTheBeginning
 	<gtExample>
 	| aPage anAnnouncements aSnippet |
 	aPage := self pageWithTwoPharoSnippets.
 	anAnnouncements := OrderedCollection new.
 	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
-	aSnippet := self pharoSnippet content: 'aValue'.
-	aPage addSnippet: aSnippet.
-	self assert: aPage snippets size equals: 3.
-	self assert: aPage snippets third equals: aSnippet.
+	aSnippet := aPage snippets first.
+	aPage removeSnippet: aSnippet.
+	self assert: aPage snippets size equals: 1.
+	self assert: (aPage snippets first = aSnippet) not.
 	self assert: anAnnouncements size equals: 1.
 	^ aPage
