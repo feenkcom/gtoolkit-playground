@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	stencils := OrderedCollection new.
+	self page: GtPage new.

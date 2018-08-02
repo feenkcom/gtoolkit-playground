@@ -1,3 +1,0 @@
-adding
-addStencil: aGtSnippetStencilBuilder
-	list dataSource addStencil: aGtSnippetStencilBuilder
