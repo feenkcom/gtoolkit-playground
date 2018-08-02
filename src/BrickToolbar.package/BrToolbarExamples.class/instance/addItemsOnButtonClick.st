@@ -4,7 +4,7 @@ addItemsOnButtonClick
 	<label: 'Add toolbar items on a button click'>
 	| aToolbar aToolbarItem |
 	aToolbar := BrToolbar new.
-	aToolbar look: BrToolbarLook horizontal.
+	aToolbar look: BrMaterialToolbarLook horizontal.
 	aToolbarItem := self toolbarItem.
 	aToolbarItem stencil: [ 
 		BrButton new 

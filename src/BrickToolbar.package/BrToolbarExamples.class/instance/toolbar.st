@@ -3,7 +3,7 @@ toolbar
 	<gtExample>
 	| aToolbar |
 	aToolbar := BrToolbar new.
-	aToolbar look: BrToolbarLook horizontal.
+	aToolbar look: BrMaterialToolbarLook horizontal.
 	aToolbar addItem: self toolbarItemHello.
 	aToolbar addItem: self toolbarItemGToolkit.
 	self assert: aToolbar numberOfItems equals: 2.
