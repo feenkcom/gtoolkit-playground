@@ -7,7 +7,7 @@ buildAddButtons
 	self availableSnippets do: [ :eachSnippetClass | 
 		| anItem |
 		anItem := BrToolbarItem new.
-		anItem look: BrToolbarItemLook.
+		anItem look: BrToolbarItemLook + BrMouseHoverLook + BrMouseClickLook.
 		anItem stencil: [ 
 			| aButton |
 			aButton := BrButton new.

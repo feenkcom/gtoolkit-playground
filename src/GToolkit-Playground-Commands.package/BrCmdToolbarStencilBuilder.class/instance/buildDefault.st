@@ -6,7 +6,7 @@ buildDefault
 	aMenu buildInContext: self context.
 	anElements := aMenu buildToolbarItems.
 	anElements do: [ :eachElement | 
-		eachElement look: BrToolbarItemLook ].
+		eachElement look: BrToolbarItemLook + BrMouseHoverLook + BrMouseClickLook ].
 	aToolbar := BrToolbar new.
 	aToolbar look: BrToolbarLook vertical.
 	aToolbar addChildren: anElements.
