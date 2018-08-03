@@ -1,6 +1,6 @@
 instance creation
 onBindHolder: anElementHolder at: aPosition
-	| aSnippet aStencilOrElement |
+	| aSnippet anElement |
 	aSnippet := page snippetAt: aPosition.
-	aStencilOrElement := elements at: aSnippet ifAbsentPut: [ aSnippet asElement ].
-	anElementHolder stencil: aStencilOrElement
+	anElement := elements at: aSnippet ifAbsentPut: [ aSnippet asElement ].
+	anElementHolder element: anElement
