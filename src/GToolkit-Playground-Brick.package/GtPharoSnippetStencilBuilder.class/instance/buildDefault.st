@@ -14,9 +14,8 @@ buildDefault
 				bindings: self snippet bindings; 
 				classOrMetaClass: self snippet classOrMetaClass) asElement
 			as: #textEditor;
-		addChild: (BrToolbarCommanderBuilder new
+		addChild: (BrCmdToolbarStencilBuilder new
 				context: aContext;
-				activationClass: GtPharoSnippetToolbarActivation;
-				build) asElement
+				activationClass: GtPharoSnippetToolbarActivation) asElement
 			as: #toolBar.
 	^ aContainer

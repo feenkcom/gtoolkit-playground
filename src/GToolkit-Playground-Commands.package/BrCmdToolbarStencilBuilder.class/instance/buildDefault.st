@@ -1,5 +1,5 @@
 building
-build
+buildDefault
 	<return: #BlElement>
 	| aMenu anElements aToolbar |
 	aMenu := CmdMenu activatedBy: self activationClass.
