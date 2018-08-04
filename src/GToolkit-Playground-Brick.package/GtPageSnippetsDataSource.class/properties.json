@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"page",
-		"elements"
+		"page"
 	],
 	"name" : "GtPageSnippetsDataSource",
 	"type" : "normal"

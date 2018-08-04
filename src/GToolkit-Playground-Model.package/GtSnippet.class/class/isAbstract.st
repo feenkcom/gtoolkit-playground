@@ -1,3 +1,3 @@
 testing
 isAbstract
-	^ self name = #GtSnippet
+	^ self = GtSnippet

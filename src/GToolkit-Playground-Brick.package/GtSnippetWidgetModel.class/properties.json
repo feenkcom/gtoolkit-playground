@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "AliakseiSyrel 8/4/2018 15:20",
+	"super" : "BrWidgetModel",
+	"category" : "GToolkit-Playground-Brick-Snippet - Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snippet"
+	],
+	"name" : "GtSnippetWidgetModel",
+	"type" : "normal"
+}

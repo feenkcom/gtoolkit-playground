@@ -2,9 +2,10 @@ initialization
 initializeLook
 	super initializeLook.
 
-	self widgetDo: [ :anElement | 
-		anElement 
-			constraintsDo: [ :c | 
-				c vertical fitContent. 
-				c horizontal matchParent.		
-				c padding: (BlInsets all: 5) ] ]
+	self widget
+		background: Color white;
+		constraintsDo: [ :c | 
+			c vertical fitContent. 
+			c horizontal matchParent.		
+			c padding: (BlInsets all: 5).
+			c minHeight: 40 ]

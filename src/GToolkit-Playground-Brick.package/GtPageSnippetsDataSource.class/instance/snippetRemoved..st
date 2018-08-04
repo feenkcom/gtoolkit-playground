@@ -1,0 +1,3 @@
+announcement handling
+snippetRemoved: aGtPageSnippetRemovedAnnoucement 
+	self notifyItemsRemoved: (aGtPageSnippetRemovedAnnoucement index to: aGtPageSnippetRemovedAnnoucement index)

@@ -1,0 +1,3 @@
+initialization
+defaultStyler
+	^ self subclassResponsibility

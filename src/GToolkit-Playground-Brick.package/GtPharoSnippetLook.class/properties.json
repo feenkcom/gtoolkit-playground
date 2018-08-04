@@ -1,11 +1,17 @@
 {
 	"commentStamp" : "",
 	"super" : "BrLook",
-	"category" : "GToolkit-Playground-Brick-Snippet",
+	"category" : "GToolkit-Playground-Brick-Snippet - Looks",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"snippet",
+		"editor",
+		"toolbar",
+		"context",
+		"menu"
+	],
 	"name" : "GtPharoSnippetLook",
 	"type" : "normal"
 }

@@ -1,0 +1,1 @@
+I am sent by snippet widget looks when they request to receive a snippet model from the widget model

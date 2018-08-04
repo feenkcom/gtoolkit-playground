@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GtCommandVisitor",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"items"
+	],
+	"name" : "GtCommandToolbarRenderer",
+	"type" : "normal"
+}

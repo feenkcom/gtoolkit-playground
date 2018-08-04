@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "AliakseiSyrel 8/4/2018 15:34",
+	"super" : "BlElement",
+	"category" : "GToolkit-Playground-Brick-Snippet - UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"session",
+		"cachedSurface"
+	],
+	"name" : "GtSnippetElement",
+	"type" : "normal"
+}

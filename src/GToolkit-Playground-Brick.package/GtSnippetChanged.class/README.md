@@ -1,0 +1,1 @@
+I am sent my snippet widget model when its snippet changes
