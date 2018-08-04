@@ -11,7 +11,7 @@ initialize
 	menu buildInContext: context.
 
 	toolbar := BrToolbar new.
-	toolbar look: BrToolbarLook new.
+	toolbar look: BrToolbarLook vertical.
 
 	aToolbarBuilder := GtCommandToolbarRenderer new.
 	menu gtAccept: aToolbarBuilder.

@@ -1,6 +1,4 @@
 factory
 horizontal
-	^ self new add: (BrLayoutLook linearHorizontal fitContent
-		constraintsDo: [ :c | 
-			c padding: (BlInsets top: 3 bottom: 3).
-			c margin: (BlInsets all: 5) ]).
+	^ self basicNew initialize
+		add: (BrLayoutLook gridRow fitContent constraintsDo: [ :c | c padding: (BlInsets all: 5) ])
