@@ -24,4 +24,8 @@ execute
 		result := anException.
 		isException := true.
 	].
-	self inform: result printString.
+	"self inform: result printString."
+	snippet announce: (GtSnippetEvaluatedAnnouncement new
+		snippet: snippet;
+		result: result;
+		isException: isException)

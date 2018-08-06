@@ -1,4 +1,4 @@
 accessing
 availableSnippets
-	^ GtSnippet allSubclasses reject: [ :eachClass | 
-			eachClass isAbstract ]
+	^ GtSnippet allSubclasses select: [ :eachClass | 
+			eachClass isUserSnippet ]

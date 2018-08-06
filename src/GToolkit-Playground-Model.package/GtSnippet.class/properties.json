@@ -1,11 +1,13 @@
 {
-	"classtraitcomposition" : "GtAssertingTrait classTrait",
+	"classtraitcomposition" : "GtAssertingTrait classTrait + GtAnnouncerTrait classTrait",
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"announcer"
+	],
 	"name" : "GtSnippet",
 	"commentStamp" : "",
 	"super" : "Object",
-	"traitcomposition" : "GtAssertingTrait",
+	"traitcomposition" : "GtAssertingTrait + GtAnnouncerTrait",
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],

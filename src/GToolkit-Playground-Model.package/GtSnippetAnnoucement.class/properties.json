@@ -2,18 +2,14 @@
 	"classtraitcomposition" : "GtAssertingTrait classTrait",
 	"classvars" : [ ],
 	"instvars" : [
-		"code",
-		"result",
-		"isException",
-		"bindingsStrategy",
 		"snippet"
 	],
-	"name" : "GtEvaluateSourceCodeCommand",
+	"name" : "GtSnippetAnnoucement",
 	"commentStamp" : "",
-	"super" : "CmdCommand",
+	"super" : "Announcement",
 	"traitcomposition" : "GtAssertingTrait",
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"category" : "GToolkit-Playground-Commands"
+	"category" : "GToolkit-Playground-Model-Announcements"
 }
