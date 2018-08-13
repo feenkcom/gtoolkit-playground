@@ -8,7 +8,7 @@ baseline: spec
 			baseline: 'Brick' with: [ spec
 				repository: 'github://pharo-graphics/Brick/src';
 				loads: #core ];
-			baseline: 'Completer' with: [ spec
+			baseline: 'GToolkitCompleter' with: [ spec
 				repository: 'github://feenkcom/gtoolkit-completer/src' ];
 			baseline: 'GToolkitUtility' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit/src' ];
@@ -23,7 +23,7 @@ baseline: spec
 				spec requires: #( #GToolkitUtility ) ];
 			package: 'GToolkit-Playground-Brick' with: [ 
 				spec requires: #( 
-					#Brick #Completer
+					#Brick #GToolkitCompleter
 					#'GToolkit-Playground-Model' #'GToolkit-Playground-Commands' ) ];
 			package: 'GToolkit-Playground-Commands' with: [ 
 				spec requires: #( 
