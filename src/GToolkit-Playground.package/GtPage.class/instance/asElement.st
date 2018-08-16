@@ -1,4 +1,4 @@
-as yet unclassified
+converting
 asElement
 	<return: #BlElement>
 	^ GtPageElement new 

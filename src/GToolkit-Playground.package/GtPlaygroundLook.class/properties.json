@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "BrLook",
+	"category" : "GToolkit-Playground-Playground - Look",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"playground",
+		"tabGroup"
+	],
+	"name" : "GtPlaygroundLook",
+	"type" : "normal"
+}

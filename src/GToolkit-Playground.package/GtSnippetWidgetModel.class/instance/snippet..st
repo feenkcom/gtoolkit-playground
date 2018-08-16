@@ -1,3 +1,4 @@
 accessing
 snippet: aGtSnippet
-	snippet := aGtSnippet
+	snippet := aGtSnippet.
+	self notifySnippetChanged.

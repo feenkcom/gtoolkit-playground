@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 snippetAt: anInteger 
 	<return: #GtSnippet>
 	^ self snippets at: anInteger

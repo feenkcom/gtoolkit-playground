@@ -4,7 +4,8 @@
 	"instvars" : [
 		"snippets",
 		"bindings",
-		"announcer"
+		"announcer",
+		"title"
 	],
 	"name" : "GtPage",
 	"commentStamp" : "",
