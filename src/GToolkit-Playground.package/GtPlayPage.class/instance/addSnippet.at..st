@@ -4,6 +4,9 @@ addSnippet: aGtSnippet at: anIndex
 	self 
 		assert: [ aGtSnippet notNil ]
 		description: [ 'Snippet must be non-nil' ].
+	self 
+		assert: [ anIndex > 0 and: [ anIndex <= (self snippets size + 1) ] ]
+		description: [ 'Insert index ', anIndex asString, ' is out of bounds' ].
 	aGtSnippet variableBindings: self bindings.
-	self snippets insert: aGtSnippet at: anIndex.
+	self snippets add: aGtSnippet beforeIndex: anIndex.
 	self notifySnippetAdded: aGtSnippet at: anIndex.
