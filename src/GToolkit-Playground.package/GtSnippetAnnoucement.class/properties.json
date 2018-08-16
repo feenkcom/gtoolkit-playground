@@ -1,0 +1,15 @@
+{
+	"classtraitcomposition" : "GtAssertingTrait classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"snippet"
+	],
+	"name" : "GtSnippetAnnoucement",
+	"commentStamp" : "",
+	"super" : "Announcement",
+	"traitcomposition" : "GtAssertingTrait",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "GToolkit-Playground-Announcements"
+}

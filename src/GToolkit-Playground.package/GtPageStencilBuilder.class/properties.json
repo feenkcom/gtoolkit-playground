@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrStencilBuilder",
+	"category" : "GToolkit-Playground-Page",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"page"
+	],
+	"name" : "GtPageStencilBuilder",
+	"type" : "normal"
+}

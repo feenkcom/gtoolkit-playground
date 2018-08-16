@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BrColumnedListCellStencilBuilder",
+	"category" : "GToolkit-Playground-Snippet",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtSnippetContainerStencilBuilder",
+	"type" : "normal"
+}

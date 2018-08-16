@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "AliakseiSyrel 8/4/2018 15:35",
+	"super" : "BlInfiniteHolder",
+	"category" : "GToolkit-Playground-Snippet - UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snippetType"
+	],
+	"name" : "GtSnippetElementHolder",
+	"type" : "normal"
+}

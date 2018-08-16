@@ -17,20 +17,16 @@ baseline: spec
 			"baseline: 'GToolkitInspector' with: [ spec
 				repository: 'github://feenkcom/gtoolkit-inspector/src' ];"
 
-			package: 'GToolkit-Playground-Model' with: [ 
-				spec requires: #( #GToolkitUtility ) ];
-			package: 'GToolkit-Playground-Brick' with: [ 
+			package: 'GToolkit-Playground' with: [ 
 				spec requires: #( 
-					#Brick #GToolkitCompleter
-					#'GToolkit-Playground-Model' #'GToolkit-Playground-Commands' ) ];
-			package: 'GToolkit-Playground-Commands' with: [ 
-				spec requires: #( 
-					#Brick #GToolkitVariableBindings #GToolkitUtility ) ];
+					#Brick 
+					#GToolkitCompleter
+					#GToolkitUtility
+					#GToolkitVariableBindings ) ];
 			package: 'GToolkit-Playground-Examples' with: [ 
 				spec requires: #( 
 					#'GToolkitExamples' 
-					#'GToolkit-Playground-Model' 
-					#'GToolkit-Playground-Brick' ) ];
+					#'GToolkit-Playground' ) ];
 			package: 'BrickToolbar' with: [ 
 				spec requires: #( #Brick ) ]
 	]

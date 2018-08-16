@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "AliakseiSyrel 8/4/2018 15:22",
+	"super" : "BrChangeEvent",
+	"category" : "GToolkit-Playground-Snippet - Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snippet"
+	],
+	"name" : "GtSnippetChanged",
+	"type" : "normal"
+}
