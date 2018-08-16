@@ -9,6 +9,6 @@ page: aGtPage
 					toSelect: announcement result;
 					fromElement: self).
 			self fireEvent: (
-				GtInspectorObjectToSpawn new
+				GtPhlowObjectToSpawn new
 					object: announcement result;
 					sourceElement: self). ] ]
