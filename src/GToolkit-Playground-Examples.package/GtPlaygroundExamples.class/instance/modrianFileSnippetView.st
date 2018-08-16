@@ -1,8 +1,8 @@
-example
+todo
 modrianFileSnippetView
 	<gtExample>
 	| aPage | 
-	aPage := self new.
+	aPage := GtPageElement new.
 	aPage constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].

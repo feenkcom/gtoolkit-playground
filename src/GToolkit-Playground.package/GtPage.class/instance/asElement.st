@@ -1,4 +1,6 @@
 as yet unclassified
 asElement
 	<return: #BlElement>
-	^ self asStencilBuilder asElement
+	^ GtPageElement new 
+			look: GtPageLook;
+			page: self

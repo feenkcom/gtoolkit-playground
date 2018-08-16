@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "BrStencilBuilder",
-	"category" : "GToolkit-Playground-Page",
+	"category" : "GToolkit-Playground-Obsolete",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

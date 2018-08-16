@@ -1,13 +1,13 @@
-example
+todo
 modrianFilesView
 	<gtExample>
 	| aPage | 
-	aPage := self new.
+	aPage := GtPageElement new.
 	aPage constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
-	aPage addSnippet: (GtPharoSnippet new content: 'files := FileLocation workingDirectory allChildren.').
-	aPage addSnippet: (GtPharoSnippet new content: 'view := GtMondrian new.
+	aPage addSnippet: (GtPharoSnippet new sourceCode: 'files := FileLocation workingDirectory allChildren.').
+	aPage addSnippet: (GtPharoSnippet new sourceCode: 'view := GtMondrian new.
 view nodes with: files.
 view edges connectFrom: #parent.
 view layout tree nodeDistance: 1.
