@@ -1,4 +1,4 @@
 accessing
-playBook
+playground
 	<return: #GtPlayBook>
-	^ playBook
+	^ playground

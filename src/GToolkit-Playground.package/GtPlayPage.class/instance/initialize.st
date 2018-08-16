@@ -1,7 +1,7 @@
 initialization
 initialize
 	super initialize.
-	snippets := OrderedCollection new.
+	snippets := GtSnippets new.
 	bindings := GtPlaygroundBindings new.
 	announcer := Announcer new.
 	title := 'Page'.

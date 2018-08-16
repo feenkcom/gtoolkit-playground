@@ -6,6 +6,6 @@ removeSnippet: aGtSnippet
 		assert: [ aGtSnippet notNil ]
 		description: [ 'Snippet must be non-nil' ].
 	anIndex := self snippets indexOf: aGtSnippet.
-	self snippets removeAt: anIndex.
+	self snippets remove: aGtSnippet at: anIndex.
 	aGtSnippet variableBindings: GtNoBindings uniqueInstance.
 	self notifySnippetRemoved: aGtSnippet at: anIndex.

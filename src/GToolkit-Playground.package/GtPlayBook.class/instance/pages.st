@@ -1,4 +1,4 @@
 accessing
 pages
-	<return: #OrderedCollection>
+	<return: #GtPlayPages>
 	^ pages

@@ -1,6 +1,6 @@
 as yet unclassified
 gtLiveFor: aView
 	<gtView: 1>
-	^ aView
+	^ aView explicit
 		title: 'Live' translated;
 		stencil: self
