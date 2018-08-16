@@ -2,4 +2,4 @@ api - instantiation
 buildDefault
 	<return: #BlElement>
 
-	^ GtSnippetElement new
+	^ GtSnippetElement new snippet: self snippet.

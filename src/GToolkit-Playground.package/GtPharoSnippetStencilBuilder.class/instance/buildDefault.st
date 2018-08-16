@@ -2,5 +2,5 @@ api - instantiation
 buildDefault
 	<return: #BlElement>
 
-	^ GtSnippetElement new
+	^ super buildDefault
 		look: GtSnippetContainerLook + GtPharoSnippetLook
