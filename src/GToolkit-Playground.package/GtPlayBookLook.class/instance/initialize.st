@@ -2,7 +2,7 @@ initialization
 initialize
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
-	playground := GtPlayBook new.
+	playBook := GtPlayBook new.
 	tabGroup := BrTabGroup new
 		look: BrMaterialTabGroupLook;
 		constraintsDo: [ :c | 

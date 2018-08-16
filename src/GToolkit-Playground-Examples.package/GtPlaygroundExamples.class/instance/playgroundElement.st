@@ -1,4 +1,4 @@
 ui
 playgroundElement
 	<gtExample>
-	^ self playground asElement
+	^ self playBook asElement
