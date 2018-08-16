@@ -1,6 +1,6 @@
 initialization
 initialize
-	| aToolbarBuilder |
+	| aToolbarBuilder aCompletionStrategy aCompletionController |
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
 
@@ -18,6 +18,10 @@ initialize
 	aToolbarBuilder items do: [ :aModel |
 		toolbar addItem: (BrButton new look: BrMaterialToggleLabelledLook; viewModel: aModel) ].
 
-	editor := BrEditorElement new.
-	editor look: GtTextEditorLook.
-	editor editor: snippet editor
+	editorElement := BrEditorElement new.
+	editorElement look: GtTextEditorLook.
+	editorElement editor: snippet editor.
+	aCompletionStrategy := GtPharoCompletionStrategy newForExpression.
+	aCompletionStrategy classOrMetaClass: nil class.
+	aCompletionController := GtCompletionController on: editorElement strategy: aCompletionStrategy.
+	aCompletionController install.

@@ -6,5 +6,5 @@ initializeLook
 	context tool: self widget.
 
 	self widget
-		addChild: editor as: #textEditor;
+		addChild: editorElement as: #textEditor;
 		addChild: toolbar as: #toolBar

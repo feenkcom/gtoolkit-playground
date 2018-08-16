@@ -7,10 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"snippet",
-		"editor",
 		"toolbar",
 		"context",
-		"menu"
+		"menu",
+		"editorElement"
 	],
 	"name" : "GtPharoSnippetLook",
 	"type" : "normal"
