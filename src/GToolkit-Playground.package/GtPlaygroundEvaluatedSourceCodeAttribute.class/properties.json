@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrTextEventHandlerAttribute",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"paint"
+	],
+	"name" : "GtPlaygroundEvaluatedSourceCodeAttribute",
+	"type" : "normal"
+}
