@@ -9,8 +9,8 @@
 		"result",
 		"isException",
 		"bindingsStrategy",
-		"snippet",
-		"sourceCode"
+		"sourceCode",
+		"requestor"
 	],
 	"name" : "GtEvaluateSourceCodeCommand",
 	"type" : "normal"

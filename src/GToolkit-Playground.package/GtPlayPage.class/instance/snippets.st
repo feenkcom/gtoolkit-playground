@@ -1,4 +1,4 @@
 accessing
 snippets
-	<return: #GtSnippets>
+	<return: #OrderedCollection>
 	^ snippets

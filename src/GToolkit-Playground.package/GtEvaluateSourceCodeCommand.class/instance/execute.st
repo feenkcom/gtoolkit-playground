@@ -6,7 +6,7 @@ execute
 		context: nil "TODO: what is context? evaluation uses `context method methodClass`";
 		receiver: nil "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
 		bindings: self bindingsStrategy;
-		requestor: World. "TODO: requestor should be an editor?
+		requestor: self requestor. "TODO: requestor should be an editor?
 			evaluation uses `requestor selection` to evaluate only selected part"
 	[ 
 		result := aCompiler evaluate.

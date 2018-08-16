@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	playground := GtPlayBook new.
+	playBook := GtPlayBook new.

@@ -21,3 +21,10 @@ initialize
 	aCompletionStrategy classOrMetaClass: nil class.
 	aCompletionController := GtCompletionController on: editorElement strategy: aCompletionStrategy.
 	aCompletionController install.
+	editorElement 
+		addShortcut: (BlShortcut new
+			combination: (BlKeyCombination builder meta; key: Key d; build);
+			action: [ :aShortcut | self inform: 'DoIt'. self snippet evaluate ]);
+		addShortcut: (BlShortcut new
+			combination: (BlKeyCombination builder meta; key: Key g; build);
+			action: [ :aShortcut | self inform: 'DoIt&Go'. self snippet evaluateAndGo ]).

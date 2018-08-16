@@ -1,6 +1,6 @@
 gt-extension
 gtLiveFor: aView
 	<gtView: 1>
-	^ aView explicit
+	^ aView
 		title: 'Live' translated;
 		stencil: self

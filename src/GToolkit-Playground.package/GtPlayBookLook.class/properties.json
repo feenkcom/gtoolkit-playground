@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"playground",
-		"tabGroup"
+		"tabGroup",
+		"playBook"
 	],
 	"name" : "GtPlayBookLook",
 	"type" : "normal"

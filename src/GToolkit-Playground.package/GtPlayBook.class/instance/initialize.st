@@ -1,4 +1,5 @@
 initialization
 initialize
 	super initialize.
-	pages := GtPlayPages new.
+	pages := OrderedCollection new.
+	self addPlayPage: GtPlayPage new.

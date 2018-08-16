@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"playground"
+		"playBook"
 	],
 	"name" : "GtPlayBookChanged",
 	"type" : "normal"

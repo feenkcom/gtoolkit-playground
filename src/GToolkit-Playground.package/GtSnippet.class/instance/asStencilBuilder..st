@@ -1,4 +1,4 @@
-as yet unclassified
+converting
 asStencilBuilder: aStencilBuilderClass
 	"Return a stencil that knows how to build snippet stencils"
 	<return: #GtSnippetStencilBuilder>
