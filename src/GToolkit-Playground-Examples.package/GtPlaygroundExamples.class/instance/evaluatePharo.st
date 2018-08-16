@@ -4,8 +4,7 @@ evaluatePharo
 	<label: 'Evaluate a Pharo code snippet'>
 	| aSnippet aResult |
 	aSnippet := self pharoSnippet.
-	aSnippet contents: 'aVariable := 42'.
-	aSnippet evaluate.
-	aResult := aSnippet lastResult.
+	aSnippet sourceCode: 'aVariable := 42'.
+	aResult := aSnippet evaluate.
 	self assert: aResult equals: 42.
 	^ aSnippet

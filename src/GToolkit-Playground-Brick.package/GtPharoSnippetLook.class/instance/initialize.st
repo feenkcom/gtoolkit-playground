@@ -1,22 +1,18 @@
 initialization
 initialize
-	| aToolbarBuilder aCompletionStrategy aCompletionController |
+	| aCompletionStrategy aCompletionController |
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
 
 	snippet := GtPharoSnippet new.
-	context := GtPharoSnippetContext new.
-
-	menu := CmdMenu activatedBy: GtPharoSnippetToolbarActivation.
-	menu buildInContext: context.
 
 	toolbar := BrToolbar new.
 	toolbar look: BrToolbarLook vertical.
-
-	aToolbarBuilder := GtCommandToolbarRenderer new.
-	menu gtAccept: aToolbarBuilder.
-	aToolbarBuilder items do: [ :aModel |
-		toolbar addItem: (BrButton new look: BrMaterialToggleLabelledLook; viewModel: aModel) ].
+	toolbar addItem: (BrButton new 
+		look: BrMaterialToggleLabelledLook; 
+		viewModel: (BrButtonModel new
+			action: [ self snippet evaluate ];
+			add: (BrLabelModel new text: 'Run'))).
 
 	editorElement := BrEditorElement new.
 	editorElement look: GtTextEditorLook.

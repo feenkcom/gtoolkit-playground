@@ -2,7 +2,7 @@ execution
 execute
 	| aCompiler |
 	aCompiler := self class compiler
-		source: self code "readStream" "Looks like it can be a String instead of readSream";
+		source: self sourceCode "readStream" "Looks like it can be a String instead of readSream";
 		context: nil "TODO: what is context? evaluation uses `context method methodClass`";
 		receiver: nil "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
 		bindings: self bindingsStrategy;
@@ -25,7 +25,3 @@ execute
 		isException := true.
 	].
 	"self inform: result printString."
-	snippet announce: (GtSnippetEvaluatedAnnouncement new
-		snippet: snippet;
-		result: result;
-		isException: isException)

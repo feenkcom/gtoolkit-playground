@@ -5,7 +5,7 @@ addSnippet
 	aPage := self pageWithTwoPharoSnippets.
 	anAnnouncements := OrderedCollection new.
 	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
-	aSnippet := self pharoSnippet content: 'aValue'.
+	aSnippet := self pharoSnippet sourceCode: 'aValue'.
 	aPage addSnippet: aSnippet.
 	self assert: aPage snippets size equals: 3.
 	self assert: aPage snippets third equals: aSnippet.

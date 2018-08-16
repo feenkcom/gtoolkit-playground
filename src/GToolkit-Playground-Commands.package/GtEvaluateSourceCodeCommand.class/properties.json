@@ -1,19 +1,17 @@
 {
-	"classtraitcomposition" : "GtAssertingTrait classTrait",
+	"commentStamp" : "",
+	"super" : "GtCommand",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"code",
 		"result",
 		"isException",
 		"bindingsStrategy",
-		"snippet"
+		"snippet",
+		"sourceCode"
 	],
 	"name" : "GtEvaluateSourceCodeCommand",
-	"commentStamp" : "",
-	"super" : "CmdCommand",
-	"traitcomposition" : "GtAssertingTrait",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "GToolkit-Playground-Commands"
+	"type" : "normal"
 }

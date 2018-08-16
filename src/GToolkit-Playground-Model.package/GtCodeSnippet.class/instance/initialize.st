@@ -5,6 +5,6 @@ initialize
 	editor := BrTextEditor new.
 	editor styler: self defaultStyler.
 
-	self content: ''.
-	self bindings: GtPlaygroundBindings new.
+	self sourceCode: ''.
+	self variableBindings: GtPlaygroundBindings new.
 	self classOrMetaClass: UndefinedObject

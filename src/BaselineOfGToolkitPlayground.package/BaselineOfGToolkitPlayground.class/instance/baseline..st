@@ -3,8 +3,6 @@ baseline: spec
 	<baseline>
 	spec for: #common do: [ 
 		spec
-			baseline: 'Commander' with: [
-				spec repository: 'github://pharo-ide/Commander:v0.6.3' ];
 			baseline: 'Brick' with: [ spec
 				repository: 'github://pharo-graphics/Brick/src';
 				loads: #core ];
@@ -27,7 +25,7 @@ baseline: spec
 					#'GToolkit-Playground-Model' #'GToolkit-Playground-Commands' ) ];
 			package: 'GToolkit-Playground-Commands' with: [ 
 				spec requires: #( 
-					#Commander #Brick #GToolkitVariableBindings #GToolkitUtility ) ];
+					#Brick #GToolkitVariableBindings #GToolkitUtility ) ];
 			package: 'GToolkit-Playground-Examples' with: [ 
 				spec requires: #( 
 					#'GToolkitExamples' 

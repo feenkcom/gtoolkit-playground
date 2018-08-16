@@ -2,7 +2,9 @@
 	"commentStamp" : "AliakseiSyrel 8/4/2018 15:26",
 	"super" : "GtSnippet",
 	"category" : "GToolkit-Playground-Model-Core",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"uniqueInstance"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],

@@ -8,8 +8,6 @@
 	"instvars" : [
 		"snippet",
 		"toolbar",
-		"context",
-		"menu",
 		"editorElement"
 	],
 	"name" : "GtPharoSnippetLook",

@@ -4,6 +4,6 @@ addSnippet: aGtSnippet at: anIndex
 	self 
 		assert: [ aGtSnippet notNil ]
 		description: [ 'Snippet must be non-nil' ].
-	aGtSnippet bindings: self bindings.
+	aGtSnippet variableBindings: self bindings.
 	self snippets insert: aGtSnippet at: anIndex.
 	self notifySnippetAdded: aGtSnippet at: anIndex.

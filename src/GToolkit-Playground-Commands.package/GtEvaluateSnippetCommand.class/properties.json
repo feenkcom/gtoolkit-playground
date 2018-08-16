@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GtEvaluateSourceCodeCommand",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtEvaluateSnippetCommand",
+	"type" : "normal"
+}

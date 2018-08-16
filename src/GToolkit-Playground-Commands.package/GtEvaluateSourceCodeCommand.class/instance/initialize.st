@@ -1,7 +1,7 @@
 initialization
 initialize
 	super initialize.
-	code := 'nil'.
+	sourceCode := 'nil'.
 	result := nil.
 	isException := false.
 	bindingsStrategy := GtPlaygroundBindingStrategy new.

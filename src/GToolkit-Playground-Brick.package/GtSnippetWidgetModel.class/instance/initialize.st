@@ -2,4 +2,4 @@ initialization
 initialize
 	super initialize.
 	
-	snippet := GtEmptySnippet new
+	snippet := GtEmptySnippet uniqueInstance
