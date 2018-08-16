@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrWidgetModel",
+	"category" : "GToolkit-Playground-PlayBook - Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"playground"
+	],
+	"name" : "GtPlayBookWidgetModel",
+	"type" : "normal"
+}

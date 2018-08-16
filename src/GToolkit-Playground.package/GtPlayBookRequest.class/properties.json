@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BrRequest",
+	"category" : "GToolkit-Playground-PlayBook - Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtPlayBookRequest",
+	"type" : "normal"
+}

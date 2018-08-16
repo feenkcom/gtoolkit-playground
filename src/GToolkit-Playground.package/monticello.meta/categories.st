@@ -4,9 +4,8 @@ SystemOrganization addCategory: 'GToolkit-Playground-Commands'!
 SystemOrganization addCategory: 'GToolkit-Playground-Model'!
 SystemOrganization addCategory: 'GToolkit-Playground-Obsolete'!
 SystemOrganization addCategory: 'GToolkit-Playground-Page'!
-SystemOrganization addCategory: 'GToolkit-Playground-Playground'!
-SystemOrganization addCategory: 'GToolkit-Playground-Playground - Look'!
-SystemOrganization addCategory: 'GToolkit-Playground-Playground - Model'!
+SystemOrganization addCategory: 'GToolkit-Playground-PlayBook - Look'!
+SystemOrganization addCategory: 'GToolkit-Playground-PlayBook - Model'!
 SystemOrganization addCategory: 'GToolkit-Playground-Snippet - Looks'!
 SystemOrganization addCategory: 'GToolkit-Playground-Snippet - Model'!
 SystemOrganization addCategory: 'GToolkit-Playground-Snippet - Stencils'!

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "BrChangeEvent",
+	"category" : "GToolkit-Playground-PlayBook - Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"playground"
+	],
+	"name" : "GtPlayBookChanged",
+	"type" : "normal"
+}

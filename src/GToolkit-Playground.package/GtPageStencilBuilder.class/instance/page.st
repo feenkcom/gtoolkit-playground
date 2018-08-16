@@ -1,4 +1,4 @@
 accessing
 page
-	<return: #GtPage>
+	<return: #GtPlayPage>
 	^ page

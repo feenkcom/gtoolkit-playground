@@ -7,4 +7,8 @@ page: aGtPage
 			self fireEvent: (
 				GLMBlocObjectToSelect new 
 					toSelect: announcement result;
-					fromElement: self) ] ]
+					fromElement: self).
+			self fireEvent: (
+				GtInspectorObjectToSpawn new
+					object: announcement result;
+					sourceElement: self). ] ]

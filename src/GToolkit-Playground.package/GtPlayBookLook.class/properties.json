@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "BrLook",
+	"category" : "GToolkit-Playground-PlayBook - Look",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"playground",
+		"tabGroup"
+	],
+	"name" : "GtPlayBookLook",
+	"type" : "normal"
+}

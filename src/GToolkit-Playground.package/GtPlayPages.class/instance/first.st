@@ -1,4 +1,4 @@
 accessing
-page
+first
 	<return: #GtPlayPage>
-	^ page
+	^ self at: 1
