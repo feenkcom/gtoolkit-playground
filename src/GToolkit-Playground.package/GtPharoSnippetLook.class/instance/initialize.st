@@ -6,13 +6,13 @@ initialize
 
 	snippet := GtPharoSnippet new.
 
-	toolbar := BrToolbar new.
+	"toolbar := BrToolbar new.
 	toolbar look: BrToolbarLook vertical.
 	toolbar addItem: (BrButton new 
 		look: BrMaterialToggleLabelledLook; 
 		viewModel: (BrButtonModel new
 			action: [ self snippet evaluate ];
-			add: (BrLabelModel new text: 'Run'))).
+			add: (BrLabelModel new text: 'Run')))."
 
 	editorElement := BrEditorElement new.
 	editorElement look: GtTextEditorLook.
