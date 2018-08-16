@@ -6,6 +6,8 @@ baseline: spec
 			baseline: 'Brick' with: [ spec
 				repository: 'github://pharo-graphics/Brick/src';
 				loads: #core ];
+			baseline: 'GToolkitPhlow' with: [ spec
+				repository: 'github://feenkcom/gtoolkit-phlow/src' ];
 			baseline: 'GToolkitCompleter' with: [ spec
 				repository: 'github://feenkcom/gtoolkit-completer/src' ];
 			baseline: 'GToolkitUtility' with: [ spec 
@@ -14,12 +16,11 @@ baseline: spec
 				repository: 'github://feenkcom/gtoolkit-playground/src' ];
 			baseline: 'GToolkitExamples' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit-examples/src' ];
-			"baseline: 'GToolkitInspector' with: [ spec
-				repository: 'github://feenkcom/gtoolkit-inspector/src' ];"
 
 			package: 'GToolkit-Playground' with: [ 
 				spec requires: #( 
 					#Brick 
+					#GToolkitPhlow
 					#GToolkitCompleter
 					#GToolkitUtility
 					#GToolkitVariableBindings ) ];
