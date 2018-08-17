@@ -8,4 +8,4 @@ initializeLook
 		constraintsDo: [ :c | 
 			c vertical fitContent. 
 			c horizontal matchParent.		
-			c padding: (BlInsets all: 5) ]
+			c padding: (BlInsets top: 10 left: 5 bottom: 10 right: 5 ) ]
