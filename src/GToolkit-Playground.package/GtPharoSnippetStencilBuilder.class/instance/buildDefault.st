@@ -3,4 +3,6 @@ buildDefault
 	<return: #BlElement>
 
 	^ super buildDefault
-		look: GtSnippetContainerLook + GtPharoSnippetLook
+		look: GtSnippetContainerLook 
+			+ GtPharoSnippetLook 
+			+ BrLayoutLook linearVertical vFitContent hMatchParent

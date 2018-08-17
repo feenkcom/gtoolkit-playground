@@ -5,7 +5,11 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"contentElement",
+		"bottomToolbar",
+		"snippet"
+	],
 	"name" : "GtSnippetContainerLook",
 	"type" : "normal"
 }

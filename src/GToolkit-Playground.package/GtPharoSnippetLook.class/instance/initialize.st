@@ -1,10 +1,8 @@
 initialization
 initialize
 	super initialize.
-	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
 
 	snippet := GtPharoSnippet new.
-
 	"toolbar := BrToolbar new.
 	toolbar look: BrToolbarLook vertical.
 	toolbar addItem: (BrButton new 
