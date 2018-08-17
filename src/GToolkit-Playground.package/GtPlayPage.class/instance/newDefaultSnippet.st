@@ -1,3 +1,3 @@
 accessing
 newDefaultSnippet
-	^ GtPharoSnippet new.
+	^ GtCollectionSnippet new.

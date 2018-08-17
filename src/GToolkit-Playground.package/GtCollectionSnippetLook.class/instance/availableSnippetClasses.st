@@ -1,0 +1,3 @@
+accessing
+availableSnippetClasses
+	^ self snippet availableSnippetClasses

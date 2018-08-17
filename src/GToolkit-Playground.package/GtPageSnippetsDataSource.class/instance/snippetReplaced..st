@@ -1,0 +1,3 @@
+announcement handling
+snippetReplaced: aGtPageSnippetReplacedAnnoucement 
+	self notifyItemsChanged: (aGtPageSnippetReplacedAnnoucement index to: aGtPageSnippetReplacedAnnoucement index)

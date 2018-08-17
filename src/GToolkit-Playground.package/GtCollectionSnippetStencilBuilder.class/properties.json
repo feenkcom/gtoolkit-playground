@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GtSnippetStencilBuilder",
+	"category" : "GToolkit-Playground-Snippet - Stencils",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtCollectionSnippetStencilBuilder",
+	"type" : "normal"
+}
