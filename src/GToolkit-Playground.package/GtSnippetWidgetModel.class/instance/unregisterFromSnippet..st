@@ -1,0 +1,3 @@
+announcement registration
+unregisterFromSnippet: aGtSnippet
+	aGtSnippet unsubscribe: self
