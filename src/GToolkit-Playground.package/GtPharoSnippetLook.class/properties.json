@@ -8,7 +8,8 @@
 	"instvars" : [
 		"snippet",
 		"toolbar",
-		"editorElement"
+		"editorElement",
+		"completionController"
 	],
 	"name" : "GtPharoSnippetLook",
 	"type" : "normal"

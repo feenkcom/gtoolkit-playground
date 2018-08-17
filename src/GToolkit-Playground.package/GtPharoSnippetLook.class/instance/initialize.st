@@ -1,6 +1,5 @@
 initialization
 initialize
-	| aCompletionStrategy aCompletionController |
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
 
@@ -17,10 +16,6 @@ initialize
 	editorElement := BrEditorElement new.
 	editorElement look: GtTextEditorLook.
 	editorElement editor: snippet editor.
-	aCompletionStrategy := GtPharoCompletionStrategy newForExpression.
-	aCompletionStrategy classOrMetaClass: nil class.
-	aCompletionController := GtCompletionController on: editorElement strategy: aCompletionStrategy.
-	aCompletionController install.
 	editorElement 
 		addShortcut: (BlShortcut new
 			combination: (BlKeyCombination builder meta; key: Key d; build);
