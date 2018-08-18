@@ -1,0 +1,16 @@
+{
+	"classtraitcomposition" : "TBlEventTarget classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"eventDispatcher",
+		"paint"
+	],
+	"name" : "GtPlaygroundEvaluatedCodeButtonAttribute",
+	"commentStamp" : "",
+	"super" : "BrTextAdornmentAttribute",
+	"traitcomposition" : "TBlEventTarget",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "GToolkit-Playground-Commands"
+}
