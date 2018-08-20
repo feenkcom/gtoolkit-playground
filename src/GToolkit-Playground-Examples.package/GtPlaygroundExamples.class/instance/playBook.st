@@ -1,4 +1,4 @@
-model
+model - page and book
 playBook
 	<gtExample>
 	<label: 'A basic play book'>

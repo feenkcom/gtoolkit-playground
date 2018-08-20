@@ -6,4 +6,5 @@ evaluateAndGo
 	self 
 		notifyAboutResult: aCommand result 
 		exception: aCommand isException 
-		spawn: true
+		spawn: true.
+	^ aCommand result

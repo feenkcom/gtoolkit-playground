@@ -1,4 +1,4 @@
-model
+model - page and book
 pageWithTwoPharoSnippets
 	<gtExample>
 	<label: 'A playground page with two Pharo snippets'>

@@ -1,4 +1,4 @@
-model
+model - page and book
 pageWithManySnippets
 	<gtExample>
 	| aPage | 

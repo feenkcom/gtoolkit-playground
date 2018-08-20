@@ -7,4 +7,5 @@ evaluate
 	self
 		notifyAboutResult: aCommand result
 		exception: aCommand isException
-		spawn: false
+		spawn: false.
+	^ aCommand result

@@ -1,4 +1,4 @@
-model
+model - snippets
 collectionSnippet
 	<gtExample>
 	<label: 'A Collection snippet'>

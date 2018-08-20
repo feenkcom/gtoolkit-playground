@@ -1,4 +1,4 @@
-model
+model - snippets
 pharoSnippetWithCode
 	<gtExample>
 	<label: 'A Pharo snippet with a code'>
