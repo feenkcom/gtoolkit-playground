@@ -13,7 +13,7 @@ affect: aBrText in: anEditorElement
 		background: self paint;
 		geometry: BlEllipse new;
 		addEventHandlerOn: BlClickEvent do: [ :anEvent | 
-			self fireEvent: (GtPhlowObjectToSpawn new 
-				object: nil;
+			aButton fireEvent: (GtPhlowObjectToSpawn new 
+				object: result;
 				sourceElement: aButton) ];
 		yourself
