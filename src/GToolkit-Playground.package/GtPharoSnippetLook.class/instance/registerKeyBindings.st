@@ -1,6 +1,6 @@
 private
-registerKeyBindings: aTextElement
-	aTextElement 
+registerKeyBindings
+	editorElement 
 		addShortcut: (BlShortcut new
 			combination: (BlKeyCombination builder meta; key: Key d; build);
 			action: [ :aShortcut | self snippet evaluate ]);

@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	self add: GtEvaluationKeyBindingsLook.
+	resultElement := self newResultElement.

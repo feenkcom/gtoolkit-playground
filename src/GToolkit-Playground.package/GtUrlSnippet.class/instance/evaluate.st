@@ -7,4 +7,7 @@ evaluate
 		notifyAboutResult: aCommand result 
 		exception: aCommand isException 
 		spawn: false.
-	^ aCommand result
+	response := aCommand result.
+	self variableBindings at: self responseVariableName put: response.
+	^ response
+	

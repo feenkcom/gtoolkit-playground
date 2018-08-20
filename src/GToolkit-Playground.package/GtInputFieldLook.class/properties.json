@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "GtCodeSnippetLook",
+	"super" : "BrLook",
 	"category" : "GToolkit-Playground-Snippet - Looks",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"resultElement",
-		"variableElement",
-		"responseElement",
-		"result"
-	],
-	"name" : "GtUrlSnippetLook",
+	"instvars" : [ ],
+	"name" : "GtInputFieldLook",
 	"type" : "normal"
 }

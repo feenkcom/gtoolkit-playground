@@ -5,7 +5,11 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"response",
+		"responseVariableName",
+		"variableBindings"
+	],
 	"name" : "GtUrlSnippet",
 	"type" : "normal"
 }

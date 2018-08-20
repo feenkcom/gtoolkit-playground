@@ -1,0 +1,3 @@
+ui
+resultElementName
+	^ #result
