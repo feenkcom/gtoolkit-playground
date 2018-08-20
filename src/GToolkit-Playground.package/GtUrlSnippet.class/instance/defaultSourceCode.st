@@ -1,3 +1,3 @@
 initialization
 defaultSourceCode
-	'https://feenk.com'
+	^ 'https://feenk.com'
