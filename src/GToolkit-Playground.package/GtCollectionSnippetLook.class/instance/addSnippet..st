@@ -1,3 +1,3 @@
-as yet unclassified
+adding
 addSnippet: aClass 
 	self snippet requestSnippetReplacement: aClass

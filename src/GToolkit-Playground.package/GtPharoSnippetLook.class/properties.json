@@ -1,14 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "BrLook",
+	"super" : "GtCodeSnippetLook",
 	"category" : "GToolkit-Playground-Snippet - Looks",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"snippet",
-		"toolbar",
-		"editorElement",
 		"completionController"
 	],
 	"name" : "GtPharoSnippetLook",

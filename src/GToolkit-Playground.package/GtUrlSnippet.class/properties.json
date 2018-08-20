@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "GtSnippet",
+	"super" : "GtCodeSnippet",
 	"category" : "GToolkit-Playground-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],

@@ -1,5 +1,4 @@
 accessing
 snippet: aGtSnippet
-	snippet := aGtSnippet.
-	editorElement editor: snippet editor.
+	super snippet: aGtSnippet.
 	self attachCompletionController.

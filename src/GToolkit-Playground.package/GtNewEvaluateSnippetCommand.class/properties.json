@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GtDecoratedSnippetCommand",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtNewEvaluateSnippetCommand",
+	"type" : "normal"
+}

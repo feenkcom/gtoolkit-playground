@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "GtDecoratedCommand",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"isException",
+		"exception"
+	],
+	"name" : "GtErrorCatchingCommand",
+	"type" : "normal"
+}

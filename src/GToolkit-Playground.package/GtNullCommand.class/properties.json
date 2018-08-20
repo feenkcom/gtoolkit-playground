@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GtCommand",
+	"category" : "GToolkit-Playground-Commands",
+	"classinstvars" : [
+		"uniqueInstance"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtNullCommand",
+	"type" : "normal"
+}

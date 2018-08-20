@@ -1,0 +1,3 @@
+accessing
+catchingErrors
+	^ command catchingErrors

@@ -1,6 +1,7 @@
 SystemOrganization addCategory: #'GToolkit-Playground'!
 SystemOrganization addCategory: 'GToolkit-Playground-Announcements'!
 SystemOrganization addCategory: 'GToolkit-Playground-Commands'!
+SystemOrganization addCategory: 'GToolkit-Playground-Constants'!
 SystemOrganization addCategory: 'GToolkit-Playground-Model'!
 SystemOrganization addCategory: 'GToolkit-Playground-Obsolete'!
 SystemOrganization addCategory: 'GToolkit-Playground-Page'!

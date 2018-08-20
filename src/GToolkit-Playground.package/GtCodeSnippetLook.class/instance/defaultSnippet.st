@@ -1,0 +1,3 @@
+defaults
+defaultSnippet
+	^ GtPharoSnippet new

@@ -1,0 +1,3 @@
+ui
+editorElementName
+	^ #textEditor
