@@ -1,6 +1,7 @@
 gt-extension
 gtLiveFor: aView
-	<gtView: 1>
+	<gtView>
 	^ aView explicit
 		title: 'Live' translated;
-		stencil: self
+		stencil: self;
+		priority: 10
