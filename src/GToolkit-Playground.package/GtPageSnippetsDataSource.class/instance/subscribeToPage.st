@@ -1,17 +1,17 @@
 private - subscriptions
 subscribeToPage
-	page 
+	page
 		when: GtPageSnippetAddedAnnoucement 
 		send: #snippetAdded: 
 		to: self 
 		for: self.
-	page 
+	page
 		when: GtPageSnippetRemovedAnnoucement 
 		send: #snippetRemoved: 
 		to: self 
 		for: self.
-	page 
+	page
 		when: GtPageSnippetReplacedAnnoucement 
 		send: #snippetReplaced: 
 		to: self 
-		for: self.
+		for: self
