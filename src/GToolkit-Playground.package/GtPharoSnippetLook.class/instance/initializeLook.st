@@ -1,4 +1,4 @@
 initialization
 initializeLook
 	super initializeLook.
-	self attachCompletionController.
+	self attachCompletionController

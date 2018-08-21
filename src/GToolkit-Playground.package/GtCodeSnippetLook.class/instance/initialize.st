@@ -2,5 +2,5 @@ initialization
 initialize
 	super initialize.
 	editorElement := BrEditorElement new.
-	editorElement look: GtTextEditorLook.
+	editorElement look: BrGlamorousTextAreaLook.
 	self snippet: self defaultSnippet.
