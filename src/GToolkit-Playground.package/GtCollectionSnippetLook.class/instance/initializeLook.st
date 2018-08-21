@@ -10,4 +10,4 @@ initializeLook
 		anItem label: eachSnippetClass new typeName.
 		anItem action: [ self addSnippet: eachSnippetClass ].
 		toolbar addItem: anItem ].
-	self widgetContent addChild: toolbar as: #toobar.
+	self widgetContent addChild: toolbar as: #toobar
