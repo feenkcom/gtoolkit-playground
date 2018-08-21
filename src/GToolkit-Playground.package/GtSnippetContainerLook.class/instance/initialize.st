@@ -1,17 +1,24 @@
 initialization
 initialize
 	super initialize.
-	self add: BrMaterialRoundedLook.
-	self add: BrMaterialToggleBackgroundLook.
+
 	contentElement := BlElement new.
-	contentElement look: BrLayoutLook linearHorizontal vFitContent hMatchParent.
+	contentElement look: BrMaterialRoundedLook + BrLayoutLook linearHorizontal vFitContent hMatchParent.
+	contentElement border: (BlBorder paint: (Color fromHexString: #d9d9d9) width: 1).
+	contentElement background: Color white.
+
 	closeButton := self newCloseElement
 		viewModel: (BrButtonModel new action: [ self snippetRemoveRequested ]);
 		constraintsDo: [ :c |
 			c ignoreByLayout.
-			c margin: (BlInsets top: -8 left: 0 bottom: 0 right: -8).
+			c margin: (BlInsets top: -8 right: -8).
 			c ignored horizontal alignRight.
 			c ignored vertical alignTop ].
+	
 	bottomToolbar := self newPlusElement
-		constraintsDo: [ :c | c linear horizontal alignCenter ];
+		constraintsDo: [ :c |
+			c ignoreByLayout.
+			c margin: (BlInsets bottom: -8).
+			c ignored horizontal alignCenter.
+			c ignored vertical alignBottom ];
 		viewModel: (BrButtonModel new action: [ self snippetBelowRequested ]).
