@@ -6,3 +6,4 @@ initialize
 		c horizontal matchParent.
 		c vertical matchParent ].
 	self addChild: list as: #list.
+	self clipChildren: false

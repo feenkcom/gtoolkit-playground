@@ -3,11 +3,11 @@ newPlusElement
 	"Instantiate and return a new element playing a role of an arrow
 	used to show / hide a preview"
 	<return: #BlElement>
-
 	| aRadius aThickness |
+
 	aRadius := 5.
 	aThickness := 2.
-	
+
 	^ BlElement new
 		size: (aRadius + aRadius) @ (aRadius + aRadius);
 		geometry: (BlPolygon vertices: { 
