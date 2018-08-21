@@ -3,7 +3,9 @@
 	"super" : "BrLook",
 	"category" : "GToolkit-Playground-Snippet - Looks",
 	"classinstvars" : [ ],
-	"pools" : [ ],
+	"pools" : [
+		"BrGlamorousColors"
+	],
 	"classvars" : [ ],
 	"instvars" : [
 		"contentElement",

@@ -4,7 +4,7 @@ initializeLook
 
 	self widget
 		background: Color white;
-		border: (BlBorder paint: (Color fromHexString: #d9d9d9) width: 1);
+		border: (BlBorder paint: EditorBorderColor width: 1);
 		constraintsDo: [ :c | 
 			c vertical fitContent. 
 			c horizontal fitContent.		

@@ -4,7 +4,7 @@ initialize
 
 	contentElement := BlElement new.
 	contentElement look: BrMaterialRoundedLook + BrLayoutLook linearHorizontal vFitContent hMatchParent.
-	contentElement border: (BlBorder paint: (Color fromHexString: #d9d9d9) width: 1).
+	contentElement border: (BlBorder paint: LightBorderColor width: 1).
 	contentElement background: Color white.
 
 	closeButton := self newCloseElement
