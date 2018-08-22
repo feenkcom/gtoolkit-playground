@@ -1,0 +1,3 @@
+announcement handling
+snippetProgress: aGtSnippetProgressAnnouncement
+	responseElement label: aGtSnippetProgressAnnouncement asString traceCr.
