@@ -6,5 +6,4 @@ newVariableElement
 	variableElement addShortcut: (BlShortcut new
 			combination: (BlKeyCombination builder key: Key return; build);
 			action: [ :aShortcut | self assignNewVariableName ]).
-	variableElement margin: (BlInsets top: 6 left: 5 bottom: 1 right: 0).
 	^ variableElement

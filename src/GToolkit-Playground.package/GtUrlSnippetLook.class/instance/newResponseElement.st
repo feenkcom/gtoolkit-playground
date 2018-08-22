@@ -1,6 +1,8 @@
 initialization
 newResponseElement
 	^ responseElement := BrButton new
-			look: BrLabelLook + BrLayoutLook linearHorizontal fitContent;
+			look: BrLabelLook 
+				"+ BrGlamorousButtonExteriorLook "
+				+ BrLayoutLook linearHorizontal fitContent alignCenterLeft;
 			label: '';
 			action: [ self spawnResponse ]

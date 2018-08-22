@@ -2,4 +2,4 @@ private
 notifyUserAboutException: aGtSnippetEvaluatedAnnouncement 
 	| anErrorMessage |
 	anErrorMessage := aGtSnippetEvaluatedAnnouncement result messageText.
-	responseElement label: anErrorMessage.
+	responseElement label: anErrorMessage asString, ' in'.

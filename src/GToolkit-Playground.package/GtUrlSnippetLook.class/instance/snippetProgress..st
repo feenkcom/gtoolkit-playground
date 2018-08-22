@@ -1,5 +1,7 @@
 announcement handling
 snippetProgress: aGtSnippetProgressAnnouncement
+	infoElement removeFromParent.
+	self ensureProgressElement.
 	responseElement label: aGtSnippetProgressAnnouncement asString.
 	progressElement viewModel fraction: aGtSnippetProgressAnnouncement fraction.
-	"1 second wait."
+	0.2 second wait.
