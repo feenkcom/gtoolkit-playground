@@ -9,7 +9,8 @@
 		"resultElement",
 		"variableElement",
 		"responseElement",
-		"result"
+		"result",
+		"progressElement"
 	],
 	"name" : "GtUrlSnippetLook",
 	"type" : "normal"
