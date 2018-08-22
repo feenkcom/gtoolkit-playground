@@ -3,6 +3,8 @@ baseline: spec
 	<baseline>
 	spec for: #common do: [ 
 		spec
+			baseline: 'TaskIt' with: [ spec 
+				repository: 'github://sbragagnolo/taskit:dev-0.5' ];
 			baseline: 'Brick' with: [ spec
 				repository: 'github://pharo-graphics/Brick/src' ];
 			baseline: 'GToolkitPhlow' with: [ spec
@@ -18,6 +20,7 @@ baseline: spec
 
 			package: 'GToolkit-Playground' with: [ 
 				spec requires: #( 
+					#TaskIt
 					#Brick 
 					#GToolkitPhlow
 					#GToolkitCompleter
