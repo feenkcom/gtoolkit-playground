@@ -4,5 +4,5 @@ newResponseElement
 			look: BrLabelLook 
 				"+ BrGlamorousButtonExteriorLook "
 				+ BrLayoutLook linearHorizontal fitContent alignCenterLeft;
-			label: '';
+			label: 'Response will appear in variable ';
 			action: [ self spawnResponse ]
