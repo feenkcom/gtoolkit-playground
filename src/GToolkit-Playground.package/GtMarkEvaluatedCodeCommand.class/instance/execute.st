@@ -1,6 +1,9 @@
 execution
 execute
 	| aSubText |
+	self editor text clearAttributes: [ :each | 
+		(each isKindOf: GtPlaygroundEvaluatedCodeHighlightedAttribute) or: [ 
+			each isKindOf: GtPlaygroundEvaluatedCodeButtonAttribute ] ]. 
 	self editor hasSelection 
 		ifFalse: [ aSubText := self editor text  ]
 		ifTrue: [ aSubText := self editor text from: self editor selection from + 1 to: self editor selection to ].
