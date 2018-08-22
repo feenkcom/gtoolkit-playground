@@ -3,10 +3,10 @@ execute
 	self 
 		assert: [ self client notNil ]
 		description: [ 'Zinc client must be initialized before execution' ].
-	^ ZnSignalProgress 
+	ZnSignalProgress 
 		value: true
 		during: [ 
-			[ response := self client execute ]
+			[ response := self client execute; response ]
 			on: HTTPProgress 
 			do: [ :anHTTPProgress | 
 				self progressBlock cull: anHTTPProgress. 

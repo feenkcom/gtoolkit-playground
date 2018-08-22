@@ -2,9 +2,7 @@ execution
 execute
 	"response := ZnEasy get: self snippet url"
 	command 
-		client: (ZnClient new
-			url: self snippet url;
-			method: #GET);
+		get: self snippet url;
 		progressBlock: [ :anHTTPProgress | 
 			self snippet announce: (GtSnippetProgressAnnouncement fromHTTPProgress: anHTTPProgress) ].
 	command execute
