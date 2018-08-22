@@ -1,13 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "GtDecoratedSnippetCommand",
+	"super" : "GtCommand",
 	"category" : "GToolkit-Playground-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"client",
+		"progressBlock",
 		"response"
 	],
-	"name" : "GtUrlGetResponseCommand",
+	"name" : "GtZnClientCommand",
 	"type" : "normal"
 }

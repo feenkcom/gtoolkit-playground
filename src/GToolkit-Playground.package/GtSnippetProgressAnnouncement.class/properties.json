@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "GtSnippetAnnoucement",
+	"category" : "GToolkit-Playground-Announcements",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"total",
+		"amount"
+	],
+	"name" : "GtSnippetProgressAnnouncement",
+	"type" : "normal"
+}
