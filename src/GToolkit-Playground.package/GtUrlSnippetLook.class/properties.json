@@ -12,7 +12,8 @@
 		"result",
 		"progressElement",
 		"enterButton",
-		"infoElement"
+		"infoElement",
+		"inEditorToolbar"
 	],
 	"name" : "GtUrlSnippetLook",
 	"type" : "normal"
