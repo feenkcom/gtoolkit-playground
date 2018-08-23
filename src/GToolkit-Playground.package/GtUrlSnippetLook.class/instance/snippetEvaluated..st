@@ -4,7 +4,5 @@ snippetEvaluated: aGtSnippetEvaluatedAnnouncement
 	aGtSnippetEvaluatedAnnouncement isException 
 		ifTrue: [ self notifyUserAboutException: aGtSnippetEvaluatedAnnouncement ]
 		ifFalse: [ self notifyUserAboutResult: aGtSnippetEvaluatedAnnouncement ].
-	progressElement viewModel percentage: 100.
-	progressElement removeFromParent.
+	progressElement viewModel percentage: 0.
 	enterButton label: ('Press Enter to download again' asRopedText fontSize: 11).
-	self ensureInfoElement.

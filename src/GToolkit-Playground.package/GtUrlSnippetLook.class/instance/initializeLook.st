@@ -1,5 +1,6 @@
 initialization
 initializeLook
 	super initializeLook.
-	self ensureInfoElement.
-	self widget addChild: resultElement at: 3 as: self constants resultElementName.
+	self widget addChild: progressElement at: 1 as: self constants progressElementName.
+	self widget addChild: infoElement at: 3.
+	self widget addChild: resultElement at: 4 as: self constants resultElementName.
