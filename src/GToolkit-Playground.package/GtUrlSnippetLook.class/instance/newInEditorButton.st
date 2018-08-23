@@ -3,5 +3,5 @@ newInEditorButton
 	^ BrButton new
 			look: BrIconLook 
 				+ BrLayoutLook linearHorizontal fitContent alignCenterRight;
-			icon: #down asIcon asElement;
+			icon: BrGlamorousIcons down asElement;
 			action: [ self snippet evaluate ]
