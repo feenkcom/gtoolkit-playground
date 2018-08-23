@@ -1,3 +1,3 @@
-accessing
+instance creation
 newDefaultSnippet
-	^ GtCollectionSnippet new.
+	^ GtPharoSnippet new.

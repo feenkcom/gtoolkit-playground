@@ -11,4 +11,4 @@ removeSnippet: aGtSnippet
 	self detachFromSnippet: aGtSnippet.
 	self notifySnippetRemoved: aGtSnippet at: anIndex.
 	"Ensure that PlayPage has always one snippet."
-	self snippets isEmpty ifTrue: [ self addSnippet: self newDefaultSnippet ].
+	self snippets isEmpty ifTrue: [ self addSnippet: self newCollectiontSnippet ].

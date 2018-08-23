@@ -4,8 +4,8 @@ initialize
 
 	contentElement := BlElement new.
 	contentElement look: BrMaterialRoundedLook + BrLayoutLook linearHorizontal vFitContent hMatchParent.
-	contentElement border: (BlBorder paint: LightBorderColor width: 1).
-	contentElement background: Color white.
+	"contentElement border: (BlBorder paint: LightBorderColor width: 1)."
+	"contentElement background: Color white."
 
 	closeButton := self newCloseElement
 		viewModel: (BrButtonModel new action: [ self snippetRemoveRequested ]);
