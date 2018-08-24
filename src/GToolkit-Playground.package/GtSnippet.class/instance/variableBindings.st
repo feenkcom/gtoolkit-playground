@@ -1,4 +1,0 @@
-accessing
-variableBindings
-	^ GtNoBindings uniqueInstance
-	

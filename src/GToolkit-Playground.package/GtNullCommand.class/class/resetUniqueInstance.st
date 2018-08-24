@@ -1,3 +1,0 @@
-cleanup
-resetUniqueInstance
-	uniqueInstance := nil

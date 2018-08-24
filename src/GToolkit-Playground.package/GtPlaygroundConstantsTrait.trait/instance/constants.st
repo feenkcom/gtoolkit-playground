@@ -1,3 +1,0 @@
-accessing
-constants
-	^ GtPlaygroundConstants

@@ -1,1 +1,0 @@
-I am a view model of all snippet widgets

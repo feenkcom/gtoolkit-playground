@@ -1,3 +1,0 @@
-defaults
-defaultSnippet
-	^ GtUrlSnippet new

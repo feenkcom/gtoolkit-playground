@@ -1,0 +1,105 @@
+Class {
+	#name : #GtPharoSnippet,
+	#superclass : #GtCodeSnippet,
+	#category : 'GToolkit-Playground-Model'
+}
+
+{ #category : #accessing }
+GtPharoSnippet >> classOrMetaClass [
+	<return: #Behavior>
+
+	^ editor styler classOrMetaClass
+]
+
+{ #category : #accessing }
+GtPharoSnippet >> classOrMetaClass: aBehavior [
+	self 
+		assert: [ aBehavior notNil ] 
+		description: [ 'Class or meta-class must be non-nil' ].
+
+	editor styler classOrMetaClass: aBehavior
+]
+
+{ #category : #initialization }
+GtPharoSnippet >> defaultStyler [
+	^ BrRBTextStyler new workspace: GtHighlightingBindingStrategy new
+]
+
+{ #category : #'api - actions' }
+GtPharoSnippet >> evaluate [
+	| aCommand |
+	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
+	aCommand execute.
+	self styleEvaluatedCodeWithResult: aCommand result.
+	self
+		notifyAboutResult: aCommand result
+		exception: aCommand isException
+		spawn: false.
+	^ aCommand result
+]
+
+{ #category : #'api - actions' }
+GtPharoSnippet >> evaluateAndGo [
+	| aCommand |
+	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
+	aCommand execute.
+	self styleEvaluatedCodeWithResult: aCommand result.
+	self 
+		notifyAboutResult: aCommand result 
+		exception: aCommand isException 
+		spawn: true.
+	^ aCommand result
+]
+
+{ #category : #initialization }
+GtPharoSnippet >> initialize [
+	super initialize.
+	self variableBindings: GtPlaygroundBindings new.
+	self classOrMetaClass: UndefinedObject
+]
+
+{ #category : #accessing }
+GtPharoSnippet >> sourceCode: aStringOrRope [
+	super sourceCode: aStringOrRope.
+	editor text attributes: {
+		BrFontGenericFamilyAttribute monospace beNotOverwritableByStyler.
+		(BrFontSizeAttribute size: 14) beNotOverwritableByStyler }.
+]
+
+{ #category : #converting }
+GtPharoSnippet >> stencilBuilderClass [
+	^ GtPharoSnippetStencilBuilder
+]
+
+{ #category : #'private - styling' }
+GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult [
+	GtMarkEvaluatedCodeCommand new
+		editor: self editor;
+		result: aResult;
+		execute
+]
+
+{ #category : #accessing }
+GtPharoSnippet >> typeName [
+	"Return a playground snippet type name.
+	It should be an unique name among all playground snippet types."
+	<return: #String>
+
+	^ 'pharo'
+]
+
+{ #category : #accessing }
+GtPharoSnippet >> variableBindings [
+	<return: #GtBindingsTrait>
+
+	^ editor styler workspace bindings
+]
+
+{ #category : #accessing }
+GtPharoSnippet >> variableBindings: aGtBindingsTrait [
+	self 
+		assert: [ aGtBindingsTrait notNil ] 
+		description: [ 'Variable bindings must be non-nil' ].
+
+	editor styler workspace bindings: aGtBindingsTrait
+]

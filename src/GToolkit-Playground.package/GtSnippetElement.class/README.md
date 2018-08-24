@@ -1,1 +1,0 @@
-I am the root element of a visual snippet representation

@@ -1,3 +1,0 @@
-ui
-labelElementName
-	^ #label

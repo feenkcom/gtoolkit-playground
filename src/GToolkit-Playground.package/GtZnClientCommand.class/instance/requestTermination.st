@@ -1,3 +1,0 @@
-execution
-requestTermination
-	shouldContinue := false
