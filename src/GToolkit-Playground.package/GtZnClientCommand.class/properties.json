@@ -8,7 +8,8 @@
 	"instvars" : [
 		"client",
 		"progressBlock",
-		"response"
+		"response",
+		"shouldContinue"
 	],
 	"name" : "GtZnClientCommand",
 	"type" : "normal"

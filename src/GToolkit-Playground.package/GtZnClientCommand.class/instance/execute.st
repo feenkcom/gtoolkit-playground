@@ -10,4 +10,4 @@ execute
 			on: HTTPProgress 
 			do: [ :anHTTPProgress | 
 				self progressBlock cull: anHTTPProgress. 
-				anHTTPProgress resume ] ]
+				shouldContinue ifTrue: [ anHTTPProgress resume ] ] ]
