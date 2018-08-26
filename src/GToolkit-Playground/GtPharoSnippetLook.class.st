@@ -35,6 +35,9 @@ GtPharoSnippetLook >> registerKeyBindings [
 			combination: (BlKeyCombination builder meta; key: Key g; build);
 			action: [ :aShortcut | self snippet evaluateAndGo ]);
 		addShortcut: (BlShortcut new
+			combination: (BlKeyCombination builder meta; key: Key i; build);
+			action: [ :aShortcut | self snippet evaluateAndGo ]);
+		addShortcut: (BlShortcut new
 			combination: (BlKeyCombination builder meta; key: Key p; build);
 			action: [ :aShortcut | self inform: self snippet evaluate printString ]).
 ]
