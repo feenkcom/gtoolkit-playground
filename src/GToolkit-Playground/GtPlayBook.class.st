@@ -42,9 +42,10 @@ GtPlayBook >> asElement [
 
 { #category : #'gt-extension' }
 GtPlayBook >> gtLiveFor: aView [
-	<gtView: 1>
+	<gtView>
 	^ aView explicit
 		title: 'Live' translated;
+		priority: 50;
 		stencil: [ self asElement ]
 ]
 

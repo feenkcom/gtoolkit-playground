@@ -34,7 +34,7 @@ GtObjectBindings >> bindingOf: aSymbol [
 
 { #category : #'gt-extension' }
 GtObjectBindings >> gtBindingsFor: aView [
-	<gtView: 1>
+	<gtView>
 	^ bindings gtItemsFor: aView
 ]
 

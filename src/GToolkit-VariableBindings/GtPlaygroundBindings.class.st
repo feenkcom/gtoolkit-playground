@@ -33,7 +33,7 @@ GtPlaygroundBindings >> bindingOf: aSymbol [
 
 { #category : #'gt-extension' }
 GtPlaygroundBindings >> gtBindingsFor: aView [
-	<gtView: 1>
+	<gtView>
 	^ bindings gtItemsFor: aView
 ]
 

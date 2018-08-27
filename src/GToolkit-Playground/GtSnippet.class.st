@@ -49,9 +49,10 @@ GtSnippet >> asStencilBuilder: aStencilBuilderClass [
 
 { #category : #'gt-extension' }
 GtSnippet >> gtLiveFor: aView [
-	<gtView: 1>
+	<gtView>
 	^ aView explicit
 		title: 'Live' translated;
+		priority: 50;
 		stencil: self
 ]
 
