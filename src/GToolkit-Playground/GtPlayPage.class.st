@@ -12,6 +12,12 @@ Class {
 	#category : 'GToolkit-Playground-Model'
 }
 
+{ #category : #'instance creation' }
+GtPlayPage class >> forObject: anObject [
+	self flag: 'set anObject as a receiver, and add all instance variables as bindings'.
+	^ self new
+]
+
 { #category : #'api - adding / removing' }
 GtPlayPage >> addSnippet: aGtSnippet [ 
 	"Add a playground snippet"
