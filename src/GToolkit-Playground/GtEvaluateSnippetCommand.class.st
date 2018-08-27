@@ -21,4 +21,5 @@ GtEvaluateSnippetCommand >> snippet: aGtSnippet [
 	command requestor: aGtSnippet.
 	command sourceCode: aGtSnippet sourceCode.
 	command variableBindings: aGtSnippet variableBindings.
+	command receiver: aGtSnippet variableBindings receiver.
 ]

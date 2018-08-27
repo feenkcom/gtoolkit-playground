@@ -14,8 +14,10 @@ Class {
 
 { #category : #'instance creation' }
 GtPlayPage class >> forObject: anObject [
-	self flag: 'set anObject as a receiver, and add all instance variables as bindings'.
-	^ self new
+	| aPlayPage |
+	aPlayPage := self new.
+	aPlayPage bindings receiver: anObject.
+	^ aPlayPage
 ]
 
 { #category : #'api - adding / removing' }
@@ -104,7 +106,7 @@ GtPlayPage >> gtLiveFor: aView [
 GtPlayPage >> initialize [
 	super initialize.
 	snippets := OrderedCollection new.
-	bindings := GtPlaygroundBindings new.
+	bindings := GtObjectBindings new.
 	announcer := Announcer new.
 	title := 'Page'.
 	self addSnippet: self newDefaultSnippet.

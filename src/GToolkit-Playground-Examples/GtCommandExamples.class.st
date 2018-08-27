@@ -14,6 +14,7 @@ GtCommandExamples >> evaluateSourceCodeCommand [
 	self assert: aCommand isException not.
 	self assert: aCommand bindingsStrategy notNil.
 	self assert: aCommand result isNil.
+	self assert: aCommand receiver isNil.
 	^ aCommand
 ]
 

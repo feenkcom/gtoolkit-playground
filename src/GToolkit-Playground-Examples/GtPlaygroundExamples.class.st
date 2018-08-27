@@ -234,8 +234,8 @@ GtPlaygroundExamples >> page [
 	| aPage |
 	aPage := GtPlayPage new.
 	self assert: aPage snippets size equals: 1.
-	self assert: aPage snippets first typeName equals: 'collection'.
-	self assert: aPage bindings class equals: GtPlaygroundBindings.
+	self assert: aPage snippets first typeName equals: aPage newDefaultSnippet typeName.
+	self assert: aPage bindings class equals: GtObjectBindings.
 	^ aPage
 ]
 
@@ -260,6 +260,16 @@ GtPlaygroundExamples >> pageWithCode [
 	aPage snippets first sourceCode: 'aValue := 42.'.
 	self assert: aPage snippets first sourceCode equals: 'aValue := 42.'.
 	^ aPage
+]
+
+{ #category : #'model - page and book' }
+GtPlaygroundExamples >> pageWithDefinedReceiver [
+	<gtExample>
+	| anObject aPlayPage |
+	anObject := Object new.
+	aPlayPage := GtPlayPage forObject: anObject.
+	self assert: aPlayPage bindings receiver equals: anObject.
+	^ aPlayPage
 ]
 
 { #category : #'model - page and book' }

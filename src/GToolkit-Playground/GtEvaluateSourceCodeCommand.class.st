@@ -6,9 +6,10 @@ Class {
 		'isException',
 		'bindingsStrategy',
 		'sourceCode',
-		'requestor'
+		'requestor',
+		'receiver'
 	],
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #accessing }
@@ -37,7 +38,7 @@ GtEvaluateSourceCodeCommand >> execute [
 	aCompiler := self class compiler
 		source: self sourceCode "readStream" "Looks like it can be a String instead of readSream";
 		context: nil "TODO: what is context? evaluation uses `context method methodClass`";
-		receiver: nil "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
+		receiver: self receiver "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
 		bindings: self bindingsStrategy;
 		requestor: self requestor. "TODO: requestor should be an editor?
 			evaluation uses `requestor selection` to evaluate only selected part"
@@ -73,6 +74,16 @@ GtEvaluateSourceCodeCommand >> isException [
 	"Return true, if evaluation raised an exception"
 	<return: #Boolean>
 	^ isException
+]
+
+{ #category : #accessing }
+GtEvaluateSourceCodeCommand >> receiver [
+	^ receiver
+]
+
+{ #category : #accessing }
+GtEvaluateSourceCodeCommand >> receiver: anObject [
+	receiver := anObject
 ]
 
 { #category : #accessing }

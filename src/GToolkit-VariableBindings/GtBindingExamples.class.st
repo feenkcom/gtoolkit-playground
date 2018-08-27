@@ -26,6 +26,16 @@ GtBindingExamples >> highlightingBindingStrategy [
 		bindings: self playgroundBindings
 ]
 
+{ #category : #bindings }
+GtBindingExamples >> objectBindings [
+	<gtExample>
+	<label: 'Default object bindings'>
+	| aBindings |
+	aBindings := GtObjectBindings new.
+	self assert: aBindings receiver isNil.
+	^ aBindings
+]
+
 { #category : #'binding strategy' }
 GtBindingExamples >> playgroundBindingStrategy [
 	<gtExample>
@@ -38,7 +48,12 @@ GtBindingExamples >> playgroundBindingStrategy [
 GtBindingExamples >> playgroundBindings [
 	<gtExample>
 	<label: 'Default playground bindings'>
-	^ GtPlaygroundBindings new
+	| aBindings |
+	aBindings := GtPlaygroundBindings new.
+	self assert: aBindings receiver isNil.
+	aBindings receiver: 42.
+	self assert: aBindings receiver isNil.
+	^ aBindings
 ]
 
 { #category : #'binding strategy' }
@@ -61,6 +76,18 @@ GtBindingExamples >> queryDefaultPlaygroundBindingStrategy [
 	result := strategy bindingOf: self variableOneName.
 	self assert: result isNil.
 	^ strategy
+]
+
+{ #category : #bindings }
+GtBindingExamples >> queryEmptyObjectBindings [
+	<gtExample>
+	<label: 'Query empty bindings'>
+	| emptyBindings result |
+	emptyBindings := self objectBindings.
+	result := emptyBindings
+		bindingOf: self variableOneName.
+	self assert: result isNil.
+	^ emptyBindings
 ]
 
 { #category : #bindings }
@@ -97,6 +124,33 @@ GtBindingExamples >> queryPlaygroundBindingStrategy [
 	self assert: result key equals: self variableOneName.
 	self assert: result value equals: nil.
 	^ result
+]
+
+{ #category : #bindings }
+GtBindingExamples >> setObjectBindings [
+	<gtExample>
+	<label: 'Set variable one'>
+	| bindings result |
+	bindings := self objectBindings.
+	bindings at: self variableOneName put: 42.
+	result := bindings
+		bindingOf: self variableOneName.
+	self assert: result notNil.
+	self assert: result value equals: 42.
+	self assert: result key equals: self variableOneName.
+	^ bindings
+]
+
+{ #category : #bindings }
+GtBindingExamples >> setObjectBindingsReceiver [
+	<gtExample>
+	<label: 'Set receiver'>
+	| bindings |
+	bindings := self objectBindings.
+	bindings receiver: 42.
+	self assert: bindings receiver equals: 42.
+	self assert: bindings receiverClass equals: 42 class.
+	^ bindings
 ]
 
 { #category : #bindings }
