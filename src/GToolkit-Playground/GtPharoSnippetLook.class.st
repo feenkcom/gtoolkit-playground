@@ -32,7 +32,7 @@ GtPharoSnippetLook >> registerKeyBindings [
 			combination: (BlKeyCombination builder meta; key: Key return; build);
 			action: [ :aShortcut | self snippet requestSnippetSplit ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; shift; key: Key return; build);
+			combination: (BlKeyCombination builder meta; key: Key delete; build);
 			action: [ :aShortcut | self snippet requestSnippetMerge ]);
 		addShortcut: (BlShortcut new
 			combination: (BlKeyCombination builder meta; key: Key d; build);
