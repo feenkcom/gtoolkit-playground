@@ -70,7 +70,7 @@ GtUrlSnippetLook >> newInEditorToolbar [
 		layout: BlLinearLayout horizontal;
 		addChild: self newHorizontalFlexibleSpaceElement;
 		addChild: (BrToolbar new
-			look: BrToolbarLook horizontal + BrLayoutLook new alignCenterRight;
+			look: BrToolbarLook + BrLayoutLook new alignCenterRight;
 			constraintsDo: [ :c | 
 				c vertical matchParent ];
 			addChild: self newInEditorButton)
