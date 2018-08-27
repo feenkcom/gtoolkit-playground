@@ -1,10 +1,10 @@
 Class {
 	#name : #GtPlayBookChanged,
-	#superclass : #BrChangeEvent,
+	#superclass : #BrResponse,
 	#instVars : [
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Model'
+	#category : #'GToolkit-Playground-PlayBook - Model'
 }
 
 { #category : #accessing }
