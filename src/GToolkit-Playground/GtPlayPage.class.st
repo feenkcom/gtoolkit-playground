@@ -70,6 +70,10 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 		subscribe: GtSnippetReplacementRequestedAnnouncement
 			send: #snippetReplacementRequestedAnnouncement:
 			to: self
+			for: self;
+		subscribe: GtSnippetMergeRequestedAnnouncement 
+			send: #snippetMergeRequestedAnnouncement: 
+			to: self 
 			for: self
 ]
 
@@ -197,6 +201,19 @@ GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnounc
 	aNewSnippet := aGtSnippetBelowRequestedAnnouncement secondSnippet.
 	aNewSnippet ifNil: [ aNewSnippet := self newCollectionSnippet ].
 	self addSnippet: aNewSnippet at: anIndex + 1.
+]
+
+{ #category : #'announcement handling' }
+GtPlayPage >> snippetMergeRequestedAnnouncement: aGtSnippetMergeRequestedAnnouncement [ 
+	| anSnippet anIndex anAboveSnippet |
+	anSnippet := aGtSnippetMergeRequestedAnnouncement snippet.
+	self
+		assert: [ anSnippet notNil ] 
+		description: [ 'Source snippet to merge must be non-nil' ].
+	anIndex := self snippets indexOf: anSnippet.
+	anIndex < 2 ifTrue: [ "ignore request" ^ self ].
+	anAboveSnippet := self snippetAt: anIndex - 1.
+	anAboveSnippet mergeWith: anSnippet.
 ]
 
 { #category : #'announcement handling' }

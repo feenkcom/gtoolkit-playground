@@ -427,6 +427,26 @@ GtPlaygroundExamples >> requestSnippetBelow [
 ]
 
 { #category : #'model - updates' }
+GtPlaygroundExamples >> requestSnippetMerge [
+	<gtExample>
+	| aPage anAnnouncements aSnippet theSnippets |
+	aPage := self requestSnippetSplit.
+	self assert: aPage snippets size equals: 2.
+	anAnnouncements := OrderedCollection new.
+	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
+	theSnippets := aPage snippets copy.
+	aSnippet := aPage snippets second.
+	aSnippet requestSnippetMerge.
+	self assert: aPage snippets size equals: 1.
+	self assert: aPage snippets first equals: theSnippets first.
+	self assert: (aPage snippets first = aSnippet) not.
+	self assert: aPage snippets first class equals: GtPharoSnippet.
+	self assert: aPage snippets first sourceCode equals: self twoLinesPharoSnippetSourceCode.
+	self assert: anAnnouncements size equals: 1.
+	^ aPage
+]
+
+{ #category : #'model - updates' }
 GtPlaygroundExamples >> requestSnippetRemoval [
 	<gtExample>
 	| aPage anAnnouncements aSnippet |

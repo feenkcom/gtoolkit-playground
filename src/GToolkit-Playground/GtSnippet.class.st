@@ -61,6 +61,11 @@ GtSnippet >> initialize [
 	announcer := Announcer new.
 ]
 
+{ #category : #'api - modification' }
+GtSnippet >> mergeWith: anSnippet [
+	"Subclasses can define merging mechanism"
+]
+
 { #category : #'api - requests' }
 GtSnippet >> requestNewSnippetBelow [
 	self announce: (GtSnippetBelowRequestedAnnouncement snippet: self).

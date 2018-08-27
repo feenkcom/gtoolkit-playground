@@ -58,6 +58,26 @@ GtPharoSnippet >> initialize [
 	self classOrMetaClass: UndefinedObject
 ]
 
+{ #category : #'api - modification' }
+GtPharoSnippet >> mergeWith: anSnippet [
+	"Subclasses can define merging mechanism"
+	anSnippet class = self class ifFalse: [ ^ self ].
+	anSnippet text isEmpty ifFalse: [ 
+		self editor inserter 
+			withoutSelectionDelete;
+			withoutSelectionUpdate;
+			withoutCursorUpdate;
+			atEnd; 
+			text: anSnippet text; 
+			insert ].
+	anSnippet requestSnippetRemoval.
+]
+
+{ #category : #'api - requests' }
+GtPharoSnippet >> requestSnippetMerge [
+	self announce: (GtSnippetMergeRequestedAnnouncement snippet: self)
+]
+
 { #category : #'api - requests' }
 GtPharoSnippet >> requestSnippetSplit [
 	self requestSnippetSplitAt: self editor cursor position.
