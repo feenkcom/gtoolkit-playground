@@ -113,7 +113,7 @@ GtPlayPage >> initialize [
 ]
 
 { #category : #'instance creation' }
-GtPlayPage >> newCollectiontSnippet [
+GtPlayPage >> newCollectionSnippet [
 	^ GtCollectionSnippet new.
 ]
 
@@ -159,7 +159,7 @@ GtPlayPage >> removeSnippet: aGtSnippet [
 	self detachFromSnippet: aGtSnippet.
 	self notifySnippetRemoved: aGtSnippet at: anIndex.
 	"Ensure that PlayPage has always one snippet."
-	self snippets isEmpty ifTrue: [ self addSnippet: self newCollectiontSnippet ].
+	self snippets isEmpty ifTrue: [ self addSnippet: self newCollectionSnippet ].
 
 ]
 
@@ -188,13 +188,15 @@ GtPlayPage >> snippetAt: anInteger [
 
 { #category : #'announcement handling' }
 GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnouncement [ 
-	| anSnippet anIndex |
+	| anSnippet anIndex aNewSnippet |
 	anSnippet := aGtSnippetBelowRequestedAnnouncement snippet.
 	self
 		assert: [ anSnippet notNil ] 
 		description: [ 'Source snippet for new snippet request must be non-nil' ].
 	anIndex := self snippets indexOf: anSnippet.
-	self addSnippet: self newCollectiontSnippet at: anIndex + 1.
+	aNewSnippet := aGtSnippetBelowRequestedAnnouncement secondSnippet.
+	aNewSnippet ifNil: [ aNewSnippet := self newCollectionSnippet ].
+	self addSnippet: aNewSnippet at: anIndex + 1.
 ]
 
 { #category : #'announcement handling' }

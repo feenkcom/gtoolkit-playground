@@ -52,7 +52,6 @@ GtSnippet >> gtLiveFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Live' translated;
-		priority: 50;
 		stencil: self
 ]
 

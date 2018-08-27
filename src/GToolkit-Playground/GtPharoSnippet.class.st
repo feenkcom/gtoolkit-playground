@@ -58,6 +58,26 @@ GtPharoSnippet >> initialize [
 	self classOrMetaClass: UndefinedObject
 ]
 
+{ #category : #'api - requests' }
+GtPharoSnippet >> requestSnippetSplit [
+	self requestSnippetSplitAt: self editor cursor position.
+]
+
+{ #category : #'api - requests' }
+GtPharoSnippet >> requestSnippetSplitAt: aSplitIndex [
+	| aNewSnippet aRightPart aLeftPart |
+	aNewSnippet := self class new.
+	aLeftPart := self text copyFrom: 1 to: aSplitIndex.
+	aLeftPart trimmer rightLineBreaks; trim.
+	aRightPart := self text copyFrom: aSplitIndex + 1 to: self text size.
+	aRightPart trimmer leftLineBreaks; trim.
+	self editor text: aLeftPart.
+	aNewSnippet sourceCode: aRightPart.
+	self
+		announce:
+			(GtSnippetBelowRequestedAnnouncement snippet: self second: aNewSnippet)
+]
+
 { #category : #accessing }
 GtPharoSnippet >> sourceCode: aStringOrRope [
 	super sourceCode: aStringOrRope.
