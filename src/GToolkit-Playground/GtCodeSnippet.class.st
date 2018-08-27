@@ -65,3 +65,9 @@ GtCodeSnippet >> sourceCode: aStringOrRope [
 		description: [ 'The contents should be initialized (a string or rope)' ].
 	editor text: aStringOrRope asRopedText.
 ]
+
+{ #category : #accessing }
+GtCodeSnippet >> text [
+	<return: #BlText>
+	^ self editor text
+]

@@ -285,6 +285,25 @@ GtPlaygroundExamples >> pageWithManySnippets [
 ]
 
 { #category : #'model - page and book' }
+GtPlaygroundExamples >> pageWithPharoSnippetWithTwoLinesAndSelectionAtTheEndOfTheFirstLine [
+	<gtExample>
+	| aPage aPharoSnippet aSourceCode aCursorPosition |
+	aPage := self page.
+	aPharoSnippet := self pharoSnippet.
+	aPage replaceSnippet: aPage snippets first by: aPharoSnippet.
+	aSourceCode := self twoLinesPharoSnippetSourceCode.
+	aPharoSnippet sourceCode: aSourceCode.
+	aCursorPosition := aSourceCode lines first size + 1.
+	aPharoSnippet editor moveCursorTo: aCursorPosition.
+	self
+		assert: aPharoSnippet editor cursor position
+		equals: aCursorPosition.
+	self assert: aPage snippets size equals: 1.
+	self assert: aPage snippets first equals: aPharoSnippet.
+	^ aPage
+]
+
+{ #category : #'model - page and book' }
 GtPlaygroundExamples >> pageWithTwoDependingPharoSnippets [
 	<gtExample>
 	<label: 'A playground page with two Pharo snippets'>
@@ -438,6 +457,34 @@ GtPlaygroundExamples >> requestSnippetReplacement [
 	self assert: aPage snippets second equals: theSnippets second.
 	self assert: anAnnouncements size equals: 1.
 	^ aPage
+]
+
+{ #category : #'model - updates' }
+GtPlaygroundExamples >> requestSnippetSplit [
+	<gtExample>
+	| aPage anAnnouncements aSnippet |
+	aPage := self pageWithPharoSnippetWithTwoLinesAndSelectionAtTheEndOfTheFirstLine.
+	self assert: aPage snippets size equals: 1.
+	anAnnouncements := OrderedCollection new.
+	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
+	aSnippet := aPage snippets first.
+	aSnippet requestSnippetSplit.
+	self assert: aPage snippets size equals: 2.
+	self assert: aPage snippets first equals: aSnippet.
+	self assert: (aPage snippets second = aSnippet) not.
+	self assert: aPage snippets first class equals: GtPharoSnippet.
+	self assert: aPage snippets second class equals: GtPharoSnippet.
+	self assert: aPage snippets first sourceCode asString trimRight equals: self twoLinesPharoSnippetSourceCode lines first.
+	self assert: aPage snippets second sourceCode equals: self twoLinesPharoSnippetSourceCode lines second.
+	self assert: anAnnouncements size equals: 1.
+	^ aPage
+]
+
+{ #category : #'model - page and book' }
+GtPlaygroundExamples >> twoLinesPharoSnippetSourceCode [
+	<gtExample>
+	^ 'aVariable := 3.
+aMultiplication := aVariable * 7'
 ]
 
 { #category : #'model - snippets' }

@@ -20,6 +20,6 @@ GtSnippetAnnoucement >> snippet [
 ]
 
 { #category : #accessing }
-GtSnippetAnnoucement >> snippet: anObject [
-	snippet := anObject
+GtSnippetAnnoucement >> snippet: aGtSnippet [
+	snippet := aGtSnippet
 ]
