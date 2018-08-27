@@ -17,25 +17,3 @@ GtBindingsTrait >> bindingOf: aSymbol [
 	<return: #LiteralVariable or: nil>
 	^ self explicitRequirement
 ]
-
-{ #category : #accessing }
-GtBindingsTrait >> receiver [
-	"anObject is a receiver denominated by `self` in a source code."
-	<return: #Object>
-	^ nil
-]
-
-{ #category : #accessing }
-GtBindingsTrait >> receiver: anObject [
-	"anObject is a receiver denominated by `self` in a source code.
-	Be default it is a nil without being able to define it.
-	Concrete Trait implementations can change the behavior."
-]
-
-{ #category : #accessing }
-GtBindingsTrait >> receiverClass [
-	"A receiver is an object denominated by `self` in a source code.
-	This method returns its class."
-	<return: #ClassDescription>
-	^ self receiver class
-]

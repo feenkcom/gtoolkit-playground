@@ -26,7 +26,7 @@ GtBindingExamples >> highlightingBindingStrategy [
 		bindings: self playgroundBindings
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - object' }
 GtBindingExamples >> objectBindings [
 	<gtExample>
 	<label: 'Default object bindings'>
@@ -44,15 +44,12 @@ GtBindingExamples >> playgroundBindingStrategy [
 		bindings: self playgroundBindings
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - playground' }
 GtBindingExamples >> playgroundBindings [
 	<gtExample>
 	<label: 'Default playground bindings'>
 	| aBindings |
 	aBindings := GtPlaygroundBindings new.
-	self assert: aBindings receiver isNil.
-	aBindings receiver: 42.
-	self assert: aBindings receiver isNil.
 	^ aBindings
 ]
 
@@ -78,7 +75,7 @@ GtBindingExamples >> queryDefaultPlaygroundBindingStrategy [
 	^ strategy
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - object' }
 GtBindingExamples >> queryEmptyObjectBindings [
 	<gtExample>
 	<label: 'Query empty bindings'>
@@ -90,7 +87,7 @@ GtBindingExamples >> queryEmptyObjectBindings [
 	^ emptyBindings
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - playground' }
 GtBindingExamples >> queryEmptyPlaygroundBindings [
 	<gtExample>
 	<label: 'Query empty bindings'>
@@ -113,6 +110,20 @@ GtBindingExamples >> queryHighlightingBindingStrategy [
 	^ strategy
 ]
 
+{ #category : #'bindings - object' }
+GtBindingExamples >> queryObjectBindingsWithReceiver [
+	<gtExample>
+	<label: 'Set receiver'>
+	| bindings result |
+	bindings := self objectBindings.
+	bindings receiver: self setObjectBindingsReceiver.
+	result := bindings bindingOf: #receiver.
+	self assert: result notNil.
+	self assert: result key equals: #receiver.
+	self assert: result value equals: 42.
+	^ bindings
+]
+
 { #category : #'binding strategy' }
 GtBindingExamples >> queryPlaygroundBindingStrategy [
 	<gtExample>
@@ -126,7 +137,7 @@ GtBindingExamples >> queryPlaygroundBindingStrategy [
 	^ result
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - object' }
 GtBindingExamples >> setObjectBindings [
 	<gtExample>
 	<label: 'Set variable one'>
@@ -141,7 +152,7 @@ GtBindingExamples >> setObjectBindings [
 	^ bindings
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - object' }
 GtBindingExamples >> setObjectBindingsReceiver [
 	<gtExample>
 	<label: 'Set receiver'>
@@ -153,7 +164,21 @@ GtBindingExamples >> setObjectBindingsReceiver [
 	^ bindings
 ]
 
-{ #category : #bindings }
+{ #category : #'bindings - object' }
+GtBindingExamples >> setObjectBindingsWithReceiver [
+	<gtExample>
+	| bindings result receiver |
+	bindings := self queryObjectBindingsWithReceiver.
+	receiver := self setObjectBindingsReceiver.
+	bindings receiver: receiver.
+	bindings at: #receiver put: 42.
+	result := receiver receiver.
+	self assert: result notNil.
+	self assert: result equals: 42.
+	^ bindings
+]
+
+{ #category : #'bindings - playground' }
 GtBindingExamples >> setPlaygroundBindings [
 	<gtExample>
 	<label: 'Set variable one'>

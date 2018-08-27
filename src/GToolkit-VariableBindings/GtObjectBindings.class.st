@@ -19,29 +19,31 @@ GtObjectBindings >> asDictionary [
 { #category : #adding }
 GtObjectBindings >> at: aSymbol put: anObject [ 
 	self assert: [ aSymbol isSymbol ] description: [ 'Variable name should be a symbol' ].
-	bindings 
-		at: aSymbol 
-		put: ((WorkspaceVariable named: aSymbol) value: anObject)
+	(self receiver class allInstVarNamesEverywhere includes: aSymbol) 
+		ifFalse: [ bindings at: aSymbol put: anObject ]
+		ifTrue: [ self receiver instVarNamed: aSymbol put: anObject ]
+	
 ]
 
 { #category : #binding }
 GtObjectBindings >> bindingOf: aSymbol [
-	^ bindings
-		at: aSymbol 
-		ifPresent: [ :aValue | aValue ] 
-		ifAbsent: [ nil ]
+	<return: #LiteralVariable or: nil>
+	^ (self receiver class allInstVarNamesEverywhere includes: aSymbol) 
+			ifFalse: [ bindings bindingOf: aSymbol ]
+			ifTrue: [ (WorkspaceVariable named: aSymbol) 
+				value: (self receiver instVarNamed: aSymbol) ]
 ]
 
 { #category : #'gt-extension' }
 GtObjectBindings >> gtBindingsFor: aView [
-	<gtView>
-	^ bindings gtItemsFor: aView
+	<gtView: 1>
+	^ bindings gtBindingsFor: aView
 ]
 
 { #category : #initialization }
 GtObjectBindings >> initialize [
 	super initialize.
-	bindings := Dictionary new.
+	bindings := GtPlaygroundBindings new.
 	receiver := nil.
 ]
 
@@ -56,4 +58,9 @@ GtObjectBindings >> receiver [
 GtObjectBindings >> receiver: anObject [
 	"anObject is a receiver denominated by `self` in a source code."
 	^ receiver := anObject
+]
+
+{ #category : #accessing }
+GtObjectBindings >> receiverClass [
+	^ self receiver class
 ]
