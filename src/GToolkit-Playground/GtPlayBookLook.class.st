@@ -57,7 +57,7 @@ GtPlayBookLook >> playBook: aGtPlayground [
 GtPlayBookLook >> updateTab: aGtPage [
 	| aTab |
 	aTab := BrTab new
-				look: BrMaterialTabLabelledLook;
+				look: BrGlamorousTabLook;
 				padding: (BlInsets all: 10);
 				label: aGtPage title;
 				stencil: [ aGtPage asElement margin: (BlInsets all: 10) ]";
