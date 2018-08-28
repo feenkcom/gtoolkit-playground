@@ -34,7 +34,7 @@ GtCollectionSnippetLook >> availableSnippetClasses [
 GtCollectionSnippetLook >> initialize [
 	super initialize.
 	toolbar := BrToolbar new.
-	toolbar look: BrToolbarLook
+	toolbar look: BrGlamorousToolbarLook
 ]
 
 { #category : #initialization }
