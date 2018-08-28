@@ -71,6 +71,7 @@ GtPharoSnippet >> mergeWith: anSnippet [
 			text: anSnippet text; 
 			insert ].
 	anSnippet requestSnippetRemoval.
+	self requestSnippetFocus.
 ]
 
 { #category : #'api - requests' }
@@ -93,9 +94,8 @@ GtPharoSnippet >> requestSnippetSplitAt: aSplitIndex [
 	aRightPart trimmer leftLineBreaks; trim.
 	self editor text: aLeftPart.
 	aNewSnippet sourceCode: aRightPart.
-	self
-		announce:
-			(GtSnippetBelowRequestedAnnouncement snippet: self second: aNewSnippet)
+	self announce: (GtSnippetBelowRequestedAnnouncement 
+		snippet: self second: aNewSnippet).
 ]
 
 { #category : #accessing }

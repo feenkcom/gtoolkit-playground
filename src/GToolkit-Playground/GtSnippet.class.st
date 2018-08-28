@@ -72,6 +72,11 @@ GtSnippet >> requestNewSnippetBelow [
 ]
 
 { #category : #'api - requests' }
+GtSnippet >> requestSnippetFocus [
+	self announce: (GtSnippetFocusRequestAnnouncement snippet: self).
+]
+
+{ #category : #'api - requests' }
 GtSnippet >> requestSnippetRemoval [
 	self announce: (GtSnippetRemovalRequestedAnnouncement snippet: self).
 ]

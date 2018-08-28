@@ -150,12 +150,6 @@ GtUrlSnippetLook >> registerKeyBindings [
 			action: [ :aShortcut | self snippet evaluate ])
 ]
 
-{ #category : #accessing }
-GtUrlSnippetLook >> snippet: aGtSnippet [
-	super snippet: aGtSnippet.
-	self subscribeToSnippet.
-]
-
 { #category : #'announcement handling' }
 GtUrlSnippetLook >> snippetEvaluated: aGtSnippetEvaluatedAnnouncement [
 	result := aGtSnippetEvaluatedAnnouncement result.
@@ -182,13 +176,14 @@ GtUrlSnippetLook >> spawnResponse [
 ]
 
 { #category : #subscriptions }
-GtUrlSnippetLook >> subscribeToSnippet [
-	self snippet
+GtUrlSnippetLook >> subscribeToSnippet: aGtSnippet [
+	super subscribeToSnippet: aGtSnippet.
+	aGtSnippet
 		subscribe: GtSnippetEvaluatedAnnouncement 
 		send: #snippetEvaluated: 
 		to: self
 		for: self.
-	self snippet
+	aGtSnippet
 		subscribe: GtSnippetProgressAnnouncement 
 		send: #snippetProgress: 
 		to: self

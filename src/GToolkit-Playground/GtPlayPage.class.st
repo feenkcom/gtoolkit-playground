@@ -20,13 +20,13 @@ GtPlayPage class >> forObject: anObject [
 	^ aPlayPage
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : #'api - modification' }
 GtPlayPage >> addSnippet: aGtSnippet [ 
 	"Add a playground snippet"
 	self addSnippet: aGtSnippet at: self snippets size + 1.
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : #'api - modification' }
 GtPlayPage >> addSnippet: aGtSnippet at: anIndex [
 	"Add a playground snippet"
 
@@ -38,7 +38,8 @@ GtPlayPage >> addSnippet: aGtSnippet at: anIndex [
 		description: [ 'Insert index ' , anIndex asString , ' is out of bounds' ].
 	self snippets add: aGtSnippet beforeIndex: anIndex.
 	self attachToSnippet: aGtSnippet.
-	self notifySnippetAdded: aGtSnippet at: anIndex
+	self notifySnippetAdded: aGtSnippet at: anIndex.
+	aGtSnippet requestSnippetFocus.
 ]
 
 { #category : #'announcer - accessing' }
@@ -150,7 +151,7 @@ GtPlayPage >> numberOfSnippets [
 	^ self snippets size
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : #'api - modification' }
 GtPlayPage >> removeSnippet: aGtSnippet [
 	"Remove a playground snippet"
 
@@ -167,7 +168,7 @@ GtPlayPage >> removeSnippet: aGtSnippet [
 
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : #'api - modification' }
 GtPlayPage >> replaceSnippet: anExistingGtSnippet by: aNewGtSnippet [
 	"Replace a snippet by a new one"
 	| anIndex |

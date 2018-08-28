@@ -20,7 +20,6 @@ GtCodeSnippetLook >> initialize [
 	super initialize.
 	editorElement := BrEditorElement new.
 	editorElement look: BrGlamorousTextAreaLook.
-	self snippet: self defaultSnippet.
 ]
 
 { #category : #initialization }
@@ -49,13 +48,36 @@ GtCodeSnippetLook >> registerKeyBindings [
 	"Register Bloc key bindings if necessary"
 ]
 
+{ #category : #'announcement handling' }
+GtCodeSnippetLook >> requestFocusAnnouncement: aGtSnippetFocusRequestAnnouncement [
+	self widgetDo: [ editorElement requestFocus ].
+]
+
 { #category : #accessing }
 GtCodeSnippetLook >> snippet [
+	snippet ifNil: [ self snippet: self defaultSnippet ].
 	^ snippet
 ]
 
 { #category : #accessing }
 GtCodeSnippetLook >> snippet: aGtSnippet [
+	self unsubscribeFromSnippet: snippet.
 	snippet := aGtSnippet.
 	editorElement editor: snippet editor.
+	self subscribeToSnippet: aGtSnippet.
+]
+
+{ #category : #'announcement registration' }
+GtCodeSnippetLook >> subscribeToSnippet: aGtSnippet [
+	aGtSnippet 
+		subscribe: GtSnippetFocusRequestAnnouncement 
+		send: #requestFocusAnnouncement: 
+		to: self 
+		for: self
+]
+
+{ #category : #'announcement registration' }
+GtCodeSnippetLook >> unsubscribeFromSnippet: aGtSnippetOrNil [
+	aGtSnippetOrNil ifNil: [ ^ self ].
+	aGtSnippetOrNil unsubscribe: self.
 ]
