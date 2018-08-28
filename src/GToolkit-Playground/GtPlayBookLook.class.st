@@ -12,12 +12,10 @@ Class {
 GtPlayBookLook >> initialize [
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
+	
 	playBook := GtPlayBook new.
-	tabGroup := BrTabGroup new
-		look: BrMaterialTabGroupLook;
-		constraintsDo: [ :c | 
-			c vertical matchParent. 
-			c horizontal matchParent ].
+	tabGroup := BrTabGroup new look: BrGlamorousTabGroupLook.
+	
 	self updateTabs.
 ]
 
@@ -57,12 +55,12 @@ GtPlayBookLook >> playBook: aGtPlayground [
 GtPlayBookLook >> updateTab: aGtPage [
 	| aTab |
 	aTab := BrTab new
-				look: BrGlamorousTabLook;
-				padding: (BlInsets all: 10);
-				label: aGtPage title;
-				stencil: [ aGtPage asElement margin: (BlInsets all: 10) ]";
-				actionsStencil: view actions".
-	tabGroup addTab: aTab.
+		look: BrGlamorousTabLook;
+		padding: (BlInsets all: 10);
+		label: aGtPage title;
+		stencil: [ aGtPage asElement margin: (BlInsets all: 10) ]";
+		actionsStencil: view actions".
+	tabGroup addTab: aTab
 ]
 
 { #category : #private }
