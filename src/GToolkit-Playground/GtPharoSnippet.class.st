@@ -81,7 +81,9 @@ GtPharoSnippet >> requestSnippetMerge [
 
 { #category : #'api - requests' }
 GtPharoSnippet >> requestSnippetSplit [
-	self requestSnippetSplitAt: self editor cursor position.
+
+	self editor cursor do: [ :aCursor |
+		self requestSnippetSplitAt: aCursor position ]
 ]
 
 { #category : #'api - requests' }

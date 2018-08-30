@@ -296,8 +296,8 @@ GtPlaygroundExamples >> pageWithPharoSnippetWithTwoLinesAndSelectionAtTheEndOfTh
 	aCursorPosition := aSourceCode lines first size + 1.
 	aPharoSnippet editor moveCursorTo: aCursorPosition.
 	self
-		assert: aPharoSnippet editor cursor position
-		equals: aCursorPosition.
+		assert: (aPharoSnippet editor cursor allCursors collect: #position)
+		equals: { aCursorPosition }.
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first equals: aPharoSnippet.
 	^ aPage
