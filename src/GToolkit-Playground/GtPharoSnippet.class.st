@@ -115,7 +115,6 @@ GtPharoSnippet >> stencilBuilderClass [
 
 { #category : #'private - styling' }
 GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult [
-	self editor styleText.
 	GtMarkEvaluatedCodeCommand new
 		editor: self editor;
 		result: aResult;
