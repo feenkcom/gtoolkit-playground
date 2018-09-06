@@ -63,7 +63,18 @@ GtPlayBook >> initialize [
 ]
 
 { #category : #accessing }
+GtPlayBook >> numberOfPages [
+	^ self pages size
+]
+
+{ #category : #accessing }
 GtPlayBook >> pages [
 	<return: #OrderedCollection>
 	^ pages
+]
+
+{ #category : #adding }
+GtPlayBook >> pages: aCollectionOfPages [
+	aCollectionOfPages do: [ :eachPage | 
+		self addPlayPage: eachPage ]
 ]
