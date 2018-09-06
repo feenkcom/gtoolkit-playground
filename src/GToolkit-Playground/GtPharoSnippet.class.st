@@ -5,6 +5,15 @@ Class {
 }
 
 { #category : #accessing }
+GtPharoSnippet class >> typeName [
+	"Return a playground snippet type name.
+	It should be an unique name among all playground snippet types."
+	<return: #String>
+
+	^ 'pharo'
+]
+
+{ #category : #accessing }
 GtPharoSnippet >> classOrMetaClass [
 	<return: #Behavior>
 
@@ -119,15 +128,6 @@ GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult [
 		editor: self editor;
 		result: aResult;
 		execute
-]
-
-{ #category : #accessing }
-GtPharoSnippet >> typeName [
-	"Return a playground snippet type name.
-	It should be an unique name among all playground snippet types."
-	<return: #String>
-
-	^ 'pharo'
 ]
 
 { #category : #accessing }

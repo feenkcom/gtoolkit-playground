@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : #testing }
+GtSnippet class >> availableSnippetClasses [
+	"Return snippet classes that can be used by users (visible to users)"
+	^ self allSubclasses select: [ :eachClass | 
+			eachClass isUserSnippet ]
+]
+
+{ #category : #testing }
 GtSnippet class >> isAbstract [
 	^ self name = #GtSnippet
 ]
@@ -18,6 +25,14 @@ GtSnippet class >> isAbstract [
 GtSnippet class >> isUserSnippet [
 	"Return true if a snippet class (type) should be used by users (visible to users)"
 	^ self isAbstract not
+]
+
+{ #category : #accessing }
+GtSnippet class >> typeName [
+	<return: #String>
+	"Return a playground snippet type name.
+	It should be an unique name among all playground snippet types."
+	^ self subclassResponsibility
 ]
 
 { #category : #'announcer - accessing' }
@@ -109,7 +124,7 @@ GtSnippet >> typeName [
 	<return: #String>
 	"Return a playground snippet type name.
 	It should be an unique name among all playground snippet types."
-	^ self subclassResponsibility
+	^ self class typeName
 ]
 
 { #category : #accessing }

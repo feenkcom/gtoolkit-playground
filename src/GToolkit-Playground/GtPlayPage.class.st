@@ -256,6 +256,13 @@ GtPlayPage >> snippets [
 	^ snippets
 ]
 
+{ #category : #'api - modification' }
+GtPlayPage >> snippets: aCollectionOfGtSnippets [
+	"Add snippets"
+	aCollectionOfGtSnippets do: [ :eachSnippet | 
+		self addSnippet: eachSnippet ]
+]
+
 { #category : #accessing }
 GtPlayPage >> title [
 	<return: #String>

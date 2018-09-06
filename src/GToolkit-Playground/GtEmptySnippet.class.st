@@ -27,15 +27,15 @@ GtEmptySnippet class >> reset [
 ]
 
 { #category : #accessing }
-GtEmptySnippet class >> uniqueInstance [
-	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
-]
-
-{ #category : #accessing }
-GtEmptySnippet >> typeName [
+GtEmptySnippet class >> typeName [
 	"Return a playground snippet type name.
 	It should be an unique name among all playground snippet types."
 	<return: #String>
 
 	^ 'empty'
+]
+
+{ #category : #accessing }
+GtEmptySnippet class >> uniqueInstance [
+	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]

@@ -9,6 +9,14 @@ Class {
 	#category : 'GToolkit-Playground-Model'
 }
 
+{ #category : #accessing }
+GtUrlSnippet class >> typeName [
+	"Return a playground snippet type name.
+	It should be an unique name among all playground snippet types."
+	<return: #String>
+	^ 'url'
+]
+
 { #category : #visitor }
 GtUrlSnippet >> accept: aVisitor [
 	^ self subclassResponsibility
@@ -71,14 +79,6 @@ GtUrlSnippet >> stencilBuilderClass [
 	"Return a stencil builder class that knows how to display a snippet in Bloc"
 	<return: #GtSnippetStencilBuilder>
 	^ GtUrlSnippetStencilBuilder
-]
-
-{ #category : #accessing }
-GtUrlSnippet >> typeName [
-	"Return a playground snippet type name.
-	It should be an unique name among all playground snippet types."
-	<return: #String>
-	^ 'url'
 ]
 
 { #category : #accessing }
