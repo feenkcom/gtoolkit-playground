@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : #'instance creation' }
+GtPlayBook class >> newDefault [
+	"Open a new play book with one page and one default snippet"
+	<return: #GtPlayBook>
+	^ self new addPlayPage: GtPlayPage newDefault
+]
+
+{ #category : #'instance creation' }
 GtPlayBook class >> open [
 	| aPlayground aSpace |
 
@@ -53,7 +60,6 @@ GtPlayBook >> gtLiveFor: aView [
 GtPlayBook >> initialize [
 	super initialize.
 	pages := OrderedCollection new.
-	self addPlayPage: GtPlayPage new.
 ]
 
 { #category : #accessing }

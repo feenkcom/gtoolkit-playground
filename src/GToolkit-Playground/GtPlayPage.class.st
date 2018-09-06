@@ -15,9 +15,19 @@ Class {
 { #category : #'instance creation' }
 GtPlayPage class >> forObject: anObject [
 	| aPlayPage |
-	aPlayPage := self new.
+	aPlayPage := self newDefault.
 	aPlayPage bindings receiver: anObject.
 	^ aPlayPage
+]
+
+{ #category : #'instance creation' }
+GtPlayPage class >> newDefault [
+	"Open a new play book with one page and one default snippet"
+	<return: #GtPlayPage>
+	| aPage |
+	aPage := self new.
+	aPage addSnippet: aPage newDefaultSnippet.
+	^ aPage
 ]
 
 { #category : #'api - modification' }
@@ -114,7 +124,6 @@ GtPlayPage >> initialize [
 	bindings := GtObjectBindings new.
 	announcer := Announcer new.
 	title := 'Page'.
-	self addSnippet: self newDefaultSnippet.
 ]
 
 { #category : #'instance creation' }

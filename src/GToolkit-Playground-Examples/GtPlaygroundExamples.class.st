@@ -232,7 +232,7 @@ GtPlaygroundExamples >> page [
 	<gtExample>
 	<label: 'A basic playground page with one Pharo snippet'>
 	| aPage |
-	aPage := GtPlayPage new.
+	aPage := GtPlayPage newDefault.
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first typeName equals: aPage newDefaultSnippet typeName.
 	self assert: aPage bindings class equals: GtObjectBindings.
@@ -346,9 +346,9 @@ GtPlaygroundExamples >> pharoSnippetElementWithCode [
 	<gtExample>
 	| anElement |
 	anElement := self pharoSnippetWithCode asElement.
-	self assert: anElement childrenCount equals: 1.
-	self assert: anElement children first class equals: BrEditorElement.
-	self assert: anElement children first editor text asString equals: 'aValue := 42 + 7'.
+	self assert: anElement childrenCount equals: 3.
+	self assert: anElement children first children first class equals: BrEditorElement.
+	self assert: anElement children first children first editor text asString equals: 'aValue := 42 + 7'.
 	^ anElement
 ]
 
@@ -379,7 +379,7 @@ GtPlaygroundExamples >> playBook [
 	<gtExample>
 	<label: 'A basic play book'>
 	| aPlayBook |
-	aPlayBook := GtPlayBook new.
+	aPlayBook := GtPlayBook newDefault.
 	self assert: aPlayBook pages size equals: 1.
 	self assert: aPlayBook pages first snippets size equals: 1.
 	self assert: aPlayBook pages first snippets first sourceCode equals: ''.
