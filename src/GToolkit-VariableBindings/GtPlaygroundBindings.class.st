@@ -42,3 +42,8 @@ GtPlaygroundBindings >> initialize [
 	super initialize.
 	bindings := Dictionary new.
 ]
+
+{ #category : #accessing }
+GtPlaygroundBindings >> receiver [
+	^ nil
+]
