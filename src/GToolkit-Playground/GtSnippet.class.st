@@ -35,6 +35,11 @@ GtSnippet class >> typeName [
 	^ self subclassResponsibility
 ]
 
+{ #category : #visitor }
+GtSnippet >> accept: aVisitor [
+	^ self subclassResponsibility
+]
+
 { #category : #'announcer - accessing' }
 GtSnippet >> announcer [
 	<return: #Announcer>

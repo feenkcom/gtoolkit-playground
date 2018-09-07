@@ -30,6 +30,11 @@ GtPlayPage class >> newDefault [
 	^ aPage
 ]
 
+{ #category : #visitor }
+GtPlayPage >> accept: aVisitor [
+	^ aVisitor visitGtPlayPage: self
+]
+
 { #category : #'api - modification' }
 GtPlayPage >> addSnippet: aGtSnippet [ 
 	"Add a playground snippet"

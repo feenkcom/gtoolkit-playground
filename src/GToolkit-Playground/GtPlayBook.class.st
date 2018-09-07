@@ -36,6 +36,11 @@ GtPlayBook class >> open [
 	^ aPlayground
 ]
 
+{ #category : #visitor }
+GtPlayBook >> accept: aVisitor [
+	^ aVisitor visitGtPlayBook: self
+]
+
 { #category : #adding }
 GtPlayBook >> addPlayPage: aGtPlayPage [
 	self 

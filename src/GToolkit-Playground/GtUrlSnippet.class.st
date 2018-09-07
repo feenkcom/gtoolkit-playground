@@ -19,7 +19,7 @@ GtUrlSnippet class >> typeName [
 
 { #category : #visitor }
 GtUrlSnippet >> accept: aVisitor [
-	^ self subclassResponsibility
+	^ aVisitor visitGtUrlSnippet: self
 ]
 
 { #category : #initialization }

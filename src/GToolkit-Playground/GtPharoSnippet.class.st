@@ -13,6 +13,11 @@ GtPharoSnippet class >> typeName [
 	^ 'pharo'
 ]
 
+{ #category : #visitor }
+GtPharoSnippet >> accept: aVisitor [
+	^ aVisitor visitGtPharoSnippet: self
+]
+
 { #category : #accessing }
 GtPharoSnippet >> classOrMetaClass [
 	<return: #Behavior>
