@@ -81,6 +81,11 @@ GtSnippet >> initialize [
 	announcer := Announcer new.
 ]
 
+{ #category : #testing }
+GtSnippet >> isUserSnippet [
+	^ self class isUserSnippet
+]
+
 { #category : #'api - modification' }
 GtSnippet >> mergeWith: anSnippet [
 	"Subclasses can define merging mechanism"
