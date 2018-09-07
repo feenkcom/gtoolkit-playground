@@ -17,6 +17,11 @@ GtCollectionSnippet class >> typeName [
 	^ 'collection'
 ]
 
+{ #category : #visitor }
+GtCollectionSnippet >> accept: aVisitor [
+	^ aVisitor visitGtCollectionSnippet: self
+]
+
 { #category : #accessing }
 GtCollectionSnippet >> availableSnippetClasses [
 	^ GtSnippet availableSnippetClasses
