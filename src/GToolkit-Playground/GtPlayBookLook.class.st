@@ -5,7 +5,7 @@ Class {
 		'tabGroup',
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Look'
+	#category : #'GToolkit-Playground-PlayBook - Look'
 }
 
 { #category : #initialization }
@@ -40,6 +40,21 @@ GtPlayBookLook >> initializeRequests [
 	self request: GtPlayBookRequest new.
 ]
 
+{ #category : #private }
+GtPlayBookLook >> mayAddActionsFor: aGtPage in: aTab [
+	| theActions |
+	theActions := GtPhlowActionsCollectors new
+		fromObject: self playBook;
+		selectUsing: [ :eachAction | eachAction category = #playground ];
+		collect.
+	theActions ifEmpty: [ ^ self ].
+	aTab actionsStencil: [
+		| aView |
+		aView := GtPhlowView sequentialExplicit.
+		aView addPhlowActions: theActions.
+		aView actionsToolbarForElement: aTab ]
+]
+
 { #category : #accessing }
 GtPlayBookLook >> playBook [
 	^ playBook
@@ -60,6 +75,7 @@ GtPlayBookLook >> updateTab: aGtPage [
 		label: aGtPage title;
 		stencil: [ aGtPage asElement margin: (BlInsets all: 10) ]";
 		actionsStencil: view actions".
+	self mayAddActionsFor: aGtPage in: aTab.
 	tabGroup addTab: aTab
 ]
 

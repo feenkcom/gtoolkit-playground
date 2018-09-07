@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'snippet'
 	],
-	#category : 'GToolkit-Playground-Snippet - Model'
+	#category : #'GToolkit-Playground-Snippet - Model'
 }
 
 { #category : #initialization }

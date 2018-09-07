@@ -7,7 +7,7 @@ Class {
 		'snippet',
 		'editorElement'
 	],
-	#category : 'GToolkit-Playground-Snippet - Looks'
+	#category : #'GToolkit-Playground-Snippet - Looks'
 }
 
 { #category : #defaults }

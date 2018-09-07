@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPageLook,
 	#superclass : #BrLook,
-	#category : 'GToolkit-Playground-Page'
+	#category : #'GToolkit-Playground-Page'
 }
 
 { #category : #initialization }

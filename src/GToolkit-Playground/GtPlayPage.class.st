@@ -9,7 +9,7 @@ Class {
 		'announcer',
 		'title'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #'instance creation' }

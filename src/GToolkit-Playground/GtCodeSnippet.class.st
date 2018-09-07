@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'editor'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #testing }

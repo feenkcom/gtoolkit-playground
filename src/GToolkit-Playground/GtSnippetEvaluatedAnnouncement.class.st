@@ -6,7 +6,7 @@ Class {
 		'isException',
 		'isSpawnResultRequested'
 	],
-	#category : 'GToolkit-Playground-Announcements'
+	#category : #'GToolkit-Playground-Announcements'
 }
 
 { #category : #initialization }

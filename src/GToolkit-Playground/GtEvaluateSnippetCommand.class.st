@@ -1,7 +1,7 @@
 Class {
 	#name : #GtEvaluateSnippetCommand,
 	#superclass : #GtDecoratedSnippetCommand,
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #execution }

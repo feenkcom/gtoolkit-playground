@@ -6,8 +6,13 @@ Class {
 	#instVars : [
 		'pages'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
+
+{ #category : #accessing }
+GtPlayBook class >> empty [
+	^ self new
+]
 
 { #category : #'instance creation' }
 GtPlayBook class >> newDefault [

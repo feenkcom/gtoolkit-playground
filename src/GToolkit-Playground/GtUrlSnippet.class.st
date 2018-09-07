@@ -6,7 +6,7 @@ Class {
 		'responseVariableName',
 		'variableBindings'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #accessing }

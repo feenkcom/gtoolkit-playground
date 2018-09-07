@@ -5,7 +5,7 @@ Class {
 		'snippet',
 		'index'
 	],
-	#category : 'GToolkit-Playground-Announcements'
+	#category : #'GToolkit-Playground-Announcements'
 }
 
 { #category : #accessing }

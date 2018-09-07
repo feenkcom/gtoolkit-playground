@@ -5,7 +5,7 @@ Class {
 		'isException',
 		'exception'
 	],
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #converting }
