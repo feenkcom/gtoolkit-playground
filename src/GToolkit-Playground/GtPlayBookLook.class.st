@@ -43,7 +43,7 @@ GtPlayBookLook >> initializeRequests [
 { #category : #private }
 GtPlayBookLook >> mayAddActionsFor: aGtPage in: aTab [
 	| theActions |
-	theActions := GtPhlowActionsCollectors new
+	theActions := GtPhlowActionsCollector new
 		fromObject: self playBook;
 		selectUsing: [ :eachAction | eachAction category = #playground ];
 		collect.
