@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPageSnippetsElement,
 	#superclass : #BlInfiniteElement,
-	#category : #'GToolkit-Playground-Page'
+	#category : 'GToolkit-Playground-Page'
 }
 
 { #category : #initialization }

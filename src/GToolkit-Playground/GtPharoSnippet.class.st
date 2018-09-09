@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPharoSnippet,
 	#superclass : #GtCodeSnippet,
-	#category : #'GToolkit-Playground-Model'
+	#category : 'GToolkit-Playground-Model'
 }
 
 { #category : #accessing }
@@ -129,10 +129,11 @@ GtPharoSnippet >> stencilBuilderClass [
 
 { #category : #'private - styling' }
 GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult [
-	GtMarkEvaluatedCodeCommand new
-		editor: self editor;
-		result: aResult;
-		execute
+	self editor styleTextAndAfterDo: [
+		GtMarkEvaluatedCodeCommand new
+			editor: self editor;
+			result: aResult;
+			execute ]
 ]
 
 { #category : #accessing }

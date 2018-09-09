@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'GtAssertingTrait',
 	#classTraits : 'GtAssertingTrait classTrait',
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #converting }

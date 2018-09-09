@@ -7,7 +7,7 @@ Class {
 		'response',
 		'shouldContinue'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #accessing }

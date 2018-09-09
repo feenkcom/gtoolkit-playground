@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'snippet'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #testing }

@@ -17,7 +17,7 @@ Class {
 		'snippet',
 		'toolbar'
 	],
-	#category : #'GToolkit-Playground-Snippet - Looks'
+	#category : 'GToolkit-Playground-Snippet - Looks'
 }
 
 { #category : #adding }

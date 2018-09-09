@@ -1,6 +1,6 @@
 Trait {
 	#name : #GtPlaygroundConstantsTrait,
-	#category : #'GToolkit-Playground-Constants'
+	#category : 'GToolkit-Playground-Constants'
 }
 
 { #category : #accessing }

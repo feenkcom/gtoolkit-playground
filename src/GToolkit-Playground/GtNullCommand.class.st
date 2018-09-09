@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #cleanup }

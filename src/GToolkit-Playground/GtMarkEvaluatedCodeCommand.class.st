@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'result'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #execution }
@@ -18,7 +18,7 @@ GtMarkEvaluatedCodeCommand >> execute [
 		ifTrue: [ aSubText := self editor text from: self editor selection from + 1 to: self editor selection to ].
 	aSubText isEmpty ifTrue: [ ^ self ].
 	aSubText 
-		attribute: (GtPlaygroundEvaluatedCodeHighlightedAttribute 
+		attribute: (GtPlaygroundEvaluatedCodeHighlightedAttribute new
 			paint: (Color fromHexString: #'90CAF9')).
 	aSubText 	
 		attributes: {(GtPlaygroundEvaluatedCodeButtonAttribute new 

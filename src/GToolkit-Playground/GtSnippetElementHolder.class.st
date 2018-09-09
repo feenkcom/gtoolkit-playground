@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'snippetType'
 	],
-	#category : #'GToolkit-Playground-Snippet - UI'
+	#category : 'GToolkit-Playground-Snippet - UI'
 }
 
 { #category : #'instance creation' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPlaygroundConstants,
 	#superclass : #Object,
-	#category : #'GToolkit-Playground-Constants'
+	#category : 'GToolkit-Playground-Constants'
 }
 
 { #category : #ui }

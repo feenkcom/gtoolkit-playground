@@ -6,7 +6,7 @@ Class {
 	#instVars : [
 		'snippet'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
 { #category : #accessing }

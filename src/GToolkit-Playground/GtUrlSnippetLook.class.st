@@ -10,7 +10,7 @@ Class {
 		'infoElement',
 		'inEditorToolbar'
 	],
-	#category : #'GToolkit-Playground-Snippet - Looks'
+	#category : 'GToolkit-Playground-Snippet - Looks'
 }
 
 { #category : #private }

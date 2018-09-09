@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'list'
 	],
-	#category : #'GToolkit-Playground-Page'
+	#category : 'GToolkit-Playground-Page'
 }
 
 { #category : #adding }

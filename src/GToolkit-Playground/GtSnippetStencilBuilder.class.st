@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'snippet'
 	],
-	#category : #'GToolkit-Playground-Snippet - Stencils'
+	#category : 'GToolkit-Playground-Snippet - Stencils'
 }
 
 { #category : #testing }

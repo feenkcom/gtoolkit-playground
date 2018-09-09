@@ -4,7 +4,7 @@ I am the root element of a visual snippet representation
 Class {
 	#name : #GtSnippetElement,
 	#superclass : #BlElement,
-	#category : #'GToolkit-Playground-Snippet - UI'
+	#category : 'GToolkit-Playground-Snippet - UI'
 }
 
 { #category : #initialization }

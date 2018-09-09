@@ -1,5 +1,5 @@
 Class {
 	#name : #GtSnippetRemovalRequestedAnnouncement,
 	#superclass : #GtSnippetAnnoucement,
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
