@@ -1,13 +1,10 @@
 Class {
 	#name : #GtPlaygroundEvaluatedCodeHighlightedAttribute,
 	#superclass : #BrTextAttribute,
-	#traits : 'TBlEventTarget',
-	#classTraits : 'TBlEventTarget classTrait',
 	#instVars : [
-		'eventDispatcher',
 		'paint'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
 { #category : #'instance creation' }
@@ -31,24 +28,9 @@ GtPlaygroundEvaluatedCodeHighlightedAttribute >> equals: aTextAttribute [
 	^ self paint = aTextAttribute paint
 ]
 
-{ #category : #accessing }
-GtPlaygroundEvaluatedCodeHighlightedAttribute >> eventDispatcher [
-	"Return an object responsible for event dispatching"
-	<return: #BlDirectEventDispatcher>
-
-	^ eventDispatcher
-]
-
 { #category : #comparing }
 GtPlaygroundEvaluatedCodeHighlightedAttribute >> hash [
 	^ self class hash bitXor: self paint hash
-]
-
-{ #category : #initialization }
-GtPlaygroundEvaluatedCodeHighlightedAttribute >> initialize [
-	super initialize.
-	
-	eventDispatcher := BlBubblingEventDispatcher on: self
 ]
 
 { #category : #accessing }
