@@ -24,6 +24,12 @@ GtNoBindings class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
+{ #category : #converting }
+GtNoBindings >> asDictionary [
+	<return: #Dictionary>
+	^ Dictionary new
+]
+
 { #category : #adding }
 GtNoBindings >> at: aString put: anObject [ 
 	"ignore by default"

@@ -19,6 +19,12 @@ GtBindingExamples >> defaultPlaygroundBindingStrategy [
 ]
 
 { #category : #'binding strategy' }
+GtBindingExamples >> defaultSatisfyingHighlightingBindingStrategy [
+	<gtExample>
+	^ GtSatisfyingHighlightingBindingStrategy new
+]
+
+{ #category : #'binding strategy' }
 GtBindingExamples >> highlightingBindingStrategy [
 	<gtExample>
 	<label: 'Initialized playground bindings'>
@@ -72,6 +78,18 @@ GtBindingExamples >> queryDefaultPlaygroundBindingStrategy [
 	strategy := self defaultPlaygroundBindingStrategy.
 	result := strategy bindingOf: self variableOneName.
 	self assert: result isNil.
+	^ strategy
+]
+
+{ #category : #'binding strategy' }
+GtBindingExamples >> queryDefaultSatisfyingHighlightingBindingStrategy [
+	<gtExample>
+	| strategy result |
+	strategy := self defaultSatisfyingHighlightingBindingStrategy.
+	result := strategy bindingOf: self variableOneName.
+	self assert: result notNil.
+	self assert: result key equals: self variableOneName.
+	self assert: result value equals: nil.
 	^ strategy
 ]
 

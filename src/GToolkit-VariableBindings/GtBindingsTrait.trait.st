@@ -3,6 +3,12 @@ Trait {
 	#category : 'GToolkit-VariableBindings'
 }
 
+{ #category : #converting }
+GtBindingsTrait >> asDictionary [
+	<return: #Dictionary>
+	^ self explicitRequirement
+]
+
 { #category : #adding }
 GtBindingsTrait >> at: aSymbol put: anObject [ 
 	"Set bindings for a variable named aSymbol and value anObject."
