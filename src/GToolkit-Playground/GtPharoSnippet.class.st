@@ -76,12 +76,34 @@ GtPharoSnippet >> initialize [
 GtPharoSnippet >> mergeWith: anSnippet [
 	"Subclasses can define merging mechanism"
 	anSnippet class = self class ifFalse: [ ^ self ].
-	anSnippet text isEmpty ifFalse: [ 
+	anSnippet text isEmpty ifFalse: [
+		| anIndex |
+		anIndex := self text finder
+			startAtEnd;
+			reversed;
+			pattern: [ :aText :aCurrentIndex | 
+				((aText at: aCurrentIndex) isSeparator not) ];
+			search.
+		(anIndex > 2 and: [ (self text at: anIndex) ~= $. ]) ifTrue: [ 
+			self editor inserter 
+				withoutSelectionDelete;
+				withoutSelectionUpdate;
+				withoutCursorUpdate;
+				atEnd;
+				string: '.';
+				insert ].
 		self editor inserter 
 			withoutSelectionDelete;
 			withoutSelectionUpdate;
 			withoutCursorUpdate;
-			atEnd; 
+			atEnd;
+			string: String cr;
+			insert. 
+		self editor inserter 
+			withoutSelectionDelete;
+			withoutSelectionUpdate;
+			withoutCursorUpdate;
+			atEnd;
 			text: anSnippet text; 
 			insert ].
 	anSnippet requestSnippetRemoval.
