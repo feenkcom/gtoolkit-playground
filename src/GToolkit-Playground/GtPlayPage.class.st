@@ -57,7 +57,7 @@ GtPlayPage >> addSnippet: aGtSnippet at: anIndex [
 	aGtSnippet requestSnippetFocus.
 ]
 
-{ #category : #'announcer - accessing' }
+{ #category : #announcer }
 GtPlayPage >> announcer [
 	<return: #Announcer>
 	^ announcer

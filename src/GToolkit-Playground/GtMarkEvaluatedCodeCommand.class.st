@@ -30,11 +30,6 @@ GtMarkEvaluatedCodeCommand >> execute [
 	self editor updateAll.
 ]
 
-{ #category : #execution }
-GtMarkEvaluatedCodeCommand >> requestTermination [
-	"This command should be fast to execute"
-]
-
 { #category : #accessing }
 GtMarkEvaluatedCodeCommand >> result [
 	"Return a command execution result"

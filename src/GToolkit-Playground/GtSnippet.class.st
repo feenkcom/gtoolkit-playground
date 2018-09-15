@@ -40,7 +40,7 @@ GtSnippet >> accept: aVisitor [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'announcer - accessing' }
+{ #category : #announcer }
 GtSnippet >> announcer [
 	<return: #Announcer>
 	^ announcer

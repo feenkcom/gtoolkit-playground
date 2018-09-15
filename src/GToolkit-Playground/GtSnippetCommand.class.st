@@ -1,10 +1,10 @@
 Class {
 	#name : #GtSnippetCommand,
-	#superclass : #GtCommand,
+	#superclass : #GtPlaygroundCommand,
 	#instVars : [
 		'snippet'
 	],
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #testing }

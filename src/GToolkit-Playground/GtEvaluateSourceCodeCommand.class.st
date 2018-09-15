@@ -1,6 +1,6 @@
 Class {
 	#name : #GtEvaluateSourceCodeCommand,
-	#superclass : #GtCommand,
+	#superclass : #GtPlaygroundCommand,
 	#instVars : [
 		'result',
 		'isException',

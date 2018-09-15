@@ -1,10 +1,10 @@
 Class {
 	#name : #GtTextEditorCommand,
-	#superclass : #GtCommand,
+	#superclass : #GtPlaygroundCommand,
 	#instVars : [
 		'editor'
 	],
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #testing }

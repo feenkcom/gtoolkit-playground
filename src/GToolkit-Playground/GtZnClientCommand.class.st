@@ -1,14 +1,19 @@
 Class {
 	#name : #GtZnClientCommand,
-	#superclass : #GtCommand,
+	#superclass : #GtPlaygroundCommand,
 	#instVars : [
 		'client',
 		'progressBlock',
 		'response',
 		'shouldContinue'
 	],
-	#category : 'GToolkit-Playground-Commands'
+	#category : #'GToolkit-Playground-Commands'
 }
+
+{ #category : #execution }
+GtZnClientCommand >> cancelRequest [
+	shouldContinue := false
+]
 
 { #category : #accessing }
 GtZnClientCommand >> client [
@@ -67,11 +72,6 @@ GtZnClientCommand >> progressBlock: anOneArgBlock [
 		assert: [ anOneArgBlock notNil ] 
 		description: [ 'Progress block must be non-nil' ].
 	progressBlock := anOneArgBlock
-]
-
-{ #category : #execution }
-GtZnClientCommand >> requestTermination [
-	shouldContinue := false
 ]
 
 { #category : #accessing }

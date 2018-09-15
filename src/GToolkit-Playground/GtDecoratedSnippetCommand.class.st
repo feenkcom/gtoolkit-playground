@@ -14,7 +14,7 @@ GtDecoratedSnippetCommand class >> isAbstract [
 
 { #category : #accessing }
 GtDecoratedSnippetCommand >> command [
-	<return: #GtCommand>
+	<return: #GtPlaygroundCommand>
 	^ command
 ]
 
@@ -29,13 +29,7 @@ GtDecoratedSnippetCommand >> command: aGtCommand [
 { #category : #initialization }
 GtDecoratedSnippetCommand >> initialize [
 	super initialize.
-	command := GtNullCommand uniqueInstance.
-]
-
-{ #category : #execution }
-GtDecoratedSnippetCommand >> requestTermination [
-	"Every command is responsible to terminate nicely"
-	command requestTermination
+	command := BlNullCommand uniqueInstance.
 ]
 
 { #category : #accessing }
