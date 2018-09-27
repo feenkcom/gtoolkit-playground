@@ -13,7 +13,7 @@ Class {
 { #category : #converting }
 GtObjectBindings >> asDictionary [
 	<return: #Dictionary>
-	^ bindings copy
+	^ bindings asDictionary
 ]
 
 { #category : #adding }
