@@ -29,25 +29,25 @@ GtPharoSnippetLook >> initializeLook [
 GtPharoSnippetLook >> registerKeyBindings [
 	editorElement 
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key return; build);
+			combination: (BlKeyCombination builder primary; key: Key return; build);
 			action: [ :aShortcut | self snippet requestSnippetSplit ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key delete; build);
+			combination: (BlKeyCombination builder primary; key: Key delete; build);
 			action: [ :aShortcut | self snippet requestSnippetMerge ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key d; build);
+			combination: (BlKeyCombination builder primary; key: Key d; build);
 			action: [ :aShortcut | self snippet evaluate ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key g; build);
+			combination: (BlKeyCombination builder primary; key: Key g; build);
 			action: [ :aShortcut | self snippet evaluateAndGo ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key i; build);
+			combination: (BlKeyCombination builder primary; key: Key i; build);
 			action: [ :aShortcut | self snippet evaluateAndGo ]);
 		addShortcut: (BlShortcut new
-			combination: (BlKeyCombination builder meta; key: Key p; build);
+			combination: (BlKeyCombination builder primary; key: Key p; build);
 			action: [ :aShortcut | self inform: self snippet evaluate printString ]);
 		addShortcut: (BlShortcut new
-				combination: (BlKeyCombination builder meta; key: Key r; build);
+				combination: (BlKeyCombination builder primary; key: Key r; build);
 				action: [ GtRenameAction pharoRenameSnippetLocalsOn: editorElement ]).
 ]
 
