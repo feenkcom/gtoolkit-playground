@@ -18,6 +18,12 @@ GtPharoSnippet >> accept: aVisitor [
 	^ aVisitor visitGtPharoSnippet: self
 ]
 
+{ #category : #binding }
+GtPharoSnippet >> bindingOf: aSymbol [
+	<return: #LiteralVariable or: nil>
+	^ editor styler workspace bindingOf: aSymbol
+]
+
 { #category : #accessing }
 GtPharoSnippet >> classOrMetaClass [
 	<return: #Behavior>

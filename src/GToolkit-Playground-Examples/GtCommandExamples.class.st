@@ -12,7 +12,7 @@ GtCommandExamples >> evaluateSourceCodeCommand [
 	aCommand := GtEvaluateSourceCodeCommand new.
 	self assert: aCommand sourceCode isString.
 	self assert: aCommand isException not.
-	self assert: aCommand bindingsStrategy notNil.
+	self assert: aCommand bindingStrategy notNil.
 	self assert: aCommand result isNil.
 	self assert: aCommand receiver isNil.
 	^ aCommand
@@ -71,4 +71,28 @@ GtCommandExamples >> executeSourceCodeWithUndefinedVariableUsingPlaygroundBindin
 	self assert: (aCommand variableBindings bindingOf: #aValue) notNil.
 	self assert: (aCommand variableBindings bindingOf: #aValue) value equals: 24.
 	^ aCommand
+]
+
+{ #category : #'code evaluation' }
+GtCommandExamples >> executeUndefinedVariable [
+	<gtExample>
+	<label: 'Evaluate a source code'>
+	| aCommand aVariable |
+	aCommand := self evaluateSourceCodeCommand.
+	aCommand variableBindings: self playgroundBindings.
+	aCommand sourceCode: 'aValue := 42'.
+	aCommand execute.
+	self assert: aCommand isException not.
+	self assert: aCommand result equals: 42.
+	self assert: aCommand variableBindings notNil.
+	aVariable := aCommand variableBindings bindingOf: #aValue.
+	self assert: aVariable notNil.
+	self assert: aVariable value equals: 42.
+	^ aCommand
+]
+
+{ #category : #'as yet unclassified' }
+GtCommandExamples >> playgroundBindings [
+	<gtExample>
+	^ GtPlaygroundBindings new
 ]

@@ -1,0 +1,54 @@
+Class {
+	#name : #GtBindingStrategyWithRequestor,
+	#superclass : #Object,
+	#traits : 'TBlDebug',
+	#classTraits : 'TBlDebug classTrait',
+	#instVars : [
+		'requestor',
+		'bindingStrategy'
+	],
+	#category : #'GToolkit-Playground-Commands'
+}
+
+{ #category : #binding }
+GtBindingStrategyWithRequestor >> bindingOf: aSymbol [
+	<return: #LiteralVariable or: nil>
+	^ self bindingStrategy bindingOf: aSymbol
+]
+
+{ #category : #accessing }
+GtBindingStrategyWithRequestor >> bindingStrategy [
+	<return: #GtBindingStrategy>
+	^ bindingStrategy
+]
+
+{ #category : #accessing }
+GtBindingStrategyWithRequestor >> bindingStrategy: aGtBindingStrategy [
+	self 
+		assert: [ aGtBindingStrategy notNil ] 
+		description: [ 'Binding strategy must be non-nil' ].
+	bindingStrategy := aGtBindingStrategy
+]
+
+{ #category : #initialization }
+GtBindingStrategyWithRequestor >> initialize [
+	super initialize.
+	bindingStrategy := GtPlaygroundBindingStrategy new.
+	requestor := nil.
+]
+
+{ #category : #accessing }
+GtBindingStrategyWithRequestor >> requestor [
+	^ requestor
+]
+
+{ #category : #accessing }
+GtBindingStrategyWithRequestor >> requestor: anObject [
+	requestor := anObject
+]
+
+{ #category : #accessing }
+GtBindingStrategyWithRequestor >> selection [
+	<return: #BlSelection or: nil>
+	^ self requestor ifNotNil: #selection ifNil: ''
+]

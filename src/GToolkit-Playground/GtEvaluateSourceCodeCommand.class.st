@@ -4,26 +4,22 @@ Class {
 	#instVars : [
 		'result',
 		'isException',
-		'bindingsStrategy',
 		'sourceCode',
-		'requestor',
-		'receiver'
+		'receiver',
+		'requestorAndBindings'
 	],
 	#category : #'GToolkit-Playground-Commands'
 }
 
 { #category : #accessing }
-GtEvaluateSourceCodeCommand >> bindingsStrategy [
+GtEvaluateSourceCodeCommand >> bindingStrategy [
 	<return: #GtBindingStrategy>
-	^ bindingsStrategy
+	^ requestorAndBindings bindingStrategy
 ]
 
 { #category : #accessing }
-GtEvaluateSourceCodeCommand >> bindingsStrategy: aBindingsStrategy [
-	self 
-		assert: [ aBindingsStrategy notNil ] 
-		description: [ 'Bindings strategy must be non-nil' ].
-	bindingsStrategy := aBindingsStrategy
+GtEvaluateSourceCodeCommand >> bindingStrategy: aGtBindingStrategy [
+	requestorAndBindings bindingStrategy: aGtBindingStrategy
 ]
 
 { #category : #accessing }
@@ -39,8 +35,7 @@ GtEvaluateSourceCodeCommand >> execute [
 		source: self sourceCode "readStream" "Looks like it can be a String instead of readSream";
 		context: nil "TODO: what is context? evaluation uses `context method methodClass`";
 		receiver: self receiver "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
-		bindings: self bindingsStrategy;
-		requestor: self requestor. "TODO: requestor should be an editor?
+		requestor: requestorAndBindings. "TODO: requestor should be an editor?
 			evaluation uses `requestor selection` to evaluate only selected part"
 	[ 
 		result := aCompiler evaluate.
@@ -66,7 +61,7 @@ GtEvaluateSourceCodeCommand >> initialize [
 	sourceCode := 'nil'.
 	result := nil.
 	isException := false.
-	bindingsStrategy := GtPlaygroundBindingStrategy new.
+	requestorAndBindings := GtBindingStrategyWithRequestor new.
 ]
 
 { #category : #accessing }
@@ -88,12 +83,12 @@ GtEvaluateSourceCodeCommand >> receiver: anObject [
 
 { #category : #accessing }
 GtEvaluateSourceCodeCommand >> requestor [
-	^ requestor
+	^ requestorAndBindings requestor
 ]
 
 { #category : #accessing }
 GtEvaluateSourceCodeCommand >> requestor: anObject [
-	requestor := anObject
+	requestorAndBindings requestor: anObject
 ]
 
 { #category : #accessing }
@@ -119,7 +114,7 @@ GtEvaluateSourceCodeCommand >> sourceCode: aString [
 { #category : #accessing }
 GtEvaluateSourceCodeCommand >> variableBindings [
 	<return: #GtBindingsTrait>
-	^ bindingsStrategy bindings
+	^ requestorAndBindings bindingStrategy bindings
 ]
 
 { #category : #accessing }
@@ -127,5 +122,5 @@ GtEvaluateSourceCodeCommand >> variableBindings: aGtBindingsTrait [
 	self 
 		assert: [ aGtBindingsTrait notNil ] 
 		description: [ 'Bindings must be non-nil' ].
-	bindingsStrategy bindings: aGtBindingsTrait
+	requestorAndBindings bindingStrategy bindings: aGtBindingsTrait
 ]
