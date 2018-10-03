@@ -91,7 +91,7 @@ GtCommandExamples >> executeUndefinedVariable [
 	^ aCommand
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'code evaluation' }
 GtCommandExamples >> playgroundBindings [
 	<gtExample>
 	^ GtPlaygroundBindings new
