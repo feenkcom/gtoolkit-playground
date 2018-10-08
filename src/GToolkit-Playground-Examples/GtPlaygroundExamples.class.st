@@ -179,56 +179,6 @@ view').
 	^ aPage
 ]
 
-{ #category : #todo }
-GtPlaygroundExamples >> modrianFileSnippetView [
-	<gtExample>
-	<noTest>	
-	| aPage | 
-	aPage := GtPageElement new.
-	aPage constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-	aPage addSnippet: (#GtFileSnippet new content: FileLocator workingDirectory fullPath).
-	aPage addSnippet: (#GtMondrianSnippet new content: 'mondrian nodes with: files.
-mondrian edges connectFrom: #parent.
-mondrian layout tree nodeDistance: 1').
-	^ aPage
-]
-
-{ #category : #todo }
-GtPlaygroundExamples >> modrianFilesView [
-	<gtExample>
-	| aPage | 
-	aPage := GtPageElement new.
-	aPage constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'files := FileLocation workingDirectory allChildren.').
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'view := GtMondrian new.
-view nodes with: files.
-view edges connectFrom: #parent.
-view layout tree nodeDistance: 1.
-view').
-	^ aPage
-]
-
-{ #category : #todo }
-GtPlaygroundExamples >> modrianUrlJsonSnippetView [
-	<gtExample>
-	<noTest>
-	| aPage | 
-	aPage := GtPageElement new.
-	aPage constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-	aPage addSnippet: (GtUrlSnippet new content: (ZnEasy get: 'http://example.com/file.json')).
-	aPage addSnippet: (#GtJsonSnippet new content: '''{"key":"value"}''').	
-	aPage addSnippet: (#GtMondrianSnippet new content: 'mondrian nodes with: files.
-mondrian edges connectFrom: #parent.
-mondrian layout tree nodeDistance: 1').
-	^ aPage
-]
-
 { #category : #'model - page and book' }
 GtPlaygroundExamples >> page [
 	<gtExample>
@@ -272,6 +222,23 @@ GtPlaygroundExamples >> pageWithDefinedReceiver [
 	aPlayPage := GtPlayPage forObject: anObject.
 	self assert: aPlayPage bindings receiver equals: anObject.
 	^ aPlayPage
+]
+
+{ #category : #todo }
+GtPlaygroundExamples >> pageWithFilesAndMondrianPharoSnippets [
+	<gtExample>
+	| aPage | 
+	aPage := GtPageElement new.
+	aPage constraintsDo: [ :c |
+		c horizontal matchParent.
+		c vertical matchParent ].
+	aPage addSnippet: (GtPharoSnippet new sourceCode: 'files := FileLocation workingDirectory allChildren.').
+	aPage addSnippet: (GtPharoSnippet new sourceCode: 'view := GtMondrian new.
+view nodes with: files.
+view edges connectFrom: #parent.
+view layout tree nodeDistance: 1.
+view').
+	^ aPage
 ]
 
 { #category : #'model - page and book' }
