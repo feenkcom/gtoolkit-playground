@@ -182,6 +182,7 @@ view').
 { #category : #todo }
 GtPlaygroundExamples >> modrianFileSnippetView [
 	<gtExample>
+	<noTest>	
 	| aPage | 
 	aPage := GtPageElement new.
 	aPage constraintsDo: [ :c |
@@ -214,6 +215,7 @@ view').
 { #category : #todo }
 GtPlaygroundExamples >> modrianUrlJsonSnippetView [
 	<gtExample>
+	<noTest>
 	| aPage | 
 	aPage := GtPageElement new.
 	aPage constraintsDo: [ :c |
