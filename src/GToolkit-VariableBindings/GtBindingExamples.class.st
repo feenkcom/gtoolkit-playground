@@ -1,7 +1,7 @@
 Class {
 	#name : #GtBindingExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Examples'
 }
 
 { #category : #'binding strategy' }

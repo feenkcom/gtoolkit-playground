@@ -6,7 +6,7 @@ Class {
 	#instVars : [
 		'bindings'
 	],
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #asserting }

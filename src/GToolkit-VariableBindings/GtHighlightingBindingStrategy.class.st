@@ -1,5 +1,5 @@
 Class {
 	#name : #GtHighlightingBindingStrategy,
 	#superclass : #GtBindingStrategy,
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GtCommandExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-Playground-Examples'
+	#category : #'GToolkit-VariableBindings-Examples'
 }
 
 { #category : #'code evaluation' }

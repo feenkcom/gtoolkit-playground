@@ -1,6 +1,6 @@
 Class {
 	#name : #GtEvaluateSourceCodeCommand,
-	#superclass : #GtPlaygroundCommand,
+	#superclass : #BlCommand,
 	#instVars : [
 		'result',
 		'isException',
@@ -8,7 +8,7 @@ Class {
 		'receiver',
 		'requestorAndBindings'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : #'GToolkit-VariableBindings-Commands'
 }
 
 { #category : #accessing }
@@ -37,8 +37,7 @@ GtEvaluateSourceCodeCommand >> execute [
 		receiver: self receiver "TODO: what is receiver? evaluation uses `receiver class` if context is nil";
 		requestor: requestorAndBindings. "TODO: requestor should be an editor?
 			evaluation uses `requestor selection` to evaluate only selected part"
-	[ 
-		result := aCompiler evaluate.
+	result := aCompiler evaluate.
 		"evaluation does: 
 			`receiver withArgs: context or #() executeMethod: 
 				parse uses `noPattern`, 
@@ -48,11 +47,6 @@ GtEvaluateSourceCodeCommand >> execute [
 					`compilationContext scope newMethodScope to validate source code
 						`lookupVariableForWrite:` uses `scope lookupVar: aVarNameString"
 		"parseExpression uses `parserClass` and `optionParseErrors` to parse faulty expressions"
-		isException := false.
-	] on: Error, OCSemanticWarning do: [ :anException | 
-		result := anException.
-		isException := true.
-	].
 ]
 
 { #category : #initialization }

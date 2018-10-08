@@ -1,6 +1,6 @@
 Trait {
 	#name : #GtBindingsTrait,
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #converting }

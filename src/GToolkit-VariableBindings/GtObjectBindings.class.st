@@ -7,7 +7,7 @@ Class {
 		'bindings',
 		'receiver'
 	],
-	#category : #'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #converting }

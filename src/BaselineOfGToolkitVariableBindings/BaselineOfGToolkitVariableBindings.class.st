@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfGToolkitVariableBindings,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfGToolkitVariableBindings'
+	#category : #BaselineOfGToolkitVariableBindings
 }
 
 { #category : #baseline }
@@ -11,8 +11,10 @@ BaselineOfGToolkitVariableBindings >> baseline: spec [
 		spec
 			baseline: 'GToolkitUtility' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit/src' ];
+			baseline: 'Bloc' with: [ spec
+				repository: 'github://pharo-graphics/Bloc/src' ];
 			package: 'GToolkit-VariableBindings' with: [
-				spec requires: #( 'GToolkitUtility' ) ]
+				spec requires: #( 'GToolkitUtility' 'Bloc' ) ]
 	]
 
 ]

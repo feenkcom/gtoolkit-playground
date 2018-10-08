@@ -6,7 +6,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #cleanup }

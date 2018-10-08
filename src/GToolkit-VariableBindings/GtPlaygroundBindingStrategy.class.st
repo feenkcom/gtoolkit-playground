@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPlaygroundBindingStrategy,
 	#superclass : #GtBindingStrategy,
-	#category : 'GToolkit-VariableBindings'
+	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #private }

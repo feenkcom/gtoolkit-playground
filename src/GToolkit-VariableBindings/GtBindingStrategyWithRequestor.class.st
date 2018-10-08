@@ -7,7 +7,7 @@ Class {
 		'requestor',
 		'bindingStrategy'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : #'GToolkit-VariableBindings-Commands'
 }
 
 { #category : #binding }
@@ -49,6 +49,11 @@ GtBindingStrategyWithRequestor >> requestor: anObject [
 
 { #category : #accessing }
 GtBindingStrategyWithRequestor >> selection [
-	<return: #BlSelection or: nil>
-	^ self requestor ifNotNil: #selection ifNil: ''
+	<return: #BlSelection or: #String>
+	^ self requestor 
+		ifNotNil: [ :aRequestor | 
+			(aRequestor respondsTo: #selection)
+				ifTrue: [ aRequestor selection ]
+				ifFalse: [ '' ] ] 
+		ifNil: [ '' ]
 ]
