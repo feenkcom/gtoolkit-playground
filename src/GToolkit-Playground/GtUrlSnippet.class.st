@@ -6,7 +6,7 @@ Class {
 		'responseVariableName',
 		'variableBindings'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #accessing }
@@ -35,6 +35,7 @@ GtUrlSnippet >> defaultStyler [
 { #category : #'public access' }
 GtUrlSnippet >> evaluate [
 	| aCommand aFuture |
+	<return: #TKTFuture>
 	aCommand := (GtUrlGetResponseCommand snippet: self) asErrorCatchingCommand.
 	aFuture := aCommand future.
 	aFuture onSuccessDo: [ :aResult |
@@ -43,7 +44,8 @@ GtUrlSnippet >> evaluate [
 			exception: aCommand isException 
 			spawn: false.
 		response := aCommand result.
-		self variableBindings at: self responseVariableName put: response ]
+		self variableBindings at: self responseVariableName put: response ].
+	^ aFuture
 ]
 
 { #category : #initialization }

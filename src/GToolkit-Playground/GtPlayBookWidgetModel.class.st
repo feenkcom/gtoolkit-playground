@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Model'
+	#category : #'GToolkit-Playground-PlayBook - Model'
 }
 
 { #category : #initialization }

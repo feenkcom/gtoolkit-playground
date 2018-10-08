@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPharoSnippet,
 	#superclass : #GtCodeSnippet,
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #accessing }

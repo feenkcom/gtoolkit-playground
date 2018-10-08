@@ -10,7 +10,7 @@ Class {
 	#pools : [
 		'BrGlamorousColors'
 	],
-	#category : 'GToolkit-Playground-Snippet - Looks'
+	#category : #'GToolkit-Playground-Snippet - Looks'
 }
 
 { #category : #initialization }

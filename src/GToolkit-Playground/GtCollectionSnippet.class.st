@@ -1,7 +1,7 @@
 Class {
 	#name : #GtCollectionSnippet,
 	#superclass : #GtSnippet,
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
 { #category : #testing }

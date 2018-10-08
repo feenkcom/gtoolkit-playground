@@ -5,7 +5,7 @@ Class {
 		'tabGroup',
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Look'
+	#category : #'GToolkit-Playground-PlayBook - Look'
 }
 
 { #category : #initialization }

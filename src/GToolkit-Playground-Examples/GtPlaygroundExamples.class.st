@@ -146,15 +146,17 @@ GtPlaygroundExamples >> evaluateTwoPharoSnippets [
 GtPlaygroundExamples >> evaluateUrl [
 	<gtExample>
 	<label: 'Evaluate a Pharo code snippet'>
-		| aSnippet aResult theAnnouncements |
+		| aSemaphore aTimeouted aSnippet theAnnouncements |
+	aSemaphore := Semaphore new.
 	theAnnouncements := OrderedCollection new.
 	aSnippet := self urlSnippet.
 	aSnippet url: 'https://feenk.com'.
 	aSnippet 
 		when: GtSnippetEvaluatedAnnouncement 
-		do: [ :anAnnouncement | theAnnouncements add: anAnnouncement ].
-	aResult := aSnippet evaluate.
-	self assert: aResult class equals: ZnResponse.
+		do: [ :anAnnouncement | theAnnouncements add: anAnnouncement. aSemaphore signal ].
+	aSnippet evaluate.
+	aTimeouted := aSemaphore waitTimeoutSeconds: 1.
+	self assert: aTimeouted not.
 	self assert: theAnnouncements size equals: 1.
 	self assert: theAnnouncements first result class equals: ZnResponse.
 	self assert: theAnnouncements first isException not.
