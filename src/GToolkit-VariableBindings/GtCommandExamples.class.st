@@ -11,7 +11,6 @@ GtCommandExamples >> evaluateSourceCodeCommand [
 	| aCommand |
 	aCommand := GtEvaluateSourceCodeCommand new.
 	self assert: aCommand sourceCode isString.
-	self assert: aCommand isException not.
 	self assert: aCommand bindingStrategy notNil.
 	self assert: aCommand result isNil.
 	self assert: aCommand receiver isNil.
@@ -25,7 +24,6 @@ GtCommandExamples >> executeDefaultSourceCode [
 	| aCommand |
 	aCommand := self evaluateSourceCodeCommand.
 	aCommand execute.
-	self assert: aCommand isException not.
 	self assert: aCommand result isNil.
 	^ aCommand
 ]
@@ -38,7 +36,6 @@ GtCommandExamples >> executeSourceCode [
 	aCommand := self evaluateSourceCodeCommand.
 	aCommand sourceCode: '4 factorial'.
 	aCommand execute.
-	self assert: aCommand isException not.
 	self assert: aCommand result equals: 24.
 	^ aCommand
 ]
@@ -47,13 +44,16 @@ GtCommandExamples >> executeSourceCode [
 GtCommandExamples >> executeSourceCodeWithUndefinedVariable [
 	<gtExample>
 	<label: 'Evaluate a source code with undefined variable'>
-	| aCommand |
+	| aCommand aWarning |
 	aCommand := self evaluateSourceCodeCommand.
 	aCommand sourceCode: 'aValue := 4 factorial'.
-	aCommand execute.
-	self assert: aCommand isException.
-	self assert: aCommand result notNil.
-	self assert: aCommand result node name equals: #aValue.
+	[ aCommand execute ] 
+		on: OCUndeclaredVariableWarning 
+		do: [ :theWarning | aWarning := theWarning ].
+	self assert: aWarning notNil.
+	self assert: aWarning class equals: OCUndeclaredVariableWarning.
+	self assert: aWarning node name equals: #aValue.
+	self assert: aCommand result isNil.
 	^ aCommand
 ]
 
@@ -66,7 +66,6 @@ GtCommandExamples >> executeSourceCodeWithUndefinedVariableUsingPlaygroundBindin
 	aCommand sourceCode: 'aValue := 4 factorial'.
 	aCommand variableBindings: GtPlaygroundBindings new.
 	aCommand execute.
-	self assert: aCommand isException not.
 	self assert: aCommand result equals: 24.
 	self assert: (aCommand variableBindings bindingOf: #aValue) notNil.
 	self assert: (aCommand variableBindings bindingOf: #aValue) value equals: 24.
@@ -82,7 +81,6 @@ GtCommandExamples >> executeUndefinedVariable [
 	aCommand variableBindings: self playgroundBindings.
 	aCommand sourceCode: 'aValue := 42'.
 	aCommand execute.
-	self assert: aCommand isException not.
 	self assert: aCommand result equals: 42.
 	self assert: aCommand variableBindings notNil.
 	aVariable := aCommand variableBindings bindingOf: #aValue.

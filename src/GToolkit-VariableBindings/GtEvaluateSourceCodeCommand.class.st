@@ -3,7 +3,6 @@ Class {
 	#superclass : #BlCommand,
 	#instVars : [
 		'result',
-		'isException',
 		'sourceCode',
 		'receiver',
 		'requestorAndBindings'
@@ -54,15 +53,7 @@ GtEvaluateSourceCodeCommand >> initialize [
 	super initialize.
 	sourceCode := 'nil'.
 	result := nil.
-	isException := false.
 	requestorAndBindings := GtBindingStrategyWithRequestor new.
-]
-
-{ #category : #accessing }
-GtEvaluateSourceCodeCommand >> isException [
-	"Return true, if evaluation raised an exception"
-	<return: #Boolean>
-	^ isException
 ]
 
 { #category : #accessing }
