@@ -1,7 +1,15 @@
+"
+!Playground
+
+Playground is the place to play with code. 
+
+${example:GtPlaygroundExamples>>#pageWithCode|noCode|show=#gtLiveFor:}$
+
+"
 Class {
 	#name : #BaselineOfGToolkitPlayground,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfGToolkitPlayground'
+	#category : #BaselineOfGToolkitPlayground
 }
 
 { #category : #baseline }

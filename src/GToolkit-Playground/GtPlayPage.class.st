@@ -118,7 +118,7 @@ GtPlayPage >> gtLiveFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Live' translated;
-		stencil: self;
+		stencil: [self asElement margin: (BlInsets all: 10)];
 		priority: 10
 ]
 
