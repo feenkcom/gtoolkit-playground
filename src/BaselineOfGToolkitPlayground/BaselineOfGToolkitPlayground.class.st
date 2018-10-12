@@ -1,9 +1,12 @@
 "
 !Playground
 
-Playground is the place to play with code. 
+Playground is the place to play with code. For example, 
 
-${example:GtPlaygroundExamples>>#pageWithCode|noCode|show=#gtLiveFor:}$
+${example:GtPlaygroundExamples>>#pageWithCode|noCode|show=#gtLiveFor:|previewHeight=100}$
+
+
+${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|show=#gtLiveFor:|previewHeight=200}$
 
 "
 Class {
