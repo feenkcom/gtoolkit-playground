@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPlaygroundEvaluatedCodeHighlightedAttribute,
-	#superclass : #BrTextAttribute,
+	#superclass : #BlTextAttribute,
 	#instVars : [
 		'paint'
 	],

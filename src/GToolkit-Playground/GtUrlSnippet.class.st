@@ -29,7 +29,7 @@ GtUrlSnippet >> defaultSourceCode [
 
 { #category : #initialization }
 GtUrlSnippet >> defaultStyler [
-	^ BrTextNullStyler new
+	^ BlTextNullStyler new
 ]
 
 { #category : #'public access' }

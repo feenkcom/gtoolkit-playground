@@ -146,8 +146,8 @@ GtPharoSnippet >> requestSnippetSplitAt: aSplitIndex [
 GtPharoSnippet >> sourceCode: aStringOrRope [
 	super sourceCode: aStringOrRope.
 	editor text attributes: {
-		BrFontGenericFamilyAttribute monospace beNotOverwritableByStyler.
-		(BrFontSizeAttribute size: 14) beNotOverwritableByStyler }.
+		BlFontGenericFamilyAttribute monospace beNotOverwritableByStyler.
+		(BlFontSizeAttribute size: 14) beNotOverwritableByStyler }.
 ]
 
 { #category : #converting }
