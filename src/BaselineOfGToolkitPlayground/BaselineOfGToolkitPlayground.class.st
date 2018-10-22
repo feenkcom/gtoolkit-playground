@@ -29,7 +29,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'GToolkitCompleter' with: [ spec
 				repository: 'github://feenkcom/gtoolkit-completer/src' ];
 			baseline: 'GToolkitUtility' with: [ spec 
-				repository: 'github://feenkcom/gtoolkit/src' ];
+				repository: 'github://feenkcom/gtoolkit-utility/src' ];
 			baseline: 'GToolkitVariableBindings' with: [ spec 
 				repository: 'github://feenkcom/gtoolkit-playground/src' ];
 			baseline: 'GToolkitExamples' with: [ spec 
