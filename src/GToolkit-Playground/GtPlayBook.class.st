@@ -1,10 +1,11 @@
 Class {
 	#name : #GtPlayBook,
 	#superclass : #Object,
-	#traits : 'GtAssertingTrait',
-	#classTraits : 'GtAssertingTrait classTrait',
+	#traits : 'GtAssertingTrait + GtAnnouncerTrait',
+	#classTraits : 'GtAssertingTrait classTrait + GtAnnouncerTrait classTrait',
 	#instVars : [
-		'pages'
+		'pages',
+		'announcer'
 	],
 	#category : #'GToolkit-Playground-Model'
 }
@@ -46,7 +47,14 @@ GtPlayBook >> addPlayPage: aGtPlayPage [
 	self 
 		assert: [ aGtPlayPage notNil ] 
 		description: [ 'Play page must be non-nil' ].
-	pages addLast: aGtPlayPage
+	pages addLast: aGtPlayPage.
+	self attachToPage: aGtPlayPage.
+]
+
+{ #category : #announcer }
+GtPlayBook >> announcer [
+	<return: #Announcer>
+	^ announcer
 ]
 
 { #category : #converting }
@@ -55,6 +63,16 @@ GtPlayBook >> asElement [
 	^ BlElement new
 		look: GtPlayBookLook + BrLayoutLook linearVertical matchParent;
 		viewModel: (GtPlayBookWidgetModel new playBook: self)
+]
+
+{ #category : #subscriptions }
+GtPlayBook >> attachToPage: aGtPlayPage [
+	aGtPlayPage
+		subscribe: GtPageSnippetChangedAnnouncement
+			send: #snippetChangedAnnouncement:
+			to: self
+			for: self
+
 ]
 
 { #category : #'gt-extension' }
@@ -70,6 +88,7 @@ GtPlayBook >> gtLiveFor: aView [
 GtPlayBook >> initialize [
 	super initialize.
 	pages := OrderedCollection new.
+	announcer := Announcer new.
 ]
 
 { #category : #accessing }
@@ -87,4 +106,9 @@ GtPlayBook >> pages [
 GtPlayBook >> pages: aCollectionOfPages [
 	aCollectionOfPages do: [ :eachPage | 
 		self addPlayPage: eachPage ]
+]
+
+{ #category : #'announcement handling' }
+GtPlayBook >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [ 
+	self announce: aGtPageSnippetChangedAnnouncement.
 ]

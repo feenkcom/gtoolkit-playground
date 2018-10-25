@@ -90,7 +90,12 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 		subscribe: GtSnippetMergeRequestedAnnouncement 
 			send: #snippetMergeRequestedAnnouncement: 
 			to: self 
+			for: self;
+		subscribe: GtPageSnippetChangedAnnouncement
+			send: #snippetChangedAnnouncement:
+			to: self
 			for: self
+
 ]
 
 { #category : #accessing }
@@ -216,6 +221,15 @@ GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnounc
 	aNewSnippet := aGtSnippetBelowRequestedAnnouncement secondSnippet.
 	aNewSnippet ifNil: [ aNewSnippet := self newCollectionSnippet ].
 	self addSnippet: aNewSnippet at: anIndex + 1.
+]
+
+{ #category : #'announcement handling' }
+GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [ 
+	| anIndex |
+	anIndex := self snippets indexOf: aGtPageSnippetChangedAnnouncement snippet.
+	aGtPageSnippetChangedAnnouncement page: self.
+	aGtPageSnippetChangedAnnouncement index: anIndex.
+	self announce: aGtPageSnippetChangedAnnouncement.
 ]
 
 { #category : #'announcement handling' }

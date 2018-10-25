@@ -27,12 +27,18 @@ GtCodeSnippet >> editor [
 	^ editor
 ]
 
+{ #category : #'announcement handling' }
+GtCodeSnippet >> handleEditorChanges: anAnnouncement [
+	self announce: (GtPageSnippetChangedAnnouncement new snippet: self)
+]
+
 { #category : #initialization }
 GtCodeSnippet >> initialize [
 	super initialize.
 	editor := BrTextEditor new.
 	editor styler: self defaultStyler.
 	self sourceCode: self defaultSourceCode.
+	self subscribeToEditorChanges.
 ]
 
 { #category : #notifying }
@@ -64,6 +70,17 @@ GtCodeSnippet >> sourceCode: aStringOrRope [
 		assert: [ aStringOrRope notNil ] 
 		description: [ 'The contents should be initialized (a string or rope)' ].
 	editor text: aStringOrRope asRopedText.
+]
+
+{ #category : #subscriptions }
+GtCodeSnippet >> subscribeToEditorChanges [
+	editor 
+		addEventHandlerOn: BrTextEditorInsertedEvent 
+		do: [ :anEvent | self handleEditorChanges: anEvent ].
+	editor 
+		addEventHandlerOn: BrTextEditorDeletedEvent 
+		do: [ :anEvent | self handleEditorChanges: anEvent ].
+
 ]
 
 { #category : #accessing }

@@ -365,6 +365,35 @@ GtPlaygroundExamples >> playBookElement [
 ]
 
 { #category : #'model - updates' }
+GtPlaygroundExamples >> playBookSourceCodeChangedAnnouncementOnCodeDeletion [
+	<gtExample>
+	| aPlayBook anAnnouncements aSnippet |
+	aPlayBook := self playBook.
+	anAnnouncements := OrderedCollection new.
+	aPlayBook when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
+	aSnippet := aPlayBook pages first snippets first.
+	aSnippet sourceCode: '1234'.
+	aSnippet editor deleter from: 2 to: 4; delete.
+	self assert: anAnnouncements size equals: 1.
+	self assert: anAnnouncements first class equals: GtPageSnippetChangedAnnouncement.
+	^ aPlayBook
+]
+
+{ #category : #'model - updates' }
+GtPlaygroundExamples >> playBookSourceCodeChangedAnnouncementOnCodeInsertion [
+	<gtExample>
+	| aPlayBook anAnnouncements aSnippet |
+	aPlayBook := self playBook.
+	anAnnouncements := OrderedCollection new.
+	aPlayBook when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
+	aSnippet := aPlayBook pages first snippets first.
+	aSnippet editor inserter atEnd; string: '"comment"'; insert.
+	self assert: anAnnouncements size equals: 1.
+	self assert: anAnnouncements first class equals: GtPageSnippetChangedAnnouncement.
+	^ aPlayBook
+]
+
+{ #category : #'model - updates' }
 GtPlaygroundExamples >> removeSnippetAtTheBeginning [
 	<gtExample>
 	| aPage anAnnouncements aSnippet |
