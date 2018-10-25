@@ -130,6 +130,11 @@ GtSnippet >> stencilBuilderClass [
 ]
 
 { #category : #accessing }
+GtSnippet >> text [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 GtSnippet >> typeName [
 	<return: #String>
 	"Return a playground snippet type name.
