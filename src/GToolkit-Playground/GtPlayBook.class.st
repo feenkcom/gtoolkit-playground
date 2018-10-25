@@ -19,7 +19,9 @@ GtPlayBook class >> empty [
 GtPlayBook class >> newDefault [
 	"Open a new play book with one page and one default snippet"
 	<return: #GtPlayBook>
-	^ self new addPlayPage: GtPlayPage newDefault
+	^ self new 
+		addPlayPage: GtPlayPage newDefault;
+		subscribeExternalTools
 ]
 
 { #category : #'instance creation' }
@@ -111,4 +113,15 @@ GtPlayBook >> pages: aCollectionOfPages [
 { #category : #'announcement handling' }
 GtPlayBook >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [ 
 	self announce: aGtPageSnippetChangedAnnouncement.
+]
+
+{ #category : #subscriptions }
+GtPlayBook >> subscribeExternalTools [
+	| thePragmas |
+	thePragmas := Pragma 
+		allNamed: #playBookHandler 
+		from: self class
+		to: ProtoObject.
+	thePragmas do: [ :eachPragma | 
+		self perform: eachPragma methodSelector ]
 ]
