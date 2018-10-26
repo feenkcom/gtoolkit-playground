@@ -70,8 +70,8 @@ GtPlayBook >> asElement [
 { #category : #subscriptions }
 GtPlayBook >> attachToPage: aGtPlayPage [
 	aGtPlayPage
-		subscribe: GtPageSnippetChangedAnnouncement
-			send: #snippetChangedAnnouncement:
+		subscribe: GtPageAnnoucement
+			send: #pageAnnouncement:
 			to: self
 			for: self
 
@@ -98,6 +98,11 @@ GtPlayBook >> numberOfPages [
 	^ self pages size
 ]
 
+{ #category : #'announcement handling' }
+GtPlayBook >> pageAnnouncement: aGtPageAnnouncement [ 
+	self announce: aGtPageAnnouncement.
+]
+
 { #category : #accessing }
 GtPlayBook >> pages [
 	<return: #OrderedCollection>
@@ -108,11 +113,6 @@ GtPlayBook >> pages [
 GtPlayBook >> pages: aCollectionOfPages [
 	aCollectionOfPages do: [ :eachPage | 
 		self addPlayPage: eachPage ]
-]
-
-{ #category : #'announcement handling' }
-GtPlayBook >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [ 
-	self announce: aGtPageSnippetChangedAnnouncement.
 ]
 
 { #category : #subscriptions }

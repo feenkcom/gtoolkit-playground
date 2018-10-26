@@ -94,6 +94,10 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 		subscribe: GtPageSnippetChangedAnnouncement
 			send: #snippetChangedAnnouncement:
 			to: self
+			for: self;
+		subscribe: GtSnippetEvaluatedAnnouncement 
+			send: #snippetEvaluatedAnnouncement: 
+			to: self 
 			for: self
 
 ]
@@ -230,6 +234,21 @@ GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [
 	aGtPageSnippetChangedAnnouncement page: self.
 	aGtPageSnippetChangedAnnouncement index: anIndex.
 	self announce: aGtPageSnippetChangedAnnouncement.
+]
+
+{ #category : #'announcement handling' }
+GtPlayPage >> snippetEvaluatedAnnouncement: aGtSnippetEvaluatedAnnouncement [ 
+	| anIndex anAnnouncement |
+	anIndex := self snippets indexOf: aGtSnippetEvaluatedAnnouncement snippet.
+	anAnnouncement := GtPageSnippetEvaluatedAnnouncement new.
+	anAnnouncement 
+		page: self;
+		index: anIndex;
+		snippet: aGtSnippetEvaluatedAnnouncement snippet;
+		result: aGtSnippetEvaluatedAnnouncement result;
+		isException: aGtSnippetEvaluatedAnnouncement isException;
+		isSpawnResultRequested: aGtSnippetEvaluatedAnnouncement isSpawnResultRequested.	
+	self announce: anAnnouncement.
 ]
 
 { #category : #'announcement handling' }

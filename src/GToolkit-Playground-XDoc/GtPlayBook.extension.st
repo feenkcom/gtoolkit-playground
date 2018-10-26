@@ -53,7 +53,7 @@ GtPlayBook >> storePlayBookInto: aXdFile [
 			eachPage snippets do: [ :eachSnippet |
 				eachSnippet isUserSnippet ifTrue: [ 
 					aStream nextPutAll: eachSnippet text asString; cr ] ] ] ].
-	aTitle := aText first: (aText size min: 20).
+	aTitle := aText first: (aText size min: 40).
 	aTitle := aTitle replace: [ :eachCharacter | 
 		eachCharacter isSeparator ifTrue: [ Character space ] ifFalse: [ eachCharacter ] ]. 
 	aDescription := aText first: (aText size min: 100).
@@ -115,6 +115,6 @@ GtPlayBook >> xdocSaving [
 	anXdocPlaybookHandler := XdFile new.
 	anXdocPlaybookHandler streamingStrategy: (XdStreamingStrategy file: aFileReference).
 	self 
-		subscribe: GtPageSnippetAnnouncement 
+		subscribe: GtPageSnippetEvaluatedAnnouncement 
 		do: [ :anAnnuncement | self storePlayBookInto: anXdocPlaybookHandler ]
 ]
