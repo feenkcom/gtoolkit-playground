@@ -1,12 +1,21 @@
 "
 !Playground
 
-Playground is the place to play with code. For example, 
+Playground is the place to play with live code.
+
+In the snippet below we see a simple example. If you evaluate the code with ==PrimaryModifier+G==, you will get an inspector with the resulting object to the right. 
 
 ${example:GtPlaygroundExamples>>#pageWithCode|noCode|show=#gtLiveFor:|previewHeight=100}$
 
+!!Snippets
+
+Playgrounds can have multiple snippets. Each snippet provides a scope and allows you to manipulate the code in isolation from the rest of the code. At the same time, the overall page still behaves like one contiguous page sharing the same set of variables.
+
+For example, in the page below we have two snippets. Evaluating the first one, initializes ==aValue== with ==42==. Evaluating the second snippet increases the value.
 
 ${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|show=#gtLiveFor:|previewHeight=200}$
+
+
 
 "
 Class {
