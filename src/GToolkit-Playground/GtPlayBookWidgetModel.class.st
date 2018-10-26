@@ -7,10 +7,16 @@ Class {
 	#category : #'GToolkit-Playground-PlayBook - Model'
 }
 
+{ #category : #'announcement handling' }
+GtPlayBookWidgetModel >> handlePlayBookChangeRequestedAnnouncement: aGtPlayBookChangeRequestedAnnoucement [
+	self playBook: aGtPlayBookChangeRequestedAnnoucement newPlayBook
+]
+
 { #category : #initialization }
 GtPlayBookWidgetModel >> initialize [
 	super initialize.
 	playBook := GtPlayBook new.
+	self subscribeToPlayBook.
 ]
 
 { #category : #notifying }
@@ -33,6 +39,23 @@ GtPlayBookWidgetModel >> playBook [
 
 { #category : #accessing }
 GtPlayBookWidgetModel >> playBook: aGtPlayBook [
+	self unsubscribeFromPlayBook.
 	playBook := aGtPlayBook.
+	self subscribeToPlayBook.
 	self notifyPlayBookChanged.
+]
+
+{ #category : #subscriptions }
+GtPlayBookWidgetModel >> subscribeToPlayBook [
+	self playBook ifNil: [ ^ self ].
+	self playBook 
+		subscribe: GtPlayBookChangeRequestedAnnoucement 
+		send: #handlePlayBookChangeRequestedAnnouncement:
+		to: self
+		for: self
+]
+
+{ #category : #subscriptions }
+GtPlayBookWidgetModel >> unsubscribeFromPlayBook [
+	self playBook unsubscribe: self.
 ]
