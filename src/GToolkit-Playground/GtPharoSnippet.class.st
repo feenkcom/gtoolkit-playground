@@ -48,26 +48,30 @@ GtPharoSnippet >> defaultStyler [
 { #category : #'api - actions' }
 GtPharoSnippet >> evaluate [
 	| aCommand |
-	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
+	aCommand := (GtEvaluateSnippetCommand snippet: self)
+		asErrorCatchingCommand.
 	aCommand execute.
-	self styleEvaluatedCodeWithResult: aCommand result.
+	self styleEvaluatedCodeWithResult: aCommand result asException: aCommand isException.
 	self
 		notifyAboutResult: aCommand result
 		exception: aCommand isException
 		spawn: false.
+	aCommand isException ifTrue: [ aCommand result pass ].
 	^ aCommand result
 ]
 
 { #category : #'api - actions' }
 GtPharoSnippet >> evaluateAndGo [
 	| aCommand |
-	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
+	aCommand := (GtEvaluateSnippetCommand snippet: self)
+		asErrorCatchingCommand.
 	aCommand execute.
-	self styleEvaluatedCodeWithResult: aCommand result.
-	self 
-		notifyAboutResult: aCommand result 
-		exception: aCommand isException 
+	self styleEvaluatedCodeWithResult: aCommand result asException: aCommand isException.
+	self
+		notifyAboutResult: aCommand result
+		exception: aCommand isException
 		spawn: true.
+	aCommand isException ifTrue: [ aCommand result pass ].
 	^ aCommand result
 ]
 
@@ -156,12 +160,18 @@ GtPharoSnippet >> stencilBuilderClass [
 ]
 
 { #category : #'private - styling' }
-GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult [
-	self editor styleTextAndAfterDo: [
-		GtMarkEvaluatedCodeCommand new
-			editor: self editor;
-			result: aResult;
-			execute ]
+GtPharoSnippet >> styleEvaluatedCodeWithResult: aResult asException: aBoolean [
+	aBoolean 
+		ifFalse: [ self editor styleTextAndAfterDo: [
+			GtMarkSuccessfullyEvaluatedCodeCommand new
+				editor: self editor;
+				result: aResult;
+				execute ] ]
+		ifTrue: [ self editor styleTextAndAfterDo: [
+			GtMarkUnsuccessfullyEvaluatedCodeCommand new
+				editor: self editor;
+				result: aResult;
+				execute ] ]
 ]
 
 { #category : #accessing }
