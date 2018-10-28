@@ -16,9 +16,8 @@ GtMarkUnsuccessfullyEvaluatedCodeCommand >> execute [
 				paint: (Color red)).
 	aSubText
 		attributes:
-			{(GtPlaygroundEvaluatedCodeButtonAttribute new
-				result: self result;
-				paint: (Color red))}
+			{(GtPlaygroundDebugExceptionButtonAttribute new
+				result: self result)}
 		from: aSubText size
 		to: aSubText size.
 	self editor invalidateAll.

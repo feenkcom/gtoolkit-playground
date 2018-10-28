@@ -56,7 +56,6 @@ GtPharoSnippet >> evaluate [
 		notifyAboutResult: aCommand result
 		exception: aCommand isException
 		spawn: false.
-	aCommand isException ifTrue: [ [ aCommand result debug ] fork ].
 	^ aCommand result
 ]
 
@@ -71,7 +70,6 @@ GtPharoSnippet >> evaluateAndGo [
 		notifyAboutResult: aCommand result
 		exception: aCommand isException
 		spawn: true.
-	aCommand isException ifTrue: [ [ aCommand result debug ] fork ].
 	^ aCommand result
 ]
 
