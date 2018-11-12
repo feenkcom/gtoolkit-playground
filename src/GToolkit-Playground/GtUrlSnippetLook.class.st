@@ -108,7 +108,7 @@ GtUrlSnippetLook >> newResponseAndVariableElement [
 { #category : #initialization }
 GtUrlSnippetLook >> newResponseElement [
 	^ responseElement := BrButton new
-			look: BrLabelLook 
+			look: BrTextLabelLook 
 				"+ BrGlamorousButtonExteriorLook "
 				+ BrLayoutLook linearHorizontal fitContent alignCenterLeft;
 			label: 'Response will appear in variable ';
