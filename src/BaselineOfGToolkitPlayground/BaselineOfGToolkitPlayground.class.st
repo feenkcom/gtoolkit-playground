@@ -5,7 +5,7 @@ Playground is the place to play with live code.
 
 In the snippet below we see a simple example. If you evaluate the code with ==PrimaryModifier+G==, you will get an inspector with the resulting object to the right. 
 
-${example:GtPlaygroundExamples>>#pageWithCode|noCode|show=#gtLiveFor:|previewHeight=100}$
+${example:GtPlaygroundExamples>>#pageWithCode|noCode|previewShow=#gtLiveFor:|previewHeight=100}$
 
 !!Snippets
 
@@ -13,7 +13,7 @@ Playgrounds can have multiple snippets. Each snippet provides a scope and allows
 
 For example, in the page below we have two snippets. Evaluating the first one, initializes ==aValue== with ==42==. Evaluating the second snippet increases the value.
 
-${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|show=#gtLiveFor:|previewHeight=200}$
+${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previewShow=#gtLiveFor:|previewHeight=200}$
 
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
