@@ -50,7 +50,7 @@ GtPlayBookLook >> mayAddActionsFor: aGtPage in: aTab [
 	theActions ifEmpty: [ ^ self ].
 	aTab actionsStencil: [
 		| aView |
-		aView := GtPhlowView sequentialExplicit.
+		aView := GtPhlowView explicit.
 		aView addPhlowActions: theActions.
 		aView actionsToolbarForElement: aTab ]
 ]
