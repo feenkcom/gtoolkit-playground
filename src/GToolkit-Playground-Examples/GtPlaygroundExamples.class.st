@@ -192,12 +192,9 @@ GtPlaygroundExamples >> pageElementWithTwoPharoSnippets [
 GtPlaygroundExamples >> pageWithClassesAndMondrianView [
 	<gtExample>
 	| aPage | 
-	aPage := GtPageElement new.
-	aPage constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'classes := Collection withAllSubclasses.').
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'view := GtMondrian new.
+	aPage := aPage := self page.
+	aPage replaceSnippet: aPage snippets first by: (self pharoSnippet sourceCode: 'classes := Collection withAllSubclasses.').
+	aPage addSnippet: (self pharoSnippet sourceCode: 'view := GtMondrian new.
 view nodes with: classes.
 view edges connectFrom: #superclass.
 view layout tree nodeDistance: 1.

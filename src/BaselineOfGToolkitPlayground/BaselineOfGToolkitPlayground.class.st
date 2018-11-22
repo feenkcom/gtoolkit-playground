@@ -17,7 +17,7 @@ ${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previe
 
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
-${example:GtPlaygroundExamples>>#pageWithClassesAndMondrianView|noCode|show=#gtLiveFor:|previewHeight=200}$
+${example:GtPlaygroundExamples>>#pageWithClassesAndMondrianView|noCode|previewShow=#gtLiveFor:|previewHeight=300}$
 
 
 
