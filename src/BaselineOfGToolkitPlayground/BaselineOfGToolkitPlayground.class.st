@@ -7,6 +7,7 @@ In the snippet below we see a simple example. If you evaluate the code with ==Pr
 
 ${example:GtPlaygroundExamples>>#pageWithCode|noCode|previewShow=#gtLiveFor:|previewHeight=100}$
 
+
 !!Snippets
 
 Playgrounds can have multiple snippets. Each snippet provides a scope and allows you to manipulate the code in isolation from the rest of the code. At the same time, the overall page still behaves like one contiguous page sharing the same set of variables.
@@ -15,13 +16,18 @@ For example, in the page below we have two snippets. Evaluating the first one, i
 
 ${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previewShow=#gtLiveFor:|previewHeight=200}$
 
+
 !!Usages
+
+The Playground is a versatile tool with many different kinds of applications. See a couple of them below.
+ 
 
 !!!Code queries
 
 Any Playground is a code query box. For example, in the example below, inspect the result of the query.
 
-${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=150}$
+${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=100}$
+
 
 !!!Data science
 
