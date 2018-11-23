@@ -15,6 +15,16 @@ For example, in the page below we have two snippets. Evaluating the first one, i
 
 ${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previewShow=#gtLiveFor:|previewHeight=200}$
 
+!!Usages
+
+!!!Code queries
+
+Any Playground is a code query box. For example, in the example below, inspect the result of the query.
+
+${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=150}$
+
+!!!Data science
+
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
 ${example:GtPlaygroundExamples>>#pageWithClassesAndMondrianView|noCode|previewShow=#gtLiveFor:|previewHeight=300}$

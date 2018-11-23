@@ -213,6 +213,15 @@ GtPlaygroundExamples >> pageWithCode [
 	^ aPage
 ]
 
+{ #category : #todo }
+GtPlaygroundExamples >> pageWithCodeQuery [
+	<gtExample>
+	| aPage | 
+	aPage := aPage := self page.
+	aPage replaceSnippet: aPage snippets first by: (self pharoSnippet sourceCode: '#gtView gtPragmas & #list gtReferences').
+	^ aPage
+]
+
 { #category : #'model - page and book' }
 GtPlaygroundExamples >> pageWithDefinedReceiver [
 	<gtExample>
