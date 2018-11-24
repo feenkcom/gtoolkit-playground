@@ -3,23 +3,11 @@ Extension { #name : #GtPlayBook }
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> gtActionXdocFor: anAction [
 	<gtAction>
-	^ anAction explicit 
+	^ anAction dropdown 
 		category: #playground;
-		stencil: [ 
-			BrDropdown new
-				layout: BlLinearLayout horizontal;
-				constraintsDo: [ :c | 
-					c horizontal fitContent.
-					c vertical fitContent ];
-				in: [ :aDropdown | 
-					aDropdown toggle: [ 
-						BrButton new
-							look: BrGlamorousButtonWithIconLook;
-							icon: BrGlamorousIcons menu asElement;
-							label: 'XDoc' translated;
-							action: [ aDropdown toggle ] ] ];
-				popup: [ self xdocPlayBookListElement ];
-				look: (BrDropdownLook new "outskirtsEmbellisher: [ :e | e look: GtDropdownOutskirtsLook new ]") ]
+		icon: BrGlamorousIcons menu;
+		help: 'Stored XDoc Playgrounds';
+		popup: [ self xdocPlayBookListElement ]
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
@@ -100,7 +88,7 @@ GtPlayBook >> xdocPlayBookListElement [
 		display: allXdocFiles;
 		constraintsDo: [ :c | 
 			c padding: (BlInsets top: 10).
-			c vertical exact: 200.
+			c vertical exact: 300.
 			c horizontal exact: 200 ].
 	^ aList
 ]
