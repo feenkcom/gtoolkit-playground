@@ -22,6 +22,13 @@ XdPlayBookJsonMapping class >> codeSnippet: aCodeSnippetClass property: aSymbol 
 ]
 
 { #category : #'mapping - model' }
+XdPlayBookJsonMapping class >> coderSnippetMappingFor: aNeoJSONMapper [
+	self 
+		codeSnippet: GtCoderSnippet 
+		mappingFor: aNeoJSONMapper
+]
+
+{ #category : #'mapping - model' }
 XdPlayBookJsonMapping class >> collectionOfPagesMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: #CollectionOfPages customDo: [ :mapping |
