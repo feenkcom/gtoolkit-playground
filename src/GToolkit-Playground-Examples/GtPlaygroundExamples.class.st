@@ -360,7 +360,7 @@ GtPlaygroundExamples >> playBook [
 	self assert: aPlayBook pages size equals: 1.
 	self assert: aPlayBook pages first snippets size equals: 1.
 	self assert: aPlayBook pages first snippets first sourceCode equals: ''.
-	self assert: aPlayBook pages first snippets first typeName equals: 'pharo'.
+	self assert: aPlayBook pages first snippets first typeName equals: GtCoderSnippet typeName.
 	^ aPlayBook
 ]
 

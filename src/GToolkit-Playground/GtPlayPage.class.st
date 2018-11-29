@@ -147,7 +147,7 @@ GtPlayPage >> newCollectionSnippet [
 
 { #category : #'instance creation' }
 GtPlayPage >> newDefaultSnippet [
-	^ GtPharoSnippet new.
+	^ GtCoderSnippet new.
 ]
 
 { #category : #notifying }
