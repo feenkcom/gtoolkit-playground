@@ -21,9 +21,33 @@ GtCoderSnippet >> accept: aVisitor [
 	^ aVisitor visitGtPharoSnippet: self
 ]
 
+{ #category : #ui }
+GtCoderSnippet >> asElement [
+	| element coderElement |
+	element := BlElement new.
+	element
+		constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal matchParent ].
+	coderElement := coder asElement.
+	coderElement margin: (BlInsets all: 0).
+	element addChild: coderElement.
+	element
+		clipChildren: false;
+		look: (GtSnippetContainerLook new snippet: self) + BrLayoutLook linearVertical vFitContent hMatchParent;
+		border: BlBorder empty;
+		padding: BlInsets empty;
+		background: BlBackground transparent.
+	^ element
+]
+
 { #category : #converting }
 GtCoderSnippet >> asStencilBuilder [
-	^ coder
+	^ self
+]
+
+{ #category : #ui }
+GtCoderSnippet >> bind: aSnippet to: aSnippetElement [
 ]
 
 { #category : #initialization }
