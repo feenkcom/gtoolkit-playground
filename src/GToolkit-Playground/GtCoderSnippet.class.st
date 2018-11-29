@@ -56,12 +56,22 @@ GtCoderSnippet >> defaultStyler [
 ]
 
 { #category : #actions }
+GtCoderSnippet >> evaluate [
+	^ self evaluateAndGo: false
+]
+
+{ #category : #actions }
 GtCoderSnippet >> evaluateAndGo [
+	^ self evaluateAndGo: true
+]
+
+{ #category : #private }
+GtCoderSnippet >> evaluateAndGo: aBoolean [
 	| aCommand |
 	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
 	aCommand execute.
 	self styleEvaluatedCodeWithResult: aCommand result asException: aCommand isException.
-	self notifyAboutResult: aCommand result exception: aCommand isException spawn: true.
+	self notifyAboutResult: aCommand result exception: aCommand isException spawn: aBoolean.
 	^ aCommand result
 ]
 
@@ -81,6 +91,7 @@ GtCoderSnippet >> initialize [
 	coder := GtPharoSnippetCoder new.
 	super initialize.
 	editor := coder sourceEditor.
+	self variableBindings: GtPlaygroundBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
 		addMainAction: 'Run' translated icon: BrGlamorousIcons play action: [ :aButton | self evaluateAndGoIn: aButton ];

@@ -240,8 +240,8 @@ GtPlaygroundExamples >> pageWithFilesAndMondrianPharoSnippets [
 	aPage constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'files := FileLocation workingDirectory allChildren.').
-	aPage addSnippet: (GtPharoSnippet new sourceCode: 'view := GtMondrian new.
+	aPage addSnippet: (GtCoderSnippet new sourceCode: 'files := FileLocation workingDirectory allChildren.').
+	aPage addSnippet: (GtCoderSnippet new sourceCode: 'view := GtMondrian new.
 view nodes with: files.
 view edges connectFrom: #parent.
 view layout tree nodeDistance: 1.
@@ -255,8 +255,8 @@ GtPlaygroundExamples >> pageWithManySnippets [
 	| aPage | 
 	aPage := self page.
 	10 timesRepeat: [  
-		aPage addSnippet: (GtPharoSnippet new sourceCode: 'aValue := ', 100 atRandom asString ).
-		aPage addSnippet: (GtPharoSnippet new sourceCode: 'aValue := aValue + 21 + ', 100 atRandom asString) ].
+		aPage addSnippet: (GtCoderSnippet new sourceCode: 'aValue := ', 100 atRandom asString ).
+		aPage addSnippet: (GtCoderSnippet new sourceCode: 'aValue := aValue + 21 + ', 100 atRandom asString) ].
 	self assert: aPage snippets size equals: 21.
 	^ aPage
 ]
@@ -312,21 +312,10 @@ GtPlaygroundExamples >> pharoSnippet [
 	<gtExample>
 	<label: 'A basic Pharo snippet'>
 	| aSnippet |
-	aSnippet := GtPharoSnippet new.
+	aSnippet := GtCoderSnippet new.
 	self assert: aSnippet sourceCode equals: ''.
-	self assert: aSnippet typeName equals: 'pharo'.
+	self assert: aSnippet typeName equals: GtCoderSnippet typeName.
 	^ aSnippet
-]
-
-{ #category : #'ui - model elements' }
-GtPlaygroundExamples >> pharoSnippetElementWithCode [ 
-	<gtExample>
-	| anElement |
-	anElement := self pharoSnippetWithCode asElement.
-	self assert: anElement childrenCount equals: 3.
-	self assert: anElement children first children first class equals: BrEditorElement.
-	self assert: anElement children first children first editor text asString equals: 'aValue := 42 + 7'.
-	^ anElement
 ]
 
 { #category : #'model - snippets' }
@@ -446,7 +435,7 @@ GtPlaygroundExamples >> requestSnippetMerge [
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first equals: theSnippets first.
 	self assert: (aPage snippets first = aSnippet) not.
-	self assert: aPage snippets first class equals: GtPharoSnippet.
+	self assert: aPage snippets first class equals: GtCoderSnippet.
 	self assert: aPage snippets first sourceCode equals: self twoLinesPharoSnippetSourceCode.
 	self assert: anAnnouncements size equals: 1.
 	^ aPage
@@ -498,8 +487,8 @@ GtPlaygroundExamples >> requestSnippetSplit [
 	self assert: aPage snippets size equals: 2.
 	self assert: aPage snippets first equals: aSnippet.
 	self assert: (aPage snippets second = aSnippet) not.
-	self assert: aPage snippets first class equals: GtPharoSnippet.
-	self assert: aPage snippets second class equals: GtPharoSnippet.
+	self assert: aPage snippets first class equals: GtCoderSnippet.
+	self assert: aPage snippets second class equals: GtCoderSnippet.
 	self assert: aPage snippets first sourceCode asString trimRight equals: self twoLinesPharoSnippetSourceCode lines first.
 	self assert: aPage snippets second sourceCode equals: self twoLinesPharoSnippetSourceCode lines second.
 	self assert: anAnnouncements size equals: 1.
