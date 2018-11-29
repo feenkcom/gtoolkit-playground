@@ -150,6 +150,11 @@ GtCoderSnippet >> requestSnippetSplitAt: aSplitIndex [
 		snippet: self second: aNewSnippet).
 ]
 
+{ #category : #private }
+GtCoderSnippet >> snippetType [
+	^ GtCoderSnippetType of: self
+]
+
 { #category : #accessing }
 GtCoderSnippet >> sourceCode [
 	^ self text asString
