@@ -428,16 +428,16 @@ GtPlaygroundExamples >> requestSnippetMerge [
 	aPage := self requestSnippetSplit.
 	self assert: aPage snippets size equals: 2.
 	anAnnouncements := OrderedCollection new.
-	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
 	theSnippets := aPage snippets copy.
 	aSnippet := aPage snippets second.
+	aPage when: Announcement do: [ :anAnnouncement | anAnnouncements add: anAnnouncement ].
 	aSnippet requestSnippetMerge.
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first equals: theSnippets first.
 	self assert: (aPage snippets first = aSnippet) not.
 	self assert: aPage snippets first class equals: GtCoderSnippet.
 	self assert: aPage snippets first sourceCode equals: self twoLinesPharoSnippetSourceCode.
-	self assert: anAnnouncements size equals: 1.
+	self assert: anAnnouncements size equals: 3.
 	^ aPage
 ]
 

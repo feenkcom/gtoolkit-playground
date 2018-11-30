@@ -36,6 +36,6 @@ GtPlaygroundPharoSnippetExamples >> pharoSnippet [
 	| aSnippet |
 	aSnippet := GtCoderSnippet new.
 	self assert: aSnippet sourceCode equals: ''.
-	self assert: aSnippet typeName equals: 'pharo-snippet'.
+	self assert: aSnippet typeName equals: 'pharo'.
 	^ aSnippet
 ]
