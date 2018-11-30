@@ -67,10 +67,18 @@ GtCoderSnippet >> evaluateAndGo [
 
 { #category : #private }
 GtCoderSnippet >> evaluateAndGo: aBoolean [
+	^ self evaluateAndGo: aBoolean showPrintString: false
+]
+
+{ #category : #private }
+GtCoderSnippet >> evaluateAndGo: aBoolean showPrintString: includePrintStringAttribute [
 	| aCommand |
 	aCommand := (GtEvaluateSnippetCommand snippet: self) asErrorCatchingCommand.
 	aCommand execute.
-	self styleEvaluatedCodeWithResult: aCommand result asException: aCommand isException.
+	self
+		styleEvaluatedCodeWithResult: aCommand result
+		asException: aCommand isException
+		showPrintString: includePrintStringAttribute.
 	self notifyAboutResult: aCommand result exception: aCommand isException spawn: aBoolean.
 	^ aCommand result
 ]
@@ -84,6 +92,13 @@ GtCoderSnippet >> evaluateAndGoIn: element [
 			(GtPhlowObjectToSpawn new
 				object: result;
 				sourceElement: element)
+]
+
+{ #category : #actions }
+GtCoderSnippet >> evaluateAndPrint [
+	| result |
+	result := self evaluateAndGo: false showPrintString: true.
+	^ result
 ]
 
 { #category : #initialization }
@@ -103,6 +118,14 @@ GtCoderSnippet >> initialize [
 						key: Key g;
 						build);
 				action: [ :editorElement | self evaluateAndGoIn: editorElement ]);
+		addShortcut:
+			(BlShortcut new
+				combination:
+					(BlKeyCombination builder
+						primary;
+						key: Key p;
+						build);
+				action: [ :editorElement | self evaluateAndPrint ]);
 		addShortcut:
 			(BlShortcut new
 				combination:
@@ -209,18 +232,21 @@ GtCoderSnippet >> stencilBuilderClass [
 ]
 
 { #category : #'private - styling' }
-GtCoderSnippet >> styleEvaluatedCodeWithResult: aResult asException: aBoolean [
-	aBoolean 
-		ifFalse: [ self editor styleTextAndAfterDo: [
-			GtMarkSuccessfullyEvaluatedCodeCommand new
-				editor: self editor;
-				result: aResult;
-				execute ] ]
-		ifTrue: [ self editor styleTextAndAfterDo: [
-			GtMarkUnsuccessfullyEvaluatedCodeCommand new
-				editor: self editor;
-				result: aResult;
-				execute ] ]
+GtCoderSnippet >> styleEvaluatedCodeWithResult: aResult asException: aBoolean showPrintString: includePrintStringAttribute [
+	aBoolean
+		ifTrue: [ self editor
+				styleTextAndAfterDo: [ GtMarkUnsuccessfullyEvaluatedCodeCommand new
+						editor: self editor;
+						result: aResult;
+						execute ] ]
+		ifFalse: [ self editor
+				styleTextAndAfterDo: [ GtMarkSuccessfullyEvaluatedCodeCommand new
+						editor: self editor;
+						result: aResult;
+						execute ].
+			includePrintStringAttribute
+				ifTrue: [ (self editor text from: self editor text size to: self editor text size)
+						attributes: {(GtCoderPrintStringAttribute forString: aResult printString)} ] ]
 ]
 
 { #category : #accessing }
