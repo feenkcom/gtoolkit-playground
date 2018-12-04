@@ -123,6 +123,14 @@ GtCoderSnippet >> initialize [
 				combination:
 					(BlKeyCombination builder
 						primary;
+						key: Key d;
+						build);
+				action: [ :editorElement | self evaluate ]);
+		addShortcut:
+			(BlShortcut new
+				combination:
+					(BlKeyCombination builder
+						primary;
 						key: Key p;
 						build);
 				action: [ :editorElement | self evaluateAndPrint ]);
