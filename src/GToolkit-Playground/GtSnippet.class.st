@@ -1,8 +1,8 @@
 Class {
 	#name : #GtSnippet,
 	#superclass : #Object,
-	#traits : 'GtAssertingTrait + GtAnnouncerTrait',
-	#classTraits : 'GtAssertingTrait classTrait + GtAnnouncerTrait classTrait',
+	#traits : 'GtAssertingTrait + TGtAnnouncer',
+	#classTraits : 'GtAssertingTrait classTrait + TGtAnnouncer classTrait',
 	#instVars : [
 		'announcer'
 	],
