@@ -109,7 +109,6 @@ GtCoderSnippet >> initialize [
 	self variableBindings: GtPlaygroundBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
-		addMainAction: 'Run' translated icon: BrGlamorousIcons play action: [ :aButton | self evaluateAndGoIn: aButton ];
 		addShortcut:
 			(BlShortcut new
 				combination:
@@ -118,6 +117,14 @@ GtCoderSnippet >> initialize [
 						key: Key g;
 						build);
 				action: [ :editorElement | self evaluateAndGoIn: editorElement ]);
+		addShortcut:
+			(BlShortcut new
+				combination:
+					(BlKeyCombination builder
+						primary;
+						key: Key d;
+						build);
+				action: [ :editorElement | self evaluate ]);
 		addShortcut:
 			(BlShortcut new
 				combination:
