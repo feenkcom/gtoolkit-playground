@@ -25,12 +25,12 @@ GtPlaygroundEvaluatedCodeHighlightedAttribute >> drawBelowOnSpartaCanvas: aCanva
 
 { #category : #comparing }
 GtPlaygroundEvaluatedCodeHighlightedAttribute >> equals: aTextAttribute [
-	^ self paint = aTextAttribute paint
+	^ self class = aTextAttribute class
 ]
 
 { #category : #comparing }
 GtPlaygroundEvaluatedCodeHighlightedAttribute >> hash [
-	^ self class hash bitXor: self paint hash
+	^ self class hash
 ]
 
 { #category : #accessing }

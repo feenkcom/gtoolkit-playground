@@ -1,10 +1,7 @@
 Class {
 	#name : #GtPlaygroundDebugExceptionButtonAttribute,
 	#superclass : #BrTextAdornmentAttribute,
-	#traits : 'TBlEventTarget',
-	#classTraits : 'TBlEventTarget classTrait',
 	#instVars : [
-		'eventDispatcher',
 		'result'
 	],
 	#category : #'GToolkit-Playground-Commands'
@@ -35,19 +32,9 @@ GtPlaygroundDebugExceptionButtonAttribute >> affect: aBrText in: anEditorElement
 	^ container
 ]
 
-{ #category : #'event management accessing' }
-GtPlaygroundDebugExceptionButtonAttribute >> eventDispatcher [
-	"Return an object responsible for event dispatching"
-	<return: #BlDirectEventDispatcher>
-
-	^ eventDispatcher
-]
-
 { #category : #initialization }
 GtPlaygroundDebugExceptionButtonAttribute >> initialize [
 	super initialize.
-	
-	eventDispatcher := BlBubblingEventDispatcher on: self.
 	
 	self beAppend
 ]
