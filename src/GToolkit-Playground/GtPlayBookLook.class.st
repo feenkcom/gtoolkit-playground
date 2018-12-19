@@ -45,7 +45,7 @@ GtPlayBookLook >> mayAddActionsFor: aGtPage in: aTab [
 	| theActions |
 	theActions := GtPhlowActionsCollector new
 		fromObject: self playBook;
-		selectUsing: [ :eachAction | eachAction category = #playground ];
+		selectUsing: [ :eachAction | eachAction target = GtPlaygroundActionTarget uniqueInstance ];
 		collect.
 	theActions ifEmpty: [ ^ self ].
 	aTab actionsStencil: [
