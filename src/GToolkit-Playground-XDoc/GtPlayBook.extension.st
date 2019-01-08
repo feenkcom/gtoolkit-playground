@@ -4,7 +4,7 @@ Extension { #name : #GtPlayBook }
 GtPlayBook >> gtActionXdocFor: anAction [
 	<gtAction>
 	^ anAction dropdown 
-		category: #playground;
+		forPlayground;
 		icon: BrGlamorousIcons menu;
 		help: 'Stored XDoc Playgrounds';
 		popup: [ self xdocPlayBookListElement ]

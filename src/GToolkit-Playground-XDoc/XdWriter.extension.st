@@ -6,5 +6,5 @@ XdWriter >> playbook: aPlayBook [
 	aJsonString := XdPlayBookJsonMapping writePlayBook: aPlayBook.
 	self 
 		documentType: XdPlayBookType;
-		attachment: 'main', self constants playBookExtension text: aJsonString
+		attachment: 'main.', self constants playBookExtension text: aJsonString
 ]
