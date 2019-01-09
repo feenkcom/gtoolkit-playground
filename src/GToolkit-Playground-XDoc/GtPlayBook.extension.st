@@ -34,6 +34,12 @@ GtPlayBook >> readPlayBookFrom: eachFile [
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
+GtPlayBook >> saveToXDoc [
+	self storePlayBookInto: (XdFile new
+		streamingStrategy: XdStreamingStrategy bytes).
+]
+
+{ #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> storePlayBookInto: aXdFile [ 
 	| aText aTitle aDescription |
 	aText := String streamContents: [ :aStream |
@@ -96,13 +102,13 @@ GtPlayBook >> xdocPlayBookListElement [
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> xdocSaving [
 	<playBookHandler>
-	| anXdocPlaybookHandler aFileReference |
+	| aXdFile aFileReference |
 	aFileReference := FileLocator localDirectory / 'xdocs' / 
 		(XdUtility playgroundFileNameFromDateAndTime: DateAndTime now).
 	aFileReference parent ensureCreateDirectory. 
-	anXdocPlaybookHandler := XdFile new.
-	anXdocPlaybookHandler streamingStrategy: (XdStreamingStrategy file: aFileReference).
+	aXdFile := XdFile new.
+	aXdFile streamingStrategy: (XdStreamingStrategy file: aFileReference).
 	self 
 		subscribe: GtPageSnippetEvaluatedAnnouncement 
-		do: [ :anAnnuncement | self storePlayBookInto: anXdocPlaybookHandler ]
+		do: [ :anAnnuncement | self storePlayBookInto: aXdFile ]
 ]
