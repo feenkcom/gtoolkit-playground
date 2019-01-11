@@ -61,13 +61,13 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-playground/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
-			baseline: 'Xdoc' with: [
+			baseline: 'XdocClient' with: [
 				spec repository: 'github://feenkcom/xdoc/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
 				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
-				spec requires: #('GToolkit-Playground' 'Xdoc' 'GToolkitExamples' ). ];
+				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
 				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
 
