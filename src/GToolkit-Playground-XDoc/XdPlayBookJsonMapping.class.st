@@ -126,9 +126,10 @@ XdPlayBookJsonMapping class >> snippetTypeNameAndValueMappingFor: aNeoJSONMapper
 						mapWriter writeKey: object typeName value: object ] ] ] ].
 	GtSnippet availableSnippetClasses do: [ :eachSnippetClass | 
 		| aMessage |
+		self flag: 'we should dispatch through the class rather than perform'.
 		aMessage := eachSnippetClass name.
 		(aMessage beginsWith: 'Gt') ifTrue: [ aMessage := aMessage allButFirst: 2 ].
-		aMessage at: 1 put: (aMessage first asLowercase).
+		aMessage := aMessage asString uncapitalized.
 		aMessage := aMessage, 'MappingFor:'.
 		self perform: aMessage asSymbol with: aNeoJSONMapper ]
 ]
@@ -170,4 +171,9 @@ XdPlayBookJsonMapping class >> writeUrlSnippet: aGtUrlSnippet [
 	^ self 
 		write: aGtUrlSnippet 
 		mappedTo: #urlSnippetMappingFor:
+]
+
+{ #category : #'as yet unclassified' }
+XdPlayBookJsonMapping class >> xdPublishedDocsSnippetMappingFor: aNeoJSONWriter [ 
+	self flag: 'implement me'
 ]
