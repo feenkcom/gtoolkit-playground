@@ -142,28 +142,6 @@ GtPlaygroundExamples >> evaluateTwoPharoSnippets [
 	^ aPage
 ]
 
-{ #category : #actions }
-GtPlaygroundExamples >> evaluateUrl [
-	<gtExample>
-	<label: 'Evaluate a Pharo code snippet'>
-		| aSemaphore aTimeouted aSnippet theAnnouncements |
-	aSemaphore := Semaphore new.
-	theAnnouncements := OrderedCollection new.
-	aSnippet := self urlSnippet.
-	aSnippet url: 'https://feenk.com'.
-	aSnippet 
-		when: GtSnippetEvaluatedAnnouncement 
-		do: [ :anAnnouncement | theAnnouncements add: anAnnouncement. aSemaphore signal ].
-	aSnippet evaluate.
-	aTimeouted := aSemaphore waitTimeoutSeconds: 1.
-	self assert: aTimeouted not.
-	self assert: theAnnouncements size equals: 1.
-	self assert: theAnnouncements first result class equals: ZnResponse.
-	self assert: theAnnouncements first isException not.
-	self assert: theAnnouncements first isSpawnResultRequested not.
-	^ aSnippet
-]
-
 { #category : #'model - page and book' }
 GtPlaygroundExamples >> page [
 	<gtExample>
@@ -500,15 +478,4 @@ GtPlaygroundExamples >> twoLinesPharoSnippetSourceCode [
 	<gtExample>
 	^ 'aVariable := 3.
 aMultiplication := aVariable * 7'
-]
-
-{ #category : #'model - snippets' }
-GtPlaygroundExamples >> urlSnippet [
-	<gtExample>
-	<label: 'A basic URL snippet'>
-	| aSnippet |
-	aSnippet := GtUrlSnippet new.
-	self assert: aSnippet url equals: 'https://feenk.com'.
-	self assert: aSnippet typeName equals: 'url'.
-	^ aSnippet
 ]

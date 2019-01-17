@@ -54,13 +54,6 @@ XdPlayBookJsonMapping class >> collectionOfSnippetsMappingFor: aNeoJSONMapper [
 ]
 
 { #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> pharoSnippetMappingFor: aNeoJSONMapper [
-	self 
-		codeSnippet: GtPharoSnippet 
-		mappingFor: aNeoJSONMapper
-]
-
-{ #category : #'mapping - model' }
 XdPlayBookJsonMapping class >> playBookMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: GtPlayBook do: [ :mapping |
@@ -77,14 +70,6 @@ XdPlayBookJsonMapping class >> playPageMappingFor: aNeoJSONMapper [
 ]
 
 { #category : #'api - convenience' }
-XdPlayBookJsonMapping class >> readPharoSnippet: aJsonString [
-	^ self 
-		read: GtPharoSnippet 
-		withMapping: #pharoSnippetMappingFor: 
-		from: aJsonString readStream
-]
-
-{ #category : #'api - convenience' }
 XdPlayBookJsonMapping class >> readPlayBook: aJsonString [
 	^ self 
 		read: GtPlayBook
@@ -97,14 +82,6 @@ XdPlayBookJsonMapping class >> readPlayPage: aJsonString [
 	^ self 
 		read: GtPlayPage 
 		withMapping: #playPageMappingFor: 
-		from: aJsonString readStream
-]
-
-{ #category : #'api - convenience' }
-XdPlayBookJsonMapping class >> readUrlSnippet: aJsonString [
-	^ self 
-		read: GtUrlSnippet 
-		withMapping: #urlSnippetMappingFor: 
 		from: aJsonString readStream
 ]
 
@@ -134,24 +111,6 @@ XdPlayBookJsonMapping class >> snippetTypeNameAndValueMappingFor: aNeoJSONMapper
 		self perform: aMessage asSymbol with: aNeoJSONMapper ]
 ]
 
-{ #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> urlSnippetMappingFor: aNeoJSONMapper [
-	self 
-		codeSnippet: GtUrlSnippet 
-		property: #url
-		mappingFor: aNeoJSONMapper.
-	aNeoJSONMapper
-		for: GtUrlSnippet do: [ :mapping |
-	      (mapping mapAccessor: #responseVariableName to: #variable) ].
-]
-
-{ #category : #'api - convenience' }
-XdPlayBookJsonMapping class >> writePharoSnippet: aGtPharoSnippet [
-	^ self 
-		write: aGtPharoSnippet 
-		mappedTo: #pharoSnippetMappingFor:
-]
-
 { #category : #'api - convenience' }
 XdPlayBookJsonMapping class >> writePlayBook: aGtPlayBook [
 	^ self 
@@ -164,13 +123,6 @@ XdPlayBookJsonMapping class >> writePlayPage: aGtPlayPage [
 	^ self 
 		write: aGtPlayPage 
 		mappedTo: #playPageMappingFor:
-]
-
-{ #category : #'api - convenience' }
-XdPlayBookJsonMapping class >> writeUrlSnippet: aGtUrlSnippet [
-	^ self 
-		write: aGtUrlSnippet 
-		mappedTo: #urlSnippetMappingFor:
 ]
 
 { #category : #'as yet unclassified' }
