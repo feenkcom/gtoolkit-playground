@@ -47,9 +47,9 @@ XdPlaygroundExamples >> readPlaybookDocument [
 		equals: 58.
 	self assert: aXdReadFile streamingStrategy notNil.
 	self assert: aXdReadFile exists.
-	self assert: aXdReadFile streamingStrategy zip members size equals: 2.
+	self assert: aXdReadFile streamingStrategy zip members size equals: 3.
 	aZip := aXdReadFile streamingStrategy zip.
-	self assert: aZip members size equals: 2.
+	self assert: aZip members size equals: 3.
 	aPlayBookZipMember := aZip members detect: [ :eachMember | 
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
@@ -90,9 +90,9 @@ XdPlaygroundExamples >> readPlaybookDocumentFromFile [
 		equals: 58.
 	self assert: aXdReadFile streamingStrategy notNil.
 	self assert: aXdReadFile exists.
-	self assert: aXdReadFile streamingStrategy zip members size equals: 2.
+	self assert: aXdReadFile streamingStrategy zip members size equals: 3.
 	aZip := aXdReadFile streamingStrategy zip.
-	self assert: aZip members size equals: 2.
+	self assert: aZip members size equals: 3.
 	aPlayBookZipMember := aZip members detect: [ :eachMember | 
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
@@ -133,9 +133,9 @@ XdPlaygroundExamples >> readPlaybookDocumentFromFileOnDisk [
 		equals: 58.
 	self assert: aXdReadFile streamingStrategy notNil.
 	self assert: aXdReadFile exists.
-	self assert: aXdReadFile streamingStrategy zip members size equals: 2.
+	self assert: aXdReadFile streamingStrategy zip members size equals: 3.
 	aZip := aXdReadFile streamingStrategy zip.
-	self assert: aZip members size equals: 2.
+	self assert: aZip members size equals: 3.
 	aPlayBookZipMember := aZip members detect: [ :eachMember | 
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
@@ -183,7 +183,7 @@ XdPlaygroundExamples >> writePlaybookDocument [
 		equals: 58.
 	self assert: aXdFile streamingStrategy notNil.
 	self assert: aXdFile exists.
-	self assert: aXdFile streamingStrategy zip members size equals: 2.
+	self assert: aXdFile streamingStrategy zip members size equals: 3.
 	^ aXdFile
 ]
 
@@ -222,7 +222,7 @@ XdPlaygroundExamples >> writePlaybookDocumentToFile [
 		equals: 58.
 	self assert: aXdFile streamingStrategy notNil.
 	self assert: aXdFile exists.
-	self assert: aXdFile streamingStrategy zip members size equals: 2.
+	self assert: aXdFile streamingStrategy zip members size equals: 3.
 	self assert: aPlayBookFileReference exists.
 	^ aXdFile
 ]
@@ -264,7 +264,7 @@ XdPlaygroundExamples >> writePlaybookDocumentToFileOnDisk [
 		equals: 58.
 	self assert: aXdFile streamingStrategy notNil.
 	self assert: aXdFile exists.
-	self assert: aXdFile streamingStrategy zip members size equals: 2.
+	self assert: aXdFile streamingStrategy zip members size equals: 3.
 	self assert: aPlayBookFileReference exists.
 	^ aXdFile
 ]
