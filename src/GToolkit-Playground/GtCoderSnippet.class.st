@@ -91,7 +91,7 @@ GtCoderSnippet >> initialize [
 				combination:
 					(BlKeyCombination builder
 						primary;
-						key: Key delete;
+						delete;
 						build);
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
@@ -99,7 +99,7 @@ GtCoderSnippet >> initialize [
 				combination:
 					(BlKeyCombination builder
 						primary;
-						key: Key return;
+						return;
 						build);
 				action: [ :aShortcut | self requestSnippetSplit ])
 ]
