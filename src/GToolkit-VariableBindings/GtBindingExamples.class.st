@@ -8,13 +8,7 @@ Class {
 GtBindingExamples >> defaultHighlightingBindingStrategy [
 	<gtExample>
 	<label: 'Default highlighting binding strategy'>
-	^ GtHighlightingBindingStrategy new
-]
-
-{ #category : #'binding strategy' }
-GtBindingExamples >> defaultSatisfyingHighlightingBindingStrategy [
-	<gtExample>
-	^ GtSatisfyingHighlightingBindingStrategy new
+	^ GtBindingStrategy new
 ]
 
 { #category : #'binding strategy' }
@@ -40,18 +34,6 @@ GtBindingExamples >> queryDefaultHighlightingBindingStrategy [
 	strategy := self defaultHighlightingBindingStrategy.
 	result := strategy bindingOf: self variableOneName.
 	self assert: result isNil.
-	^ strategy
-]
-
-{ #category : #'binding strategy' }
-GtBindingExamples >> queryDefaultSatisfyingHighlightingBindingStrategy [
-	<gtExample>
-	| strategy result |
-	strategy := self defaultSatisfyingHighlightingBindingStrategy.
-	result := strategy bindingOf: self variableOneName.
-	self assert: result notNil.
-	self assert: result key equals: self variableOneName.
-	self assert: result value equals: nil.
 	^ strategy
 ]
 
