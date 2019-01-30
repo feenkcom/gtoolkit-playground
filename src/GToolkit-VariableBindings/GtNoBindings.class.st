@@ -49,3 +49,8 @@ GtNoBindings >> hasBindingOf: aSymbol [
 GtNoBindings >> receiver [
 	^ nil
 ]
+
+{ #category : #accessing }
+GtNoBindings >> receiverClass [
+	^ self receiver class
+]

@@ -61,7 +61,7 @@ GtCoderSnippet >> codeEvaluated: anEvaluationAnnouncement [
 
 { #category : #initialization }
 GtCoderSnippet >> defaultStyler [
-	^ BrRBTextStyler new workspace: GtBindingStrategy new
+	^ BrRBTextStyler new workspace: GtHighlightingBindingStrategy new
 ]
 
 { #category : #actions }

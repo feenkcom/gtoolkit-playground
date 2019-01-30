@@ -76,7 +76,5 @@ GtBindingStrategy >> initializeBindings [
 
 { #category : #private }
 GtBindingStrategy >> treatBinding: anAssocOrNil of: aSymbol [
-	"Subclasses can treat existing or missing bindings of a variable named aSymbol"
-	<return: #LiteralVariable or: nil>
-	^ anAssocOrNil
+	self subclassResponsibility
 ]

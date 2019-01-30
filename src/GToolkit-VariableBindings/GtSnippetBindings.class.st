@@ -59,3 +59,8 @@ GtSnippetBindings >> receiver [
 GtSnippetBindings >> receiver: anObject [
 	receiver := anObject
 ]
+
+{ #category : #accessing }
+GtSnippetBindings >> receiverClass [
+	^ self receiver class
+]

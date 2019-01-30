@@ -29,13 +29,3 @@ GtBindingsTrait >> hasBindingOf: aSymbol [
 	<return: #Boolean>
 	^ self explicitRequirement
 ]
-
-{ #category : #accessing }
-GtBindingsTrait >> receiver [
-	^ self explicitRequirement
-]
-
-{ #category : #accessing }
-GtBindingsTrait >> receiverClass [
-	^ self receiver class
-]
