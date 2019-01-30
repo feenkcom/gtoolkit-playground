@@ -150,7 +150,7 @@ GtPlaygroundExamples >> page [
 	aPage := GtPlayPage newDefault.
 	self assert: aPage snippets size equals: 1.
 	self assert: aPage snippets first typeName equals: aPage newDefaultSnippet typeName.
-	self assert: aPage bindings class equals: GtObjectBindings.
+	self assert: aPage bindings class equals: GtSnippetBindings.
 	^ aPage
 ]
 

@@ -83,7 +83,7 @@ GtCoderSnippet >> initialize [
 	editor := coder sourceEditor.
 	shouldSpawn := false.
 	coder announcer weak when: GtCoderEvaluationAnnouncement send: #codeEvaluated: to: self.
-	self variableBindings: GtPlaygroundBindings new.
+	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
 		addShortcut:

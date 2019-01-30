@@ -58,6 +58,11 @@ GtBindingStrategy >> gtBindingsFor: aView [
 		ifFalse: [ aView empty ]
 ]
 
+{ #category : #binding }
+GtBindingStrategy >> hasBindingOf: aSymbol [
+	^ self bindings hasBindingOf: aSymbol
+]
+
 { #category : #initialization }
 GtBindingStrategy >> initialize [
 	super initialize.

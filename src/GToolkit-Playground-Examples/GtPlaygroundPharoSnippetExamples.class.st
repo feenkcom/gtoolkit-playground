@@ -11,7 +11,7 @@ GtPlaygroundPharoSnippetExamples >> page [
 	| aPage |
 	aPage := GtPlayPage new.
 	self assert: aPage snippets size equals: 0.
-	self assert: aPage bindings class equals: GtObjectBindings.
+	self assert: aPage bindings class equals: GtSnippetBindings.
 	^ aPage
 ]
 

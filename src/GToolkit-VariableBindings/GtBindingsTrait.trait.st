@@ -23,3 +23,19 @@ GtBindingsTrait >> bindingOf: aSymbol [
 	<return: #LiteralVariable or: nil>
 	^ self explicitRequirement
 ]
+
+{ #category : #testing }
+GtBindingsTrait >> hasBindingOf: aSymbol [
+	<return: #Boolean>
+	^ self explicitRequirement
+]
+
+{ #category : #accessing }
+GtBindingsTrait >> receiver [
+	^ self explicitRequirement
+]
+
+{ #category : #accessing }
+GtBindingsTrait >> receiverClass [
+	^ self receiver class
+]
