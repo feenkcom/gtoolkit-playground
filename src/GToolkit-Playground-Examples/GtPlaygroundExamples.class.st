@@ -131,6 +131,7 @@ GtPlaygroundExamples >> evaluatePharoSnippetWithSelection [
 GtPlaygroundExamples >> evaluateTwoPharoSnippets [
 	<gtExample>
 	<label: 'Evaluate Pharo snippets'>
+	<noTest>
 	| aPage aResult |
 	aPage := self pageWithTwoDependingPharoSnippets.
 	aResult := aPage snippets second evaluate.
