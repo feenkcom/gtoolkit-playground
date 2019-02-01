@@ -50,7 +50,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 	spec for: #'common' do: [
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://pharo-graphics/Brick/src' ];
+				spec repository: 'github://feenkcom/Brick/src' ];
 			baseline: 'GToolkitPhlow' with: [
 				spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
 			baseline: 'GToolkitCompleter' with: [
