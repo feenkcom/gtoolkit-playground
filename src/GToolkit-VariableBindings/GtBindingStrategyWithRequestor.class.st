@@ -33,7 +33,7 @@ GtBindingStrategyWithRequestor >> bindingStrategy: aGtBindingStrategy [
 { #category : #initialization }
 GtBindingStrategyWithRequestor >> initialize [
 	super initialize.
-	bindingStrategy := GtPlaygroundBindingStrategy new.
+	bindingStrategy := GtSnippetBindingStrategy new.
 	requestor := nil.
 ]
 

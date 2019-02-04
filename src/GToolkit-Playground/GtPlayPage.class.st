@@ -135,7 +135,7 @@ GtPlayPage >> gtLiveFor: aView [
 GtPlayPage >> initialize [
 	super initialize.
 	snippets := OrderedCollection new.
-	bindings := GtObjectBindings new.
+	bindings := GtSnippetBindings new.
 	announcer := Announcer new.
 	title := 'Page'.
 ]

@@ -83,7 +83,7 @@ GtCoderSnippet >> initialize [
 	editor := coder sourceEditor.
 	shouldSpawn := false.
 	coder announcer weak when: GtCoderEvaluationAnnouncement send: #codeEvaluated: to: self.
-	self variableBindings: GtPlaygroundBindings new.
+	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
 		addShortcut:
@@ -91,7 +91,7 @@ GtCoderSnippet >> initialize [
 				combination:
 					(BlKeyCombination builder
 						primary;
-						key: Key delete;
+						delete;
 						build);
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
@@ -99,7 +99,7 @@ GtCoderSnippet >> initialize [
 				combination:
 					(BlKeyCombination builder
 						primary;
-						key: Key return;
+						return;
 						build);
 				action: [ :aShortcut | self requestSnippetSplit ])
 ]

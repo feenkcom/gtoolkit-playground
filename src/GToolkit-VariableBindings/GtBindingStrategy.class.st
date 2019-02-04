@@ -58,6 +58,11 @@ GtBindingStrategy >> gtBindingsFor: aView [
 		ifFalse: [ aView empty ]
 ]
 
+{ #category : #binding }
+GtBindingStrategy >> hasBindingOf: aSymbol [
+	^ self bindings hasBindingOf: aSymbol
+]
+
 { #category : #initialization }
 GtBindingStrategy >> initialize [
 	super initialize.
@@ -71,7 +76,5 @@ GtBindingStrategy >> initializeBindings [
 
 { #category : #private }
 GtBindingStrategy >> treatBinding: anAssocOrNil of: aSymbol [
-	"Subclasses can treat existing or missing bindings of a variable named aSymbol"
-	<return: #LiteralVariable or: nil>
-	^ anAssocOrNil
+	self subclassResponsibility
 ]

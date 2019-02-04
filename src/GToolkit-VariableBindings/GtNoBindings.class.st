@@ -39,3 +39,18 @@ GtNoBindings >> at: aString put: anObject [
 GtNoBindings >> bindingOf: aSymbol [
 	^ nil
 ]
+
+{ #category : #binding }
+GtNoBindings >> hasBindingOf: aSymbol [
+	^ false
+]
+
+{ #category : #accessing }
+GtNoBindings >> receiver [
+	^ nil
+]
+
+{ #category : #accessing }
+GtNoBindings >> receiverClass [
+	^ self receiver class
+]

@@ -64,7 +64,7 @@ GtCommandExamples >> executeSourceCodeWithUndefinedVariableUsingPlaygroundBindin
 	| aCommand |
 	aCommand := self evaluateSourceCodeCommand.
 	aCommand sourceCode: 'aValue := 4 factorial'.
-	aCommand variableBindings: GtPlaygroundBindings new.
+	aCommand variableBindings: GtSnippetBindings new.
 	aCommand execute.
 	self assert: aCommand result equals: 24.
 	self assert: (aCommand variableBindings bindingOf: #aValue) notNil.
@@ -92,5 +92,5 @@ GtCommandExamples >> executeUndefinedVariable [
 { #category : #'code evaluation' }
 GtCommandExamples >> playgroundBindings [
 	<gtExample>
-	^ GtPlaygroundBindings new
+	^ GtSnippetBindings new
 ]

@@ -1,22 +1,23 @@
 Class {
-	#name : #GtPlaygroundBindings,
+	#name : #GtSnippetBindings,
 	#superclass : #Object,
 	#traits : 'GtBindingsTrait + GtAssertingTrait',
 	#classTraits : 'GtBindingsTrait classTrait + GtAssertingTrait classTrait',
 	#instVars : [
-		'bindings'
+		'bindings',
+		'receiver'
 	],
 	#category : #'GToolkit-VariableBindings-Core'
 }
 
 { #category : #converting }
-GtPlaygroundBindings >> asDictionary [
+GtSnippetBindings >> asDictionary [
 	<return: #Dictionary>
 	^ bindings copy
 ]
 
 { #category : #adding }
-GtPlaygroundBindings >> at: aSymbol put: anObject [ 
+GtSnippetBindings >> at: aSymbol put: anObject [ 
 	self assert: [ aSymbol isSymbol ] description: [ 'Variable name should be a symbol' ].
 	bindings 
 		at: aSymbol 
@@ -24,7 +25,7 @@ GtPlaygroundBindings >> at: aSymbol put: anObject [
 ]
 
 { #category : #binding }
-GtPlaygroundBindings >> bindingOf: aSymbol [
+GtSnippetBindings >> bindingOf: aSymbol [
 	^ bindings
 		at: aSymbol 
 		ifPresent: [ :aValue | aValue ] 
@@ -32,18 +33,34 @@ GtPlaygroundBindings >> bindingOf: aSymbol [
 ]
 
 { #category : #'gt-extension' }
-GtPlaygroundBindings >> gtBindingsFor: aView [
+GtSnippetBindings >> gtBindingsFor: aView [
 	<gtView>
 	^ bindings gtItemsFor: aView
 ]
 
+{ #category : #binding }
+GtSnippetBindings >> hasBindingOf: aSymbol [
+	^ bindings includesKey: aSymbol
+]
+
 { #category : #initialization }
-GtPlaygroundBindings >> initialize [
+GtSnippetBindings >> initialize [
 	super initialize.
 	bindings := Dictionary new.
+	receiver := nil.
 ]
 
 { #category : #accessing }
-GtPlaygroundBindings >> receiver [
-	^ nil
+GtSnippetBindings >> receiver [
+	^ receiver
+]
+
+{ #category : #accessing }
+GtSnippetBindings >> receiver: anObject [
+	receiver := anObject
+]
+
+{ #category : #accessing }
+GtSnippetBindings >> receiverClass [
+	^ self receiver class
 ]
