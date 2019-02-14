@@ -19,6 +19,7 @@ GtPageElement >> initialize [
 	list constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
+	list padding: (BlInsets top: 5).
 	self addChild: list as: #list.
 	self clipChildren: false
 ]
