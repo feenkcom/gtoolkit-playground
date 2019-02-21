@@ -86,6 +86,26 @@ GtPlayBook >> gtLiveFor: aView [
 		stencil: [ self asElement ]
 ]
 
+{ #category : #'gt-extension' }
+GtPlayBook >> gtRunAllActionFor: anAction [
+	<gtAction>
+	^ anAction button
+			icon: BrGlamorousIcons playall;
+			forPlayground;
+			priority: 1;
+			action: [ :aButton | self playAllAndSelectResult: aButton ] 
+]
+
+{ #category : #'gt-extension' }
+GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
+	<gtAction>
+	^ anAction button
+			icon: BrGlamorousIcons playallinspect;
+			forPlayground;
+			priority: 2;
+			action: [ :aButton | self playAllAndSpawnResult: aButton ] 
+]
+
 { #category : #initialization }
 GtPlayBook >> initialize [
 	super initialize.
@@ -113,6 +133,28 @@ GtPlayBook >> pages [
 GtPlayBook >> pages: aCollectionOfPages [
 	aCollectionOfPages do: [ :eachPage | 
 		self addPlayPage: eachPage ]
+]
+
+{ #category : #actions }
+GtPlayBook >> playAll [
+	| aLastResult |
+	aLastResult := nil.
+	self pages do: [ :eachPage | aLastResult := eachPage playAll ].
+	^ aLastResult
+]
+
+{ #category : #actions }
+GtPlayBook >> playAllAndSelectResult: anElement [
+	| aLastResult |
+	aLastResult := self playAll.
+	anElement phlow selectObject: aLastResult
+]
+
+{ #category : #actions }
+GtPlayBook >> playAllAndSpawnResult: anElement [
+	| aLastResult |
+	aLastResult := self playAll.
+	anElement phlow spawnObject: aLastResult
 ]
 
 { #category : #subscriptions }

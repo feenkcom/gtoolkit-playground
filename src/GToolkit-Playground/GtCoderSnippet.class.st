@@ -143,6 +143,11 @@ GtCoderSnippet >> mergeWith: aSnippet [
 ]
 
 { #category : #actions }
+GtCoderSnippet >> playAll [
+	^ coder doItAll
+]
+
+{ #category : #actions }
 GtCoderSnippet >> requestSnippetMerge [
 	self announce: (GtSnippetMergeRequestedAnnouncement snippet: self)
 ]
