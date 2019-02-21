@@ -174,6 +174,14 @@ GtPlayPage >> numberOfSnippets [
 	^ self snippets size
 ]
 
+{ #category : #actions }
+GtPlayPage >> playAll [
+	| aLastResult |
+	aLastResult := nil.
+	self snippets do: [ :eachSnippet | aLastResult := eachSnippet playAll ].
+	^ aLastResult
+]
+
 { #category : #'api - modification' }
 GtPlayPage >> removeSnippet: aGtSnippet [
 	"Remove a playground snippet"

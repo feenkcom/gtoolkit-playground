@@ -91,6 +91,12 @@ GtSnippet >> mergeWith: anSnippet [
 	"Subclasses can define merging mechanism"
 ]
 
+{ #category : #actions }
+GtSnippet >> playAll [
+	"Evaluate all request."
+	^ nil
+]
+
 { #category : #'api - requests' }
 GtSnippet >> requestNewSnippetBelow [
 	self announce: (GtSnippetBelowRequestedAnnouncement snippet: self).
