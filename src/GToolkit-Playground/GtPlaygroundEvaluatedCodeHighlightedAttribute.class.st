@@ -24,13 +24,15 @@ GtPlaygroundEvaluatedCodeHighlightedAttribute >> drawBelowOnSpartaCanvas: aCanva
 ]
 
 { #category : #comparing }
-GtPlaygroundEvaluatedCodeHighlightedAttribute >> equals: aTextAttribute [
-	^ self class = aTextAttribute class
+GtPlaygroundEvaluatedCodeHighlightedAttribute >> equals: anAnotherAttribute [
+	^ self paint = anAnotherAttribute paint
 ]
 
 { #category : #comparing }
 GtPlaygroundEvaluatedCodeHighlightedAttribute >> hash [
-	^ self class hash
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self paint hash
 ]
 
 { #category : #accessing }
