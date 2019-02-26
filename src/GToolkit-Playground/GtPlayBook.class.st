@@ -90,7 +90,7 @@ GtPlayBook >> gtLiveFor: aView [
 GtPlayBook >> gtRunAllActionFor: anAction [
 	<gtAction>
 	^ anAction button
-			icon: BrGlamorousIcons playall;
+			icon: BrGlamorousIcons play;
 			forPlayground;
 			priority: 1;
 			action: [ :aButton | self playAllAndSelectResult: aButton ] 
@@ -100,7 +100,7 @@ GtPlayBook >> gtRunAllActionFor: anAction [
 GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
 	<gtAction>
 	^ anAction button
-			icon: BrGlamorousIcons playallinspect;
+			icon: BrGlamorousIcons playinspect;
 			forPlayground;
 			priority: 2;
 			action: [ :aButton | self playAllAndSpawnResult: aButton ] 
