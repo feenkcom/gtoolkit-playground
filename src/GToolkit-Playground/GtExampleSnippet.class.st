@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-Playground-Model'
 }
 
+{ #category : #testing }
+GtExampleSnippet class >> isUserSnippet [
+	^ false
+]
+
 { #category : #accessing }
 GtExampleSnippet class >> typeName [
 	"Return a playground snippet type name.
@@ -95,7 +100,7 @@ GtExampleSnippet >> text [
 ]
 
 { #category : #updating }
-GtExampleSnippet >> updateForCodeSnippet: sourceCode [
+GtExampleSnippet >> updateForCodeSnippet: sourceCode inClass: aClass [
 	| indentedLines methodSource |
 	indentedLines := String streamContents: [ :stream | 
 		sourceCode asString linesDo: [ :aLine |
@@ -107,6 +112,6 @@ GtExampleSnippet >> updateForCodeSnippet: sourceCode [
 	<gtExample>
 ', indentedLines, '	^ self TODO: ''Return object'''.
 	coder 
-		forClass: coder classOrMetaClass 
+		forClass: aClass 
 		source: methodSource
 ]

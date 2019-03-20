@@ -86,15 +86,15 @@ GtCoderSnippet >> initialize [
 	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
-		addDropDownAction: 'Create example'  translated
+		addDropDownAction: 'Create example'
 			icon: BrGlamorousIcons dollar 
-			stencil: [ 
+			stencil: [ :selectedClass |
 				| currentSource |
 				currentSource := self text.
 				self 
 					requestSnippetReplacement: GtExampleSnippet
 					initializedWith: [ :anExampleSnippet | 
-						anExampleSnippet updateForCodeSnippet: currentSource ] ];
+						anExampleSnippet updateForCodeSnippet: currentSource inClass: selectedClass ] ];
 		addShortcut:
 			(BlShortcut new
 				combination:
