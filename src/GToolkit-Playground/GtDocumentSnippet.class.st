@@ -36,6 +36,10 @@ GtDocumentSnippet >> asElement [
 		document asElementWithoutSaveAction ].
 	
 	rootContainerElement := BlElement new.
+	rootContainerElement
+		constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal matchParent ].
 	rootContainerElement addChild: expanderContainer.
 	rootContainerElement
 		clipChildren: false;
@@ -43,7 +47,6 @@ GtDocumentSnippet >> asElement [
 			+ BrLayoutLook linearVertical vFitContent hMatchParent;
 		border: BlBorder empty;
 		padding: BlInsets empty;
-		margin: (BlInsets all: 0);
 		background: BlBackground transparent.
 	^ rootContainerElement
 ]

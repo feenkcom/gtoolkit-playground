@@ -71,7 +71,9 @@ GtExampleSnippet >> handleEditorChanges: anAnnouncement [
 
 { #category : #initialization }
 GtExampleSnippet >> initialize [ 	
-	coder := GtMethodCoder forClass: BlBorder source: ''.
+	coder := GtMethodCoder forClass: nil source: 'exampleMessageSelector
+	<gtExample>
+	^ self flag: ''TODO: return object'''.
 	coder expanded: true.
 	super initialize.
 	editor := coder sourceEditor.
@@ -110,7 +112,7 @@ GtExampleSnippet >> updateForCodeSnippet: sourceCode inClass: aClass [
 				nextPut: Character lf ] ].
 	methodSource := 'exampleMessageSelector
 	<gtExample>
-', indentedLines, '	^ self TODO: ''Return object'''.
+', indentedLines, '	^ self flag: ''TODO: return object'''.
 	coder 
 		forClass: aClass 
 		source: methodSource
