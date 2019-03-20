@@ -284,7 +284,7 @@ GtPlayPage >> snippetRemovalRequestedAnnouncement: aGtSnippetRemovalRequestedAnn
 
 { #category : #'announcement handling' }
 GtPlayPage >> snippetReplacementRequestedAnnouncement: aGtSnippetReplacementRequestedAnnouncement [ 
-	| anExistingSnippet aNewSnippetClass |
+	| anExistingSnippet aNewSnippetClass newSnippet |
 	anExistingSnippet := aGtSnippetReplacementRequestedAnnouncement snippet.
 	aNewSnippetClass := aGtSnippetReplacementRequestedAnnouncement requestedSnippetClass.
 	self
@@ -293,7 +293,9 @@ GtPlayPage >> snippetReplacementRequestedAnnouncement: aGtSnippetReplacementRequ
 	self
 		assert: [ aNewSnippetClass notNil ] 
 		description: [ 'New snippet class for new snippet request must be non-nil' ].
-	self replaceSnippet: anExistingSnippet by: aNewSnippetClass new.
+	newSnippet := aNewSnippetClass new.
+	aGtSnippetReplacementRequestedAnnouncement initializationBlock cull: newSnippet.
+	self replaceSnippet: anExistingSnippet by: newSnippet.
 ]
 
 { #category : #accessing }

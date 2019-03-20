@@ -114,9 +114,15 @@ GtSnippet >> requestSnippetRemoval [
 
 { #category : #'api - requests' }
 GtSnippet >> requestSnippetReplacement: aClass [
+	self requestSnippetReplacement: aClass initializedWith: [  ]
+]
+
+{ #category : #'api - requests' }
+GtSnippet >> requestSnippetReplacement: aClass initializedWith: aBlock [
 	self announce: (GtSnippetReplacementRequestedAnnouncement new
 		snippet: self;
-		requestedSnippetClass: aClass).
+		requestedSnippetClass: aClass;
+		initializationBlock: aBlock).
 ]
 
 { #category : #private }
