@@ -54,6 +54,14 @@ XdPlayBookJsonMapping class >> collectionOfSnippetsMappingFor: aNeoJSONMapper [
 ]
 
 { #category : #'mapping - model' }
+XdPlayBookJsonMapping class >> documentSnippetMappingFor: aNeoJSONMapper [
+]
+
+{ #category : #'mapping - model' }
+XdPlayBookJsonMapping class >> exampleSnippetMappingFor: aNeoJSONMapper [
+]
+
+{ #category : #'mapping - model' }
 XdPlayBookJsonMapping class >> playBookMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: GtPlayBook do: [ :mapping |
