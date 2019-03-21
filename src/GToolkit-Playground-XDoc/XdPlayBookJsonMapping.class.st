@@ -107,8 +107,14 @@ XdPlayBookJsonMapping class >> snippetTypeNameAndValueMappingFor: aNeoJSONMapper
 					aGtSnippet ].
 			mapping writer: [ :jsonWriter :object | 
 				object class isUserSnippet ifTrue: [ 
-					jsonWriter writeMapStreamingDo: [ :mapWriter | 
-						mapWriter writeKey: object typeName value: object ] ] ] ].
+					
+					self flag: 'Temporary solution for avoiding errors in case a snippet cannot be exported'.
+					(jsonWriter mappingFor: object class ifAbsent: [ nil ])
+						ifNotNil: [ 
+							jsonWriter writeMapStreamingDo: [ :mapWriter | 
+								mapWriter writeKey: object typeName value: object ] ]
+						
+					 ] ] ].
 	GtSnippet availableSnippetClasses do: [ :eachSnippetClass | 
 		| aMessage |
 		self flag: 'we should dispatch through the class rather than perform'.

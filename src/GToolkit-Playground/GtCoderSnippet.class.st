@@ -86,7 +86,7 @@ GtCoderSnippet >> initialize [
 	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
 	coder addOns
-		addDropDownAction: 'Create example'
+		addDropDownAction: nil
 			icon: BrGlamorousIcons dollar 
 			stencil: [ :selectedClass |
 				| currentSource |
