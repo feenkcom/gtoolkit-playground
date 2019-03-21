@@ -87,7 +87,7 @@ GtCoderSnippet >> initialize [
 	self subscribeToEditorChanges.
 	coder addOns
 		addDropDownAction: nil
-			icon: BrGlamorousIcons dollar 
+			icon: BrGlamorousIcons eg 
 			stencil: [ :selectedClass |
 				| currentSource |
 				currentSource := self text.
