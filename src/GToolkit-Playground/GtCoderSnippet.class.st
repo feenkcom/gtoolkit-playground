@@ -66,13 +66,13 @@ GtCoderSnippet >> defaultStyler [
 
 { #category : #actions }
 GtCoderSnippet >> evaluate [
-	^ coder doItSelection
+	^ coder doItSelectionOrAll
 ]
 
 { #category : #actions }
 GtCoderSnippet >> evaluateAndGo [
 	shouldSpawn := true.
-	^ [ coder doItSelection ]
+	^ [ coder doItSelectionOrAll ]
 		ensure: [ shouldSpawn := false ]
 ]
 
