@@ -92,3 +92,13 @@ GtDocumentSnippet >> text [
 	<return: #BlText>
 	^ self document text
 ]
+
+{ #category : #accessing }
+GtDocumentSnippet >> variableBindings [ 
+	^ self document variableBindings
+]
+
+{ #category : #accessing }
+GtDocumentSnippet >> variableBindings: aGtPlaygroundBindings [ 
+	self document variableBindings: aGtPlaygroundBindings
+]
