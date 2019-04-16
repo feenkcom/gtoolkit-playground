@@ -3,10 +3,21 @@ Class {
 	#superclass : #BrTextAdornmentAttribute,
 	#instVars : [
 		'paint',
-		'result'
+		'result',
+		'action'
 	],
 	#category : #'GToolkit-Playground-Commands'
 }
+
+{ #category : #accessing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> action [
+	^ action
+]
+
+{ #category : #accessing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> action: aBlock [
+	action := aBlock
+]
 
 { #category : #initialization }
 GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aBrText in: anEditorElement [
@@ -18,17 +29,21 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aBrText in: anEditorElement 
 		background: self paint;
 		geometry: BlEllipse new;
 		addEventHandlerOn: BlClickEvent do: [ :anEvent | 
-			aButton fireEvent: (GtPhlowObjectToSpawn new 
-				object: result;
-				sourceElement: aButton) ];
+			self clickEvent: anEvent from: aButton ];
 		yourself
+]
+
+{ #category : #'event handling' }
+GtPlaygroundEvaluatedCodeButtonAttribute >> clickEvent: anEvent from: aButton [
+	self action cull: aButton cull: anEvent
 ]
 
 { #category : #initialization }
 GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 	super initialize.
-	
-	self beAppend
+	self beAppend.
+	paint := (Color fromHexString: #'90CAF9').
+	action := [ :aButton :anEvent | aButton phlow spawnObject: self result ]
 ]
 
 { #category : #accessing }
