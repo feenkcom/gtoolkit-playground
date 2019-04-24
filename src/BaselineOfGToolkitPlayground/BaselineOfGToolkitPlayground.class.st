@@ -52,13 +52,13 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'Brick' with: [
 				spec repository: 'github://feenkcom/Brick:v0.6.15/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.6.18/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.6.19/src' ];
 			baseline: 'GToolkitCompleter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-completer:v0.6.19/src' ];
 			baseline: 'GToolkitUtility' with: [
 				spec repository: 'github://feenkcom/gtoolkit-utility:v0.6.2/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.6.22/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.6.23/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.6.6/src' ];
 			baseline: 'XdocClient' with: [
