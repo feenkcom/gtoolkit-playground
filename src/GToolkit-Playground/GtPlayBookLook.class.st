@@ -12,11 +12,10 @@ Class {
 GtPlayBookLook >> initialize [
 	super initialize.
 	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
-	
 	playBook := GtPlayBook new.
 	tabGroup := BrTabGroup new look: BrGlamorousTabGroupLook.
-	
 	self updateTabs.
+	changes add: (#(pages) asBrLookChildAddAsChangeWithValue: [ tabGroup ])
 ]
 
 { #category : #initialization }
@@ -24,13 +23,6 @@ GtPlayBookLook >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtPlayBookChanged do: [ :anEvent | self playBook: anEvent playBook ]
-]
-
-{ #category : #initialization }
-GtPlayBookLook >> initializeLook [
-	super initializeLook.
-	self widget
-		addChild: tabGroup as: #pages
 ]
 
 { #category : #initialization }

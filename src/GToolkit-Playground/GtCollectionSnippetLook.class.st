@@ -34,7 +34,9 @@ GtCollectionSnippetLook >> availableSnippetClasses [
 GtCollectionSnippetLook >> initialize [
 	super initialize.
 	toolbar := BrToolbar new.
-	toolbar look: BrGlamorousToolbarLook
+	toolbar look: BrGlamorousToolbarLook.
+	changes
+		add: (#(content toobar) asBrLookChildAddAsChangeWithValue: [ toolbar ])
 ]
 
 { #category : #initialization }
@@ -47,16 +49,16 @@ GtCollectionSnippetLook >> initializeListeners [
 { #category : #initialization }
 GtCollectionSnippetLook >> initializeLook [
 	super initializeLook.
-
-	self availableSnippetClasses do: [ :eachSnippetClass | 
-		| anItem |
-		anItem := BrButton new.
-		anItem margin: (BlInsets all: 2).
-		anItem look: BrGlamorousButtonExteriorRectangularLook + BrGlamorousButtonLabelLook.
-		anItem label: eachSnippetClass new typeName.
-		anItem action: [ self addSnippet: eachSnippetClass ].
-		toolbar addItem: anItem ].
-	self widgetContent addChild: toolbar as: #toobar
+	self availableSnippetClasses
+		do: [ :eachSnippetClass | 
+			| anItem |
+			anItem := BrButton new.
+			anItem margin: (BlInsets all: 2).
+			anItem
+				look: BrGlamorousButtonExteriorRectangularLook + BrGlamorousButtonLabelLook.
+			anItem label: eachSnippetClass new typeName.
+			anItem action: [ self addSnippet: eachSnippetClass ].
+			toolbar addItem: anItem ]
 ]
 
 { #category : #initialization }
