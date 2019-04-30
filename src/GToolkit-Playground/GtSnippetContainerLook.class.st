@@ -52,22 +52,6 @@ GtSnippetContainerLook >> initialize [
 				asBrLookPropertyChangeWithValue: [ BlBorder paint: Color veryLightGray width: 1 ]).
 	changes
 		add:
-			(#(widget background)
-				asBrLookPropertyChangeWithValue: [ Color fromHexString: #f0f0f0 ]).
-	changes
-		add:
-			(#(widget border)
-				asBrLookPropertyChangeWithValue: [ BlBorder paint: Color veryLightGray width: 1 ]).
-	changes
-		add:
-			(#(widget background)
-				asBrLookPropertyChangeWithValue: [ Color fromHexString: #f0f0f0 ]).
-	changes
-		add:
-			(#(widget border)
-				asBrLookPropertyChangeWithValue: [ BlBorder paint: Color veryLightGray width: 1 ]).
-	changes
-		add:
 			(#(widget margin)
 				asBrLookPropertyChangeWithValue: [ BlInsets
 						top: 0
