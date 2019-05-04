@@ -44,7 +44,7 @@ GtSnippetType >> hash [
 { #category : #'instance creation' }
 GtSnippetType >> newHolder [
 	"Create a new instance of the snippet element holder for this snippet type"
-	<return: #GtSnipperElementHolder>
+	<return: #GtSnippetElementHolder>
 
 	^ GtSnippetElementHolder type: self
 ]
