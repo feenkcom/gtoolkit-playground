@@ -16,27 +16,52 @@ Class {
 { #category : #initialization }
 GtSnippetContainerLook >> initialize [
 	super initialize.
-
 	contentElement := BlElement new.
-	contentElement look: BrMaterialRoundedLook + BrLayoutLook linearHorizontal vFitContent hMatchParent.
+	contentElement
+		look:
+			BrMaterialRoundedLook
+				+ BrLayoutLook linearHorizontal vFitContent hMatchParent.
 	"contentElement border: (BlBorder paint: LightBorderColor width: 1)."
 	"contentElement background: Color white."
-
 	closeButton := self newCloseElement
 		viewModel: (BrButtonModel new action: [ self snippetRemoveRequested ]);
-		constraintsDo: [ :c |
+		constraintsDo: [ :c | 
 			c ignoreByLayout.
 			c margin: (BlInsets top: -8 right: -8).
 			c ignored horizontal alignRight.
 			c ignored vertical alignTop ].
-	
 	bottomToolbar := self newPlusElement
-		constraintsDo: [ :c |
+		constraintsDo: [ :c | 
 			c ignoreByLayout.
 			c margin: (BlInsets bottom: -8).
 			c ignored horizontal alignCenter.
 			c ignored vertical alignBottom ];
 		viewModel: (BrButtonModel new action: [ self snippetBelowRequested ]).
+	changes
+		add: (#(content) asBrLookChildAddAsChangeWithValue: [ contentElement ]);
+		add:
+			(#(bottomToolbar) asBrLookChildAddAsChangeWithValue: [ bottomToolbar ]);
+		add: (#(closeButton) asBrLookChildAddAsChangeWithValue: [ closeButton ]).
+	changes
+		add:
+			(#(widget background)
+				asBrLookPropertyChangeWithValue: [ Color fromHexString: #f0f0f0 ]).
+	changes
+		add:
+			(#(widget border)
+				asBrLookPropertyChangeWithValue: [ BlBorder paint: Color veryLightGray width: 1 ]).
+	changes
+		add:
+			(#(widget margin)
+				asBrLookPropertyChangeWithValue: [ BlInsets
+						top: 0
+						left: 0
+						bottom: 20
+						right: 5 ]).
+	changes
+		add:
+			(#(widget padding)
+				asBrLookPropertyChangeWithValue: [ BlInsets all: 6 ])
 ]
 
 { #category : #initialization }
@@ -44,21 +69,6 @@ GtSnippetContainerLook >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtSnippetChanged do: [ :anEvent | self snippet: anEvent snippet ]
-]
-
-{ #category : #initialization }
-GtSnippetContainerLook >> initializeLook [
-	super initializeLook.
-	self widget
-		background: (Color fromHexString: #'f0f0f0');
-		border: (BlBorder paint: Color veryLightGray width: 1);
-		constraintsDo: [ :c |
-			c margin: (BlInsets top: 0 left: 0 bottom: 20 right: 5).
-			c padding: (BlInsets all: 6) ].
-	
-	self widget addChild: contentElement as: #content.
-	self widget addChild: bottomToolbar as: #bottomToolbar.
-	self widget addChild: closeButton as: #closeButton.
 ]
 
 { #category : #initialization }
