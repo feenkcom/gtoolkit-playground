@@ -143,6 +143,7 @@ GtSnippet >> stencilBuilderClass [
 
 { #category : #accessing }
 GtSnippet >> text [
+	<return: #BlRope>
 	^ self subclassResponsibility
 ]
 
