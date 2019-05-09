@@ -312,6 +312,20 @@ GtPlayPage >> snippets: aCollectionOfGtSnippets [
 ]
 
 { #category : #accessing }
+GtPlayPage >> string [
+	<return: #String>
+	^ String streamContents: [ :aStream | 
+		self snippets 
+			do: [ :eachSnippet | 
+				eachSnippet isUserSnippet ifTrue: [ 
+					| aString |
+					aString := eachSnippet text asString trimRight.
+					aStream nextPutAll: aString.
+					(aString endsWith: '.') ifFalse: [ aStream nextPut: $. ] ] ]
+			separatedBy: [ aStream crlf; crlf ] ]
+]
+
+{ #category : #accessing }
 GtPlayPage >> title [
 	<return: #String>
 	^ title

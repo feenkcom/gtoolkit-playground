@@ -77,6 +77,28 @@ GtPlayBook >> attachToPage: aGtPlayPage [
 
 ]
 
+{ #category : #actions }
+GtPlayBook >> copyContentToClipboard [
+	| aContent |	
+	aContent := self string trimBoth.
+	aContent ifEmpty: [ 
+		self inform: 'Nothing was copied because the playground is empty'.
+		^ self ].
+	Clipboard clipboardText: aContent.
+	self inform: 'Playground content was copied to clipboard'.
+
+]
+
+{ #category : #'gt-extension' }
+GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
+	<gtAction>
+	^ anAction button
+			icon: BrGlamorousIcons clipboard;
+			forPlayground;
+			priority: 10;
+			action: [ :aButton | self copyContentToClipboard ] 
+]
+
 { #category : #'gt-extension' }
 GtPlayBook >> gtLiveFor: aView [
 	<gtView>
@@ -155,6 +177,18 @@ GtPlayBook >> playAllAndSpawnResult: anElement [
 	| aLastResult |
 	aLastResult := self playAll.
 	anElement phlow spawnObject: aLastResult
+]
+
+{ #category : #accessing }
+GtPlayBook >> string [
+	<return: #String>
+	^ String streamContents: [ :aStream | 
+		self pages 
+			do: [ :eachPage | 
+				| aString |
+				aString := eachPage string.
+				aStream nextPutAll: aString. ]
+			separatedBy: [ aStream crlf ] ]
 ]
 
 { #category : #subscriptions }
