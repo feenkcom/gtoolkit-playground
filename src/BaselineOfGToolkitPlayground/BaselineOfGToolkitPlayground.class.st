@@ -50,19 +50,19 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 	spec for: #'common' do: [
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.6.28/src' ];
+				spec repository: 'github://feenkcom/Brick:v0.6.29/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.6.32/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.6.33/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.6.34/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.6.35/src' ];
 			baseline: 'GToolkitUtility' with: [
 				spec repository: 'github://feenkcom/gtoolkit-utility:v0.6.3/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.6.39/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.6.40/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.6.10/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.6.4/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.6.5/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
 				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings ). ];
