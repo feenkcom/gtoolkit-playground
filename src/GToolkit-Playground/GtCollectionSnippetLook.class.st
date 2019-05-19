@@ -36,7 +36,23 @@ GtCollectionSnippetLook >> initialize [
 	toolbar := BrToolbar new.
 	toolbar look: BrGlamorousToolbarLook.
 	changes
-		add: (#(content toobar) asBrLookChildAddAsChangeWithValue: [ toolbar ])
+		add: (#(content toobar) asBrLookChildAddAsChangeWithValue: [ toolbar ]).
+	changes
+		add:
+			(BrLookChange new
+				up: [ :e | 
+					self availableSnippetClasses
+						do: [ :eachSnippetClass | 
+							| anItem |
+							anItem := BrButton new.
+							anItem margin: (BlInsets all: 2).
+							anItem
+								look: BrGlamorousButtonExteriorRectangularLook + BrGlamorousButtonLabelLook.
+							anItem label: eachSnippetClass new typeName.
+							anItem action: [ self addSnippet: eachSnippetClass ].
+							toolbar addItem: anItem ] ];
+				down: [ :e |  ];
+				yourself)
 ]
 
 { #category : #initialization }
@@ -44,21 +60,6 @@ GtCollectionSnippetLook >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtSnippetChanged do: [ :anEvent | self snippet: anEvent snippet ].
-]
-
-{ #category : #initialization }
-GtCollectionSnippetLook >> initializeLook [
-	super initializeLook.
-	self availableSnippetClasses
-		do: [ :eachSnippetClass | 
-			| anItem |
-			anItem := BrButton new.
-			anItem margin: (BlInsets all: 2).
-			anItem
-				look: BrGlamorousButtonExteriorRectangularLook + BrGlamorousButtonLabelLook.
-			anItem label: eachSnippetClass new typeName.
-			anItem action: [ self addSnippet: eachSnippetClass ].
-			toolbar addItem: anItem ]
 ]
 
 { #category : #initialization }

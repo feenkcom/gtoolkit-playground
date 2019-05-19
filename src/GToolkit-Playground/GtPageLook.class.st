@@ -5,10 +5,14 @@ Class {
 }
 
 { #category : #initialization }
-GtPageLook >> initializeLook [
-	super initializeLook.
-	self widget
-		constraintsDo: [ :c | 
-			c vertical matchParent.
-			c horizontal matchParent ]
+GtPageLook >> initialize [
+	super initialize.
+	changes
+		add:
+			(#(widget constraints vertical resizer)
+				asBrLookPropertyChangeWithValue: BlLayoutResizer matchParent).
+	changes
+		add:
+			(#(widget constraints horizontal resizer)
+				asBrLookPropertyChangeWithValue: BlLayoutResizer matchParent)
 ]
