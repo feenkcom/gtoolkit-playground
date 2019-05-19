@@ -37,31 +37,23 @@ GtSnippetContainerLook >> initialize [
 			c ignored horizontal alignCenter.
 			c ignored vertical alignBottom ];
 		viewModel: (BrButtonModel new action: [ self snippetBelowRequested ]).
-	changes
-		add: (#(content) asBrLookChildAddAsChangeWithValue: [ contentElement ]);
-		add:
-			(#(bottomToolbar) asBrLookChildAddAsChangeWithValue: [ bottomToolbar ]);
-		add: (#(closeButton) asBrLookChildAddAsChangeWithValue: [ closeButton ]).
-	changes
-		add:
-			(#(widget background)
-				asBrLookPropertyChangeWithValue: [ Color fromHexString: #f0f0f0 ]).
-	changes
-		add:
-			(#(widget border)
-				asBrLookPropertyChangeWithValue: [ BlBorder paint: Color veryLightGray width: 1 ]).
-	changes
-		add:
-			(#(widget margin)
-				asBrLookPropertyChangeWithValue: [ BlInsets
-						top: 0
-						left: 0
-						bottom: 20
-						right: 5 ]).
-	changes
-		add:
-			(#(widget padding)
-				asBrLookPropertyChangeWithValue: [ BlInsets all: 6 ])
+	self addChangeAddChildAs: #(content) with: [ contentElement ].
+	self addChangeAddChildAs: #(bottomToolbar) with: [ bottomToolbar ].
+	self addChangeAddChildAs: #(closeButton) with: [ closeButton ].
+	self
+		addChangeProperty: #(widget background)
+		with: [ Color fromHexString: #f0f0f0 ].
+	self
+		addChangeProperty: #(widget border)
+		with: [ BlBorder paint: Color veryLightGray width: 1 ].
+	self
+		addChangeProperty: #(widget margin)
+		with: [ BlInsets
+				top: 0
+				left: 0
+				bottom: 20
+				right: 5 ].
+	self addChangeProperty: #(widget padding) with: [ BlInsets all: 6 ]
 ]
 
 { #category : #initialization }

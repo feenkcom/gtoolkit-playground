@@ -35,10 +35,9 @@ GtCollectionSnippetLook >> initialize [
 	super initialize.
 	toolbar := BrToolbar new.
 	toolbar look: BrGlamorousToolbarLook.
-	changes
-		add: (#(content toobar) asBrLookChildAddAsChangeWithValue: [ toolbar ]).
-	changes
-		add:
+	self addChangeAddChildAs: #(content toobar) with: [ toolbar ].
+	self
+		addChange:
 			(BrLookChange new
 				up: [ :e | 
 					self availableSnippetClasses
