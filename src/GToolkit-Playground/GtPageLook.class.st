@@ -7,12 +7,10 @@ Class {
 { #category : #initialization }
 GtPageLook >> initialize [
 	super initialize.
-	changes
-		add:
-			(#(widget constraints vertical resizer)
-				asBrLookPropertyChangeWithValue: BlLayoutResizer matchParent).
-	changes
-		add:
-			(#(widget constraints horizontal resizer)
-				asBrLookPropertyChangeWithValue: BlLayoutResizer matchParent)
+	self
+		addChangeProperty: #(widget constraints vertical resizer)
+		with: BlLayoutResizer matchParent.
+	self
+		addChangeProperty: #(widget constraints horizontal resizer)
+		with: BlLayoutResizer matchParent
 ]

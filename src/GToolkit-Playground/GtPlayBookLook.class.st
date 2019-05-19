@@ -15,7 +15,7 @@ GtPlayBookLook >> initialize [
 	playBook := GtPlayBook new.
 	tabGroup := BrTabGroup new look: BrGlamorousTabGroupLook.
 	self updateTabs.
-	changes add: (#(pages) asBrLookChildAddAsChangeWithValue: [ tabGroup ])
+	self addChangeAddChildAs: #(pages) with: [ tabGroup ]
 ]
 
 { #category : #initialization }
