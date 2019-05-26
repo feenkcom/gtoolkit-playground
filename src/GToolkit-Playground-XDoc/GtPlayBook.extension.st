@@ -73,29 +73,33 @@ GtPlayBook >> xdocPlayBookListElement [
 	| aFileReference aList allXdocFiles |
 	aFileReference := FileLocator localDirectory / 'xdocs'.
 	aFileReference ensureCreateDirectory.
-	allXdocFiles := aFileReference filesMatching: '*.', XdConstants xdocExtension.
-	allXdocFiles sort: [ :a :b | a modificationTime > b modificationTime ].
+	allXdocFiles := aFileReference
+		filesMatching: '*.' , XdConstants xdocExtension.
+	allXdocFiles
+		sort: [ :a :b | a modificationTime > b modificationTime ].
 	aList := BrSimpleList new.
-	aList 
-		stencil: [ :eachXdocFile :index |
+	aList
+		stencil: [ :eachXdocFile :index | 
 			BlTextElement new
 				text: (self playBookNameFrom: eachXdocFile);
 				constraintsDo: [ :c | c horizontal matchParent ];
 				padding: (BlInsets all: 5);
-				when: BlClickEvent do: [ :anEvent  |
+				when: BlClickEvent
+					do: [ :anEvent | 
 					| aNewPlayBook |
 					anEvent consumed: true.
 					aList selectOne: index.
 					aNewPlayBook := self readPlayBookFrom: eachXdocFile.
-					aNewPlayBook ifNotNil: [  
-						self announce: (GtPlayBookChangeRequestedAnnoucement new 
-							oldPlayBook: self; 
-							newPlayBook: aNewPlayBook) ] ] ];
+					aNewPlayBook
+						ifNotNil: [ self
+								announce:
+									(GtPlayBookChangeRequestedAnnoucement new
+										oldPlayBook: self;
+										newPlayBook: aNewPlayBook) ] ] ];
 		display: allXdocFiles;
-		constraintsDo: [ :c | 
-			c padding: (BlInsets top: 10).
-			c vertical exact: 300.
-			c horizontal exact: 200 ].
+		padding: (BlInsets all: 5);
+		hFitContent;
+		vFitContent.
 	^ aList
 ]
 
