@@ -82,7 +82,6 @@ GtPlayBook >> xdocPlayBookListElement [
 		stencil: [ :eachXdocFile :index | 
 			BlTextElement new
 				text: (self playBookNameFrom: eachXdocFile);
-				constraintsDo: [ :c | c horizontal matchParent ];
 				padding: (BlInsets all: 5);
 				when: BlClickEvent
 					do: [ :anEvent | 
