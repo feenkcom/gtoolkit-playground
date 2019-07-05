@@ -47,6 +47,13 @@ GtCoderSnippet >> asStencilBuilder [
 	^ self
 ]
 
+{ #category : #private }
+GtCoderSnippet >> ast [
+	^ GtPharoParser
+		parseWithErrors: coder source
+		startingAt: GtPharoParser startingStateForMethodSequence
+]
+
 { #category : #ui }
 GtCoderSnippet >> bind: aSnippet to: aSnippetElement [
 ]
@@ -105,12 +112,38 @@ GtCoderSnippet >> initialize [
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
 			(BlShortcut new
+			repeatable: false;
+			combination: BlKeyCombination primaryR;
+			action: [ :editorElement | self startRenameIn: editorElement ]);
+		addShortcut:
+			(BlShortcut new
 				combination:
 					(BlKeyCombination builder
 						primary;
 						return;
 						build);
 				action: [ :aShortcut | self requestSnippetSplit ])
+]
+
+{ #category : #private }
+GtCoderSnippet >> intervalsForRenameVariable: aString [
+	| intervals |
+	intervals := OrderedCollection new.
+	self ast
+		withAllNodesDo: [ :each | 
+			((each isKindOf: GtPharoVariableNode)
+				and: [ each name source = aString and: [ each whoDefines isNil ] ])
+				ifTrue: [ intervals add: each sourceInterval ] ].
+	^ intervals
+]
+
+{ #category : #testing }
+GtCoderSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
+	aGtSnippetRenameRequestedAnnouncement snippet == self
+		ifTrue: [ ^ false ].
+	^ (self
+		intervalsForRenameVariable: aGtSnippetRenameRequestedAnnouncement variableName)
+		notEmpty
 ]
 
 { #category : #actions }
@@ -198,6 +231,34 @@ GtCoderSnippet >> sourceCode: aString [
 	coder source: aString
 ]
 
+{ #category : #actions }
+GtCoderSnippet >> startRenameIn: aTextEditorElement [
+	| announcement ast node renameAction |
+	editor := aTextEditorElement editor.
+	editor cursor cursorsCount = 1
+		ifFalse: [ ^ nil ].
+	ast := self ast.
+	node := ast findVariableNodeAt: editor cursor first position.
+	(node isNil or: [ node whoDefines notNil ])
+		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
+	announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
+	announcement variableName: node source.
+	self announce: announcement.
+	announcement interestedSnippets isEmpty
+		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
+	renameAction := GtCompositeRenameAction
+		locations: (self intervalsForRenameVariable: node source)
+		element: aTextEditorElement.
+	announcement interestedSnippets
+		do: [ :each | 
+			renameAction
+				addLocations:
+					((each intervalsForRenameVariable: node source) collect: #first)
+						asSortedCollection
+				to: each textEditor ].
+	renameAction install
+]
+
 { #category : #converting }
 GtCoderSnippet >> stencilBuilderClass [
 	"Return a stencil builder class that knows how to display a snippet in Bloc"
@@ -208,6 +269,11 @@ GtCoderSnippet >> stencilBuilderClass [
 { #category : #accessing }
 GtCoderSnippet >> text [
 	^ coder sourceEditor text
+]
+
+{ #category : #private }
+GtCoderSnippet >> textEditor [
+	^ coder sourceEditor
 ]
 
 { #category : #accessing }
