@@ -46,7 +46,7 @@ GtCollectionSnippetLook >> initialize [
 							anItem := BrButton new.
 							anItem margin: (BlInsets all: 2).
 							anItem
-								look: BrGlamorousButtonExteriorRectangularLook + BrGlamorousButtonLabelLook.
+								look: BrGlamorousButtonWithLabelLook.
 							anItem label: eachSnippetClass new typeName.
 							anItem action: [ self addSnippet: eachSnippetClass ].
 							toolbar addItem: anItem ] ];

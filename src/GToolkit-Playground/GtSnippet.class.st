@@ -82,6 +82,11 @@ GtSnippet >> initialize [
 ]
 
 { #category : #testing }
+GtSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
+	^ false
+]
+
+{ #category : #testing }
 GtSnippet >> isUserSnippet [
 	^ self class isUserSnippet
 ]

@@ -98,6 +98,10 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 		subscribe: GtSnippetEvaluatedAnnouncement 
 			send: #snippetEvaluatedAnnouncement: 
 			to: self 
+			for: self;
+		subscribe: GtSnippetRenameRequestedAnnoucement 
+			send: #snippetRenameRequestedAnnouncement: 
+			to: self 
 			for: self
 
 ]
@@ -280,6 +284,17 @@ GtPlayPage >> snippetRemovalRequestedAnnouncement: aGtSnippetRemovalRequestedAnn
 		assert: [ anSnippet notNil ] 
 		description: [ 'Source snippet for new snippet request must be non-nil' ].
 	self removeSnippet: anSnippet.
+]
+
+{ #category : #'announcement handling' }
+GtPlayPage >> snippetRenameRequestedAnnouncement: aGtSnippetRepnameRequestedAnnouncement [
+	| others |
+	others := OrderedCollection new.
+	self snippets
+		do: [ :each | 
+			(each isInterestedInRename: aGtSnippetRepnameRequestedAnnouncement)
+				ifTrue: [ others add: each ] ].
+	aGtSnippetRepnameRequestedAnnouncement interestedSnippets: others
 ]
 
 { #category : #'announcement handling' }
