@@ -116,10 +116,7 @@ GtCoderSnippet >> initialize [
 		addShortcut:
 			(BlShortcut new
 				combination:
-					(BlKeyCombination builder
-						primary;
-						delete;
-						build);
+					(BlKeyCombination builder primary backspace build);
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
 			(BlShortcut new
