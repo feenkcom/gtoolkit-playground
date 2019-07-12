@@ -169,6 +169,16 @@ GtPlayPage >> notifySnippetAdded: aGtSnippet at: anIndex [
 ]
 
 { #category : #notifying }
+GtPlayPage >> notifySnippetChanged: aGtPageSnippetChangedAnnouncement [
+	| anIndex |
+	anIndex := self snippets
+		indexOf: aGtPageSnippetChangedAnnouncement snippet.
+	aGtPageSnippetChangedAnnouncement page: self.
+	aGtPageSnippetChangedAnnouncement index: anIndex.
+	self announce: aGtPageSnippetChangedAnnouncement
+]
+
+{ #category : #notifying }
 GtPlayPage >> notifySnippetRemoved: aGtSnippet at: anIndex [
 	self announce: (GtPageSnippetRemovedAnnoucement new page: self; snippet: aGtSnippet; index: anIndex)
 ]
@@ -240,12 +250,9 @@ GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnounc
 ]
 
 { #category : #'announcement handling' }
-GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [ 
-	| anIndex |
-	anIndex := self snippets indexOf: aGtPageSnippetChangedAnnouncement snippet.
-	aGtPageSnippetChangedAnnouncement page: self.
-	aGtPageSnippetChangedAnnouncement index: anIndex.
-	self announce: aGtPageSnippetChangedAnnouncement.
+GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [
+	self notifySnippetChanged: aGtPageSnippetChangedAnnouncement.
+	self updateImplicitVariables
 ]
 
 { #category : #'announcement handling' }
@@ -349,4 +356,13 @@ GtPlayPage >> title [
 { #category : #accessing }
 GtPlayPage >> title: aString [
 	title := aString
+]
+
+{ #category : #private }
+GtPlayPage >> updateImplicitVariables [
+	| variables |
+	variables := GtPrefixTree new.
+	self snippets
+		do: [ :each | variables addAll: each implicitLocalVariables ].
+	self snippets do: [ :each | each allImplicitVariables: variables ]
 ]

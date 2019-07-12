@@ -22,6 +22,11 @@ GtCoderSnippet >> accept: aVisitor [
 	^ aVisitor visitGtPharoSnippet: self
 ]
 
+{ #category : #accessing }
+GtCoderSnippet >> allImplicitVariables: aCollection [
+	coder completionStrategy snippetVariables: aCollection
+]
+
 { #category : #ui }
 GtCoderSnippet >> asElement [
 	| element coderElement |
@@ -83,10 +88,16 @@ GtCoderSnippet >> evaluateAndGo [
 		ensure: [ shouldSpawn := false ]
 ]
 
+{ #category : #accessing }
+GtCoderSnippet >> implicitLocalVariables [
+	^ self ast ifNotNil: [ :ast | ast implicitLocalVariables ]
+]
+
 { #category : #initialization }
 GtCoderSnippet >> initialize [
 	coder := GtPharoSnippetCoder new.
 	super initialize.
+	coder completionStrategy: GtSnippetCompletionStrategy new.
 	editor := coder sourceEditor.
 	shouldSpawn := false.
 	coder announcer weak when: GtCoderEvaluationAnnouncement send: #codeEvaluated: to: self.
@@ -105,10 +116,7 @@ GtCoderSnippet >> initialize [
 		addShortcut:
 			(BlShortcut new
 				combination:
-					(BlKeyCombination builder
-						primary;
-						delete;
-						build);
+					(BlKeyCombination builder primary backspace build);
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
 			(BlShortcut new

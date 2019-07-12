@@ -40,6 +40,10 @@ GtSnippet >> accept: aVisitor [
 	^ self subclassResponsibility
 ]
 
+{ #category : #accessing }
+GtSnippet >> allImplicitVariables: aCollection [
+]
+
 { #category : #announcer }
 GtSnippet >> announcer [
 	<return: #Announcer>
@@ -73,6 +77,11 @@ GtSnippet >> gtLiveFor: aView [
 	^ aView explicit
 		title: 'Live' translated;
 		stencil: self
+]
+
+{ #category : #accessing }
+GtSnippet >> implicitLocalVariables [
+	^ #()
 ]
 
 { #category : #initialization }
