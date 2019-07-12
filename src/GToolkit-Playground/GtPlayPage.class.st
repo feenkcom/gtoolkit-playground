@@ -102,6 +102,10 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 		subscribe: GtSnippetRenameRequestedAnnoucement 
 			send: #snippetRenameRequestedAnnouncement: 
 			to: self 
+			for: self;
+		subscribe: GtSnippetExternalCursorAnnouncement 
+			send: #snippetExternalCursorAnnouncement: 
+			to: self 
 			for: self
 
 ]
@@ -268,6 +272,26 @@ GtPlayPage >> snippetEvaluatedAnnouncement: aGtSnippetEvaluatedAnnouncement [
 		isException: aGtSnippetEvaluatedAnnouncement isException;
 		isSpawnResultRequested: aGtSnippetEvaluatedAnnouncement isSpawnResultRequested.	
 	self announce: anAnnouncement.
+]
+
+{ #category : #'announcement handling' }
+GtPlayPage >> snippetExternalCursorAnnouncement: aGtSnippetExternalCursorAnnouncement [
+	| index direction snippet |
+	index := self snippets
+		identityIndexOf: aGtSnippetExternalCursorAnnouncement snippet.
+	index = 0
+		ifTrue: [ ^ self ].
+	direction := aGtSnippetExternalCursorAnnouncement direction.
+	(#(left up) includes: direction)
+		ifTrue: [ index = 1
+				ifTrue: [ ^ self ].
+			snippet := self snippets at: index - 1.
+			snippet focusAndPlaceCursorAtEnd ].
+	(#(right down) includes: direction)
+		ifTrue: [ index = self snippets size
+				ifTrue: [ ^ self ].
+			snippet := self snippets at: index + 1.
+			snippet focusAndPlaceCursorAtBeginning ]
 ]
 
 { #category : #'announcement handling' }

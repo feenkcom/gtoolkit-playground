@@ -40,10 +40,16 @@ GtCoderSnippet >> asElement [
 	element addChild: coderElement.
 	element
 		clipChildren: false;
-		look: (GtSnippetContainerLook new snippet: self) + BrLayoutLook linearVertical vFitContent hMatchParent;
+		look:
+			(GtSnippetContainerLook new snippet: self)
+				+ BrLayoutLook linearVertical vFitContent hMatchParent;
 		border: BlBorder empty;
 		padding: BlInsets empty;
 		background: BlBackground transparent.
+	self announcer weak
+		when: GtSnippetFocusRequestAnnouncement
+		send: #requestFocus
+		to: coderElement.
 	^ element
 ]
 
@@ -88,6 +94,18 @@ GtCoderSnippet >> evaluateAndGo [
 		ensure: [ shouldSpawn := false ]
 ]
 
+{ #category : #'api - cursor' }
+GtCoderSnippet >> focusAndPlaceCursorAtBeginning [
+	self textEditor moveCursorTo: 0.
+	self requestSnippetFocus
+]
+
+{ #category : #'api - cursor' }
+GtCoderSnippet >> focusAndPlaceCursorAtEnd [
+	self textEditor moveCursorTo: self textEditor text size.
+	self requestSnippetFocus
+]
+
 { #category : #accessing }
 GtCoderSnippet >> implicitLocalVariables [
 	^ self ast ifNotNil: [ :ast | ast implicitLocalVariables ]
@@ -100,29 +118,38 @@ GtCoderSnippet >> initialize [
 	coder completionStrategy: GtSnippetCompletionStrategy new.
 	editor := coder sourceEditor.
 	shouldSpawn := false.
-	coder announcer weak when: GtCoderEvaluationAnnouncement send: #codeEvaluated: to: self.
+	coder announcer weak
+		when: GtCoderEvaluationAnnouncement
+		send: #codeEvaluated:
+		to: self.
 	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
+	self initializeCoderAddOns
+]
+
+{ #category : #initialization }
+GtCoderSnippet >> initializeCoderAddOns [
 	coder addOns
 		addDropDownAction: nil
-			icon: BrGlamorousIcons eg 
-			stencil: [ :selectedClass |
-				| currentSource |
-				currentSource := self text.
-				self 
-					requestSnippetReplacement: GtExampleSnippet
-					initializedWith: [ :anExampleSnippet | 
-						anExampleSnippet updateForCodeSnippet: currentSource inClass: selectedClass ] ];
+			icon: BrGlamorousIcons eg
+			stencil: [ :selectedClass | 
+			| currentSource |
+			currentSource := self text.
+			self
+				requestSnippetReplacement: GtExampleSnippet
+				initializedWith: [ :anExampleSnippet | 
+					anExampleSnippet
+						updateForCodeSnippet: currentSource
+						inClass: selectedClass ] ];
 		addShortcut:
 			(BlShortcut new
-				combination:
-					(BlKeyCombination builder primary backspace build);
+				combination: BlKeyCombination builder primary backspace build;
 				action: [ :aShortcut | self requestSnippetMerge ]);
 		addShortcut:
 			(BlShortcut new
-			repeatable: false;
-			combination: BlKeyCombination primaryR;
-			action: [ :editorElement | self startRenameIn: editorElement ]);
+				repeatable: false;
+				combination: BlKeyCombination primaryR;
+				action: [ :editorElement | self startRenameIn: editorElement ]);
 		addShortcut:
 			(BlShortcut new
 				combination:
@@ -130,7 +157,23 @@ GtCoderSnippet >> initialize [
 						primary;
 						return;
 						build);
-				action: [ :aShortcut | self requestSnippetSplit ])
+				action: [ :aShortcut | self requestSnippetSplit ]);
+		addShortcut:
+			(BlShortcut new
+				combination: BlKeyCombination builder arrowLeft build;
+				action: [ :element | self moveLeft: element ]);
+		addShortcut:
+			(BlShortcut new
+				combination: BlKeyCombination builder arrowRight build;
+				action: [ :element | self moveRight: element ]);
+		addShortcut:
+			(BlShortcut new
+				combination: BlKeyCombination builder arrowUp build;
+				action: [ :element | self moveUp: element ]);
+		addShortcut:
+			(BlShortcut new
+				combination: BlKeyCombination builder arrowDown build;
+				action: [ :element | self moveDown: element ])
 ]
 
 { #category : #private }
@@ -190,6 +233,68 @@ GtCoderSnippet >> mergeWith: aSnippet [
 			insert ].
 	aSnippet requestSnippetRemoval.
 	self requestSnippetFocus.
+]
+
+{ #category : #actions }
+GtCoderSnippet >> moveDown: anElement [
+	| textEditor position |
+	textEditor := anElement editor.
+	textEditor cursors cursorsCount = 1
+		ifTrue: [ position := textEditor cursors first position ].
+	textEditor navigator moveDown apply.
+	(textEditor cursors cursorsCount = 1
+		and: [ position = textEditor cursors first position ])
+		ifTrue: [ self
+				announce:
+					(GtSnippetExternalCursorAnnouncement new
+						snippet: self;
+						direction: #down) ]
+]
+
+{ #category : #actions }
+GtCoderSnippet >> moveLeft: anElement [
+	| textEditor |
+	textEditor := anElement editor.
+	(textEditor cursors cursorsCount = 1
+		and: [ textEditor cursors first position = 0 ])
+		ifTrue: [ self
+				announce:
+					(GtSnippetExternalCursorAnnouncement new
+						snippet: self;
+						direction: #left) ]
+		ifFalse: [ textEditor deselecter all deselect.
+			textEditor navigator moveLeft apply ]
+]
+
+{ #category : #actions }
+GtCoderSnippet >> moveRight: anElement [
+	| textEditor |
+	textEditor := anElement editor.
+	(textEditor cursors cursorsCount = 1
+		and: [ textEditor cursors first position >= textEditor text size ])
+		ifTrue: [ self
+				announce:
+					(GtSnippetExternalCursorAnnouncement new
+						snippet: self;
+						direction: #right) ]
+		ifFalse: [ textEditor deselecter all deselect.
+			textEditor navigator moveRight apply ]
+]
+
+{ #category : #actions }
+GtCoderSnippet >> moveUp: anElement [
+	| textEditor position |
+	textEditor := anElement editor.
+	textEditor cursors cursorsCount = 1
+		ifTrue: [ position := textEditor cursors first position ].
+	textEditor navigator moveUp apply.
+	(textEditor cursors cursorsCount = 1
+		and: [ position = textEditor cursors first position ])
+		ifTrue: [ self
+				announce:
+					(GtSnippetExternalCursorAnnouncement new
+						snippet: self;
+						direction: #up) ]
 ]
 
 { #category : #actions }
