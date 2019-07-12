@@ -71,6 +71,14 @@ GtSnippet >> asStencilBuilder: aStencilBuilderClass [
 	^ aStencilBuilderClass new snippet: self
 ]
 
+{ #category : #'api - cursor' }
+GtSnippet >> focusAndPlaceCursorAtBeginning [
+]
+
+{ #category : #'api - cursor' }
+GtSnippet >> focusAndPlaceCursorAtEnd [
+]
+
 { #category : #'gt-extension' }
 GtSnippet >> gtLiveFor: aView [
 	<gtView>
