@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPlaygroundCommand,
-	#superclass : #BlCommand,
+	#superclass : #BlTktCommand,
 	#category : #'GToolkit-Playground-Commands'
 }
 

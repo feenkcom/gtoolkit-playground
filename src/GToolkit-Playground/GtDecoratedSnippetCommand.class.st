@@ -29,7 +29,7 @@ GtDecoratedSnippetCommand >> command: aGtCommand [
 { #category : #initialization }
 GtDecoratedSnippetCommand >> initialize [
 	super initialize.
-	command := BlCommand null.
+	command := BlTktCommand null.
 ]
 
 { #category : #accessing }

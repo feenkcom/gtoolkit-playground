@@ -10,11 +10,6 @@ Class {
 	#category : #'GToolkit-Playground-Commands'
 }
 
-{ #category : #execution }
-GtZnClientCommand >> cancelRequest [
-	shouldContinue := false
-]
-
 { #category : #accessing }
 GtZnClientCommand >> client [
 	^ client
@@ -79,4 +74,9 @@ GtZnClientCommand >> result [
 	"Return a command execution result"
 	<return: #ZnResponse or: nil>
 	^ response
+]
+
+{ #category : #execution }
+GtZnClientCommand >> terminationRequested [
+	shouldContinue := false
 ]
