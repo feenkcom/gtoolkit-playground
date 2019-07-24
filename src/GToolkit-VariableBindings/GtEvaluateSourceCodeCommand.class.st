@@ -1,6 +1,6 @@
 Class {
 	#name : #GtEvaluateSourceCodeCommand,
-	#superclass : #BlCommand,
+	#superclass : #BlTktCommand,
 	#instVars : [
 		'result',
 		'sourceCode',
