@@ -46,6 +46,7 @@ GtEvaluateSourceCodeCommand >> execute [
 					`compilationContext scope newMethodScope to validate source code
 						`lookupVariableForWrite:` uses `scope lookupVar: aVarNameString"
 		"parseExpression uses `parserClass` and `optionParseErrors` to parse faulty expressions"
+	^ result
 ]
 
 { #category : #initialization }
