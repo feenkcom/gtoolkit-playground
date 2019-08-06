@@ -46,7 +46,7 @@ GtCoderSnippet >> asElement [
 		border: BlBorder empty;
 		padding: BlInsets empty;
 		background: BlBackground transparent.
-	self announcer weak
+	self announcer
 		when: GtSnippetFocusRequestAnnouncement
 		send: #requestFocus
 		to: coderElement.
