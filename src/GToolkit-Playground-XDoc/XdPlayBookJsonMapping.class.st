@@ -46,10 +46,10 @@ XdPlayBookJsonMapping class >> collectionOfSnippetsMappingFor: aNeoJSONMapper [
 						element := jsonReader nextAs: #SnippetTypeAndValue.
 						stream nextPut: element ] ] ].
 			mapping writer: [ :jsonWriter :list | 
-		jsonWriter writeListStreamingDo: [ :listWriter |
-			list do: [ :each | 
-				each isUserSnippet ifTrue: [
-					listWriter writeElement: each as: #SnippetTypeAndValue ] ] ] ] ].
+				jsonWriter writeListStreamingDo: [ :listWriter |
+					list do: [ :each | 
+						each isUserSnippet ifTrue: [
+							listWriter writeElement: each as: #SnippetTypeAndValue ] ] ] ] ].
 	self snippetTypeNameAndValueMappingFor: aNeoJSONMapper.
 ]
 
