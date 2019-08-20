@@ -40,7 +40,7 @@ GtPlayBookLook >> mayAddActionsFor: aGtPage in: aTab [
 		selectUsing: [ :eachAction | eachAction target = GtPlaygroundActionTarget uniqueInstance ];
 		collect.
 	theActions ifEmpty: [ ^ self ].
-	aTab actionsStencil: [
+	aTab toolbarStencil: [
 		| aView |
 		aView := GtPhlowView empty.
 		aView addPhlowActions: theActions.
