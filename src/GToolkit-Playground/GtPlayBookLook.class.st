@@ -11,9 +11,12 @@ Class {
 { #category : #initialization }
 GtPlayBookLook >> initialize [
 	super initialize.
-	self add: BrLayoutLook linearHorizontal hMatchParent vFitContent.
+
+	self add: BrLayoutLook linearHorizontal matchParent.
+
 	playBook := GtPlayBook new.
 	tabGroup := BrTabGroup new look: BrGlamorousTabGroupLook.
+
 	self updateTabs.
 	self addChangeAddChildAs: #(pages) with: [ tabGroup ]
 ]
@@ -65,8 +68,7 @@ GtPlayBookLook >> updateTab: aGtPage [
 		look: BrGlamorousTabLook;
 		padding: (BlInsets all: 10);
 		label: aGtPage title;
-		stencil: [ aGtPage asElement margin: (BlInsets all: 10) ]";
-		actionsStencil: view actions".
+		stencil: [ aGtPage asElement margin: (BlInsets all: 10) ].
 	self mayAddActionsFor: aGtPage in: aTab.
 	tabGroup addTab: aTab
 ]
