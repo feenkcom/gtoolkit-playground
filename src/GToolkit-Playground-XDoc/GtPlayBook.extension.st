@@ -9,39 +9,6 @@ GtPlayBook >> gtActionXDocSpotterFor: anAction [
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> gtActionXdocFor: anAction [
-	"<gtAction>"
-	^ anAction dropdown 
-		forPlayground;
-		icon: BrGlamorousIcons menu;
-		help: 'Stored XDoc Playgrounds';
-		popup: [ self xdocPlayBookListElement ]
-]
-
-{ #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> playBookNameFrom: eachXdocFile [
-	| anXdFile |
-	anXdFile := self xdocFileFrom: eachXdocFile.
-	^ anXdFile manifest title 
-		ifEmpty: [ eachXdocFile basename asRopedText ]
-		ifNotEmpty: #asRopedText.
-]
-
-{ #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> readPlayBookFrom: eachFile [
-	| aPlayBookMember aXdFile aJsonString aPlayBook |
-	aXdFile := self xdocFileFrom: eachFile.
-	aXdFile exists ifFalse: [ ^ nil ].
-	aPlayBookMember := aXdFile streamingStrategy zip members
-		detect:
-			[ :aMember | aMember fileName endsWith: XdConstants playBookExtension ].
-	aJsonString := aPlayBookMember contents asByteArray utf8Decoded.
-	aPlayBook := XdPlayBookJsonMapping readPlayBook: aJsonString.
-	aPlayBook subscribeExternalTools.
-	^ aPlayBook
-]
-
-{ #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> saveToXDoc [
 	self storePlayBookInto: (XdFile new
 		streamingStrategy: XdStreamingStrategy bytes).
@@ -66,48 +33,6 @@ GtPlayBook >> storePlayBookInto: aXdFile [
 		description: aDescription;
 		playbook: self;
 		write
-]
-
-{ #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> xdocFileFrom: eachFile [
-	^ XdReader new
-		streamingStrategy: (XdStreamingStrategy file: eachFile);
-		onError: [ :anError | XdFile empty ];
-		read
-]
-
-{ #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> xdocPlayBookListElement [
-	| aFileReference aList allXdocFiles |
-	aFileReference := FileLocator localDirectory / 'xdocs'.
-	aFileReference ensureCreateDirectory.
-	allXdocFiles := aFileReference
-		filesMatching: '*.' , XdConstants xdocExtension.
-	allXdocFiles
-		sort: [ :a :b | a modificationTime > b modificationTime ].
-	aList := BrSimpleList new.
-	aList
-		stencil: [ :eachXdocFile :index | 
-			BlTextElement new
-				text: (self playBookNameFrom: eachXdocFile);
-				padding: (BlInsets all: 5);
-				when: BlClickEvent
-					do: [ :anEvent | 
-					| aNewPlayBook |
-					anEvent consumed: true.
-					aList selectOne: index.
-					aNewPlayBook := self readPlayBookFrom: eachXdocFile.
-					aNewPlayBook
-						ifNotNil: [ self
-								announce:
-									(GtPlayBookChangeRequestedAnnoucement new
-										oldPlayBook: self;
-										newPlayBook: aNewPlayBook) ] ] ];
-		display: allXdocFiles;
-		padding: (BlInsets all: 5);
-		hFitContent;
-		vFitContent.
-	^ aList
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
