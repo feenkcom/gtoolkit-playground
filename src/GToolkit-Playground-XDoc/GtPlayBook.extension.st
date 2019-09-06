@@ -76,9 +76,8 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 GtPlayBook >> xdocSaving [
 	<playBookHandler>
 	| aXdFile aFileReference |
-	aFileReference := FileLocator localDirectory / 'xdocs' / 
+	aFileReference := XdPlaygroundSettings directory /  
 		(XdUtility playgroundFileNameFromDateAndTime: DateAndTime now).
-	aFileReference parent ensureCreateDirectory. 
 	aXdFile := XdFile new.
 	aXdFile streamingStrategy: (XdStreamingStrategy file: aFileReference).
 	self 

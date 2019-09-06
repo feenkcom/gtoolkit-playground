@@ -9,19 +9,44 @@ Class {
 
 { #category : #defaults }
 XdPlaygroundSettings class >> defaultDirectory [ 
-	^ FileLocator localDirectory / 'xdocs'
+	| aDirectory |
+	aDirectory := FileLocator localDirectory / 'xdocs'.
+	aDirectory ensureCreateDirectory.
+	^ aDirectory
 ]
 
 { #category : #accessing }
 XdPlaygroundSettings class >> directory [
 	directory ifNil: [ directory := self defaultDirectory ].
-	directory ensureCreateDirectory.
+	directory exists ifFalse: [ self initializeSettings ].
+	directory exists ifFalse: [ directory := self defaultDirectory ].
+	self 
+		assert: [ directory exists ]
+		description: [ 'The directory with playgrounds must exist' ].
 	^ directory
 ]
 
 { #category : #accessing }
-XdPlaygroundSettings class >> directory: anObject [
-	directory := anObject
+XdPlaygroundSettings class >> directory: aFileReference [
+	self 
+		assert: [ aFileReference asFileReference exists ] 
+		description: [ 'The directory with playgrounds must exist' ].
+	directory := aFileReference
+]
+
+{ #category : #'class initialization' }
+XdPlaygroundSettings class >> initialize [
+	self initializeSettings
+]
+
+{ #category : #settings }
+XdPlaygroundSettings class >> initializeSettings [
+	Smalltalk 
+		at: #SystemSettingsPersistence 
+		ifPresent: [ :aClass | | aTree theNodes | 
+			aTree := aClass default settingTree.
+			theNodes := aTree deeplySelect: [ :node | node receiverPackage name beginsWith: 'GToolkit-Playground' ].
+			aClass updateSettingNodes: theNodes ]
 ]
 
 { #category : #accessing }
@@ -38,6 +63,30 @@ XdPlaygroundSettings class >> playBooks [
 					XdPlayBookJsonMapping readPlayBook: aJsonString ]
 				ifNone: [ nil ] ]
 		thenSelect: #isNotNil
+]
+
+{ #category : #settings }
+XdPlaygroundSettings class >> storedPlaygroundsDirectoryOn: aBuilder [ 
+	<systemsettings>
+	
+	(aBuilder setting: #xdStoredPlaygroundsDirectoryString)
+		parent: #xdoc;
+		target: self;
+		type: #Directory;
+		description: 'Local directory with stored Playgrounds in XDoc format';
+		label: 'Directory with stored Playgrounds'
+
+]
+
+{ #category : #settings }
+XdPlaygroundSettings class >> xdStoredPlaygroundsDirectoryString [
+	^ self directory
+]
+
+{ #category : #settings }
+XdPlaygroundSettings class >> xdStoredPlaygroundsDirectoryString: aString [
+	aString inspect.
+	^ self directory: aString
 ]
 
 { #category : #accessing }
