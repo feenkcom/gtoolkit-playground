@@ -99,6 +99,11 @@ GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
 			action: [ :aButton | self copyContentToClipboard ] 
 ]
 
+{ #category : #accessing }
+GtPlayBook >> gtDisplayString [
+	^ self string
+]
+
 { #category : #'gt-extension' }
 GtPlayBook >> gtLiveFor: aView [
 	<gtView>

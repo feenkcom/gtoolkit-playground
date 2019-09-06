@@ -1,8 +1,16 @@
 Extension { #name : #GtPlayBook }
 
 { #category : #'*GToolkit-Playground-XDoc' }
-GtPlayBook >> gtActionXdocFor: anAction [
+GtPlayBook >> gtActionXDocSpotterFor: anAction [
 	<gtAction>
+	^ anAction explicit
+		forPlayground;
+		stencil: [ :aBrTab | self xdocPlayBookSpotterIn: aBrTab ]
+]
+
+{ #category : #'*GToolkit-Playground-XDoc' }
+GtPlayBook >> gtActionXdocFor: anAction [
+	"<gtAction>"
 	^ anAction dropdown 
 		forPlayground;
 		icon: BrGlamorousIcons menu;
@@ -100,6 +108,43 @@ GtPlayBook >> xdocPlayBookListElement [
 		hFitContent;
 		vFitContent.
 	^ aList
+]
+
+{ #category : #'*GToolkit-Playground-XDoc' }
+GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
+	| aSpotterDropdown |
+	aSpotterDropdown := BrDropdown new.
+	aSpotterDropdown
+		look: (BrGlamorousDropdownLook new backgroundPaint: BrGlamorousColors secondaryHeaderBackgroundColor);
+		toggle: [
+			BrButton new
+				look: (BrGlamorousButtonWithIconLook + BrGlamorousDropdownToggleLook);
+				icon: BrGlamorousIcons search asElement;
+				label: 'Playground History' ];
+		popup: [
+			| model |
+			model := GtSpotter new initializeWith: XdPlaygroundSpotterStart new.
+			model announcer
+				when: GtSpotterActOn
+				do: [ :anEvent |
+					| aNewPlayBook |
+					aNewPlayBook := anEvent realItem.
+					anEvent actedUpon: true.
+					aNewPlayBook subscribeExternalTools.
+					self announce: (GtPlayBookChangeRequestedAnnoucement new
+						oldPlayBook: self;
+						newPlayBook: aNewPlayBook) ].
+			model announcer
+				when: GtSpotterExitAnnouncement
+				do: [ :e | aSpotterDropdown collapse ].
+			GtSpotterElementWithPreview new
+				spotterModel: model;
+				size: 600@400;
+				margin: (BlInsets all: 1);
+				geometry: (BlRectangle cornerRadius: 4);
+				yourself ].
+		
+	^ aSpotterDropdown
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
