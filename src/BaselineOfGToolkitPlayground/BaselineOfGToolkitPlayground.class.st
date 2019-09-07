@@ -48,6 +48,7 @@ Class {
 BaselineOfGToolkitPlayground >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
+		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
 				spec repository: 'github://feenkcom/Brick/src' ];
@@ -71,4 +72,14 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			package: 'GToolkit-Playground-Examples' with: [
 				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
 
+]
+
+{ #category : #'post load' }
+BaselineOfGToolkitPlayground >> postLoadInitializeSettings: spec [
+	Smalltalk 
+		at: #SystemSettingsPersistence 
+		ifPresent: [ :aClass | | aTree theNodes | 
+			aTree := aClass default settingTree.
+			theNodes := aTree deeplySelect: [ :node | node receiverPackage name beginsWith: 'GToolkit-Playground' ].
+			aClass updateSettingNodes: theNodes ]
 ]

@@ -34,21 +34,6 @@ XdPlaygroundSettings class >> directory: aFileReference [
 	directory := aFileReference
 ]
 
-{ #category : #'class initialization' }
-XdPlaygroundSettings class >> initialize [
-	"self initializeSettings"
-]
-
-{ #category : #settings }
-XdPlaygroundSettings class >> initializeSettings [
-	Smalltalk 
-		at: #SystemSettingsPersistence 
-		ifPresent: [ :aClass | | aTree theNodes | 
-			aTree := aClass default settingTree.
-			theNodes := aTree deeplySelect: [ :node | node receiverPackage name beginsWith: 'GToolkit-Playground' ].
-			aClass updateSettingNodes: theNodes ]
-]
-
 { #category : #accessing }
 XdPlaygroundSettings class >> playBooks [
 	<return: #Array of: #GtPlayBook>
