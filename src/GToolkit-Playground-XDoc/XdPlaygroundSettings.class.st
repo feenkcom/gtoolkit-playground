@@ -36,7 +36,7 @@ XdPlaygroundSettings class >> directory: aFileReference [
 
 { #category : #'class initialization' }
 XdPlaygroundSettings class >> initialize [
-	self initializeSettings
+	"self initializeSettings"
 ]
 
 { #category : #settings }
