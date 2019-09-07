@@ -77,9 +77,6 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 { #category : #'post load' }
 BaselineOfGToolkitPlayground >> postLoadInitializeSettings: spec [
 	Smalltalk 
-		at: #SystemSettingsPersistence 
-		ifPresent: [ :aClass | | aTree theNodes | 
-			aTree := aClass default settingTree.
-			theNodes := aTree deeplySelect: [ :node | node receiverPackage name beginsWith: 'GToolkit-Playground' ].
-			aClass updateSettingNodes: theNodes ]
+		at: #XdPlaygroundSettings 
+		ifPresent: [ :aClass | aClass initializeSettings ]
 ]
