@@ -18,6 +18,10 @@ XdPlaygroundSpotterStart >> gtSpotterForEmptyPlayBookFor: aStep [
 		items: [ { GtPlayBook newDefault } ];
 		itemsLimit: Float infinity;
 		itemName: [ :eachGtPlayBook | 'Empty Playground' ];
+		previewElement: [ :aGtPlayBook | 
+			aGtPlayBook pages size = 1
+				ifFalse: [ aGtPlayBook asElement ]
+				ifTrue: [ aGtPlayBook pages first asElement ] ];
 		filter: GTFilterSubstring
 ]
 
@@ -30,6 +34,10 @@ XdPlaygroundSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
 		items: [ XdPlaygroundSettings xdocFiles ];
 		itemName: [ :anXdFile | anXdFile manifest title ];
 		previewObject: [ :anXdFile | GtPlayBook fromXdFile: anXdFile ];
+		previewElement: [ :aGtPlayBook | 
+			aGtPlayBook pages size = 1
+				ifFalse: [ aGtPlayBook asElement ]
+				ifTrue: [ aGtPlayBook pages first asElement ] ];
 		itemsLimit: Float infinity;
 		filter: XdPlayBookFilter 
 ]
