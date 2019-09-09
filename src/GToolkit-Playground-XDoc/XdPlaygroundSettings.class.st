@@ -10,7 +10,7 @@ Class {
 { #category : #defaults }
 XdPlaygroundSettings class >> defaultDirectory [ 
 	| aDirectory |
-	aDirectory := FileLocator localDirectory / 'xdocs'.
+	aDirectory := FileLocator imageDirectory / 'xdocs'.
 	aDirectory ensureCreateDirectory.
 	^ aDirectory
 ]
