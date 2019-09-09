@@ -1,8 +1,8 @@
 Class {
 	#name : #GtPlayBook,
 	#superclass : #Object,
-	#traits : 'GtAssertingTrait + TGtAnnouncer',
-	#classTraits : 'GtAssertingTrait classTrait + TGtAnnouncer classTrait',
+	#traits : 'TBlDebug + TGtAnnouncer',
+	#classTraits : 'TBlDebug classTrait + TGtAnnouncer classTrait',
 	#instVars : [
 		'pages',
 		'announcer'
