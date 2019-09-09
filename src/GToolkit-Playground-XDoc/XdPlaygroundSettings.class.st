@@ -17,9 +17,9 @@ XdPlaygroundSettings class >> defaultDirectory [
 
 { #category : #accessing }
 XdPlaygroundSettings class >> directory [
-	directory ifNil: [ directory := self defaultDirectory ].
-	directory exists ifFalse: [ self initializeSettings ].
-	directory exists ifFalse: [ directory := self defaultDirectory ].
+	directory isNil ifTrue: [ 
+		directory := self defaultDirectory.
+		"self initializeSettings" ].
 	self 
 		assert: [ directory exists ]
 		description: [ 'The directory with playgrounds must exist' ].
