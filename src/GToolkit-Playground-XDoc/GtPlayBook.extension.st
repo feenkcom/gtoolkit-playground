@@ -48,8 +48,9 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 			model announcer
 				when: GtSpotterActOn
 				do: [ :anEvent |
-					| aNewPlayBook |
-					aNewPlayBook := anEvent realItem.
+					| anXdFile aNewPlayBook |
+					anXdFile := anEvent realItem.
+					aNewPlayBook := GtPlayBook fromXdFile: anXdFile.
 					anEvent actedUpon: true.
 					aNewPlayBook subscribeExternalTools.
 					self announce: (GtPlayBookChangeRequestedAnnoucement new
