@@ -16,6 +16,17 @@ GtPlayBook class >> empty [
 ]
 
 { #category : #'instance creation' }
+GtPlayBook class >> fromXdFile: anXdFile [
+	^ anXdFile streamingStrategy zip members
+			detect: [ :aMember | aMember fileName endsWith: XdConstants playBookExtension ]
+			ifFound: [ :aPlayBookMember | 
+				| aJsonString |
+				aJsonString := aPlayBookMember contents asByteArray utf8Decoded.
+				XdPlayBookJsonMapping readPlayBook: aJsonString ]
+			ifNone: [ self newDefault ] 
+]
+
+{ #category : #'instance creation' }
 GtPlayBook class >> newDefault [
 	"Open a new play book with one page and one default snippet"
 	<return: #GtPlayBook>
@@ -97,11 +108,6 @@ GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
 			forPlayground;
 			priority: 10;
 			action: [ :aButton | self copyContentToClipboard ] 
-]
-
-{ #category : #accessing }
-GtPlayBook >> gtDisplayString [
-	^ self string
 ]
 
 { #category : #'gt-extension' }

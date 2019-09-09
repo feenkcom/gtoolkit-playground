@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit-Playground-XDoc'
 }
 
+{ #category : #printing }
+XdPlaygroundSpotterStart >> gtDisplayString [
+	^ 'Saved Playgrounds'
+]
+
 { #category : #'gt-spotter' }
 XdPlaygroundSpotterStart >> gtSpotterForEmptyPlayBookFor: aStep [
 	<gtSearch>
@@ -22,8 +27,9 @@ XdPlaygroundSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
 	aStep listProcessor
 		priority: 0;
 		title: 'Playgrounds';
-		items: [ XdPlaygroundSettings playBooks ];
+		items: [ XdPlaygroundSettings xdocFiles ];
+		itemName: [ :anXdFile | anXdFile manifest title ];
+		previewObject: [ :anXdFile | GtPlayBook fromXdFile: anXdFile ];
 		itemsLimit: Float infinity;
-		itemName: [ :eachGtPlayBook | eachGtPlayBook string ];
-		filter: GTFilterSubstring
+		filter: XdPlayBookFilter 
 ]

@@ -17,15 +17,11 @@ GtPlayBook >> saveToXDoc [
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> storePlayBookInto: aXdFile [ 
 	| aText aTitle aDescription |
-	aText := String streamContents: [ :aStream |
-		self pages do: [ :eachPage | 
-			eachPage snippets do: [ :eachSnippet |
-				eachSnippet isUserSnippet ifTrue: [ 
-					aStream nextPutAll: eachSnippet text asString; cr ] ] ] ].
-	aTitle := aText first: (aText size min: 40).
+	aText := self string.
+	aTitle := aText first: (aText size min: 60).
 	aTitle := aTitle replace: [ :eachCharacter | 
 		eachCharacter isSeparator ifTrue: [ Character space ] ifFalse: [ eachCharacter ] ]. 
-	aDescription := aText first: (aText size min: 100).
+	aDescription := aText.
 
 	aXdFile writer
 		authorName: Author name;
