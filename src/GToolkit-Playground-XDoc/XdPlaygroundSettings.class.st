@@ -10,16 +10,17 @@ Class {
 { #category : #defaults }
 XdPlaygroundSettings class >> defaultDirectory [ 
 	| aDirectory |
-	aDirectory := FileLocator imageDirectory / 'xdocs'.
+	aDirectory := FileLocator localDirectory / 'xdocs'.
 	aDirectory ensureCreateDirectory.
 	^ aDirectory
 ]
 
 { #category : #accessing }
 XdPlaygroundSettings class >> directory [
-	directory isNil ifTrue: [ 
-		directory := self defaultDirectory.
-		"self initializeSettings" ].
+	directory ifNil: [ directory := self defaultDirectory ].
+	"If directory is set but does not exist, try to re-load one from settings and then a default directory"
+	directory exists ifFalse: [ self initializeSettings ].
+	directory exists ifFalse: [ directory := self defaultDirectory ].
 	self 
 		assert: [ directory exists ]
 		description: [ 'The directory with playgrounds must exist' ].
@@ -64,7 +65,7 @@ XdPlaygroundSettings class >> playBooks [
 XdPlaygroundSettings class >> storedPlaygroundsDirectoryOn: aBuilder [ 
 	<systemsettings>
 	
-	(aBuilder setting: #xdStoredPlaygroundsDirectoryString)
+	(aBuilder setting: #xdStoredPlaygroundsDirectory)
 		parent: #xdoc;
 		target: self;
 		type: #Directory;
@@ -74,13 +75,16 @@ XdPlaygroundSettings class >> storedPlaygroundsDirectoryOn: aBuilder [
 ]
 
 { #category : #settings }
-XdPlaygroundSettings class >> xdStoredPlaygroundsDirectoryString [
-	^ self directory
+XdPlaygroundSettings class >> xdStoredPlaygroundsDirectory [
+	"This method is used by settings only. Do not use it in your code."
+	<return: #AbstractFileReference>
+	^ directory
 ]
 
 { #category : #settings }
-XdPlaygroundSettings class >> xdStoredPlaygroundsDirectoryString: aString [
-	^ self directory: aString
+XdPlaygroundSettings class >> xdStoredPlaygroundsDirectory: anAbstractFileReference [
+	"This method is used by settings only. Do not use it in your code."
+	directory := anAbstractFileReference
 ]
 
 { #category : #accessing }
