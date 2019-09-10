@@ -16,7 +16,7 @@ GtSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
 		itemsLimit: Float infinity;
 		filter: XdPlayBookFilter;
 		wantsToDisplayOnEmptyQuery: false;
-		actLogic: [ :anXdFile :theStep |
-			theStep exit.
-			GtInspector openOnPlayBook: (GtPlayBook fromXdFile: anXdFile) ]
+		actLogic: [ :anXdFile :theStep :theSpotterElement |
+			GtInspector openOnPlayBook: (GtPlayBook fromXdFile: anXdFile) from: theSpotterElement.
+			theStep exit ]
 ]
