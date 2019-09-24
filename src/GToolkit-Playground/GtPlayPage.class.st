@@ -75,39 +75,38 @@ GtPlayPage >> asElement [
 GtPlayPage >> attachToSnippet: aGtSnippet [
 	aGtSnippet variableBindings: self bindings.
 	aGtSnippet
-		subscribe: GtSnippetBelowRequestedAnnouncement
+		when: GtSnippetBelowRequestedAnnouncement
 			send: #snippetBelowRequestedAnnouncement:
 			to: self
 			for: self;
-		subscribe: GtSnippetRemovalRequestedAnnouncement
+		when: GtSnippetRemovalRequestedAnnouncement
 			send: #snippetRemovalRequestedAnnouncement:
 			to: self
 			for: self;
-		subscribe: GtSnippetReplacementRequestedAnnouncement
+		when: GtSnippetReplacementRequestedAnnouncement
 			send: #snippetReplacementRequestedAnnouncement:
 			to: self
 			for: self;
-		subscribe: GtSnippetMergeRequestedAnnouncement 
-			send: #snippetMergeRequestedAnnouncement: 
-			to: self 
+		when: GtSnippetMergeRequestedAnnouncement
+			send: #snippetMergeRequestedAnnouncement:
+			to: self
 			for: self;
-		subscribe: GtPageSnippetChangedAnnouncement
+		when: GtPageSnippetChangedAnnouncement
 			send: #snippetChangedAnnouncement:
 			to: self
 			for: self;
-		subscribe: GtSnippetEvaluatedAnnouncement 
-			send: #snippetEvaluatedAnnouncement: 
-			to: self 
+		when: GtSnippetEvaluatedAnnouncement
+			send: #snippetEvaluatedAnnouncement:
+			to: self
 			for: self;
-		subscribe: GtSnippetRenameRequestedAnnoucement 
-			send: #snippetRenameRequestedAnnouncement: 
-			to: self 
+		when: GtSnippetRenameRequestedAnnoucement
+			send: #snippetRenameRequestedAnnouncement:
+			to: self
 			for: self;
-		subscribe: GtSnippetExternalCursorAnnouncement 
-			send: #snippetExternalCursorAnnouncement: 
-			to: self 
+		when: GtSnippetExternalCursorAnnouncement
+			send: #snippetExternalCursorAnnouncement:
+			to: self
 			for: self
-
 ]
 
 { #category : #accessing }

@@ -81,11 +81,10 @@ GtPlayBook >> asElement [
 { #category : #subscriptions }
 GtPlayBook >> attachToPage: aGtPlayPage [
 	aGtPlayPage
-		subscribe: GtPageAnnoucement
-			send: #pageAnnouncement:
-			to: self
-			for: self
-
+		when: GtPageAnnoucement
+		send: #pageAnnouncement:
+		to: self
+		for: self
 ]
 
 { #category : #actions }

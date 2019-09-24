@@ -73,11 +73,11 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 GtPlayBook >> xdocSaving [
 	<playBookHandler>
 	| aXdFile aFileReference |
-	aFileReference := XdPlaygroundSettings directory /  
-		(XdUtility playgroundFileNameFromDateAndTime: DateAndTime now).
+	aFileReference := XdPlaygroundSettings directory
+		/ (XdUtility playgroundFileNameFromDateAndTime: DateAndTime now).
 	aXdFile := XdFile new.
 	aXdFile streamingStrategy: (XdStreamingStrategy file: aFileReference).
-	self 
-		subscribe: GtPageSnippetEvaluatedAnnouncement 
+	self
+		when: GtPageSnippetEvaluatedAnnouncement
 		do: [ :anAnnuncement | self storePlayBookInto: aXdFile ]
 ]
