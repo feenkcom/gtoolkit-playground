@@ -48,8 +48,8 @@ GtPlayBookWidgetModel >> playBook: aGtPlayBook [
 { #category : #subscriptions }
 GtPlayBookWidgetModel >> subscribeToPlayBook [
 	self playBook ifNil: [ ^ self ].
-	self playBook 
-		subscribe: GtPlayBookChangeRequestedAnnoucement 
+	self playBook
+		when: GtPlayBookChangeRequestedAnnoucement
 		send: #handlePlayBookChangeRequestedAnnouncement:
 		to: self
 		for: self
