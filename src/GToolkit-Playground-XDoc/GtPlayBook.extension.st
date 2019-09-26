@@ -59,7 +59,7 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 			model announcer
 				when: GtSpotterExitAnnouncement
 				do: [ :e | aSpotterDropdown collapse ].
-			GtSpotterElementWithPreview new
+			GtSpotterElement new
 				spotterModel: model;
 				size: 600@400;
 				margin: (BlInsets all: 1);
