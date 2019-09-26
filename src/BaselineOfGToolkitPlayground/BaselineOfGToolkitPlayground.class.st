@@ -53,7 +53,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'Brick' with: [
 				spec repository: 'github://feenkcom/Brick:v0.7.92/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.101/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.102/src' ];
 			baseline: 'GToolkitPhlow' with: [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.92/src' ];
 			baseline: 'GToolkitCompleter' with: [
@@ -61,7 +61,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'GToolkitUtility' with: [
 				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.2/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.105/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.106/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.4/src' ];
 			baseline: 'XdocClient' with: [
