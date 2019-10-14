@@ -33,12 +33,13 @@ GtPlayBook >> storePlayBookInto: aXdFile [
 
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
+	| look |
 	^ BrButton new
 		look:
 			BrGlamorousButtonWithIconLook
 				+
-					(BrGlamorousWithDropdownLook
-						stencil: [ | model look |
+					(look := BrGlamorousWithDropdownLook
+						stencil: [ | model |
 							model := GtSpotter new
 								initializeWith: XdPlaygroundSpotterStart new.
 							model announcer
@@ -57,23 +58,23 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 							model announcer
 								when: GtSpotterExitAnnouncement
 								do: [ :e | look hide ].
-							look := BrGlamorousDropdownLook new
-								handle:
-									(BrButton new
-										look:
-											BrGlamorousButtonWithIconLook - BrGlamorousWithLabelTooltipLook
-												- BrGlamorousButtonExteriorLook;
-										icon: BrGlamorousIcons search asElement;
-										label: 'Playground History';
-										yourself);
-								content:
-									(GtSpotterElement new
-										spotterModel: model;
-										size: 600 @ 400;
-										yourself);
-								yourself.
 							BlElement new
-								look: look;
+								look:
+									(BrGlamorousDropdownLook new
+										handle:
+											(BrButton new
+												look:
+													BrGlamorousButtonWithIconLook - BrGlamorousWithLabelTooltipLook
+														- BrGlamorousButtonExteriorLook;
+												icon: BrGlamorousIcons search asElement;
+												label: 'Playground History';
+												yourself);
+										content:
+											(GtSpotterElement new
+												spotterModel: model;
+												size: 600 @ 400;
+												yourself);
+										yourself);
 								background: BrGlamorousColors secondaryHeaderBackgroundColor;
 								yourself ]);
 		icon: BrGlamorousIcons search asElement;
