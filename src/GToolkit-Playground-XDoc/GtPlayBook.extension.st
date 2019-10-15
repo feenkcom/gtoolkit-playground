@@ -33,40 +33,53 @@ GtPlayBook >> storePlayBookInto: aXdFile [
 
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
-	| aSpotterDropdown |
-	aSpotterDropdown := BrDropdown new.
-	aSpotterDropdown
-		look: (BrGlamorousDropdownLook new backgroundPaint: BrGlamorousColors secondaryHeaderBackgroundColor);
-		toggle: [
-			BrButton new
-				look: (BrGlamorousButtonWithIconLook + BrGlamorousDropdownToggleLook);
-				icon: BrGlamorousIcons search asElement;
-				label: 'Playground History' ];
-		popup: [
-			| model |
-			model := GtSpotter new initializeWith: XdPlaygroundSpotterStart new.
-			model announcer
-				when: GtSpotterActOn
-				do: [ :anEvent |
-					| anXdFile aNewPlayBook |
-					anXdFile := anEvent realItem.
-					aNewPlayBook := GtPlayBook fromXdFile: anXdFile.
-					anEvent actedUpon: true.
-					aNewPlayBook subscribeExternalTools.
-					self announce: (GtPlayBookChangeRequestedAnnoucement new
-						oldPlayBook: self;
-						newPlayBook: aNewPlayBook) ].
-			model announcer
-				when: GtSpotterExitAnnouncement
-				do: [ :e | aSpotterDropdown collapse ].
-			GtSpotterElement new
-				spotterModel: model;
-				size: 600@400;
-				margin: (BlInsets all: 1);
-				geometry: (BlRectangle cornerRadius: 4);
-				yourself ].
-		
-	^ aSpotterDropdown
+	| look |
+	^ BrButton new
+		look:
+			BrGlamorousButtonWithIconLook
+				+
+					(look := BrGlamorousWithDropdownLook
+						stencil: [ | model |
+							model := GtSpotter new
+								initializeWith: XdPlaygroundSpotterStart new.
+							model announcer
+								when: GtSpotterActOn
+								do: [ :anEvent | 
+									| anXdFile aNewPlayBook |
+									anXdFile := anEvent realItem.
+									aNewPlayBook := GtPlayBook fromXdFile: anXdFile.
+									anEvent actedUpon: true.
+									aNewPlayBook subscribeExternalTools.
+									self
+										announce:
+											(GtPlayBookChangeRequestedAnnoucement new
+												oldPlayBook: self;
+												newPlayBook: aNewPlayBook) ].
+							model announcer
+								when: GtSpotterExitAnnouncement
+								do: [ :e | look hide ].
+							BlElement new
+								look:
+									(BrGlamorousDropdownLook new
+										handle:
+											(BrButton new
+												look:
+													BrGlamorousButtonWithIconLook - BrGlamorousWithLabelTooltipLook
+														- BrGlamorousButtonExteriorLook;
+												icon: BrGlamorousIcons search asElement;
+												label: 'Playground History';
+												yourself);
+										content:
+											(GtSpotterElement new
+												spotterModel: model;
+												size: 600 @ 400;
+												yourself);
+										yourself);
+								background: BrGlamorousColors secondaryHeaderBackgroundColor;
+								yourself ]);
+		icon: BrGlamorousIcons search asElement;
+		label: 'Playground History';
+		yourself
 ]
 
 { #category : #'*GToolkit-Playground-XDoc' }
