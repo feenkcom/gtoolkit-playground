@@ -36,6 +36,18 @@ GtPlayBook class >> newDefault [
 ]
 
 { #category : #'instance creation' }
+GtPlayBook class >> newWithCodeSnippetContent: aString [
+	| aPlayBook aSnippet |
+	self
+		assert: [ aString isString ] 
+		description: [ 'Code snippet content must be a string' ].
+	aPlayBook := self newDefault.
+	aSnippet := aPlayBook pages first snippets first.
+	aSnippet sourceCode: aString.
+	^ aPlayBook
+]
+
+{ #category : #'instance creation' }
 GtPlayBook class >> open [
 	| aPlayground aSpace |
 

@@ -47,9 +47,11 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 								do: [ :anEvent | 
 									| anXdFile aNewPlayBook |
 									anXdFile := anEvent realItem.
-									aNewPlayBook := GtPlayBook fromXdFile: anXdFile.
-									anEvent actedUpon: true.
+									aNewPlayBook := (anXdFile isKindOf: XdFile) 
+										ifTrue: [ GtPlayBook fromXdFile: anXdFile ]
+										ifFalse: [ anXdFile ].
 									aNewPlayBook subscribeExternalTools.
+									anEvent actedUpon: true.
 									self
 										announce:
 											(GtPlayBookChangeRequestedAnnoucement new
