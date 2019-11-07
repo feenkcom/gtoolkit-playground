@@ -26,6 +26,35 @@ XdPlaygroundSpotterStart >> gtSpotterForEmptyPlayBookFor: aStep [
 ]
 
 { #category : #'gt-spotter' }
+XdPlaygroundSpotterStart >> gtSpotterForListOfPlayBooksFor: aStep [
+	<gtSearch>
+	aStep listProcessor
+		priority: 18;
+		title: 'List of Playgrounds';
+		items: [  
+			| aSnippet |
+			aSnippet := String streamContents: [ :aStream | 
+				aStream
+					nextPutAll: XdPlaygroundSettings name;
+					space;
+					nextPutAll: #xdStoredPlaygroundsDirectory asString;
+					space;
+					nextPutAll: #filesMatching:;
+					space;
+					nextPutAll: '''*.';
+					nextPutAll: XdConstants xdocExtension;
+					nextPut: $' ].
+			{ GtPlayBook newWithCodeSnippetContent: aSnippet } ];
+		itemsLimit: Float infinity;
+		itemName: [ :eachGtPlayBook | 'List of Playgrounds' ];
+		previewElement: [ :aGtPlayBook | 
+			aGtPlayBook pages size = 1
+				ifFalse: [ aGtPlayBook asElement ]
+				ifTrue: [ aGtPlayBook pages first asElement ] ];
+		filter: GTFilterSubstring
+]
+
+{ #category : #'gt-spotter' }
 XdPlaygroundSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
 	<gtSearch>
 	aStep listProcessor

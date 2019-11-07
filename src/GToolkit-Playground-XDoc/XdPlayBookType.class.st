@@ -13,7 +13,15 @@ XdPlayBookType class >> matchesMimeType: aZnMimeType [
 
 { #category : #actions }
 XdPlayBookType class >> openDocument: aXdDocument ofXdFileInPharo: aXdFile [ 
-	| theAttachments aMember aPlayBook |
+	| aPlayBook |
+	aPlayBook := self playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFile.
+	^ GtInspector openOnPlayBook: aPlayBook
+]
+
+{ #category : #accessing }
+XdPlayBookType class >> playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFile [ 
+	<return: #GtPlayBook>
+	| theAttachments aMember |
 	self
 		assert: [ aXdDocument notNil ] 
 		description: [ 'XDoc document must be non-nil' ].
@@ -25,8 +33,14 @@ XdPlayBookType class >> openDocument: aXdDocument ofXdFileInPharo: aXdFile [
 		description: [ 'XDoc file must exist' ].
 	theAttachments := aXdFile manifest attachmentsForDocument: aXdDocument.
 	aMember := aXdFile memberNamed: theAttachments first fileName.
-	aPlayBook := XdPlayBookJsonMapping readPlayBook: aMember gtContents.
-	^ GtInspector openOnPlayBook: aPlayBook
+	^ XdPlayBookJsonMapping readPlayBook: aMember gtContents.
+]
+
+{ #category : #accessing }
+XdPlayBookType class >> toolForDocument: aXdDocument ofXdFileInPharo: aXdFile [ 
+	"Return an Bloc elemment or an object that understands #asElement."
+	<return: #BlElement>
+	^ self playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFile.
 ]
 
 { #category : #accessing }
