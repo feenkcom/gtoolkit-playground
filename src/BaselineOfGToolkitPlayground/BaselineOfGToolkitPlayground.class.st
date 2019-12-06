@@ -51,17 +51,17 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.7.239/src' ];
+				spec repository: 'github://feenkcom/Brick:v0.7.240/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.252/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.253/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.241/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.242/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.250/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.251/src' ];
 			baseline: 'GToolkitUtility' with: [
 				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.5/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.259/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.260/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.8/src' ];
 			baseline: 'XdocClient' with: [
