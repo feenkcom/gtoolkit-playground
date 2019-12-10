@@ -1,8 +1,8 @@
 Class {
 	#name : #GtSnippetBindings,
 	#superclass : #Object,
-	#traits : 'GtBindingsTrait + GtAssertingTrait',
-	#classTraits : 'GtBindingsTrait classTrait + GtAssertingTrait classTrait',
+	#traits : 'GtBindingsTrait + TGtAssert',
+	#classTraits : 'GtBindingsTrait classTrait + TGtAssert classTrait',
 	#instVars : [
 		'bindings',
 		'receiver'

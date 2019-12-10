@@ -1,8 +1,8 @@
 Class {
 	#name : #GtBindingStrategy,
 	#superclass : #Object,
-	#traits : 'GtAssertingTrait',
-	#classTraits : 'GtAssertingTrait classTrait',
+	#traits : 'TGtAssert',
+	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'bindings'
 	],

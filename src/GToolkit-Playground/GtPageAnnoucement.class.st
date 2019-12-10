@@ -1,8 +1,8 @@
 Class {
 	#name : #GtPageAnnoucement,
 	#superclass : #Announcement,
-	#traits : 'GtAssertingTrait',
-	#classTraits : 'GtAssertingTrait classTrait',
+	#traits : 'TGtAssert',
+	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'page'
 	],
