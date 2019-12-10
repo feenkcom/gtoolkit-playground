@@ -4,6 +4,15 @@ Class {
 	#category : #'GToolkit-VariableBindings-Core'
 }
 
+{ #category : #comparing }
+GtSnippetBindingStrategy >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ bindings = anObject bindings
+]
+
 { #category : #binding }
 GtSnippetBindingStrategy >> bindingOf: aSymbol [
 	<return: #LiteralVariable or: nil>
@@ -11,6 +20,13 @@ GtSnippetBindingStrategy >> bindingOf: aSymbol [
 		^ nil ].
 	^ super bindingOf: aSymbol
 	
+]
+
+{ #category : #comparing }
+GtSnippetBindingStrategy >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ bindings hash
 ]
 
 { #category : #testing }

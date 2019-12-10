@@ -1,8 +1,8 @@
 Class {
 	#name : #GtPlayBookChangeRequestedAnnoucement,
 	#superclass : #Announcement,
-	#traits : 'GtAssertingTrait',
-	#classTraits : 'GtAssertingTrait classTrait',
+	#traits : 'TGtAssert',
+	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'oldPlayBook',
 		'newPlayBook'

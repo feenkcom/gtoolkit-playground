@@ -1,14 +1,23 @@
 Class {
 	#name : #GtSnippetBindings,
 	#superclass : #Object,
-	#traits : 'GtBindingsTrait + GtAssertingTrait',
-	#classTraits : 'GtBindingsTrait classTrait + GtAssertingTrait classTrait',
+	#traits : 'GtBindingsTrait + TGtAssert',
+	#classTraits : 'GtBindingsTrait classTrait + TGtAssert classTrait',
 	#instVars : [
 		'bindings',
 		'receiver'
 	],
 	#category : #'GToolkit-VariableBindings-Core'
 }
+
+{ #category : #comparing }
+GtSnippetBindings >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ receiver = anObject receiver and: [ bindings = anObject bindings ]
+]
 
 { #category : #converting }
 GtSnippetBindings >> asDictionary [
@@ -32,6 +41,11 @@ GtSnippetBindings >> bindingOf: aSymbol [
 		ifAbsent: [ nil ]
 ]
 
+{ #category : #accessing }
+GtSnippetBindings >> bindings [
+	^ bindings
+]
+
 { #category : #'gt-extension' }
 GtSnippetBindings >> gtBindingsFor: aView [
 	<gtView>
@@ -41,6 +55,13 @@ GtSnippetBindings >> gtBindingsFor: aView [
 { #category : #binding }
 GtSnippetBindings >> hasBindingOf: aSymbol [
 	^ bindings includesKey: aSymbol
+]
+
+{ #category : #comparing }
+GtSnippetBindings >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ receiver hash bitXor: bindings hash
 ]
 
 { #category : #initialization }
