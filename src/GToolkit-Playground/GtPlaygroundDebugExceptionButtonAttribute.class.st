@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #initialization }
-GtPlaygroundDebugExceptionButtonAttribute >> affect: aBrText in: anEditorElement [
+GtPlaygroundDebugExceptionButtonAttribute >> affect: aTBrTextEditorTextualPiece in: anEditorElement [
 	| container textElement text debugButton |
 	text := self result printString asRopedText.
 	container := BlElement new.

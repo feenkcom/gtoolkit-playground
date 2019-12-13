@@ -20,7 +20,7 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> action: aBlock [
 ]
 
 { #category : #initialization }
-GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aBrText in: anEditorElement [
+GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece in: anEditorElement [
 	| aButton |
 	aButton := BlElement new.
 	^ aButton
