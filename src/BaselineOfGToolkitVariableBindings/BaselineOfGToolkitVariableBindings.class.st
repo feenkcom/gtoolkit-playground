@@ -10,9 +10,9 @@ BaselineOfGToolkitVariableBindings >> baseline: spec [
 	spec for: #'common' do: [
 		spec 
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.8/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.9/src' ];
 			baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.7.259/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.7.260/src' ].
 		spec package: 'GToolkit-VariableBindings' with: [
 				spec requires: #('GToolkitUtility' 'Bloc' ). ]. ].
 
