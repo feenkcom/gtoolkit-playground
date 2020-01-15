@@ -20,6 +20,5 @@ GtMarkUnsuccessfullyEvaluatedCodeCommand >> execute [
 				result: self result)}
 		from: aSubText size
 		to: aSubText size.
-	self editor invalidateAll.
-	self editor updateAll
+	self editor updater all update
 ]
