@@ -22,6 +22,5 @@ GtMarkSuccessfullyEvaluatedCodeCommand >> execute [
 			paint: (Color fromHexString: #'90CAF9')
 	}.
 
-	self editor invalidateAll.
-	self editor updateAll
+	self editor updater all update
 ]
