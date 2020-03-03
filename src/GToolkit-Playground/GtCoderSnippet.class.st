@@ -130,17 +130,17 @@ GtCoderSnippet >> initialize [
 { #category : #initialization }
 GtCoderSnippet >> initializeCoderAddOns [
 	coder addOns
-		addDropDownAction: nil
+		addDropDownAction: 'Create example'
 			icon: BrGlamorousIcons eg
 			stencil: [ :selectedClass | 
-			| currentSource |
-			currentSource := self text.
-			self
-				requestSnippetReplacement: GtExampleSnippet
-				initializedWith: [ :anExampleSnippet | 
-					anExampleSnippet
-						updateForCodeSnippet: currentSource
-						inClass: selectedClass ] ];
+				| currentSource |
+				currentSource := self text.
+				self
+					requestSnippetReplacement: GtExampleSnippet
+					initializedWith: [ :anExampleSnippet | 
+						anExampleSnippet
+							updateForCodeSnippet: currentSource
+							inClass: selectedClass ] ];
 		addShortcut:
 			(BlShortcut new
 				combination: BlKeyCombination builder primary backspace build;
