@@ -86,8 +86,8 @@ GtPlayBook >> announcer [
 GtPlayBook >> asElement [
 	<return: #BlElement>
 	^ BlElement new
-		look: GtPlayBookLook;
-		viewModel: (GtPlayBookWidgetModel new playBook: self)
+		viewModel: (GtPlayBookWidgetModel new playBook: self);
+		look: GtPlayBookLook
 ]
 
 { #category : #subscriptions }

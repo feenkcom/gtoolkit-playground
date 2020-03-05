@@ -24,7 +24,7 @@ GtSnippetContainerLook >> initialize [
 	"contentElement border: (BlBorder paint: LightBorderColor width: 1)."
 	"contentElement background: Color white."
 	closeButton := self newCloseElement
-		viewModel: (BrButtonModel new action: [ self snippetRemoveRequested ]);
+		action: [ self snippetRemoveRequested ];
 		constraintsDo: [ :c | 
 			c ignoreByLayout.
 			c margin: (BlInsets top: -8 right: -8).
@@ -36,7 +36,7 @@ GtSnippetContainerLook >> initialize [
 			c margin: (BlInsets bottom: -8).
 			c ignored horizontal alignCenter.
 			c ignored vertical alignBottom ];
-		viewModel: (BrButtonModel new action: [ self snippetBelowRequested ]).
+		action: [ self snippetBelowRequested ].
 	self addChangeAddChildAs: #(content) with: [ contentElement ].
 	self addChangeAddChildAs: #(bottomToolbar) with: [ bottomToolbar ].
 	self addChangeAddChildAs: #(closeButton) with: [ closeButton ].
