@@ -42,3 +42,7 @@ XdPublishedDocsSnippet >> asElement [
 XdPublishedDocsSnippet >> asStencilBuilder [
 	^ self
 ]
+
+{ #category : #'api - instantiation' }
+XdPublishedDocsSnippet >> bind: aSnippet to: aSnippetElement [
+]

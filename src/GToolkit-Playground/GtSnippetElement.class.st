@@ -11,7 +11,8 @@ Class {
 GtSnippetElement >> initialize [
 	super initialize.
 	
-	self clipChildren: false
+	self clipChildren: false.
+	self viewModel: (GtSnippetWidgetModel new)
 ]
 
 { #category : #'api - accessing' }
@@ -23,5 +24,5 @@ GtSnippetElement >> snippet [
 
 { #category : #'api - accessing' }
 GtSnippetElement >> snippet: aGtSnippet [
-	self viewModel: (GtSnippetWidgetModel new snippet: aGtSnippet)
+	self viewModel snippet: aGtSnippet
 ]
