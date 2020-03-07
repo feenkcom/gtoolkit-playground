@@ -13,7 +13,7 @@ GtDocumentSnippet class >> typeName [
 	It should be an unique name among all playground snippet types."
 	<return: #String>
 
-	^ 'document'
+	^ 'Document'
 ]
 
 { #category : #visitor }
