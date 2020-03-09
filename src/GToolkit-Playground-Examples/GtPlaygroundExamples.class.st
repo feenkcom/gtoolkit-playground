@@ -65,7 +65,7 @@ GtPlaygroundExamples >> collectionSnippetElement [
 	<gtExample>
 	| anElement |
 	anElement := self collectionSnippet asElement.
-	self assert: anElement childrenCount size > 1.
+	self assert: anElement childrenCount > 1.
 	^ anElement
 ]
 
