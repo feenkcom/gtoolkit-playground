@@ -54,7 +54,7 @@ XdPlaygroundExamples >> readPlaybookDocument [
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
 		assert: aPlayBookZipMember contents asByteArray utf8Decoded 
-		equals: '{"pages":[{"snippets":[{"pharo":{"source_code":"1+2"}}]}]}'.	
+		equals: '{"pages":[{"snippets":[{"Pharo":{"source_code":"1+2"}}]}]}'.	
 	^ aXdReadFile
 	
 ]
@@ -97,7 +97,7 @@ XdPlaygroundExamples >> readPlaybookDocumentFromFile [
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
 		assert: aPlayBookZipMember contents asByteArray utf8Decoded 
-		equals: '{"pages":[{"snippets":[{"pharo":{"source_code":"1+2"}}]}]}'.	
+		equals: '{"pages":[{"snippets":[{"Pharo":{"source_code":"1+2"}}]}]}'.	
 	^ aXdReadFile
 	
 ]
@@ -140,7 +140,7 @@ XdPlaygroundExamples >> readPlaybookDocumentFromFileOnDisk [
 		eachMember fileName endsWith: self constants playBookExtension ].
 	self 
 		assert: aPlayBookZipMember contents asByteArray utf8Decoded 
-		equals: '{"pages":[{"snippets":[{"pharo":{"source_code":"1+2"}}]}]}'.	
+		equals: '{"pages":[{"snippets":[{"Pharo":{"source_code":"1+2"}}]}]}'.	
 	^ aXdReadFile
 	
 ]

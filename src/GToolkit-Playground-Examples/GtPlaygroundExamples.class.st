@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPlaygroundExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-Playground-Examples'
+	#category : #'GToolkit-Playground-Examples'
 }
 
 { #category : #'model - updates' }
@@ -56,7 +56,7 @@ GtPlaygroundExamples >> collectionSnippet [
 	| aSnippet |
 	aSnippet := GtCollectionSnippet new.
 	self assert: aSnippet availableSnippetClasses notEmpty.
-	self assert: aSnippet typeName equals: 'collection'.
+	self assert: aSnippet typeName equals: 'Collection'.
 	^ aSnippet
 ]
 
@@ -65,7 +65,7 @@ GtPlaygroundExamples >> collectionSnippetElement [
 	<gtExample>
 	| anElement |
 	anElement := self collectionSnippet asElement.
-	self assert: anElement childrenCount equals: 3.
+	self assert: anElement childrenCount size > 1.
 	^ anElement
 ]
 
