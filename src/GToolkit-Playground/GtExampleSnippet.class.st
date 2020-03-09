@@ -28,22 +28,16 @@ GtExampleSnippet >> accept: aVisitor [
 
 { #category : #converting }
 GtExampleSnippet >> asElement [
-	| element coderElement |
-	element := BlElement new.
-	element
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal matchParent ].
-	coderElement := coder asElement.
-	coderElement margin: (BlInsets all: 0).
-	element addChild: coderElement.
-	element
-		clipChildren: false;
-		look: (GtSnippetContainerLook new snippet: self) + BrLayoutLook linearVertical vFitContent hMatchParent;
-		border: BlBorder empty;
-		padding: BlInsets empty;
-		background: BlBackground transparent.
-	^ element
+	| aCoderElement |
+
+	aCoderElement := coder asElement.
+	aCoderElement margin: (BlInsets all: 0).
+	
+	^ BrFrame new
+		vFitContent;
+		hMatchParent;
+		look: (GtSnippetContainerLook new snippet: self);
+		addChild: aCoderElement
 ]
 
 { #category : #converting }

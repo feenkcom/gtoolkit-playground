@@ -33,8 +33,14 @@ GtCollectionSnippetLook >> availableSnippetClasses [
 { #category : #initialization }
 GtCollectionSnippetLook >> initialize [
 	super initialize.
-	toolbar := BrToolbar new.
-	toolbar look: BrGlamorousToolbarLook.
+
+	toolbar := BrToolbar new
+		hMatchParent;
+		look: BrGlamorousToolbarLook;
+		background: (Color fromHexString: #f0f0f0);
+		border: (BlBorder paint: Color veryLightGray width: 1);
+		padding: (BlInsets all: 10).
+
 	self addChangeAddChildAs: #(content toobar) with: [ toolbar ].
 	self
 		addChange:
@@ -51,7 +57,7 @@ GtCollectionSnippetLook >> initialize [
 							anItem action: [ self addSnippet: eachSnippetClass ].
 							toolbar addItem: anItem ] ];
 				down: [ :e |  ];
-				yourself)
+				yourself).
 ]
 
 { #category : #initialization }

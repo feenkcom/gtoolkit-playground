@@ -12,8 +12,6 @@ Class {
 GtPlayBookLook >> initialize [
 	super initialize.
 
-	self add: BrLayoutLook linearHorizontal matchParent.
-
 	playBook := GtPlayBook new.
 	tabGroup := BrTabGroup new look: BrGlamorousTabGroupLook.
 
@@ -68,7 +66,7 @@ GtPlayBookLook >> updateTab: aGtPage [
 		look: BrGlamorousTabLook;
 		padding: (BlInsets all: 10);
 		label: aGtPage title;
-		stencil: [ aGtPage asElement margin: (BlInsets all: 10) ].
+		stencil: [ aGtPage asElement ].
 	self mayAddActionsFor: aGtPage in: aTab.
 	tabGroup addTab: aTab
 ]

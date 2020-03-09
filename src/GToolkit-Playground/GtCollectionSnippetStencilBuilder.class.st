@@ -9,7 +9,9 @@ GtCollectionSnippetStencilBuilder >> buildDefault [
 	<return: #BlElement>
 
 	^ super buildDefault
-		look: GtSnippetContainerLook 
-			+ GtCollectionSnippetLook
-			+ BrLayoutLook linearVertical vFitContent hMatchParent
+		layout: BlFrameLayout new;
+		constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical fitContent ];
+		look: GtSnippetContainerLook + GtCollectionSnippetLook
 ]

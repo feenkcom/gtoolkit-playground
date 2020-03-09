@@ -87,7 +87,11 @@ GtPlayBook >> asElement [
 	<return: #BlElement>
 	^ BlElement new
 		viewModel: (GtPlayBookWidgetModel new playBook: self);
-		look: GtPlayBookLook
+		look: GtPlayBookLook;
+		layout: BlLinearLayout horizontal;
+		constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical matchParent ]
 ]
 
 { #category : #subscriptions }

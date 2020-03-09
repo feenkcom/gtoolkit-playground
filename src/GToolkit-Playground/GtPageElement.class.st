@@ -9,19 +9,18 @@ Class {
 
 { #category : #adding }
 GtPageElement >> addSnippet: aGtSnippet [
-	list dataSource addSnippet: aGtSnippet.
+	list dataSource addSnippet: aGtSnippet
 ]
 
 { #category : #initialization }
 GtPageElement >> initialize [
 	super initialize.
+
 	list := GtPageSnippetsElement new.
 	list constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
-	list padding: (BlInsets top: 5).
-	self addChild: list as: #list.
-	self clipChildren: false
+	self addChild: list as: #list
 ]
 
 { #category : #adding }

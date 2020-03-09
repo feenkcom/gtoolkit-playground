@@ -23,32 +23,21 @@ GtDocumentSnippet >> accept: aVisitor [
 
 { #category : #converting }
 GtDocumentSnippet >> asElement [
-	| rootContainerElement expanderContainer |
+	| anExpanderElement |
 	
-	expanderContainer := BrExpander new.
-	expanderContainer
+	anExpanderElement := BrExpander new
 		vFitContent;
-		hMatchParent.
-	expanderContainer expand.
-	expanderContainer look: GtCoderExpanderLook new.
-	expanderContainer header: [ BlElement new ].
-	expanderContainer content: [
-		document asElementWithoutSaveAction ].
+		hMatchParent;
+		expand;
+		look: GtCoderExpanderLook new;
+		header: [ BlElement new ];
+		content: [ document asElementWithoutSaveAction ].
 	
-	rootContainerElement := BlElement new.
-	rootContainerElement
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal matchParent ].
-	rootContainerElement addChild: expanderContainer.
-	rootContainerElement
-		clipChildren: false;
-		look: (GtSnippetContainerLook new snippet: self) 
-			+ BrLayoutLook linearVertical vFitContent hMatchParent;
-		border: BlBorder empty;
-		padding: BlInsets empty;
-		background: BlBackground transparent.
-	^ rootContainerElement
+	^ BrFrame new
+		vFitContent;
+		hMatchParent;
+		look: (GtSnippetContainerLook new snippet: self);
+		addChild: anExpanderElement
 ]
 
 { #category : #converting }

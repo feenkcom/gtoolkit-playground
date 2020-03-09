@@ -66,9 +66,12 @@ GtPlayPage >> announcer [
 { #category : #converting }
 GtPlayPage >> asElement [
 	<return: #BlElement>
-	^ GtPageElement new 
-			look: GtPageLook;
-			page: self
+	
+	^ GtPageElement new
+		constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical matchParent ];
+		page: self
 ]
 
 { #category : #'announcement registration' }
