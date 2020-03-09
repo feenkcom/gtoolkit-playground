@@ -138,8 +138,3 @@ XdPlayBookJsonMapping class >> writePlayPage: aGtPlayPage [
 		write: aGtPlayPage 
 		mappedTo: #playPageMappingFor:
 ]
-
-{ #category : #'as yet unclassified' }
-XdPlayBookJsonMapping class >> xdPublishedDocsSnippetMappingFor: aNeoJSONWriter [ 
-	self flag: 'implement me'
-]

@@ -56,7 +56,7 @@ GtPlaygroundExamples >> collectionSnippet [
 	| aSnippet |
 	aSnippet := GtCollectionSnippet new.
 	self assert: aSnippet availableSnippetClasses notEmpty.
-	self assert: aSnippet typeName equals: 'Collection'.
+	self assert: aSnippet typeName equals: 'collection'.
 	^ aSnippet
 ]
 

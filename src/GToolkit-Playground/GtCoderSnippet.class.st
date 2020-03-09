@@ -14,7 +14,7 @@ GtCoderSnippet class >> typeName [
 	It should be an unique name among all playground snippet types."
 	<return: #String>
 
-	^ 'Pharo'
+	^ 'pharo'
 ]
 
 { #category : #visitor }
