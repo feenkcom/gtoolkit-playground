@@ -100,7 +100,7 @@ XdPlayBookJsonMapping class >> snippetTypeNameAndValueMappingFor: aNeoJSONMapper
 	      mapping reader: [ :jsonReader | | aGtSnippet | 
 					jsonReader parseMapKeysDo: [ :aKey | | anElementSchema |
 						anElementSchema := GtSnippet availableSnippetClasses 
-							detect: [ :each | each typeName = aKey ].
+							detect: [ :each | each typeName asLowercase = aKey asLowercase ].
 						self assert: anElementSchema isUserSnippet.
 						self assert: aGtSnippet isNil.
 						aGtSnippet := jsonReader nextAs: anElementSchema ].
