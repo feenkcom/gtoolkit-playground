@@ -19,16 +19,16 @@ GtPlayBookWidgetModel >> initialize [
 	self subscribeToPlayBook.
 ]
 
+{ #category : #hooks }
+GtPlayBookWidgetModel >> initializeListeners [
+	super initializeListeners.
+
+	self when: GtPlayBookRequest reply: [ :aResponse | aResponse playBook: self playBook ]
+]
+
 { #category : #notifying }
 GtPlayBookWidgetModel >> notifyPlayBookChanged [
 	self dispatchEvent: (GtPlayBookChanged new playBook: self playBook)
-]
-
-{ #category : #hooks }
-GtPlayBookWidgetModel >> onAttachedTo: anElement [
-	super onAttachedTo: anElement.
-
-	self when: GtPlayBookRequest reply: [ GtPlayBookChanged new playBook: self playBook ]
 ]
 
 { #category : #accessing }

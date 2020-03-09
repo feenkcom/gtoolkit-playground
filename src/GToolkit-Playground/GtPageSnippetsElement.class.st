@@ -13,10 +13,3 @@ GtPageSnippetsElement >> defaultDataSource [
 GtPageSnippetsElement >> defaultLayout [
 	^ BlInfiniteLinearLayout new beVertical
 ]
-
-{ #category : #initialization }
-GtPageSnippetsElement >> initialize [
-	super initialize.
-
-	self clipChildren: false
-]

@@ -17,21 +17,23 @@ GtSnippetWidgetModel >> initialize [
 	snippet := GtEmptySnippet uniqueInstance
 ]
 
-{ #category : #notifying }
-GtSnippetWidgetModel >> notifySnippetChanged [
-	self dispatchEvent: (GtSnippetChanged new snippet: self snippet)
-]
-
 { #category : #hooks }
-GtSnippetWidgetModel >> onAttachedTo: anElement [
-	super onAttachedTo: anElement.
+GtSnippetWidgetModel >> initializeListeners [
+	super initializeListeners.
 
 	self when: GtSnippetRequest reply: [ GtSnippetChanged new snippet: self snippet ].
 	self registerToSnippet: self snippet.
 ]
 
+{ #category : #notifying }
+GtSnippetWidgetModel >> notifySnippetChanged [
+	self dispatchEvent: (GtSnippetChanged new snippet: self snippet)
+]
+
 { #category : #'api - hooks' }
 GtSnippetWidgetModel >> onUninstalledIn: anElement [
+	super onUninstalledIn: anElement.
+
 	self unregisterFromSnippet: self snippet.
 ]
 

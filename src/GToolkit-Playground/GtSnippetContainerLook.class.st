@@ -2,7 +2,6 @@ Class {
 	#name : #GtSnippetContainerLook,
 	#superclass : #BrLook,
 	#instVars : [
-		'contentElement',
 		'bottomToolbar',
 		'snippet',
 		'closeButton'
@@ -16,44 +15,29 @@ Class {
 { #category : #initialization }
 GtSnippetContainerLook >> initialize [
 	super initialize.
-	contentElement := BlElement new.
-	contentElement
-		look:
-			BrMaterialRoundedLook
-				+ BrLayoutLook linearHorizontal vFitContent hMatchParent.
-	"contentElement border: (BlBorder paint: LightBorderColor width: 1)."
-	"contentElement background: Color white."
+		
 	closeButton := self newCloseElement
-		viewModel: (BrButtonModel new action: [ self snippetRemoveRequested ]);
+		action: [ self snippetRemoveRequested ];
+		elevation: (BlRelativeElevation elevation: 10);
 		constraintsDo: [ :c | 
 			c ignoreByLayout.
-			c margin: (BlInsets top: -8 right: -8).
 			c ignored horizontal alignRight.
-			c ignored vertical alignTop ].
+			c ignored vertical alignTop.
+			c margin: (BlInsets top: 4 right: 4) ].
+		
 	bottomToolbar := self newPlusElement
+		action: [ self snippetBelowRequested ];
+		elevation: (BlRelativeElevation elevation: 10);
 		constraintsDo: [ :c | 
 			c ignoreByLayout.
-			c margin: (BlInsets bottom: -8).
 			c ignored horizontal alignCenter.
-			c ignored vertical alignBottom ];
-		viewModel: (BrButtonModel new action: [ self snippetBelowRequested ]).
-	self addChangeAddChildAs: #(content) with: [ contentElement ].
-	self addChangeAddChildAs: #(bottomToolbar) with: [ bottomToolbar ].
+			c ignored vertical alignBottom.
+			c margin: (BlInsets bottom: 4) ].
+
 	self addChangeAddChildAs: #(closeButton) with: [ closeButton ].
-	self
-		addChangeProperty: #(widget background)
-		with: [ Color fromHexString: #f0f0f0 ].
-	self
-		addChangeProperty: #(widget border)
-		with: [ BlBorder paint: Color veryLightGray width: 1 ].
-	self
-		addChangeProperty: #(widget margin)
-		with: [ BlInsets
-				top: 0
-				left: 0
-				bottom: 20
-				right: 5 ].
-	self addChangeProperty: #(widget padding) with: [ BlInsets all: 6 ]
+	self addChangeAddChildAs: #(bottomToolbar) with: [ bottomToolbar ].
+	
+	self addChangeProperty: #(widget padding) with: [ BlInsets all: 12 ]
 ]
 
 { #category : #initialization }
@@ -75,7 +59,7 @@ GtSnippetContainerLook >> newCloseElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
-		icon: (GtInspectorPlusIconStencil close thickness: 0.5; radius: 4; asElement);
+		icon: (GtInspectorPlusIconStencil close thickness: 1; radius: 4; asElement);
 		yourself
 ]
 
@@ -84,7 +68,7 @@ GtSnippetContainerLook >> newPlusElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
-		icon: (GtInspectorPlusIconStencil add thickness: 0.5; radius: 4; asElement);
+		icon: (GtInspectorPlusIconStencil add thickness: 1; radius: 4; asElement);
 		yourself
 ]
 

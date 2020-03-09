@@ -56,7 +56,7 @@ GtPageSnippetsDataSource >> page: aGtPage [
 ]
 
 { #category : #'announcement handling' }
-GtPageSnippetsDataSource >> snippetAdded: aGtPageSnippetAddedAnnoucement [ 
+GtPageSnippetsDataSource >> snippetAdded: aGtPageSnippetAddedAnnoucement [
 	self notifyItemsInserted: (aGtPageSnippetAddedAnnoucement index to: aGtPageSnippetAddedAnnoucement index)
 ]
 

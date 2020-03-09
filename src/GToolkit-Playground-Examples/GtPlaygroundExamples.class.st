@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPlaygroundExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-Playground-Examples'
+	#category : #'GToolkit-Playground-Examples'
 }
 
 { #category : #'model - updates' }
@@ -65,7 +65,7 @@ GtPlaygroundExamples >> collectionSnippetElement [
 	<gtExample>
 	| anElement |
 	anElement := self collectionSnippet asElement.
-	self assert: anElement childrenCount equals: 3.
+	self assert: anElement childrenCount > 1.
 	^ anElement
 ]
 
