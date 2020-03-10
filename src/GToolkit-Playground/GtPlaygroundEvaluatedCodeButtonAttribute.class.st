@@ -2,7 +2,6 @@ Class {
 	#name : #GtPlaygroundEvaluatedCodeButtonAttribute,
 	#superclass : #BrTextAdornmentAttribute,
 	#instVars : [
-		'paint',
 		'result',
 		'action'
 	],
@@ -22,15 +21,34 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> action: aBlock [
 { #category : #initialization }
 GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece in: anEditorElement [
 	<return: #BlElement>
+	| aButton |
+	
+	aButton := BrButton new.
 
-	^ BlElement new
-		size: 6 @ 6;
-		background: self paint;
+	^ aButton
+		look: (
+			(BrInteractiveCommonLook new
+				default: [ :aWidget | aWidget background: BrGlamorousColors defaultButtonBorderColor ];
+				hovered: [ :aWidget | aWidget background: BrGlamorousColors hoveredButtonBorderColor ])
+			+ 
+		
+		((BrGlamorousWithTooltipLook2 content: [
+			| aContainer |
+			aContainer := BlElement new
+				layout: BlFrameLayout new;
+				constraintsDo: [ :c |
+					c horizontal fitContent.
+					c vertical fitContent ];
+				when: GtPhlowObjectToSpawn do: [ :anEvent | aButton fireEvent: (GtPhlowObjectToSpawn new
+					object: anEvent object;
+					sourceElement: anEvent target) ].
+			(self result gtViewsFor: GtPhlowEmptyView new) asElementDo: [ :anInspectorElement |
+				aContainer addChild: ((anInspectorElement exact: 400@400) asScalableElement size: 200@200)
+			] ]) showDelay: 200 milliSeconds));
+		size: 8@8;
 		geometry: BlEllipse new;
 		margin: (BlInsets left: 2 right: 2);
-		when: BlClickEvent do: [ :anEvent |
-			anEvent consumed: true.
-			self clickEvent: anEvent from: anEvent currentTarget ];
+		action: [ :aButtonElement :aButtonModel :anEvent | self clickEvent: anEvent from: aButtonElement ];
 		yourself
 ]
 
@@ -43,18 +61,7 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> clickEvent: anEvent from: aButton [
 GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 	super initialize.
 	self beAppend.
-	paint := (Color fromHexString: #'90CAF9').
 	action := [ :aButton :anEvent | aButton phlow spawnObject: self result ]
-]
-
-{ #category : #accessing }
-GtPlaygroundEvaluatedCodeButtonAttribute >> paint [
-	^ paint
-]
-
-{ #category : #accessing }
-GtPlaygroundEvaluatedCodeButtonAttribute >> paint: anObject [
-	paint := anObject
 ]
 
 { #category : #accessing }
