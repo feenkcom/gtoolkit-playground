@@ -27,6 +27,7 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece i
 		size: 6 @ 6;
 		background: self paint;
 		geometry: BlEllipse new;
+		margin: (BlInsets left: 2 right: 2);
 		when: BlClickEvent do: [ :anEvent |
 			anEvent consumed: true.
 			self clickEvent: anEvent from: anEvent currentTarget ];
