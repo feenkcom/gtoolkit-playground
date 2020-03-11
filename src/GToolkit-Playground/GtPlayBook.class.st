@@ -20,9 +20,10 @@ GtPlayBook class >> fromXdFile: anXdFile [
 	^ anXdFile streamingStrategy zip members
 			detect: [ :aMember | aMember fileName endsWith: XdConstants playBookExtension ]
 			ifFound: [ :aPlayBookMember | 
-				| aJsonString |
+				[ | aJsonString |
 				aJsonString := aPlayBookMember contents asByteArray utf8Decoded.
 				XdPlayBookJsonMapping readPlayBook: aJsonString ]
+				on: Error do: [ :anException | self newDefault] ]
 			ifNone: [ self newDefault ] 
 ]
 
