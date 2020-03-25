@@ -137,12 +137,12 @@ GtCoderSnippet >> initializeCoderAddOns [
 		addShortcut:
 			(BlShortcut new
 				combination: BlKeyCombination builder primary backspace build;
-				action: [ :aShortcut | self requestSnippetMerge ]);
+				action: [ self requestSnippetMerge ]);
 		addShortcut:
 			(BlShortcut new
 				repeatable: false;
 				combination: BlKeyCombination primaryR;
-				action: [ :editorElement | self startRenameIn: editorElement ]);
+				action: [ :anEvent | self startRenameIn: anEvent currentTarget ]);
 		addShortcut:
 			(BlShortcut new
 				combination:
@@ -150,23 +150,23 @@ GtCoderSnippet >> initializeCoderAddOns [
 						primary;
 						return;
 						build);
-				action: [ :aShortcut | self requestSnippetSplit ]);
+				action: [ self requestSnippetSplit ]);
 		addShortcut:
 			(BlShortcut new
-				combination: BlKeyCombination builder arrowLeft build;
-				action: [ :element | self moveLeft: element ]);
+				combination: BlKeyCombination arrowLeft;
+				action: [ :anEvent | self moveLeft: anEvent currentTarget ]);
 		addShortcut:
 			(BlShortcut new
-				combination: BlKeyCombination builder arrowRight build;
-				action: [ :element | self moveRight: element ]);
+				combination: BlKeyCombination arrowRight;
+				action: [ :anEvent | self moveRight: anEvent currentTarget ]);
 		addShortcut:
 			(BlShortcut new
-				combination: BlKeyCombination builder arrowUp build;
-				action: [ :element | self moveUp: element ]);
+				combination: BlKeyCombination arrowUp;
+				action: [ :anEvent | self moveUp: anEvent currentTarget ]);
 		addShortcut:
 			(BlShortcut new
-				combination: BlKeyCombination builder arrowDown build;
-				action: [ :element | self moveDown: element ])
+				combination: BlKeyCombination arrowDown;
+				action: [ :anEvent | self moveDown: anEvent currentTarget ])
 ]
 
 { #category : #private }
