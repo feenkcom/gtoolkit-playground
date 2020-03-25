@@ -17,6 +17,17 @@ GtPlayBook class >> empty [
 
 { #category : #'instance creation' }
 GtPlayBook class >> fromXdFile: anXdFile [
+
+	self flag: 'XDoc API proposeal [feenkcom/gtoolkit#888]'.
+	"anXdFile navigator
+		ignoreErrors;
+		mainDocument;
+		mainAttachment;
+		string;
+		onErrorReturn: [ :anException | self newDefault ];
+		as: [ :aString | XdPlayBookJsonMapping readPlayBook: aString ];
+		find"
+
 	^ anXdFile streamingStrategy zip members
 			detect: [ :aMember | aMember fileName endsWith: XdConstants playBookExtension ]
 			ifFound: [ :aPlayBookMember | 
@@ -24,7 +35,7 @@ GtPlayBook class >> fromXdFile: anXdFile [
 				aJsonString := aPlayBookMember contents asByteArray utf8Decoded.
 				XdPlayBookJsonMapping readPlayBook: aJsonString ]
 				on: Error do: [ :anException | self newDefault] ]
-			ifNone: [ self newDefault ] 
+			ifNone: [ self newDefault ]
 ]
 
 { #category : #'instance creation' }
