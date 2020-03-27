@@ -1,8 +1,8 @@
 Class {
 	#name : #XdPlayBookJsonMapping,
 	#superclass : #Object,
-	#traits : 'XdBasicJsonMappingTrait',
-	#classTraits : 'XdBasicJsonMappingTrait classTrait',
+	#traits : 'TXdBasicJsonMapping',
+	#classTraits : 'TXdBasicJsonMapping classTrait',
 	#category : #'GToolkit-Playground-XDoc-Json'
 }
 

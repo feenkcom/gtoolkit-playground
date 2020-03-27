@@ -1,8 +1,8 @@
 Class {
 	#name : #XdPlaygroundExamples,
 	#superclass : #Object,
-	#traits : 'XdManifestJsonMappingTrait + XdConstantsTrait',
-	#classTraits : 'XdManifestJsonMappingTrait classTrait + XdConstantsTrait classTrait',
+	#traits : 'TXdManifestJsonMapping + TXdConstants',
+	#classTraits : 'TXdManifestJsonMapping classTrait + TXdConstants classTrait',
 	#category : #'GToolkit-Playground-XDoc-Examples'
 }
 
@@ -148,7 +148,7 @@ XdPlaygroundExamples >> readPlaybookDocumentFromFileOnDisk [
 { #category : #accessing }
 XdPlaygroundExamples >> reader [
 	<gtExample>
-	^ XdReaderWriterExamples new reader
+	^ XdExamples new reader
 ]
 
 { #category : #writing }
@@ -272,5 +272,5 @@ XdPlaygroundExamples >> writePlaybookDocumentToFileOnDisk [
 { #category : #accessing }
 XdPlaygroundExamples >> writer [
 	<gtExample>
-	^ XdReaderWriterExamples new writer
+	^ XdExamples new writer
 ]
