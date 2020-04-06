@@ -10,8 +10,7 @@ Class {
 { #category : #initialization }
 GtSnippetElement >> initialize [
 	super initialize.
-	
-	self clipChildren: false.
+
 	self viewModel: (GtSnippetWidgetModel new)
 ]
 
