@@ -391,3 +391,10 @@ GtCoderSnippet >> variableBindings [
 GtCoderSnippet >> variableBindings: aGtPlaygroundBindings [
 	coder variableBindings: aGtPlaygroundBindings
 ]
+
+{ #category : #'as yet unclassified' }
+GtCoderSnippet >> xDocLoadSavedContent [
+	"Load the saved content from the XdKeyDocumentStore"
+
+	coder xDocLoadSavedContent
+]
