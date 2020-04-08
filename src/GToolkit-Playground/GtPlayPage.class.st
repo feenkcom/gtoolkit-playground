@@ -17,6 +17,7 @@ GtPlayPage class >> forObject: anObject [
 	| aPlayPage |
 	aPlayPage := self newDefault.
 	aPlayPage bindings receiver: anObject.
+	aPlayPage xDocLoadSavedContent.
 	^ aPlayPage
 ]
 
@@ -391,4 +392,12 @@ GtPlayPage >> updateImplicitVariables [
 	self snippets
 		do: [ :each | variables addAll: each implicitLocalVariables ].
 	self snippets do: [ :each | each allImplicitVariables: variables ]
+]
+
+{ #category : #store }
+GtPlayPage >> xDocLoadSavedContent [
+	"Load the saved content from the XdKeyDocumentStore"
+
+	self snippets do: 
+		[ :snippet | snippet xDocLoadSavedContent ].
 ]
