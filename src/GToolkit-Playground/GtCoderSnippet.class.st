@@ -124,7 +124,7 @@ GtCoderSnippet >> initialize [
 GtCoderSnippet >> initializeCoderAddOns [
 	coder addOns
 		addDropDownAction: 'Create example'
-			icon: BrGlamorousIcons eg
+			icon: BrGlamorousVectorIcons eg
 			stencil: [ :selectedClass | 
 				| currentSource |
 				currentSource := self text.
