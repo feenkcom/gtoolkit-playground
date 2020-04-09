@@ -77,9 +77,25 @@ GtDocumentSnippet >> stencilBuilderClass [
 ]
 
 { #category : #accessing }
+GtDocumentSnippet >> string [
+	<return: #String>
+	^ self document string
+]
+
+{ #category : #accessing }
+GtDocumentSnippet >> string: aString [
+	^ self text: aString
+]
+
+{ #category : #accessing }
 GtDocumentSnippet >> text [
 	<return: #BlText>
 	^ self document text
+]
+
+{ #category : #accessing }
+GtDocumentSnippet >> text: aStringOrRope [
+	^ self document text: aStringOrRope
 ]
 
 { #category : #accessing }
