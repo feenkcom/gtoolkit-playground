@@ -13,7 +13,7 @@ Class {
 GtSnippet class >> availableSnippetClasses [
 	"Return snippet classes that can be used by users (visible to users)"
 	^ self allSubclasses select: [ :eachClass | 
-			eachClass isUserSnippet ]
+			eachClass isAbstract not and: [ eachClass isUserSnippet ] ]
 ]
 
 { #category : #testing }

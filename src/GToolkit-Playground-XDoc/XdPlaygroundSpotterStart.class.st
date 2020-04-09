@@ -1,7 +1,7 @@
 Class {
 	#name : #XdPlaygroundSpotterStart,
 	#superclass : #Object,
-	#category : #'GToolkit-Playground-XDoc'
+	#category : #'GToolkit-Playground-XDoc-Spotter'
 }
 
 { #category : #printing }

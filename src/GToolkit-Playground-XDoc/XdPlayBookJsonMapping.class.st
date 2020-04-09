@@ -7,28 +7,6 @@ Class {
 }
 
 { #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> codeSnippet: aCodeSnippetClass mappingFor: aNeoJSONMapper [
-	self 
-		codeSnippet: aCodeSnippetClass 
-		property: #source_code 
-		mappingFor: aNeoJSONMapper
-]
-
-{ #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> codeSnippet: aCodeSnippetClass property: aSymbol mappingFor: aNeoJSONMapper [
-	aNeoJSONMapper
-		for: aCodeSnippetClass do: [ :mapping |
-	      (mapping mapAccessor: #sourceCode to: aSymbol) ].
-]
-
-{ #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> coderSnippetMappingFor: aNeoJSONMapper [
-	self 
-		codeSnippet: GtCoderSnippet 
-		mappingFor: aNeoJSONMapper
-]
-
-{ #category : #'mapping - model' }
 XdPlayBookJsonMapping class >> collectionOfPagesMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: #CollectionOfPages customDo: [ :mapping |
@@ -54,11 +32,9 @@ XdPlayBookJsonMapping class >> collectionOfSnippetsMappingFor: aNeoJSONMapper [
 ]
 
 { #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> documentSnippetMappingFor: aNeoJSONMapper [
-]
-
-{ #category : #'mapping - model' }
-XdPlayBookJsonMapping class >> exampleSnippetMappingFor: aNeoJSONMapper [
+XdPlayBookJsonMapping class >> individualSnippetMappingsFor: aNeoJSONMapper [
+	^ GtSnippet availableSnippetClasses do: [ :eachSnippetClass |
+		eachSnippetClass xdocSnippetMappingFor: aNeoJSONMapper ]
 ]
 
 { #category : #'mapping - model' }
@@ -106,23 +82,13 @@ XdPlayBookJsonMapping class >> snippetTypeNameAndValueMappingFor: aNeoJSONMapper
 						aGtSnippet := jsonReader nextAs: anElementSchema ].
 					aGtSnippet ].
 			mapping writer: [ :jsonWriter :object | 
-				object class isUserSnippet ifTrue: [ 
-					
-					self flag: 'Temporary solution for avoiding errors in case a snippet cannot be exported'.
+				object isUserSnippet ifTrue: [ 
 					(jsonWriter mappingFor: object class ifAbsent: [ nil ])
 						ifNotNil: [ 
 							jsonWriter writeMapStreamingDo: [ :mapWriter | 
-								mapWriter writeKey: object typeName value: object ] ]
-						
+								mapWriter writeKey: object typeName value: object ] ]						
 					 ] ] ].
-	GtSnippet availableSnippetClasses do: [ :eachSnippetClass | 
-		| aMessage |
-		self flag: 'we should dispatch through the class rather than perform'.
-		aMessage := eachSnippetClass name.
-		(aMessage beginsWith: 'Gt') ifTrue: [ aMessage := aMessage allButFirst: 2 ].
-		aMessage := aMessage asString uncapitalized.
-		aMessage := aMessage, 'MappingFor:'.
-		self perform: aMessage asSymbol with: aNeoJSONMapper ]
+	self individualSnippetMappingsFor: aNeoJSONMapper.
 ]
 
 { #category : #'api - convenience' }
