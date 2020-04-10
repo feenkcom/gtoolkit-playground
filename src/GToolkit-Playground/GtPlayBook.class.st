@@ -151,7 +151,7 @@ GtPlayBook >> gtLiveFor: aView [
 GtPlayBook >> gtRunAllActionFor: anAction [
 	<gtAction>
 	^ anAction button
-			icon: BrGlamorousIcons play;
+			icon: BrGlamorousVectorIcons play;
 			label: 'Evaluate all';
 			forPlayground;
 			priority: 1;
@@ -162,7 +162,7 @@ GtPlayBook >> gtRunAllActionFor: anAction [
 GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
 	<gtAction>
 	^ anAction button
-			icon: BrGlamorousIcons playinspect;
+			icon: BrGlamorousVectorIcons playinspect;
 			label: 'Evaluate all and inspect';
 			forPlayground;
 			priority: 2;

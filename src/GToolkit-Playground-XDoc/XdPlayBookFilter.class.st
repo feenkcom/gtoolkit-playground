@@ -1,7 +1,7 @@
 Class {
 	#name : #XdPlayBookFilter,
 	#superclass : #GTFilterSubstring,
-	#category : #'GToolkit-Playground-XDoc'
+	#category : #'GToolkit-Playground-XDoc-Spotter'
 }
 
 { #category : #public }

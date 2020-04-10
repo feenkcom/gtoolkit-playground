@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'directory'
 	],
-	#category : #'GToolkit-Playground-XDoc'
+	#category : #'GToolkit-Playground-XDoc-Settings'
 }
 
 { #category : #defaults }

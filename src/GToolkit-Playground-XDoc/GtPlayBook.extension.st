@@ -68,7 +68,7 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 												look:
 													BrGlamorousButtonWithIconLook - BrGlamorousWithLabelTooltipLook
 														- BrGlamorousButtonExteriorLook;
-												icon: BrGlamorousIcons search asElement;
+												icon: BrGlamorousVectorIcons search;
 												label: 'Playground History';
 												yourself);
 										content:
@@ -79,7 +79,7 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 										yourself);
 								background: BrGlamorousColors secondaryHeaderBackgroundColor;
 								yourself ]);
-		icon: BrGlamorousIcons search asElement;
+		icon: BrGlamorousVectorIcons search;
 		label: 'Playground History';
 		yourself
 ]
