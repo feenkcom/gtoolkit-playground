@@ -51,28 +51,28 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.7.457/src' ];
+				spec repository: 'github://feenkcom/Brick:v0.7.458/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.472/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.473/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.467/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.468/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.473/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.474/src' ];
 			baseline: 'GToolkitUtility' with: [
 				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.26/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.495/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.496/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.17/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.7.64/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.7.65/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
-				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings ). ];
+				spec requires: #('Brick' 'GToolkitPhlow' 'GToolkitCompleter' 'GToolkitUtility' 'GToolkitVariableBindings' ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
 				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
-				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
+				spec requires: #('GToolkitExamples' 'GToolkit-Playground' ). ]. ].
 
 ]
 
