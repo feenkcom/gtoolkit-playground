@@ -358,9 +358,7 @@ GtCoderSnippet >> startRenameIn: aTextEditorElement [
 	announcement interestedSnippets
 		do: [ :each | 
 			renameAction
-				addLocations:
-					((each intervalsForRenameVariable: node source) collect: #first)
-						asSortedCollection
+				addLocations: (each intervalsForRenameVariable: node source)
 				to: each textEditor ].
 	renameAction install
 ]
