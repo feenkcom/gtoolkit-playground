@@ -355,6 +355,7 @@ GtCoderSnippet >> startRenameIn: aTextEditorElement [
 	renameAction := GtCompositeRenameAction
 		locations: (self intervalsForRenameVariable: node source)
 		element: aTextEditorElement.
+	renameAction forVariableOrUnaryMessage.
 	announcement interestedSnippets
 		do: [ :each | 
 			renameAction
