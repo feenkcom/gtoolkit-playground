@@ -30,6 +30,11 @@ GtPlayground class >> open [
 	^ self openOn: GtPlayBook newDefault.
 ]
 
+{ #category : #'window creation' }
+GtPlayground class >> openFrom: aSourceElement [
+	^ self openOn: GtPlayBook newDefault from: aSourceElement.
+]
+
 { #category : #initialization }
 GtPlayground >> initialize [
 	super initialize.

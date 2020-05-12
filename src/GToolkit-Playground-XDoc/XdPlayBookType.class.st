@@ -15,7 +15,7 @@ XdPlayBookType class >> matchesMimeType: aZnMimeType [
 XdPlayBookType class >> openDocument: aXdDocument ofXdFileInPharo: aXdFile [ 
 	| aPlayBook |
 	aPlayBook := self playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFile.
-	^ GtInspector openOnPlayBook: aPlayBook
+	^ GtPlayground openOn: aPlayBook
 ]
 
 { #category : #accessing }
