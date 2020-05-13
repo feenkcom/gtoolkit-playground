@@ -29,7 +29,7 @@ Any Playground is a code query box. For example, in the example below, inspect t
 ${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=100}$
 
 
-!!!Data science
+!!!Data exploration
 
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
