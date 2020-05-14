@@ -12,7 +12,7 @@ GtPlaygroundToolRegistryAdaptor class >> isRegistered [
 
 { #category : #actions }
 GtPlaygroundToolRegistryAdaptor class >> open [
-	^ GtPlayground open
+	^ GtPlayground open maximized
 ]
 
 { #category : #'tools registry' }
