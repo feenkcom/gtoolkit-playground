@@ -53,7 +53,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'Brick' with: [
 				spec repository: 'github://feenkcom/Brick/src' ];
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-inspector/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
 			baseline: 'GToolkitSpotter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-spotter/src' ];
 			baseline: 'GToolkitPhlow' with: [
