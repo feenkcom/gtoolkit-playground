@@ -17,6 +17,6 @@ GtSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
 		filter: XdPlayBookFilter;
 		wantsToDisplayOnEmptyQuery: false;
 		actLogic: [ :anXdFile :theStep :theSpotterElement |
-			GtInspector openOnPlayBook: (GtPlayBook fromXdFile: anXdFile) from: theSpotterElement.
+			GtPlayground openOn: (GtPlayBook fromXdFile: anXdFile) from: theSpotterElement.
 			theStep exit ]
 ]

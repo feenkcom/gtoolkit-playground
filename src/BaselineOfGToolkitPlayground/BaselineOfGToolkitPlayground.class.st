@@ -29,7 +29,7 @@ Any Playground is a code query box. For example, in the example below, inspect t
 ${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=100}$
 
 
-!!!Data science
+!!!Data exploration
 
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
@@ -51,28 +51,30 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.7.474/src' ];
+				spec repository: 'github://feenkcom/Brick/src' ];
+			baseline: 'GToolkitPager' with: [
+				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.489/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.487/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.491/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer/src' ];
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.26/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-utility/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.518/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground/src' ];
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.17/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.7.86/src' ].
+				spec repository: 'github://feenkcom/xdoc/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
-				spec requires: #('Brick' 'GToolkitPhlow' 'GToolkitCompleter' 'GToolkitUtility' 'GToolkitVariableBindings' ). ];
+				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings #GToolkitPager ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
 				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
-				spec requires: #('GToolkitExamples' 'GToolkit-Playground' ). ]. ].
+				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
 
 ]
 

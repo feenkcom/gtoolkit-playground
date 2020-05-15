@@ -172,7 +172,7 @@ GtPlaygroundExamples >> pageWithClassesAndMondrianView [
 	<gtExample>
 	| aPage | 
 	aPage := aPage := self page.
-	aPage replaceSnippet: aPage snippets first by: (self pharoSnippet sourceCode: 'classes := Collection withAllSubclasses.').
+	aPage replaceSnippet: aPage snippets first by: (self pharoSnippet sourceCode: 'classes := BrStencil withAllSubclasses.').
 	aPage addSnippet: (self pharoSnippet sourceCode: 'view := GtMondrian new.
 view nodes with: classes.
 view edges connectFrom: #superclass.
