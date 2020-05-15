@@ -51,30 +51,30 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick/src' ];
+				spec repository: 'github://feenkcom/Brick:v0.7.475/src' ];
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:v0.6.0/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.490/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.488/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.492/src' ];
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.27/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.519/src' ];
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.18/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.7.87/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
-				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings #GToolkitPager ). ];
+				spec requires: #('Brick' 'GToolkitPhlow' 'GToolkitCompleter' 'GToolkitUtility' 'GToolkitVariableBindings' 'GToolkitPager' ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
 				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
-				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
+				spec requires: #('GToolkitExamples' 'GToolkit-Playground' ). ]. ].
 
 ]
 
