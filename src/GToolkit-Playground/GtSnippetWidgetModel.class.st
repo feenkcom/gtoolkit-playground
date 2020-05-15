@@ -50,11 +50,7 @@ GtSnippetWidgetModel >> registerToSnippet: aGtSnippet [
 							(GLMBlocObjectToSelect new
 								toSelect: anAnnouncement result;
 								fromElement: aWidget).
-					self
-						fireEvent:
-							(GtPhlowObjectToSpawn new
-								object: anAnnouncement result;
-								sourceElement: aWidget) ] ]
+					aWidget phlow spawnObject: anAnnouncement result ] ]
 			for: self ]
 ]
 
