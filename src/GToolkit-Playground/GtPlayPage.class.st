@@ -16,7 +16,7 @@ Class {
 GtPlayPage class >> forObject: anObject [
 	| aPlayPage |
 	aPlayPage := self newDefault.
-	aPlayPage bindings receiver: anObject.
+	aPlayPage receiver: anObject.
 	aPlayPage xDocLoadSavedContent.
 	^ aPlayPage
 ]
@@ -201,6 +201,11 @@ GtPlayPage >> playAll [
 	aLastResult := nil.
 	self snippets do: [ :eachSnippet | aLastResult := eachSnippet playAll ].
 	^ aLastResult
+]
+
+{ #category : #accessing }
+GtPlayPage >> receiver: anObject [
+	self bindings receiver: anObject
 ]
 
 { #category : #'api - modification' }
