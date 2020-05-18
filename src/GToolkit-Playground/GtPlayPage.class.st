@@ -204,6 +204,11 @@ GtPlayPage >> playAll [
 ]
 
 { #category : #accessing }
+GtPlayPage >> receiver [
+	^ self bindings receiver
+]
+
+{ #category : #accessing }
 GtPlayPage >> receiver: anObject [
 	self bindings receiver: anObject
 ]
