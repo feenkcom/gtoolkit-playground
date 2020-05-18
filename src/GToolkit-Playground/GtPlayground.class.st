@@ -20,11 +20,6 @@ GtPlayground class >> newOn: aPlayBook [
 	^ self new playBook: aPlayBook
 ]
 
-{ #category : #'private - instance creation' }
-GtPlayground class >> newTitleFrom: anObject [
-	^ 'Playground'
-]
-
 { #category : #'window creation' }
 GtPlayground class >> open [
 	^ self openOn: GtPlayBook newDefault.
@@ -45,6 +40,12 @@ GtPlayground >> initialize [
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ]
+]
+
+{ #category : #opening }
+GtPlayground >> pagerWindowTitle [
+	<return: #String>
+	^ 'Playground'
 ]
 
 { #category : #accessing }
