@@ -1,4 +1,4 @@
-# GToolkit Playground
+# GT Playground
 The the moldable Playground for Pharo. It is part of the [Glamorous Toolkit project](https://github.com/feenkcom/gtoolkit).
 
 ## How to load
