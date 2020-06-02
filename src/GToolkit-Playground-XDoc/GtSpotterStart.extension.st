@@ -2,7 +2,7 @@ Extension { #name : #GtSpotterStart }
 
 { #category : #'*GToolkit-Playground-XDoc' }
 GtSpotterStart >> gtSpotterForXDocPlayBooksFor: aStep [
-	<gtSearch>
+	"<gtSearch>"
 	aStep listProcessor
 		priority: 100;
 		title: 'Playgrounds';
