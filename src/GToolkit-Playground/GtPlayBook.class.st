@@ -126,7 +126,7 @@ GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
 	<gtAction>
 	^ anAction button
 			icon: BrGlamorousIcons clipboard;
-			label: 'Copy content to Clipboard';
+			tooltip: 'Copy content to Clipboard';
 			forPlayground;
 			priority: 10;
 			action: [ :aButton | self copyContentToClipboard ] 
@@ -146,7 +146,7 @@ GtPlayBook >> gtRunAllActionFor: anAction [
 	<gtAction>
 	^ anAction button
 			icon: BrGlamorousVectorIcons play;
-			label: 'Evaluate all';
+			tooltip: 'Evaluate all';
 			forPlayground;
 			priority: 1;
 			action: [ :aButton | self playAllAndSelectResult: aButton ] 
@@ -157,7 +157,7 @@ GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
 	<gtAction>
 	^ anAction button
 			icon: BrGlamorousVectorIcons playinspect;
-			label: 'Evaluate all and inspect';
+			tooltip: 'Evaluate all and inspect';
 			forPlayground;
 			priority: 2;
 			action: [ :aButton | self playAllAndSpawnResult: aButton ] 
