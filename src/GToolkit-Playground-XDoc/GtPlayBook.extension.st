@@ -66,7 +66,7 @@ GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 										handle:
 											(BrButton new
 												look:
-													BrGlamorousButtonWithIconLook - BrGlamorousWithLabelTooltipLook
+													BrGlamorousButtonWithIconLook - BrGlamorousButtonWithLabelTooltipLook
 														- BrGlamorousButtonExteriorLook;
 												icon: BrGlamorousVectorIcons search;
 												label: 'Playground History';
