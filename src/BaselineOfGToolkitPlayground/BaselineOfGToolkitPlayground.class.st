@@ -51,23 +51,23 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.7.500/src' ];
+				spec repository: 'github://feenkcom/Brick:v0.7.501/src' ];
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager:v0.6.29/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:v0.6.30/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.518/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.7.519/src' ];
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.513/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.7.514/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.518/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.7.519/src' ];
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.29/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.7.30/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.554/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.7.555/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.21/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.7.116/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.7.117/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
 				spec requires: #('Brick' 'GToolkitPhlow' 'GToolkitCompleter' 'GToolkitUtility' 'GToolkitVariableBindings' 'GToolkitPager' ). ];
