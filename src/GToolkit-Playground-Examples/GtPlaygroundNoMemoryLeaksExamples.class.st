@@ -70,19 +70,20 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 	<gtExample>
 	| aScripter |
 	aScripter := BlDevScripter new.
-	aScripter set 
-		label: 'Initialize Playground Element';
-		element: [ self playgroundElementWithCode ].
-	aScripter do
-		label: 'Run garbage collection';
-		action: [ :aPager | 
-			Smalltalk garbageCollect ].
-	aScripter do 
-		label: 'Set instances count';
-		action: [ :theScripter | 
-			theScripter userData 
-				at: 'instanceCount' put: self targetInstancesCount ];
-		onScripter.
+	aScripter substep: 'Initialize Playground' do: [ :aStep |
+		aStep set 
+			label: 'Initialize Playground Element';
+			element: [ self playgroundElementWithCode ].
+		aStep do
+			label: 'Run garbage collection';
+			action: [ :aPager | 
+				Smalltalk garbageCollect ].
+		aStep do 
+			label: 'Set instances count';
+			action: [ :theScripter | 
+				theScripter userData 
+					at: 'instanceCount' put: self targetInstancesCount ];
+			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
 ]
