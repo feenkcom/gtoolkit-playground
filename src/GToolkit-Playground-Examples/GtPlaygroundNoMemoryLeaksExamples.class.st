@@ -4,11 +4,16 @@ Class {
 	#category : #'GToolkit-Playground-Examples'
 }
 
+{ #category : #accessing }
+GtPlaygroundNoMemoryLeaksExamples >> playgroundCode [
+	^ self targetClass name, ' new.'
+]
+
 { #category : #'examples - setup' }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundElementWithCode [
 	<gtExample>
 	| book playground |
-	book := GtPlayBook newWithCodeSnippetContent: 'GtInspectorExampleObject new.'.
+	book := GtPlayBook newWithCodeSnippetContent: self playgroundCode.
 	playground := GtPlayground createOn: book.
 	^ playground
 ]
@@ -18,6 +23,9 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 	<gtExample>
 	| aScripter |
 	aScripter := BlDevScripter new.
+	aScripter set 
+		label: 'Initialize Playground Element';
+		element: [ self playgroundElementWithCode ].
 	aScripter do
 		label: 'Run garbage collection';
 		action: [ :aPager | 
@@ -26,11 +34,8 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 		label: 'Set instances count';
 		action: [ :theScripter | 
 			theScripter userData 
-				at: 'instanceCount' put: GtInspectorExampleObject allInstances size ];
+				at: 'instanceCount' put: self targetInstancesCount ];
 		onScripter.
-	aScripter set 
-		label: 'Initialize Playground Element';
-		element: [ self playgroundElementWithCode ].
 	aScripter syncContinue.
 	^ aScripter
 ]
@@ -46,11 +51,6 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll [
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundPlayAllButton.
 		aStep wait forEmptySpaceTaskQueue.
-		aStep do
-			label: 'Clear recorded events';
-			action: [ :theScripter | 
-				theScripter events collection removeAll ];
-			onScripter.
 		aStep check 
 			label: 'Check two panes in pager';
 			satisfies: [ :aPager | 
@@ -59,7 +59,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll [
 			label: 'Check instances count increased';
 			satisfies: [ :theScripter | 
 				(theScripter userData at: 'instanceCount') + 1 =
-					GtInspectorExampleObject allInstances size  ];
+					self targetInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
@@ -79,8 +79,10 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode [
 		aStep do
 			label: 'Change code in snippet';
 			action: [ :anEditor | 
-				anEditor deleter from: 0 to: 29; delete.
-				anEditor inserter at: 0; string: '1'; insert ];
+				anEditor inserter 
+					at: self playgroundCode size; 
+					string: '1'; 
+					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippet;
 			onGtPharoSnippetEditor;
@@ -94,7 +96,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode [
 			label: 'Check instances count remains same';
 			satisfies: [ :theScripter | 
 				(theScripter userData at: 'instanceCount') + 1 =
-					GtInspectorExampleObject allInstances size  ];
+					self targetInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
@@ -109,9 +111,14 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_Cl
 	aScripter substep: 'Close inpector pane' do: [ :aStep |
 		aStep click
 			label: 'Click on evaluate all and inspect button';
-			onGtPagerSecondPaneContent;
+			onBrPagerSecondPane;
 			onGtPagerPaneCloseButton.
 		aStep wait forEmptySpaceTaskQueue.
+		aStep do
+			label: 'Clear recorded events';
+			action: [ :theScripter | 
+				theScripter events collection removeAll ];
+			onScripter.
 		aStep check 
 			label: 'Check one pane';
 			satisfies: [ :aPager | 
@@ -124,7 +131,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_Cl
 			label: 'Check instances count decreased';
 			satisfies: [ :theScripter | 
 				(theScripter userData at: 'instanceCount') =
-					GtInspectorExampleObject allInstances size  ];
+					self targetInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
@@ -133,7 +140,6 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_Cl
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_ExecuteAgain [
 	<gtExample>
-	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteAll_ChangeCode.
 	aScripter substep: 'Close inpector pane' do: [ :aStep |
@@ -142,16 +148,15 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_Ex
 			onBrPagerFirstPane;
 			onGtPlaygroundPlayAllButton.
 		aStep wait forEmptySpaceTaskQueue.
+		aStep do
+			label: 'Clear recorded events';
+			action: [ :theScripter | 
+				theScripter events collection removeAll ];
+			onScripter.
 		aStep check 
 			label: 'Check still two panes';
 			satisfies: [ :aPager | 
 				aPager pages size = 2 ].
-		aStep do
-			label: 'Clear recorded events';
-			action: [ :theScripter | 
-				theScripter events collection removeAll.
-				Smalltalk garbageCollect ];
-			onScripter.
 		aStep do
 			label: 'Run garbage collection';
 			action: [ :aPager | 
@@ -160,8 +165,18 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteAll_ChangeCode_Ex
 			label: 'Check instances count decreased';
 			satisfies: [ :theScripter | 
 				(theScripter userData at: 'instanceCount') =
-					GtInspectorExampleObject allInstances size  ];
+					self targetInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
+]
+
+{ #category : #accessing }
+GtPlaygroundNoMemoryLeaksExamples >> targetClass [
+	^ GtInspectorExampleObject
+]
+
+{ #category : #accessing }
+GtPlaygroundNoMemoryLeaksExamples >> targetInstancesCount [
+	^ self targetClass allInstances size
 ]
