@@ -41,7 +41,7 @@ GtPlaygroundNoMemoryLeaksExamples >> closePaneAndAssertNoMemoryLeaksFor: aScript
 
 { #category : #utils }
 GtPlaygroundNoMemoryLeaksExamples >> executeAllAndAssertNoMemoryLeaksFor: aScripter [
-	aScripter substep: 'Close inpector pane' do: [ :aStep |
+	aScripter substep: 'Evaluate all and check for leaks' do: [ :aStep |
 		aStep click
 			label: 'Click on Evaluate all button';
 			onBrPagerFirstPane;
