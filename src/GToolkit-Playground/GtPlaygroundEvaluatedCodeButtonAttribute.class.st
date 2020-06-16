@@ -64,6 +64,11 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 	action := [ :aButton :anEvent | aButton phlow spawnObject: self result ]
 ]
 
+{ #category : #testing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> mayHaveExternalReferences [
+	^ true
+]
+
 { #category : #accessing }
 GtPlaygroundEvaluatedCodeButtonAttribute >> result [
 	^ result
