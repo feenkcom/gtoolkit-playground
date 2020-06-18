@@ -235,6 +235,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeReplacementChange_ExecuteAgain [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeReplacementChange.
 	self executeFirstSnippetAndAssertNoMemoryLeaksFor: aScripter.
