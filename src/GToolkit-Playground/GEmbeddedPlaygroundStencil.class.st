@@ -24,6 +24,12 @@ GEmbeddedPlaygroundStencil >> create [
 			addChild: self newPlayBookElement.
 ]
 
+{ #category : #private }
+GEmbeddedPlaygroundStencil >> ensurePlayBookForObject: anObject [
+	playPage ifNotNil: [ ^ self ].
+	playPage := GtPlayPage forObject: anObject.
+]
+
 { #category : #'instance creation' }
 GEmbeddedPlaygroundStencil >> newPlayBookContainer [
 	^ BlElement new
@@ -77,7 +83,10 @@ GEmbeddedPlaygroundStencil >> newResizerHandler [
 
 { #category : #accessing }
 GEmbeddedPlaygroundStencil >> playPage [
-	^ playPage ifNil: [ playPage := GtPlayPage forObject: nil ]
+	self 
+		assert: [ playPage isNotNil ]
+		description: [ 'PlayPage must be initialized before using it' ].
+	^ playPage
 ]
 
 { #category : #accessing }
@@ -92,5 +101,7 @@ GEmbeddedPlaygroundStencil >> receiver [
 
 { #category : #accessing }
 GEmbeddedPlaygroundStencil >> receiver: anObject [
-	self playPage receiver: anObject
+	self ensurePlayBookForObject: anObject.
+	self playPage receiver: anObject.
+	self playPage xDocLoadSavedContent.
 ]
