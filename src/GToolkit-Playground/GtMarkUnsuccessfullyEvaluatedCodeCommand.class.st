@@ -19,6 +19,5 @@ GtMarkUnsuccessfullyEvaluatedCodeCommand >> execute [
 			{(GtPlaygroundDebugExceptionButtonAttribute new
 				result: self result)}
 		from: aSubText size
-		to: aSubText size.
-	self editor updater all update
+		to: aSubText size
 ]
