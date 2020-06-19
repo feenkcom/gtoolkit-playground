@@ -19,7 +19,5 @@ GtMarkSuccessfullyEvaluatedCodeCommand >> execute [
 			paint: (Color fromHexString: #'90CAF9').
 		GtPlaygroundEvaluatedCodeButtonAttribute new
 			result: self result
-	}.
-
-	self editor updater all update
+	}
 ]
