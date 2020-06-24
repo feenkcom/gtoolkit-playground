@@ -175,6 +175,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane_ExecuteSecondSnippet [
+	<noTest>
 	<gtExample>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane.
