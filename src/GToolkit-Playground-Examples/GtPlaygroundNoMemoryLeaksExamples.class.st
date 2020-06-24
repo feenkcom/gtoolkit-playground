@@ -178,8 +178,8 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane_ExecuteSecondSnippet [
-	<gtExample>
 	<noTest>
+	<gtExample>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane.
 	aScripter substep: 'Evaluate second snippet and inspect' do: [ :aStep |
