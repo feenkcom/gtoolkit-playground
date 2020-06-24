@@ -104,6 +104,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter.
 	aScripter substep: 'Evaluate first snippet and inspect' do: [ :aStep |
@@ -130,6 +131,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet [
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet.
 	aScripter substep: 'Change first snipper' do: [ :aStep |
@@ -157,6 +159,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange.
 	aScripter substep: 'Close second inpector pane' do: [ :aStep |
@@ -176,6 +179,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane_ExecuteSecondSnippet [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ClosePane.
 	aScripter substep: 'Evaluate second snippet and inspect' do: [ :aStep |
@@ -206,6 +210,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 { #category : #examples }
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeReplacementChange [
 	<gtExample>
+	<noTest>
 	| aScripter |
 	aScripter := self playgroundScripter_ExecuteFirstSnippet.
 	aScripter substep: 'Change first snippet' do: [ :aStep |
