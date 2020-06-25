@@ -65,7 +65,7 @@ GtDocumentSnippet >> documentContent: aStringOrRope [
 { #category : #initialization }
 GtDocumentSnippet >> initialize [
 	super initialize.
-	document := GtDocument new.
+	document := GtDocumenter new.
 	self documentContent: ''.
 ]
 
