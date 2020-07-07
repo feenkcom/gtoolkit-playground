@@ -31,7 +31,7 @@ GtDocumentSnippet >> asElement [
 		expand;
 		look: GtCoderExpanderLook new;
 		header: [ BlElement new ];
-		content: [ document asElementWithoutSaveAction ].
+		content: [ document ].
 	
 	^ BrFrame new
 		vFitContent;
