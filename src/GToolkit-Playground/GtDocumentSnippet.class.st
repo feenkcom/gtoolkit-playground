@@ -30,8 +30,9 @@ GtDocumentSnippet >> asElement [
 		hMatchParent;
 		expand;
 		look: GtCoderExpanderLook new;
+		addLook: (BrLayoutResizerLook new inherit: document);
 		header: [ BlElement new ];
-		content: [ document asElementWithoutSaveAction ].
+		content: [ document ].
 	
 	^ BrFrame new
 		vFitContent;
