@@ -50,6 +50,7 @@ GtCodeSnippet >> notifyAboutResult: aResult exception: isExceptionBoolean spawn:
 
 { #category : #accessing }
 GtCodeSnippet >> selection [
+	self halt.
 	^ ''
 ]
 
@@ -57,6 +58,7 @@ GtCodeSnippet >> selection [
 GtCodeSnippet >> sourceCode [
 	<return: #String>
 
+	self halt.
 	^ ''
 ]
 
@@ -66,6 +68,7 @@ GtCodeSnippet >> sourceCode: aStringOrRope [
 		assert: [ aStringOrRope notNil ] 
 		description: [ 'The contents should be initialized (a string or rope)' ].
 	
+	self halt.
 ]
 
 { #category : #subscriptions }
@@ -77,10 +80,13 @@ GtCodeSnippet >> subscribeToEditorChanges [
 		addEventHandlerOn: BrTextEditorDeletedEvent 
 		do: [ :anEvent | self handleEditorChanges: anEvent ].
 "
+	self halt
 ]
 
 { #category : #accessing }
 GtCodeSnippet >> text [
 	<return: #BlText>
+	self halt.
+	
 	^ '' asRopedText
 ]
