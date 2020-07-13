@@ -77,14 +77,16 @@ GtCoderSnippet >> defaultStyler [
 
 { #category : #actions }
 GtCoderSnippet >> evaluate [
-	^ coder doItSelectionOrAll
+	self halt.
+	"^ coder doItSelectionOrAll"
 ]
 
 { #category : #actions }
 GtCoderSnippet >> evaluateAndGo [
-	shouldSpawn := true.
+	self halt.
+	"shouldSpawn := true.
 	^ [ coder doItSelectionOrAll ]
-		ensure: [ shouldSpawn := false ]
+		ensure: [ shouldSpawn := false ]"
 ]
 
 { #category : #'api - cursor' }
@@ -109,7 +111,6 @@ GtCoderSnippet >> initialize [
 	coder := GtPharoSnippetCoder new.
 	super initialize.
 	coder completionStrategy: GtSnippetCompletionStrategy new.
-	editor := coder sourceEditor.
 	shouldSpawn := false.
 	coder announcer weak
 		when: GtCoderEvaluationAnnouncement
@@ -292,6 +293,7 @@ GtCoderSnippet >> moveUp: anElement [
 
 { #category : #actions }
 GtCoderSnippet >> playAll [
+	self halt.
 	^ coder doItAll
 ]
 
@@ -339,12 +341,12 @@ GtCoderSnippet >> sourceCode: aString [
 
 { #category : #actions }
 GtCoderSnippet >> startRenameIn: aTextEditorElement [
-	| announcement ast node renameAction |
-	editor := aTextEditorElement editor.
-	editor cursor cursorsCount = 1
+	| announcement ast node renameAction aTextEditor |
+	aTextEditor := aTextEditorElement editor.
+	aTextEditor cursor cursorsCount = 1
 		ifFalse: [ ^ nil ].
 	ast := self ast.
-	node := ast findVariableNodeAt: editor cursor first position.
+	node := ast findVariableNodeAt: aTextEditor cursor first position.
 	(node isNil or: [ node whoDefines notNil ])
 		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
 	announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
