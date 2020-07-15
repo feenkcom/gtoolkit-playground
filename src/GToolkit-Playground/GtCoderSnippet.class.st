@@ -136,38 +136,51 @@ GtCoderSnippet >> initializeCoderAddOns [
 							updateForCodeSnippet: currentSource
 							inClass: selectedClass ] ];
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination: BlKeyCombination builder primary backspace build;
-				action: [ self requestSnippetMerge ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder requestSnippetMerge ];
+				options: self);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				repeatable: false;
 				combination: BlKeyCombination primaryR;
-				action: [ :anEvent | self startRenameIn: anEvent currentTarget ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder startRenameIn: aShortcutEvent currentTarget ];
+				options: self);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination:
 					(BlKeyCombination builder
 						primary;
 						return;
 						build);
-				action: [ self requestSnippetSplit ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder requestSnippetSplit ]);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination: BlKeyCombination arrowLeft;
-				action: [ :anEvent | self moveLeft: anEvent currentTarget ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder moveLeft: aShortcutEvent currentTarget ];
+				options: self);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination: BlKeyCombination arrowRight;
-				action: [ :anEvent | self moveRight: anEvent currentTarget ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder moveRight: aShortcutEvent currentTarget ];
+				options: self);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination: BlKeyCombination arrowUp;
-				action: [ :anEvent | self moveUp: anEvent currentTarget ]);
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder moveUp: aShortcutEvent currentTarget ];
+				options: self);
 		addShortcut:
-			(BlShortcut new
+			(BrTextEditorShortcut new
 				combination: BlKeyCombination arrowDown;
-				action: [ :anEvent | self moveDown: anEvent currentTarget ])
+				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
+					aSourceCoder moveDown: aShortcutEvent currentTarget ];
+				options: self)
 ]
 
 { #category : #private }
