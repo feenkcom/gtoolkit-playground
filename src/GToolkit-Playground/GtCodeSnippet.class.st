@@ -80,7 +80,7 @@ GtCodeSnippet >> subscribeToEditorChanges [
 		addEventHandlerOn: BrTextEditorDeletedEvent 
 		do: [ :anEvent | self handleEditorChanges: anEvent ].
 "
-	self halt
+	"self halt"
 ]
 
 { #category : #accessing }

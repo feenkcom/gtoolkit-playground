@@ -349,7 +349,7 @@ GtCoderSnippet >> sourceCode [
 
 { #category : #accessing }
 GtCoderSnippet >> sourceCode: aString [
-	coder source: aString
+	coder forSource: aString
 ]
 
 { #category : #actions }
@@ -388,7 +388,7 @@ GtCoderSnippet >> stencilBuilderClass [
 
 { #category : #accessing }
 GtCoderSnippet >> text [
-	^ coder sourceEditor text
+	^ coder sourceText
 ]
 
 { #category : #private }
