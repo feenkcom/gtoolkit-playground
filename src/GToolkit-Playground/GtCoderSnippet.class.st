@@ -54,7 +54,7 @@ GtCoderSnippet >> asStencilBuilder [
 { #category : #private }
 GtCoderSnippet >> ast [
 	^ GtPharoParser
-		parseWithErrors: coder source
+		parseWithErrors: coder currentSourceString
 		startingAt: GtPharoParser startingStateForMethodSequence
 ]
 
