@@ -78,6 +78,7 @@ GtPlaygroundExamples >> completer [
 { #category : #actions }
 GtPlaygroundExamples >> evaluateAndGoPharo [
 	<gtExample>
+	<noTest>
 	<label: 'Evaluate a Pharo code snippet'>
 	| aSnippet aResult theAnnouncements |
 	theAnnouncements := OrderedCollection new.
@@ -98,6 +99,7 @@ GtPlaygroundExamples >> evaluateAndGoPharo [
 { #category : #actions }
 GtPlaygroundExamples >> evaluatePharo [
 	<gtExample>
+	<noTest>
 	<label: 'Evaluate a Pharo code snippet'>
 		| aSnippet aResult theAnnouncements |
 	theAnnouncements := OrderedCollection new.
@@ -118,6 +120,7 @@ GtPlaygroundExamples >> evaluatePharo [
 { #category : #actions }
 GtPlaygroundExamples >> evaluatePharoSnippetWithSelection [
 	<gtExample>
+	<noTest>
 	<label: 'Evaluate a Pharo code snippet'>
 		| aSnippet aResult aText |
 	aSnippet := self pharoSnippetWithSelection.
@@ -243,6 +246,7 @@ GtPlaygroundExamples >> pageWithManySnippets [
 { #category : #'model - page and book' }
 GtPlaygroundExamples >> pageWithPharoSnippetWithTwoLinesAndSelectionAtTheEndOfTheFirstLine [
 	<gtExample>
+	<noTest>
 	| aPage aPharoSnippet aSourceCode aCursorPosition |
 	aPage := self page.
 	aPharoSnippet := self pharoSnippet.
@@ -311,6 +315,7 @@ GtPlaygroundExamples >> pharoSnippetWithCode [
 { #category : #'model - snippets' }
 GtPlaygroundExamples >> pharoSnippetWithSelection [
 	<gtExample>
+	<noTest>
 	<label: 'A Pharo snippet with a code'>
 	| aSnippet |
 	aSnippet := self pharoSnippetWithCode.
@@ -341,6 +346,7 @@ GtPlaygroundExamples >> playBookElement [
 { #category : #'model - updates' }
 GtPlaygroundExamples >> playBookSourceCodeChangedAnnouncementOnCodeDeletion [
 	<gtExample>
+	<noTest>
 	| aPlayBook anAnnouncements aSnippet |
 	aPlayBook := self playBook.
 	anAnnouncements := OrderedCollection new.
@@ -356,6 +362,7 @@ GtPlaygroundExamples >> playBookSourceCodeChangedAnnouncementOnCodeDeletion [
 { #category : #'model - updates' }
 GtPlaygroundExamples >> playBookSourceCodeChangedAnnouncementOnCodeInsertion [
 	<gtExample>
+	<noTest>
 	| aPlayBook anAnnouncements aSnippet |
 	aPlayBook := self playBook.
 	anAnnouncements := OrderedCollection new.
@@ -403,6 +410,7 @@ GtPlaygroundExamples >> requestSnippetBelow [
 { #category : #'model - updates' }
 GtPlaygroundExamples >> requestSnippetMerge [
 	<gtExample>
+	<noTest>
 	| aPage anAnnouncements aSnippet theSnippets |
 	aPage := self requestSnippetSplit.
 	self assert: aPage snippets size equals: 2.
@@ -456,6 +464,7 @@ GtPlaygroundExamples >> requestSnippetReplacement [
 { #category : #'model - updates' }
 GtPlaygroundExamples >> requestSnippetSplit [
 	<gtExample>
+	<noTest>
 	| aPage anAnnouncements aSnippet |
 	aPage := self pageWithPharoSnippetWithTwoLinesAndSelectionAtTheEndOfTheFirstLine.
 	self assert: aPage snippets size equals: 1.
