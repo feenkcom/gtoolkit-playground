@@ -27,6 +27,31 @@ GtCoderSnippet >> allImplicitVariables: aCollection [
 	coder completionStrategy snippetVariables: aCollection
 ]
 
+{ #category : #'private - text' }
+GtCoderSnippet >> appendDotCharacter [
+	self text insertString: '.' at: self text size
+]
+
+{ #category : #'private - text' }
+GtCoderSnippet >> appendNewLine [
+	self text insertString: String cr at: self text size.
+]
+
+{ #category : #'private - text' }
+GtCoderSnippet >> appendText: aNewText [
+	| aLastNonSeparatorCharacterIndex |
+	aLastNonSeparatorCharacterIndex := self text finder
+		startAtEnd;
+		reversed;
+		pattern: [ :aText :aCurrentIndex | (aText at: aCurrentIndex) isSeparator not ];
+		search.
+	(aLastNonSeparatorCharacterIndex > 2
+		and: [ (self text at: aLastNonSeparatorCharacterIndex) ~= $. ])
+		ifTrue: [ self appendDotCharacter ].
+	self appendNewLine.
+	self text append: aNewText
+]
+
 { #category : #ui }
 GtCoderSnippet >> asElement [
 	| aCoderElement |
@@ -155,8 +180,9 @@ GtCoderSnippet >> initializeCoderAddOns [
 						primary;
 						return;
 						build);
+				options: self;
 				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder requestSnippetSplit ]);
+					aSourceCoder requestSnippetSplitInEditor: aTextEditor ]);
 		addShortcut:
 			(BrTextEditorShortcut new
 				combination: BlKeyCombination arrowLeft;
@@ -204,40 +230,13 @@ GtCoderSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
 		notEmpty
 ]
 
-{ #category : #actions }
+{ #category : #'api - modification' }
 GtCoderSnippet >> mergeWith: aSnippet [
 	"Subclasses can define merging mechanism"
-	aSnippet class = self class ifFalse: [ ^ self ].
-	aSnippet text isEmpty ifFalse: [
-		| anIndex |
-		anIndex := self text finder
-			startAtEnd;
-			reversed;
-			pattern: [ :aText :aCurrentIndex | 
-				((aText at: aCurrentIndex) isSeparator not) ];
-			search.
-		(anIndex > 2 and: [ (self text at: anIndex) ~= $. ]) ifTrue: [ 
-			self editor inserter 
-				withoutSelectionDelete;
-				withoutSelectionUpdate;
-				withoutCursorUpdate;
-				atEnd;
-				string: '.';
-				insert ].
-		self editor inserter 
-			withoutSelectionDelete;
-			withoutSelectionUpdate;
-			withoutCursorUpdate;
-			atEnd;
-			string: String cr;
-			insert. 
-		self editor inserter 
-			withoutSelectionDelete;
-			withoutSelectionUpdate;
-			withoutCursorUpdate;
-			atEnd;
-			text: aSnippet text; 
-			insert ].
+
+	aSnippet class = self class
+		ifFalse: [ ^ self ].
+	aSnippet text ifNotEmpty: [ self appendText: aSnippet text ].
 	aSnippet requestSnippetRemoval.
 	self requestSnippetFocus.
 ]
@@ -310,7 +309,17 @@ GtCoderSnippet >> playAll [
 	^ coder doItAll
 ]
 
-{ #category : #actions }
+{ #category : #'private - requests' }
+GtCoderSnippet >> requestNewSnippetWith: aNewText [
+	| aNewSnippet |
+	aNewSnippet := self class new.
+	aNewSnippet sourceCode: aNewText.
+	self announce: (GtSnippetBelowRequestedAnnouncement
+		snippet: self
+		second: aNewSnippet).
+]
+
+{ #category : #'api - requests' }
 GtCoderSnippet >> requestSnippetMerge [
 	self announce: (GtSnippetMergeRequestedAnnouncement snippet: self)
 ]
@@ -318,23 +327,22 @@ GtCoderSnippet >> requestSnippetMerge [
 { #category : #actions }
 GtCoderSnippet >> requestSnippetSplit [
 	| positions |
+	self deprecated: 'use #requestSnippetSplitInEditor:'.
 	positions := (self editor cursor cursors collect: [ :each | each position ]) asSortedCollection.
-	positions reverseDo: [ :each | self requestSnippetSplitAt: each ].
+	positions reverseDo: [ :each | self splitTextAt: each ].
 	self editor moveCursorTo: self editor text size
 ]
 
-{ #category : #actions }
-GtCoderSnippet >> requestSnippetSplitAt: aSplitIndex [
-	| aNewSnippet aRightPart aLeftPart |
-	aNewSnippet := self class new.
-	aLeftPart := self text copyFrom: 1 to: aSplitIndex.
-	aLeftPart trimmer rightLineBreaks; trim.
-	aRightPart := self text copyFrom: aSplitIndex + 1 to: self text size.
-	aRightPart trimmer leftLineBreaks; trim.
-	self editor text: aLeftPart.
-	aNewSnippet sourceCode: aRightPart.
-	self announce: (GtSnippetBelowRequestedAnnouncement 
-		snippet: self second: aNewSnippet).
+{ #category : #'api - requests' }
+GtCoderSnippet >> requestSnippetSplitInEditor: aTextEditor [
+	| positions |
+	positions := (aTextEditor cursor cursors
+		collect: [ :each | each position ]) asSortedCollection.
+	positions reverseDo: [ :eachIndex | 
+		| aNewText |
+		aNewText := self splitTextAt: eachIndex.
+		self requestNewSnippetWith: aNewText ].
+	aTextEditor moveCursorTo: aTextEditor text size
 ]
 
 { #category : #private }
@@ -349,7 +357,21 @@ GtCoderSnippet >> sourceCode [
 
 { #category : #accessing }
 GtCoderSnippet >> sourceCode: aString [
-	coder forSource: aString
+	coder currentSourceString: aString
+]
+
+{ #category : #'private - text' }
+GtCoderSnippet >> splitTextAt: aSplitIndex [
+	"Return a part that is deleted"
+	| aDeletedPart |
+
+	aDeletedPart := self text copyFrom: aSplitIndex + 1 to: self text size.
+	aDeletedPart trimmer leftLineBreaks; trim.
+
+	self text delete: aSplitIndex + 1 to: self text size.
+	self text trimmer rightLineBreaks; trim.
+	
+	^ aDeletedPart
 ]
 
 { #category : #actions }
@@ -388,7 +410,8 @@ GtCoderSnippet >> stencilBuilderClass [
 
 { #category : #accessing }
 GtCoderSnippet >> text [
-	^ coder sourceText
+	<return: #BlText>
+	^ coder sourceCode sourceText
 ]
 
 { #category : #private }
