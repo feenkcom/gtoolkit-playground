@@ -116,13 +116,13 @@ GtCoderSnippet >> evaluateAndGo [
 
 { #category : #'api - cursor' }
 GtCoderSnippet >> focusAndPlaceCursorAtBeginning [
-	self textEditor moveCursorTo: 0.
+	self flag: 'self textEditor moveCursorTo: 0.'.
 	self requestSnippetFocus
 ]
 
 { #category : #'api - cursor' }
 GtCoderSnippet >> focusAndPlaceCursorAtEnd [
-	self textEditor moveCursorTo: self textEditor text size.
+	self flag: 'self textEditor moveCursorTo: self textEditor text size.'.
 	self requestSnippetFocus
 ]
 
