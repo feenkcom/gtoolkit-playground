@@ -143,7 +143,7 @@ GtPlayBook >> gtLiveFor: aView [
 
 { #category : #'gt-extension' }
 GtPlayBook >> gtRunAllActionFor: anAction [
-	<gtAction>
+	"<gtAction>"
 	^ anAction button
 			icon: BrGlamorousVectorIcons play;
 			tooltip: 'Evaluate all';
@@ -154,7 +154,7 @@ GtPlayBook >> gtRunAllActionFor: anAction [
 
 { #category : #'gt-extension' }
 GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
-	<gtAction>
+	"<gtAction>"
 	^ anAction button
 			icon: BrGlamorousVectorIcons playinspect;
 			tooltip: 'Evaluate all and inspect';

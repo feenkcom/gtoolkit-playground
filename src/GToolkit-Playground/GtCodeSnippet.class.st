@@ -1,9 +1,6 @@
 Class {
 	#name : #GtCodeSnippet,
 	#superclass : #GtSnippet,
-	#instVars : [
-		'editor'
-	],
 	#category : #'GToolkit-Playground-Model'
 }
 
@@ -24,7 +21,8 @@ GtCodeSnippet >> defaultStyler [
 
 { #category : #accessing }
 GtCodeSnippet >> editor [
-	^ editor
+	self halt.
+	^ nil
 ]
 
 { #category : #'announcement handling' }
@@ -35,8 +33,6 @@ GtCodeSnippet >> handleEditorChanges: anAnnouncement [
 { #category : #initialization }
 GtCodeSnippet >> initialize [
 	super initialize.
-	editor := BrTextEditor new.
-	editor styler: self defaultStyler.
 	self sourceCode: self defaultSourceCode.
 	self subscribeToEditorChanges.
 ]
@@ -54,14 +50,16 @@ GtCodeSnippet >> notifyAboutResult: aResult exception: isExceptionBoolean spawn:
 
 { #category : #accessing }
 GtCodeSnippet >> selection [
-	^ editor selectedText asString
+	self halt.
+	^ ''
 ]
 
 { #category : #accessing }
 GtCodeSnippet >> sourceCode [
 	<return: #String>
 
-	^ editor text asString
+	self halt.
+	^ ''
 ]
 
 { #category : #accessing }
@@ -69,22 +67,26 @@ GtCodeSnippet >> sourceCode: aStringOrRope [
 	self 
 		assert: [ aStringOrRope notNil ] 
 		description: [ 'The contents should be initialized (a string or rope)' ].
-	editor text: aStringOrRope asRopedText.
+	
+	self halt.
 ]
 
 { #category : #subscriptions }
 GtCodeSnippet >> subscribeToEditorChanges [
-	editor 
+	"editor 
 		addEventHandlerOn: BrTextEditorInsertedEvent 
 		do: [ :anEvent | self handleEditorChanges: anEvent ].
 	editor 
 		addEventHandlerOn: BrTextEditorDeletedEvent 
 		do: [ :anEvent | self handleEditorChanges: anEvent ].
-
+"
+	"self halt"
 ]
 
 { #category : #accessing }
 GtCodeSnippet >> text [
 	<return: #BlText>
-	^ self editor text
+	self halt.
+	
+	^ '' asRopedText
 ]
