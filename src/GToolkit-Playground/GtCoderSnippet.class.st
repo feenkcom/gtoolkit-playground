@@ -366,6 +366,7 @@ GtCoderSnippet >> splitTextAt: aSplitIndex [
 	| aDeletedPart |
 
 	aDeletedPart := self text copyFrom: aSplitIndex + 1 to: self text size.
+	aDeletedPart ifEmpty: [ ^ aDeletedPart ].
 	aDeletedPart trimmer leftLineBreaks; trim.
 
 	self text delete: aSplitIndex + 1 to: self text size.
