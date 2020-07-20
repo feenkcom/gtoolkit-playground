@@ -12,7 +12,7 @@ GtSnippetCompletionStrategy >> initialize [
 	super initialize.
 	self isMethod: false.
 	self hasImplicitVariables: true.
-	snippetVariables := #()
+	snippetVariables := GtPrefixTree new
 ]
 
 { #category : #'private-variables' }
