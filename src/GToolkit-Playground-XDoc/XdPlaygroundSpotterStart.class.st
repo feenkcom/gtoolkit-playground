@@ -22,7 +22,7 @@ XdPlaygroundSpotterStart >> gtSpotterForEmptyPlayBookFor: aStep [
 			aGtPlayBook pages size = 1
 				ifFalse: [ aGtPlayBook asElement ]
 				ifTrue: [ aGtPlayBook pages first asElement ] ];
-		filter: GTFilterSubstring
+		filter: GtFilterSubstring
 ]
 
 { #category : #'gt-spotter' }
@@ -51,7 +51,7 @@ XdPlaygroundSpotterStart >> gtSpotterForListOfPlayBooksFor: aStep [
 			aGtPlayBook pages size = 1
 				ifFalse: [ aGtPlayBook asElement ]
 				ifTrue: [ aGtPlayBook pages first asElement ] ];
-		filter: GTFilterSubstring
+		filter: GtFilterSubstring
 ]
 
 { #category : #'gt-spotter' }

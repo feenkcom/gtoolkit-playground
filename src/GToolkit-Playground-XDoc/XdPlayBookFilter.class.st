@@ -1,12 +1,12 @@
 Class {
 	#name : #XdPlayBookFilter,
-	#superclass : #GTFilterSubstring,
+	#superclass : #GtFilterSubstring,
 	#category : #'GToolkit-Playground-XDoc-Spotter'
 }
 
 { #category : #public }
 XdPlayBookFilter >> gtListFilter [
-	^ GTFilterSubstring new
+	^ GtFilterSubstring new
 ]
 
 { #category : #'private-model' }
