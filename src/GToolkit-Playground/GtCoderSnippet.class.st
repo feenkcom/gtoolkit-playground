@@ -95,6 +95,11 @@ GtCoderSnippet >> codeEvaluated: anEvaluationAnnouncement [
 		spawn: shouldSpawn
 ]
 
+{ #category : #private }
+GtCoderSnippet >> codeModified: aCoderTextModifiedAnnouncement [
+	self announce: (GtPageSnippetChangedAnnouncement new snippet: self)
+]
+
 { #category : #initialization }
 GtCoderSnippet >> defaultStyler [
 	^ BrRBTextStyler new workspace: GtHighlightingBindingStrategy new
@@ -137,10 +142,17 @@ GtCoderSnippet >> initialize [
 	super initialize.
 	coder completionStrategy: GtSnippetCompletionStrategy new.
 	shouldSpawn := false.
+	
 	coder announcer weak
 		when: GtCoderEvaluationAnnouncement
 		send: #codeEvaluated:
 		to: self.
+		
+	coder announcer weak
+		when: GtCoderSourceTextModified
+		send: #codeModified:
+		to: self.
+
 	self variableBindings: GtSnippetBindings new.
 	self subscribeToEditorChanges.
 	self initializeCoderAddOns
