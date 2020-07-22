@@ -70,7 +70,7 @@ GtExampleSnippet >> initialize [
 	^ self flag: ''TODO: return object'''.
 	coder expanded: true.
 	super initialize.
-	editor := coder sourceEditor.
+	
 ]
 
 { #category : #accessing }
