@@ -119,6 +119,48 @@ GtCoderSnippet >> evaluateAndGo [
 		ensure: [ shouldSpawn := false ]"
 ]
 
+{ #category : #'private-actions' }
+GtCoderSnippet >> finishRenaming: oldName to: newName in: text [
+	| ast otherNodes |
+	ast := RBParser parseFaultyExpression: text.
+	otherNodes := OrderedCollection new.
+	ast
+		nodesDo: [ :node | 
+			(node isVariable
+				and: [ node name = oldName and: [ (node whoDefines: newName) isNil ] ])
+				ifTrue: [ otherNodes add: node ] ].
+	(otherNodes asSortedCollection: [ :a :b | a stop > b stop ])
+		do: [ :node | 
+			text
+				delete: node start to: node stop;
+				insertString: newName at: node start - 1 ].
+	coder removeRefactoringAttribute.
+	coder requestStyleSourceText
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> finishRenamingMessage: oldName to: newName in: text [
+	| ast otherRenames |
+	ast := RBParser parseFaultyExpression: text.
+	otherRenames := OrderedCollection new.
+	ast
+		nodesDo: [ :node | 
+			(node isMessage and: [ node selector = oldName ])
+				ifTrue: [ node keywordsIntervals reversed
+						with: newName keywords reversed
+						do: [ :interval :each | otherRenames add: interval -> each ] ].
+			(node isLiteralNode and: [ node value = oldName ])
+				ifTrue:
+					[ otherRenames add: node sourceInterval -> ('#' , newName) ] ].
+	(otherRenames asSortedCollection: [ :a :b | a key last > b key last ])
+		do: [ :each | 
+			text
+				delete: each key first to: each key last;
+				insertString: each value at: each key first - 1 ].
+	coder removeRefactoringAttribute.
+	coder requestStyleSourceText
+]
+
 { #category : #'api - cursor' }
 GtCoderSnippet >> focusAndPlaceCursorAtBeginning [
 	self flag: 'self textEditor moveCursorTo: 0.'.
@@ -237,9 +279,13 @@ GtCoderSnippet >> intervalsForRenameVariable: aString [
 GtCoderSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
 	aGtSnippetRenameRequestedAnnouncement snippet == self
 		ifTrue: [ ^ false ].
-	^ (self
-		intervalsForRenameVariable: aGtSnippetRenameRequestedAnnouncement variableName)
-		notEmpty
+	aGtSnippetRenameRequestedAnnouncement variableName
+		ifNotNil: [ :name | 
+			(self intervalsForRenameVariable: name) notEmpty
+				ifTrue: [ ^ true ] ].
+	aGtSnippetRenameRequestedAnnouncement selector
+		ifNotNil: [ :selector | ^ self referencesSelector: selector ].
+	^ false
 ]
 
 { #category : #'api - modification' }
@@ -321,6 +367,93 @@ GtCoderSnippet >> playAll [
 	^ coder doItAll
 ]
 
+{ #category : #testing }
+GtCoderSnippet >> referencesSelector: aSymbol [
+	coder rbAST
+		nodesDo: [ :each | 
+			(each isMessage and: [ each selector = aSymbol ])
+				ifTrue: [ ^ true ].
+			(each isLiteralNode and: [ each value = aSymbol ])
+				ifTrue: [ ^ true ] ].
+	^ false
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> renameClass: node in: aTextEditorElement [
+	| announcement renameController |
+	renameController := GtRenameClassController new.
+	renameController coder: coder.
+	renameController sourceElement: aTextEditorElement.
+	renameController
+		completionAction: [ | oldName newName |
+			oldName := renameController originalName.
+			newName := renameController newName.
+			announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
+			announcement variableName: node source.
+			self announce: announcement.
+			self finishRenaming: oldName to: newName in: self text.
+			announcement interestedSnippets
+				do: [ :each | each finishRenaming: oldName to: newName in: each text ]. ].
+	renameController execute
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
+	| announcement renameAction |
+	announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
+	announcement variableName: node source.
+	self announce: announcement.
+	announcement interestedSnippets isEmpty
+		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
+	renameAction := GtCompositeRenameAction
+		locations: (self intervalsForRenameVariable: node source)
+		element: aTextEditorElement.
+	renameAction forVariableOrUnaryMessage.
+	announcement interestedSnippets
+		do: [ :each | 
+			renameAction
+				addLocations: (each intervalsForRenameVariable: node source)
+				to: each textEditor ].
+	renameAction install
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
+	| announcement renameController |
+	renameController := GtRenameMethodController new.
+	renameController coder: coder.
+	renameController sourceElement: aTextEditorElement.
+	renameController
+		completionAction: [ | oldName newName |
+			oldName := renameController originalName asSymbol.
+			newName := renameController newName asSymbol.
+			announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
+			announcement selector: oldName.
+			self announce: announcement.
+			self finishRenamingMessage: oldName to: newName in: self text.
+			announcement interestedSnippets
+				do:
+					[ :each | each finishRenamingMessage: oldName to: newName in: each text ] ].
+	renameController execute
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> renameTemporaryIn: aTextEditorElement [
+	coder renameVariableIn: aTextEditorElement
+]
+
+{ #category : #'private-actions' }
+GtCoderSnippet >> renameVariable: node in: aTextEditorElement [
+	node whoDefines notNil
+		ifTrue: [ ^ self renameTemporaryIn: aTextEditorElement ].
+	^ Smalltalk globals
+		at: node name source asSymbol
+		ifPresent: [ :global | 
+			(global isKindOf: Class)
+				ifTrue: [ self renameClass: node in: aTextEditorElement ] ]
+		ifAbsent: [ self renameImplicitTemporary: node in: aTextEditorElement ]
+]
+
 { #category : #'private - requests' }
 GtCoderSnippet >> requestNewSnippetWith: aNewText [
 	| aNewSnippet |
@@ -389,29 +522,14 @@ GtCoderSnippet >> splitTextAt: aSplitIndex [
 
 { #category : #actions }
 GtCoderSnippet >> startRenameIn: aTextEditorElement [
-	| announcement ast node renameAction aTextEditor |
-	aTextEditor := aTextEditorElement editor.
-	aTextEditor cursor cursorsCount = 1
-		ifFalse: [ ^ nil ].
-	ast := self ast.
-	node := ast findVariableNodeAt: aTextEditor cursor first position.
-	(node isNil or: [ node whoDefines notNil ])
-		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
-	announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
-	announcement variableName: node source.
-	self announce: announcement.
-	announcement interestedSnippets isEmpty
-		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
-	renameAction := GtCompositeRenameAction
-		locations: (self intervalsForRenameVariable: node source)
-		element: aTextEditorElement.
-	renameAction forVariableOrUnaryMessage.
-	announcement interestedSnippets
-		do: [ :each | 
-			renameAction
-				addLocations: (each intervalsForRenameVariable: node source)
-				to: each textEditor ].
-	renameAction install
+	| node |
+	node := coder nodeAtCursorIn: aTextEditorElement editor.
+	node isNil
+		ifTrue: [ ^ self ].
+	(node isKindOf: GtPharoVariableNode)
+		ifTrue: [ ^ self renameVariable: node in: aTextEditorElement ].
+	(node isKindOf: GtPharoMessageNode)
+		ifTrue: [ ^ self renameMessage: node in: aTextEditorElement ]
 ]
 
 { #category : #converting }
