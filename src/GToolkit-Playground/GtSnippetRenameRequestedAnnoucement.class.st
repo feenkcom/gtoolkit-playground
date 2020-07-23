@@ -3,6 +3,7 @@ Class {
 	#superclass : #GtSnippetAnnoucement,
 	#instVars : [
 		'variableName',
+		'selector',
 		'interestedSnippets'
 	],
 	#category : #'GToolkit-Playground-Announcements'
@@ -16,6 +17,16 @@ GtSnippetRenameRequestedAnnoucement >> interestedSnippets [
 { #category : #accessing }
 GtSnippetRenameRequestedAnnoucement >> interestedSnippets: anObject [
 	interestedSnippets := anObject
+]
+
+{ #category : #accessing }
+GtSnippetRenameRequestedAnnoucement >> selector [
+	^ selector
+]
+
+{ #category : #accessing }
+GtSnippetRenameRequestedAnnoucement >> selector: aSymbol [
+	selector := aSymbol
 ]
 
 { #category : #accessing }
