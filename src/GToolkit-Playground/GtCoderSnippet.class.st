@@ -305,6 +305,7 @@ GtCoderSnippet >> moveDown: anElement [
 	textEditor := anElement editor.
 	textEditor cursors cursorsCount = 1
 		ifTrue: [ position := textEditor cursors first position ].
+	textEditor deselecter all deselect.
 	textEditor navigator moveDown apply.
 	(textEditor cursors cursorsCount = 1
 		and: [ position = textEditor cursors first position ])
@@ -341,7 +342,8 @@ GtCoderSnippet >> moveRight: anElement [
 					(GtSnippetExternalCursorAnnouncement new
 						snippet: self;
 						direction: #right) ]
-		ifFalse: [ textEditor deselecter all deselect.
+		ifFalse: [
+			textEditor deselecter all deselect.
 			textEditor navigator moveRight apply ]
 ]
 
@@ -351,6 +353,7 @@ GtCoderSnippet >> moveUp: anElement [
 	textEditor := anElement editor.
 	textEditor cursors cursorsCount = 1
 		ifTrue: [ position := textEditor cursors first position ].
+	textEditor deselecter all deselect.
 	textEditor navigator moveUp apply.
 	(textEditor cursors cursorsCount = 1
 		and: [ position = textEditor cursors first position ])
