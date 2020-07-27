@@ -72,7 +72,7 @@ GEmbeddedPlaygroundStencil >> newResizerFor: aPlaygroundContainer [
 GEmbeddedPlaygroundStencil >> newResizerHandler [
 	^ BlElement new
 		background: ((Color fromHexString: #BDBDBD) alpha: 0.5);
-		geometry: (BlRectangle cornerRadius: 2);
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 2);
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical exact: 3.
