@@ -20,8 +20,8 @@ XdPlayBookType class >> openDocument: aXdDocument ofXdFileInPharo: aXdFile [
 
 { #category : #accessing }
 XdPlayBookType class >> playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFile [ 
-	<return: #GtPlayBook>
-	| theAttachments aMember |
+	<return: #GtPlayground>
+	| theAttachments aMember aPlayBook |
 	self
 		assert: [ aXdDocument notNil ] 
 		description: [ 'XDoc document must be non-nil' ].
@@ -33,7 +33,8 @@ XdPlayBookType class >> playBookFromDocument: aXdDocument ofXdFileInPharo: aXdFi
 		description: [ 'XDoc file must exist' ].
 	theAttachments := aXdFile manifest attachmentsForDocument: aXdDocument.
 	aMember := aXdFile memberNamed: theAttachments first fileName.
-	^ XdPlayBookJsonMapping readPlayBook: aMember gtContents.
+	aPlayBook := XdPlayBookJsonMapping readPlayBook: aMember gtContents.
+	^ aPlayBook asElement
 ]
 
 { #category : #accessing }
