@@ -174,6 +174,13 @@ GtCoderSnippet >> focusAndPlaceCursorAtEnd [
 ]
 
 { #category : #accessing }
+GtCoderSnippet >> gtKeybindingsFor: aView [
+	<gtView>
+	^ (coder gtViewKeybindingsFor: aView)
+		priority: 60
+]
+
+{ #category : #accessing }
 GtCoderSnippet >> implicitLocalVariables [
 	^ self ast ifNotNil: [ :ast | ast implicitLocalVariables ]
 ]
