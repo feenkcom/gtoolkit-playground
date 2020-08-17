@@ -423,7 +423,7 @@ GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 		do: [ :each | 
 			renameAction
 				addLocations: (each intervalsForRenameVariable: node source)
-				to: each textEditor ].
+				toText: each text ].
 	renameAction install
 ]
 
