@@ -109,6 +109,14 @@ GtPlayBook >> attachToPage: aGtPlayPage [
 		for: self
 ]
 
+{ #category : #accessing }
+GtPlayBook >> bindingsDo: aBlock [
+	"Enumerate ${class:GtSnippetBindings}$ bindings and call aBlock for every bindings instance.
+	Since ${class:GtPlayBook}$ has be default only one ${class:GtPlayPage}$, there is usually only one ${class:GtSnippetBindings}$ instance."
+	self pages do: [ :eachPage | 
+		eachPage bindingsDo: aBlock ]
+]
+
 { #category : #actions }
 GtPlayBook >> copyContentToClipboard [
 	| aContent |	
