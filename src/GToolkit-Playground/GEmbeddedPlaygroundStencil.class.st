@@ -43,11 +43,15 @@ GEmbeddedPlaygroundStencil >> newPlayBookContainer [
 { #category : #'instance creation' }
 GEmbeddedPlaygroundStencil >> newPlayBookElement [
 	<return: #BlElement>
-	^ self playPage asElement
+	| anElement |
+	anElement := self playPage asElement
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ];
 		clipChildren: false.
+	self playPage bindingsDo: [ :eachBinding | 
+		eachBinding at: #thisPlayground put: anElement ].
+	^ anElement 
 ]
 
 { #category : #'instance creation' }
