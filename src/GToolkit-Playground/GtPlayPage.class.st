@@ -127,6 +127,11 @@ GtPlayPage >> bindings: aGtBindingsTrait [
 	bindings := aGtBindingsTrait
 ]
 
+{ #category : #accessing }
+GtPlayPage >> bindingsDo: aBlock [
+	aBlock cull: self bindings cull: self
+]
+
 { #category : #'announcement registration' }
 GtPlayPage >> detachFromSnippet: aGtSnippet [
 	aGtSnippet variableBindings: GtNoBindings uniqueInstance.

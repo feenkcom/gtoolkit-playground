@@ -85,3 +85,11 @@ GtSnippetBindings >> receiver: anObject [
 GtSnippetBindings >> receiverClass [
 	^ self receiver class
 ]
+
+{ #category : #removing }
+GtSnippetBindings >> remove: aSymbol [
+	self assert: [ aSymbol isSymbol ] description: [ 'Variable name should be a symbol' ].
+	bindings 
+		removeKey: aSymbol
+		ifAbsent: [ "ignore" ]
+]
