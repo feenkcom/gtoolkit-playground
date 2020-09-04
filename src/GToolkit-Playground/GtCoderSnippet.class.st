@@ -500,6 +500,11 @@ GtCoderSnippet >> requestSnippetSplitInEditor: aTextEditor [
 	aTextEditor moveCursorTo: aTextEditor text size
 ]
 
+{ #category : #'api - requests' }
+GtCoderSnippet >> requestStyleText [
+	coder requestStyleSourceText
+]
+
 { #category : #private }
 GtCoderSnippet >> snippetType [
 	^ GtCoderSnippetType of: self

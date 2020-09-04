@@ -147,6 +147,10 @@ GtSnippet >> requestSnippetReplacement: aClass initializedWith: aBlock [
 		initializationBlock: aBlock).
 ]
 
+{ #category : #'api - requests' }
+GtSnippet >> requestStyleText [
+]
+
 { #category : #private }
 GtSnippet >> snippetType [
 	"Return a unique snippet item type per snippet class for the infinite list element.
