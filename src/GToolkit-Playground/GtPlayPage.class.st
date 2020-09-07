@@ -252,6 +252,11 @@ GtPlayPage >> replaceSnippet: anExistingGtSnippet by: aNewGtSnippet [
 	self notifySnippet: anExistingGtSnippet replactedBy: aNewGtSnippet at: anIndex.
 ]
 
+{ #category : #private }
+GtPlayPage >> restyleSnippets [
+	snippets do: [ :each | each requestStyleText ]
+]
+
 { #category : #accessing }
 GtPlayPage >> snippetAt: anInteger [ 
 	<return: #GtSnippet>
@@ -280,6 +285,7 @@ GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [
 { #category : #'announcement handling' }
 GtPlayPage >> snippetEvaluatedAnnouncement: aGtSnippetEvaluatedAnnouncement [ 
 	| anIndex anAnnouncement |
+	self restyleSnippets.
 	anIndex := self snippets indexOf: aGtSnippetEvaluatedAnnouncement snippet.
 	anAnnouncement := GtPageSnippetEvaluatedAnnouncement new.
 	anAnnouncement 
