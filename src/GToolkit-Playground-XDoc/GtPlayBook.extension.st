@@ -17,6 +17,7 @@ GtPlayBook >> saveToXDoc [
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> storePlayBookInto: aXdFile [ 
 	| aText aTitle aDescription |
+	XdPlaygroundSettings directory isWritable ifFalse: [ ^self ].
 	aText := self string.
 	aTitle := aText first: (aText size min: 60).
 	aTitle := aTitle replace: [ :eachCharacter | 

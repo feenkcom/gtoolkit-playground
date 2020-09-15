@@ -4,6 +4,20 @@ Class {
 	#category : #'GToolkit-Playground-XDoc-Spotter'
 }
 
+{ #category : #private }
+XdPlaygroundSpotterStart >> emptyPlaygroundName [
+	"Answer the string to be displayed if the playground appears to be empty.
+	If the directory doesn't exist, or isn't writable, provide a bit more information"
+	| directory |
+
+	directory := XdPlaygroundSettings directory.
+	directory isDirectory ifFalse: 
+		[ ^ 'Error: ', directory fullName, ' doesn''t exist' ].
+	directory isWritable ifFalse: 
+		[ ^ 'Error: ', directory fullName, ' isn''t writable' ].
+	^ 'Empty Playground'
+]
+
 { #category : #printing }
 XdPlaygroundSpotterStart >> gtDisplayString [
 	^ 'Saved Playgrounds'
@@ -17,7 +31,7 @@ XdPlaygroundSpotterStart >> gtSpotterForEmptyPlayBookFor: aStep [
 		title: 'Empty Playground';
 		items: [ { GtPlayBook newDefault } ];
 		itemsLimit: Float infinity;
-		itemName: [ :eachGtPlayBook | 'Empty Playground' ];
+		itemName: [ :eachGtPlayBook | self emptyPlaygroundName ];
 		previewElement: [ :aGtPlayBook | 
 			aGtPlayBook pages size = 1
 				ifFalse: [ aGtPlayBook asElement ]
