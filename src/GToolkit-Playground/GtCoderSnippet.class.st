@@ -491,12 +491,13 @@ GtCoderSnippet >> requestSnippetSplit [
 { #category : #'api - requests' }
 GtCoderSnippet >> requestSnippetSplitInEditor: aTextEditor [
 	| positions |
-	positions := (aTextEditor cursor cursors
+	positions := (aTextEditor cursors cursors
 		collect: [ :each | each position ]) asSortedCollection.
-	positions reverseDo: [ :eachIndex | 
-		| aNewText |
-		aNewText := self splitTextAt: eachIndex.
-		self requestNewSnippetWith: aNewText ].
+	positions
+		reverseDo: [ :eachIndex | 
+			| aNewText |
+			aNewText := self splitTextAt: eachIndex.
+			self requestNewSnippetWith: aNewText ].
 	aTextEditor moveCursorTo: aTextEditor text size
 ]
 
