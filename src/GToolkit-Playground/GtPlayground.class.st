@@ -20,6 +20,16 @@ GtPlayground class >> newOn: aPlayBook [
 	^ self new playBook: aPlayBook
 ]
 
+{ #category : #'instance creation' }
+GtPlayground class >> newWithSnippets: snippets [
+	| playbook playground |
+	playbook := GtPlayBook newWithCodeSnippetContent: snippets first.
+	snippets allButFirst
+		do:
+			[ :el | playbook pages first addSnippet: (GtCoderSnippet new sourceCode: el) ].
+	^ self newOn: playbook
+]
+
 { #category : #'window creation' }
 GtPlayground class >> open [
 	^ self openOn: GtPlayBook newDefault.
@@ -28,6 +38,13 @@ GtPlayground class >> open [
 { #category : #'window creation' }
 GtPlayground class >> openFrom: aSourceElement [
 	^ self openOn: GtPlayBook newDefault from: aSourceElement.
+]
+
+{ #category : #'window creation' }
+GtPlayground class >> openWithSnippets: snippets [
+	| aTool |
+	aTool := self newWithSnippets: snippets.
+	^ aTool openInPager
 ]
 
 { #category : #initialization }
@@ -56,4 +73,10 @@ GtPlayground >> playBook [
 { #category : #accessing }
 GtPlayground >> playBook: aGtPlayBook [
 	self viewModel playBook: aGtPlayBook
+]
+
+{ #category : #accessing }
+GtPlayground >> playgroundWithSnippets [
+	<gtExample>
+	^ GtPlayground newWithSnippets: { '3+4' . '42' }
 ]
