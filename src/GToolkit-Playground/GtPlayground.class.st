@@ -3,9 +3,6 @@ Class {
 	#superclass : #BlElement,
 	#traits : 'TGtPagerWindowOpener',
 	#classTraits : 'TGtPagerWindowOpener classTrait',
-	#instVars : [
-		'book'
-	],
 	#category : #'GToolkit-Playground-UI'
 }
 
