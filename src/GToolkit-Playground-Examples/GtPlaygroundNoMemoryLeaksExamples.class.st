@@ -47,7 +47,7 @@ GtPlaygroundNoMemoryLeaksExamples >> executeFirstSnippetAndAssertNoMemoryLeaksFo
 		aStep click
 			label: 'Click on inspect snippet button';
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetInspectButton.
 		aStep wait forEmptySpaceTaskQueue.
 		self 
@@ -110,7 +110,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet [
 		aStep click
 			label: 'Click on evaluate and inspect button';
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetInspectButton.
 		aStep wait forEmptySpaceTaskQueue.
 		aStep check 
@@ -136,7 +136,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 		aStep click
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetEditor.
 		aStep do
 			label: 'Change code in snippet';
@@ -146,7 +146,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 					string: '1'; 
 					insert ];
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetEditor;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue ].
@@ -182,7 +182,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 		aStep click
 			label: 'Click on evaluate and inspect button';
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundSecondSnippet;
+			onGtPlaygroundSecondSnippetCoder;
 			onGtPharoSnippetInspectButton.
 		aStep wait forEmptySpaceTaskQueue.
 		self 
@@ -211,7 +211,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 		aStep click
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetEditor.
 		aStep do
 			label: 'Replace code in snippet';
@@ -224,7 +224,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 					string: '1'; 
 					insert ];
 			onGtPagerFirstPaneContent;
-			onGtPlaygroundFirstSnippet;
+			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetEditor;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue ].
