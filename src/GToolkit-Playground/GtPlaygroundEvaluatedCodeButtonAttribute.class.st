@@ -3,7 +3,8 @@ Class {
 	#superclass : #BrTextAdornmentAttribute,
 	#instVars : [
 		'result',
-		'action'
+		'action',
+		'coder'
 	],
 	#category : #'GToolkit-Playground-Commands'
 }
@@ -41,8 +42,9 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece i
 					c vertical fitContent ];
 				when: GtPhlowObjectToSpawn do: [ :anEvent | aButton fireEvent: (GtPhlowObjectToSpawn new
 					previousSpawnEvent: anEvent;
-					object: anEvent object;
-					sourceElement: anEvent target) ].
+					tool: anEvent tool;
+					sourceElement: aButton;
+					spawnDestination: self spawnDestination) ].
 			(self result gtViewsFor: GtPhlowEmptyView new) asElementDo: [ :anInspectorElement |
 				aContainer addChild: ((anInspectorElement exact: 400@400) asScalableElement size: 200@200)
 			] ]) showDelay: 200 milliSeconds));
@@ -58,11 +60,24 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> clickEvent: anEvent from: aButton [
 	self action cull: aButton cull: anEvent
 ]
 
+{ #category : #accessing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> coder [
+	^ coder
+]
+
+{ #category : #accessing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> coder: anObject [
+	coder := anObject
+]
+
 { #category : #initialization }
 GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 	super initialize.
 	self beAppend.
-	action := [ :aButton :anEvent | aButton phlow spawnObject: self result ]
+	action := [ :aButton :anEvent | 
+		aButton phlow 
+			spawnObject: self result
+			withDestination: self spawnDestination ]
 ]
 
 { #category : #testing }
@@ -78,4 +93,11 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> result [
 { #category : #accessing }
 GtPlaygroundEvaluatedCodeButtonAttribute >> result: anObject [
 	result := anObject
+]
+
+{ #category : #accessing }
+GtPlaygroundEvaluatedCodeButtonAttribute >> spawnDestination [
+	^ self coder 
+		ifNil: [ GtPhlowSpawnDesiredDestination defaultDestination ]
+		ifNotNil: [ self coder spawnDestination ]
 ]
