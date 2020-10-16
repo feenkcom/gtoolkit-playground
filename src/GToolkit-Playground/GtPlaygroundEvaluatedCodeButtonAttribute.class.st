@@ -40,6 +40,7 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece i
 					c horizontal fitContent.
 					c vertical fitContent ];
 				when: GtPhlowObjectToSpawn do: [ :anEvent | aButton fireEvent: (GtPhlowObjectToSpawn new
+					previousSpawnEvent: anEvent;
 					object: anEvent object;
 					sourceElement: anEvent target) ].
 			(self result gtViewsFor: GtPhlowEmptyView new) asElementDo: [ :anInspectorElement |
