@@ -49,7 +49,7 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece i
 				aContainer addChild: ((anInspectorElement exact: 400@400) asScalableElement size: 200@200)
 			] ]) showDelay: 200 milliSeconds));
 		size: 8@8;
-		geometry: BlEllipse new;
+		geometry: BlEllipseGeometry new;
 		margin: (BlInsets left: 2 right: 2);
 		action: [ :aButtonElement :aButtonModel :anEvent | self clickEvent: anEvent from: aButtonElement ];
 		yourself
