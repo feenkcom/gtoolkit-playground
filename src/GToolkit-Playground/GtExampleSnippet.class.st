@@ -68,7 +68,6 @@ GtExampleSnippet >> initialize [
 	coder := GtMethodCoder forClass: nil source: 'exampleMessageSelector
 	<gtExample>
 	^ self flag: ''TODO: return object'''.
-	coder expanded: true.
 	super initialize.
 	
 ]
