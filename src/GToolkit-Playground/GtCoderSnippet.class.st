@@ -222,52 +222,34 @@ GtCoderSnippet >> initializeCoderAddOns [
 							updateForCodeSnippet: currentSource
 							inClass: selectedClass ] ];
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				combination: BlKeyCombination builder primary backspace build;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder requestSnippetMerge ];
-				options: self);
+				action: [ :aShortcutEvent | self requestSnippetMerge ]);
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				repeatable: false;
 				combination: BlKeyCombination primaryR;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder startRenameIn: aShortcutEvent currentTarget ];
-				options: self);
+				action: [ :aShortcutEvent | self startRenameIn: aShortcutEvent currentTarget ]);
 		addShortcut:
-			(BrTextEditorShortcut new
-				combination:
-					(BlKeyCombination builder
-						primary;
-						return;
-						build);
-				options: self;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder requestSnippetSplitInEditor: aTextEditor ]);
+			(BlShortcutWithAction new
+				combination: (BlKeyCombination builder primary return build);
+				action: [ :aShortcutEvent | self requestSnippetSplitInEditor: aShortcutEvent currentTarget editor ]);
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				combination: BlKeyCombination arrowLeft;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder moveLeft: aShortcutEvent currentTarget ];
-				options: self);
+				action: [ :aShortcutEvent | self moveLeft: aShortcutEvent currentTarget ]);
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				combination: BlKeyCombination arrowRight;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder moveRight: aShortcutEvent currentTarget ];
-				options: self);
+				action: [ :aShortcutEvent | self moveRight: aShortcutEvent currentTarget ]);
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				combination: BlKeyCombination arrowUp;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder moveUp: aShortcutEvent currentTarget ];
-				options: self);
+				action: [ :aShortcutEvent | self moveUp: aShortcutEvent currentTarget ]);
 		addShortcut:
-			(BrTextEditorShortcut new
+			(BlShortcutWithAction new
 				combination: BlKeyCombination arrowDown;
-				action: [ :aShortcutEvent :aShortcut :aTextEditor :aSourceCoder |
-					aSourceCoder moveDown: aShortcutEvent currentTarget ];
-				options: self)
+				action: [ :aShortcutEvent | self moveDown: aShortcutEvent currentTarget ])
 ]
 
 { #category : #private }
@@ -414,7 +396,7 @@ GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 	announcement variableName: node source.
 	self announce: announcement.
 	announcement interestedSnippets isEmpty
-		ifTrue: [ ^ coder renameVariableIn: aTextEditorElement ].
+		ifTrue: [ ^ coder renameIn: aTextEditorElement ].
 	renameAction := GtCompositeRenameAction
 		locations: (self intervalsForRenameVariable: node source)
 		element: aTextEditorElement.
@@ -449,7 +431,7 @@ GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
 
 { #category : #'private-actions' }
 GtCoderSnippet >> renameTemporaryIn: aTextEditorElement [
-	coder renameVariableIn: aTextEditorElement
+	coder renameIn: aTextEditorElement
 ]
 
 { #category : #'private-actions' }
