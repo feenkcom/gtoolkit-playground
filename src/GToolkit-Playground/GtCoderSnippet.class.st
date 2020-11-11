@@ -56,9 +56,9 @@ GtCoderSnippet >> appendText: aNewText [
 GtCoderSnippet >> asElement [
 	| aCoderElement |
 	
-	aCoderElement := coder asElement.
+	aCoderElement := coder asCoderUIModel asElement.
 	aCoderElement margin: (BlInsets all: 0).
-	
+
 	self announcer
 		when: GtSnippetFocusRequestAnnouncement
 		send: #requestFocus
