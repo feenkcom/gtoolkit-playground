@@ -56,7 +56,7 @@ GtCoderSnippet >> appendText: aNewText [
 GtCoderSnippet >> asElement [
 	| aCoderElement |
 	
-	aCoderElement := coder asElement.
+	aCoderElement := (coder asCoderUIModel focused: true) asElement.
 	aCoderElement margin: (BlInsets all: 0).
 	
 	self announcer
