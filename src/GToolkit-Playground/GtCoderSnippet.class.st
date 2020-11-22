@@ -90,8 +90,8 @@ GtCoderSnippet >> bind: aSnippet to: aSnippetElement [
 { #category : #private }
 GtCoderSnippet >> codeEvaluated: anEvaluationAnnouncement [
 	self
-		notifyAboutResult: anEvaluationAnnouncement value
-		exception: anEvaluationAnnouncement isException
+		notifyAboutResult: anEvaluationAnnouncement evaluationResult
+		exception: anEvaluationAnnouncement evaluationResult isError
 		spawn: shouldSpawn
 ]
 
@@ -198,7 +198,7 @@ GtCoderSnippet >> initialize [
 		to: self.
 		
 	coder announcer weak
-		when: GtCoderSourceTextModified
+		when: GtCoderSourceCodeChanged
 		send: #codeModified:
 		to: self.
 
@@ -355,7 +355,6 @@ GtCoderSnippet >> moveUp: anElement [
 
 { #category : #actions }
 GtCoderSnippet >> playAll [
-	self halt.
 	^ coder doItAll
 ]
 
@@ -520,8 +519,18 @@ GtCoderSnippet >> splitTextAt: aSplitIndex [
 
 { #category : #actions }
 GtCoderSnippet >> startRenameIn: aTextEditorElement [
-	| node |
-	node := coder nodeAtCursorIn: aTextEditorElement editor.
+	| node aTextPosition |
+	
+	aTextEditorElement editor hasCursors
+		ifFalse: [ ^ self ].
+	
+	aTextPosition := (aTextEditorElement editor cursors first position + 1) min: aTextEditorElement editor text size.
+	
+	node := coder
+		nodeAt: aTextPosition
+		ifFound: #yoursefl
+		ifNone: [ ^ self ].
+
 	node isNil
 		ifTrue: [ ^ self ].
 	(node isKindOf: GtPharoVariableNode)
