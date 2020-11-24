@@ -395,7 +395,7 @@ GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 	announcement variableName: node source.
 	self announce: announcement.
 	announcement interestedSnippets isEmpty
-		ifTrue: [ ^ coder renameIn: aTextEditorElement ].
+		ifTrue: [ ^ self"coder renameIn: aTextEditorElement" ].
 	renameAction := GtCompositeRenameAction
 		locations: (self intervalsForRenameVariable: node source)
 		element: aTextEditorElement.
@@ -430,7 +430,7 @@ GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
 
 { #category : #'private-actions' }
 GtCoderSnippet >> renameTemporaryIn: aTextEditorElement [
-	coder renameIn: aTextEditorElement
+	"coder renameIn: aTextEditorElement"
 ]
 
 { #category : #'private-actions' }
