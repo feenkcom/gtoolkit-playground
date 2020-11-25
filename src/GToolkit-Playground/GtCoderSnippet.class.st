@@ -505,14 +505,17 @@ GtCoderSnippet >> sourceCode: aString [
 { #category : #'private - text' }
 GtCoderSnippet >> splitTextAt: aSplitIndex [
 	"Return a part that is deleted"
-	| aDeletedPart |
+	| aDeletedPart anUpdatedText |
 
 	aDeletedPart := self text copyFrom: aSplitIndex + 1 to: self text size.
 	aDeletedPart ifEmpty: [ ^ aDeletedPart ].
 	aDeletedPart trimmer leftLineBreaks; trim.
-
-	self text delete: aSplitIndex + 1 to: self text size.
-	self text trimmer rightLineBreaks; trim.
+	
+	anUpdatedText := coder sourceText copy.
+	anUpdatedText delete: aSplitIndex + 1 to: self text size.
+	anUpdatedText trimmer rightLineBreaks; trim.
+	
+	coder currentSourceText: anUpdatedText.
 	
 	^ aDeletedPart
 ]
