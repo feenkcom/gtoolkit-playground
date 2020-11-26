@@ -395,7 +395,7 @@ GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 	announcement variableName: node source.
 	self announce: announcement.
 	announcement interestedSnippets isEmpty
-		ifTrue: [ ^ coder renameIn: aTextEditorElement ].
+		ifTrue: [ ^ self"coder renameIn: aTextEditorElement" ].
 	renameAction := GtCompositeRenameAction
 		locations: (self intervalsForRenameVariable: node source)
 		element: aTextEditorElement.
@@ -430,7 +430,7 @@ GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
 
 { #category : #'private-actions' }
 GtCoderSnippet >> renameTemporaryIn: aTextEditorElement [
-	coder renameIn: aTextEditorElement
+	"coder renameIn: aTextEditorElement"
 ]
 
 { #category : #'private-actions' }
@@ -505,14 +505,17 @@ GtCoderSnippet >> sourceCode: aString [
 { #category : #'private - text' }
 GtCoderSnippet >> splitTextAt: aSplitIndex [
 	"Return a part that is deleted"
-	| aDeletedPart |
+	| aDeletedPart anUpdatedText |
 
 	aDeletedPart := self text copyFrom: aSplitIndex + 1 to: self text size.
 	aDeletedPart ifEmpty: [ ^ aDeletedPart ].
 	aDeletedPart trimmer leftLineBreaks; trim.
-
-	self text delete: aSplitIndex + 1 to: self text size.
-	self text trimmer rightLineBreaks; trim.
+	
+	anUpdatedText := coder sourceText copy.
+	anUpdatedText delete: aSplitIndex + 1 to: self text size.
+	anUpdatedText trimmer rightLineBreaks; trim.
+	
+	coder currentSourceText: anUpdatedText.
 	
 	^ aDeletedPart
 ]

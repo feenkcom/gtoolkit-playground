@@ -11,19 +11,19 @@ GtPlaygroundNoMemoryLeaksExamples >> assertPanesCount: numberOfExpectedPanes and
 		action: [ :theScripter | 
 			theScripter events collection removeAll ];
 		onScripter.
+
 	aStep check 
 		label: 'Check number of panes';
-		satisfies: [ :aPager | 
-			aPager pages size = numberOfExpectedPanes ].
+		value: [ :aPager | aPager pages size ] equals: numberOfExpectedPanes.
+
 	aStep do
 		label: 'Run garbage collection';
-		action: [ :aPager | 
-			Smalltalk garbageCollect ].
+		action: [ :aPager | Smalltalk garbageCollect ].
+
 	aStep check 
 		label: 'Check instances count decreased';
-		satisfies: [ :theScripter | 
-			(theScripter userData at: 'instanceCount') = aBlock value ];
-		onScripter 
+		value: aBlock equals: [ :theScripter | theScripter userData at: 'instanceCount' ];
+		onScripter
 ]
 
 { #category : #utils }
@@ -33,12 +33,15 @@ GtPlaygroundNoMemoryLeaksExamples >> closePaneAndAssertNoMemoryLeaksFor: aScript
 			label: 'Click on evaluate all and inspect button';
 			onBrPagerSecondPane;
 			onGtPagerPaneCloseButton.
+
 		aStep wait forEmptySpaceTaskQueue.
+
 		self 
 			assertPanesCount: 1 
 			andInstancesComputation: [ self initialInstancesCount ] 
 			for: aStep ].
-	aScripter syncContinue.
+
+	aScripter syncContinue
 ]
 
 { #category : #utils }
@@ -49,12 +52,13 @@ GtPlaygroundNoMemoryLeaksExamples >> executeFirstSnippetAndAssertNoMemoryLeaksFo
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
 			onGtPharoSnippetInspectButton.
+
 		aStep wait forEmptySpaceTaskQueue.
+
 		self 
 			assertPanesCount: 2 
 			andInstancesComputation: [ self initialInstancesCount ] 
-			for: aStep ].
-	aScripter syncContinue.
+			for: aStep ]
 ]
 
 { #category : #accessing }
@@ -197,9 +201,11 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange_ExecuteAgain [
 	<gtExample>
 	| aScripter |
+
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeAdditionChange.
 	self executeFirstSnippetAndAssertNoMemoryLeaksFor: aScripter.
-	^ aScripter
+
+	^ aScripter syncContinue
 ]
 
 { #category : #examples }
@@ -236,9 +242,11 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_CodeReplacementChange_ExecuteAgain [
 	<gtExample>
 	| aScripter |
+
 	aScripter := self playgroundScripter_ExecuteFirstSnippet_CodeReplacementChange.
 	self executeFirstSnippetAndAssertNoMemoryLeaksFor: aScripter.
-	^ aScripter
+
+	^ aScripter syncContinue
 ]
 
 { #category : #accessing }
