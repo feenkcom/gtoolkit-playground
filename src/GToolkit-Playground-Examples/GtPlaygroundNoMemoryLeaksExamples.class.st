@@ -22,7 +22,7 @@ GtPlaygroundNoMemoryLeaksExamples >> assertPanesCount: numberOfExpectedPanes and
 
 	aStep check 
 		label: 'Check instances count decreased';
-		value: aBlock equals: [ :theScripter | theScripter userData at: 'instanceCount' ];
+		satisfies: [ :theScripter | aBlock value <= (theScripter userData at: 'instanceCount') ];
 		onScripter
 ]
 
