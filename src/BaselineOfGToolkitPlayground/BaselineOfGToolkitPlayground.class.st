@@ -37,14 +37,10 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 	spec for: #'common' do: [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
-			baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick/src' ];
 			baseline: 'GToolkitPager' with: [
 				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
 			baseline: 'GToolkitSpotter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-spotter/src' ];
-			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
 			baseline: 'GToolkitCompleter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-completer/src' ];
 			baseline: 'GToolkitUtility' with: [
@@ -57,7 +53,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 				spec repository: 'github://feenkcom/xdoc/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
-				spec requires: #(#Brick #GToolkitPhlow #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings #GToolkitPager ). ];
+				spec requires: #(#GToolkitPager #GToolkitCompleter #GToolkitUtility #GToolkitVariableBindings ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
 				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
