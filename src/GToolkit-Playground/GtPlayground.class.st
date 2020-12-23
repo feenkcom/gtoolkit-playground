@@ -53,7 +53,14 @@ GtPlayground >> initialize [
 		layout: BlLinearLayout horizontal;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
-			c vertical matchParent ]
+			c vertical matchParent ].
+	self when: BlClickEvent do: [ self requestFocus ].
+	self when: BlFocusInEvent do: [ self onFocusReceived ].
+]
+
+{ #category : #'private - event handling' }
+GtPlayground >> onFocusReceived [
+	self updateTabLabel
 ]
 
 { #category : #opening }
@@ -76,4 +83,12 @@ GtPlayground >> playBook: aGtPlayBook [
 GtPlayground >> playgroundWithSnippets [
 	<gtExample>
 	^ GtPlayground newWithSnippets: { '3+4' . '42' }
+]
+
+{ #category : #'private - updating' }
+GtPlayground >> updateTabLabel [
+	GtPhlowTitleLabelNotifier new
+		element: self;
+		block: 'Playground';
+		notifyIfFocused.
 ]
