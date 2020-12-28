@@ -87,8 +87,9 @@ GtPlayground >> playgroundWithSnippets [
 
 { #category : #'private - updating' }
 GtPlayground >> updateTabLabel [
-	GtPhlowTitleLabelNotifier new
+	GtPhlowTitleIconAndLabelNotifier new
 		element: self;
-		block: 'Playground';
+		shortLabel: 'Playground';
+		icon: BrGlamorousVectorIcons play;
 		notifyIfFocused.
 ]
