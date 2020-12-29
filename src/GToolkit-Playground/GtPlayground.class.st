@@ -3,6 +3,9 @@ Class {
 	#superclass : #BlElement,
 	#traits : 'TGtPagerWindowOpener',
 	#classTraits : 'TGtPagerWindowOpener classTrait',
+	#instVars : [
+		'titleNotifier'
+	],
 	#category : #'GToolkit-Playground-UI'
 }
 
@@ -47,6 +50,7 @@ GtPlayground class >> openWithSnippets: snippets [
 { #category : #initialization }
 GtPlayground >> initialize [
 	super initialize.
+	self initializeTitleNotifier.
 	self
 		viewModel: GtPlayBookWidgetModel new;
 		look: GtPlayBookLook;
@@ -55,12 +59,14 @@ GtPlayground >> initialize [
 			c horizontal matchParent.
 			c vertical matchParent ].
 	self when: BlClickEvent do: [ self requestFocus ].
-	self when: BlFocusInEvent do: [ self onFocusReceived ].
 ]
 
-{ #category : #'private - event handling' }
-GtPlayground >> onFocusReceived [
-	self updateTabLabel
+{ #category : #initialization }
+GtPlayground >> initializeTitleNotifier [
+	titleNotifier := GtPhlowTitleIconAndLabelNotifier new
+		shortLabel: 'Playground';
+		icon: BrGlamorousVectorIcons play.
+	self addEventHandler: titleNotifier
 ]
 
 { #category : #opening }
@@ -85,11 +91,13 @@ GtPlayground >> playgroundWithSnippets [
 	^ GtPlayground newWithSnippets: { '3+4' . '42' }
 ]
 
+{ #category : #'private - accessing' }
+GtPlayground >> titleNotifier [
+	<return: #GtPhlowTitleNotifier>
+	^ titleNotifier
+]
+
 { #category : #'private - updating' }
 GtPlayground >> updateTabLabel [
-	GtPhlowTitleIconAndLabelNotifier new
-		element: self;
-		shortLabel: 'Playground';
-		icon: BrGlamorousVectorIcons play;
-		notifyIfFocused.
+	self titleNotifier notifyIfFocused
 ]
