@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #assertions }
-GtPlaygroundNoMemoryLeaksExamples >> assertPanesCount: numberOfExpectedPanes andInstancesComputation: aBlock for: aStep [
+GtPlaygroundNoMemoryLeaksExamples >> assertPanesCount: numberOfExpectedPanes andInitialInstancesComputation: aBlock for: aStep [
 	aStep do
 		label: 'Clear recorded events';
 		action: [ :theScripter | 
@@ -38,10 +38,15 @@ GtPlaygroundNoMemoryLeaksExamples >> closePaneAndAssertNoMemoryLeaksFor: aScript
 
 		self 
 			assertPanesCount: 1 
-			andInstancesComputation: [ self initialInstancesCount ] 
+			andInitialInstancesComputation: [ self currentInstancesCount ] 
 			for: aStep ].
 
 	aScripter syncContinue
+]
+
+{ #category : #accessing }
+GtPlaygroundNoMemoryLeaksExamples >> currentInstancesCount [
+	^ self targetClass allInstances size
 ]
 
 { #category : #utils }
@@ -57,18 +62,13 @@ GtPlaygroundNoMemoryLeaksExamples >> executeFirstSnippetAndAssertNoMemoryLeaksFo
 
 		self 
 			assertPanesCount: 2 
-			andInstancesComputation: [ self initialInstancesCount ] 
+			andInitialInstancesComputation: [ self currentInstancesCount ] 
 			for: aStep ]
 ]
 
 { #category : #accessing }
 GtPlaygroundNoMemoryLeaksExamples >> firstSnippetCode [
 	^ self targetClass name, ' new.'
-]
-
-{ #category : #accessing }
-GtPlaygroundNoMemoryLeaksExamples >> initialInstancesCount [
-	^ self targetClass allInstances size
 ]
 
 { #category : #'examples - setup' }
@@ -99,7 +99,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 			label: 'Set instances count';
 			action: [ :theScripter | 
 				theScripter userData 
-					at: 'instanceCount' put: self initialInstancesCount ];
+					at: 'instanceCount' put: self currentInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
@@ -125,7 +125,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet [
 			label: 'Check instances count increased';
 			satisfies: [ :theScripter | 
 				(theScripter userData at: 'instanceCount') + 1 =
-					self initialInstancesCount ];
+					self currentInstancesCount ];
 			onScripter ].
 	aScripter syncContinue.
 	^ aScripter
@@ -171,7 +171,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 		aStep wait forEmptySpaceTaskQueue.
 		self 
 			assertPanesCount: 1 
-			andInstancesComputation: [ self initialInstancesCount - 1 ] 
+			andInitialInstancesComputation: [ self currentInstancesCount - 1 ] 
 			for: aStep ].
 	aScripter syncContinue.
 	^ aScripter
@@ -191,7 +191,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 		aStep wait forEmptySpaceTaskQueue.
 		self 
 			assertPanesCount: 2 
-			andInstancesComputation: [ self initialInstancesCount ] 
+			andInitialInstancesComputation: [ self currentInstancesCount ] 
 			for: aStep  ].
 	aScripter syncContinue.
 	^ aScripter
@@ -247,6 +247,63 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 	self executeFirstSnippetAndAssertNoMemoryLeaksFor: aScripter.
 
 	^ aScripter syncContinue
+]
+
+{ #category : #examples }
+GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnippet [
+	<gtExample>
+	| aScripter |
+	aScripter := self playgroundScripter.
+	aScripter substep: 'Evaluate first snippet without inspecting it' do: [ :aStep |
+		aStep click
+			label: 'Click on evaluat button';
+			onGtPagerFirstPaneContent;
+			onGtPlaygroundFirstSnippetCoder;
+			onGtPharoSnippetEvaluateButton.
+		aStep wait forEmptySpaceTaskQueue.
+		aStep check 
+			label: 'Check still one pane in pager';
+			satisfies: [ :aPager | 
+				aPager pages size = 1 ].
+		aStep check 
+			label: 'Check instances count increased';
+			satisfies: [ :theScripter | 
+				(theScripter userData at: 'instanceCount') + 1 =
+					self currentInstancesCount ];
+			onScripter ].
+	aScripter syncContinue.
+	^ aScripter
+]
+
+{ #category : #examples }
+GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnippet_CodeAdditionChange [
+	<gtExample>
+	| aScripter |
+	aScripter := self playgroundScripter_ExecuteInPlaceFirstSnippet.
+	aScripter substep: 'Change first snippet' do: [ :aStep |
+		aStep click
+			label: 'Click on snippet';
+			onGtPagerFirstPaneContent;
+			onGtPlaygroundFirstSnippetCoder;
+			onGtPharoSnippetEditor.
+		aStep do
+			label: 'Change code in snippet';
+			action: [ :anEditor | 
+				anEditor inserter 
+					at: self firstSnippetCode size; 
+					string: '1'; 
+					insert ];
+			onGtPagerFirstPaneContent;
+			onGtPlaygroundFirstSnippetCoder;
+			onGtPharoSnippetEditor;
+			onBrTextEditor.
+		aStep wait forEmptySpaceTaskQueue.
+		self 
+			assertPanesCount: 1 
+			andInitialInstancesComputation: [ self currentInstancesCount ] 
+			for: aStep ].
+	aScripter syncContinue.
+	^ aScripter
 ]
 
 { #category : #accessing }
