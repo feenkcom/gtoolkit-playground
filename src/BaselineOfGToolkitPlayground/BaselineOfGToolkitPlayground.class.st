@@ -42,9 +42,9 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'GToolkitSpotter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.233/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.243/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.244/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.8.278/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.8.279/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.16/src' ];
 			baseline: 'XdocClient' with: [
