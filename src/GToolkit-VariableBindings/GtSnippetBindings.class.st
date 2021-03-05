@@ -72,6 +72,12 @@ GtSnippetBindings >> initialize [
 ]
 
 { #category : #accessing }
+GtSnippetBindings >> names [ 
+
+	^ bindings keys
+]
+
+{ #category : #accessing }
 GtSnippetBindings >> receiver [
 	^ receiver
 ]
