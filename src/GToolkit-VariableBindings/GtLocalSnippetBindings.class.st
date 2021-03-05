@@ -31,6 +31,12 @@ GtLocalSnippetBindings >> = anObject [
 		[ localBindings = anObject localBindings ] ]
 ]
 
+{ #category : #accessing }
+GtLocalSnippetBindings >> allNames [ 
+
+	^ self localNames, self sharedNames 
+]
+
 { #category : #converting }
 GtLocalSnippetBindings >> asDictionary [
 	<return: #Dictionary>
@@ -106,6 +112,13 @@ GtLocalSnippetBindings >> localBindings: anObject [
 ]
 
 { #category : #accessing }
+GtLocalSnippetBindings >> localNames [
+	"Answer the names of the local bindings"
+
+	^ localBindings keys
+]
+
+{ #category : #accessing }
 GtLocalSnippetBindings >> receiver [ 
 
 	^ sharedBindings receiver
@@ -138,4 +151,10 @@ GtLocalSnippetBindings >> sharedBindings [
 { #category : #accessing }
 GtLocalSnippetBindings >> sharedBindings: anObject [
 	sharedBindings := anObject
+]
+
+{ #category : #accessing }
+GtLocalSnippetBindings >> sharedNames [
+
+	^ sharedBindings names
 ]
