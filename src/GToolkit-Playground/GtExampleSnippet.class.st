@@ -65,7 +65,7 @@ GtExampleSnippet >> handleEditorChanges: anAnnouncement [
 
 { #category : #initialization }
 GtExampleSnippet >> initialize [ 	
-	coder := GtMethodCoder forClass: nil source: 'exampleMessageSelector
+	coder := GtPharoMethodCoder forClass: nil source: 'exampleMessageSelector
 	<gtExample>
 	^ self flag: ''TODO: return object'''.
 	super initialize.
