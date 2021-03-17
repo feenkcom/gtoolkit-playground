@@ -35,6 +35,7 @@ GtPlayBook >> storePlayBookInto: aXdFile [
 { #category : #'*GToolkit-Playground-XDoc' }
 GtPlayBook >> xdocPlayBookSpotterIn: aBrTab [
 	^ GtSpotterDropdownButtonStencil new
+		id: GtPlaygroundSpotterButtonId;
 		receiver: XdPlaygroundSpotterStart selector: #new;
 		tooltip: 'Search Playground History';
 		actOn: [ :anActOnEvent :anXdFile :theButton | 
