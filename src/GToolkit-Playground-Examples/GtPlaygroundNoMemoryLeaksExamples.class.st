@@ -221,7 +221,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor.
+			id: GtSourceCoderEditorId.
 		aStep do
 			label: 'Replace code in snippet';
 			action: [ :anEditor | 
@@ -234,7 +234,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor;
+			id: GtSourceCoderEditorId;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
@@ -259,10 +259,10 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 	aScripter := self playgroundScripter.
 	aScripter substep: 'Evaluate first snippet without inspecting it' do: [ :aStep |
 		aStep click
-			label: 'Click on evaluat button';
+			label: 'Click on evaluate button';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEvaluateButton.
+			id: GtSourceCoderDoItActionId.
 		aStep wait forEmptySpaceTaskQueue.
 		aStep check 
 			label: 'Check still one pane in pager';
@@ -288,7 +288,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor.
+			id: GtSourceCoderEditorId.
 		aStep do
 			label: 'Change code in snippet';
 			action: [ :anEditor | 
@@ -298,7 +298,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor;
+			id: GtSourceCoderEditorId;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue.
 		self 
