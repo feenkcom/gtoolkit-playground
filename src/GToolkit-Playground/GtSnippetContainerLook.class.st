@@ -34,8 +34,8 @@ GtSnippetContainerLook >> initialize [
 			c ignored vertical alignBottom.
 			c margin: (BlInsets bottom: 4) ].
 
-	self addChangeAddChildAs: #(closeButton) with: [ closeButton ].
-	self addChangeAddChildAs: #(bottomToolbar) with: [ bottomToolbar ].
+	self addChangeAddChildAs: { GtSnippetRemoveButtonId asSymbol } with: [ closeButton ].
+	self addChangeAddChildAs: { GtSnippetAddButtonId asSymbol } with: [ bottomToolbar ].
 	
 	self addChangeProperty: #(widget padding) with: [ BlInsets all: 12 ]
 ]
@@ -59,7 +59,7 @@ GtSnippetContainerLook >> newCloseElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
-		icon: (GtInspectorPlusIconStencil close thickness: 1; radius: 4; asElement);
+		icon: (BrPlusIconStencil close thickness: 1; radius: 4; asElement);
 		yourself
 ]
 
@@ -68,7 +68,7 @@ GtSnippetContainerLook >> newPlusElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
-		icon: (GtInspectorPlusIconStencil add thickness: 1; radius: 4; asElement);
+		icon: (BrPlusIconStencil add thickness: 1; radius: 4; asElement);
 		yourself
 ]
 

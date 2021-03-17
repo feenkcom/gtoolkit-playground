@@ -56,7 +56,7 @@ GtPlaygroundNoMemoryLeaksExamples >> executeFirstSnippetAndAssertNoMemoryLeaksFo
 			label: 'Click on inspect snippet button';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetInspectButton.
+			id: GtSourceCoderDoItAndGoActionId.
 
 		aStep wait forEmptySpaceTaskQueue.
 
@@ -91,6 +91,9 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 		aStep set 
 			label: 'Initialize Playground Element';
 			element: [ self playgroundElementWithCode ].
+		
+		aStep wait forEmptySpaceTaskQueueTimeout: 1 second.
+		
 		aStep do
 			label: 'Run garbage collection';
 			action: [ :aPager | 
@@ -101,8 +104,8 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter [
 				theScripter userData 
 					at: 'instanceCount' put: self currentInstancesCount ];
 			onScripter ].
-	aScripter syncContinue.
-	^ aScripter
+
+	^ aScripter syncContinue
 ]
 
 { #category : #examples }
@@ -115,7 +118,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet [
 			label: 'Click on evaluate and inspect button';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetInspectButton.
+			id: GtSourceCoderDoItAndGoActionId.
 		aStep wait forEmptySpaceTaskQueue.
 		aStep check 
 			label: 'Check two panes in pager';
@@ -141,7 +144,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor.
+			id: GtSourceCoderEditorId.
 		aStep do
 			label: 'Change code in snippet';
 			action: [ :anEditor | 
@@ -151,7 +154,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor;
+			id: GtSourceCoderEditorId;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
@@ -187,7 +190,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 			label: 'Click on evaluate and inspect button';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundSecondSnippetCoder;
-			onGtPharoSnippetInspectButton.
+			id: GtSourceCoderDoItAndGoActionId.
 		aStep wait forEmptySpaceTaskQueue.
 		self 
 			assertPanesCount: 2 
@@ -218,7 +221,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor.
+			id: GtSourceCoderEditorId.
 		aStep do
 			label: 'Replace code in snippet';
 			action: [ :anEditor | 
@@ -231,7 +234,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteFirstSnippet_Code
 					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor;
+			id: GtSourceCoderEditorId;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
@@ -256,10 +259,10 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 	aScripter := self playgroundScripter.
 	aScripter substep: 'Evaluate first snippet without inspecting it' do: [ :aStep |
 		aStep click
-			label: 'Click on evaluat button';
+			label: 'Click on evaluate button';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEvaluateButton.
+			id: GtSourceCoderDoItActionId.
 		aStep wait forEmptySpaceTaskQueue.
 		aStep check 
 			label: 'Check still one pane in pager';
@@ -285,7 +288,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 			label: 'Click on snippet';
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor.
+			id: GtSourceCoderEditorId.
 		aStep do
 			label: 'Change code in snippet';
 			action: [ :anEditor | 
@@ -295,7 +298,7 @@ GtPlaygroundNoMemoryLeaksExamples >> playgroundScripter_ExecuteInPlaceFirstSnipp
 					insert ];
 			onGtPagerFirstPaneContent;
 			onGtPlaygroundFirstSnippetCoder;
-			onGtPharoSnippetEditor;
+			id: GtSourceCoderEditorId;
 			onBrTextEditor.
 		aStep wait forEmptySpaceTaskQueue.
 		self 

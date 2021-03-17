@@ -36,7 +36,8 @@ GtPageSnippetsDataSource >> itemTypeAt: aPosition [
 
 { #category : #'instance creation' }
 GtPageSnippetsDataSource >> onBindHolder: anElementHolder at: aPosition [
-	anElementHolder snippet: (page snippetAt: aPosition)
+	anElementHolder snippet: (page snippetAt: aPosition).
+	anElementHolder itemElement id: (GtSnippetElementId indexed: aPosition)
 ]
 
 { #category : #'instance creation' }
