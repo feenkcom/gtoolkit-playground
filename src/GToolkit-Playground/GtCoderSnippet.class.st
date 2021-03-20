@@ -210,7 +210,7 @@ GtCoderSnippet >> initialize [
 { #category : #initialization }
 GtCoderSnippet >> initializeCoderAddOns [
 	coder addOns
-		addDropDownAction: 'Create example'
+"		addDropDownAction: 'Create example'
 			icon: BrGlamorousVectorIcons eg
 			stencil: [ :selectedClass | 
 				| currentSource |
@@ -220,7 +220,7 @@ GtCoderSnippet >> initializeCoderAddOns [
 					initializedWith: [ :anExampleSnippet | 
 						anExampleSnippet
 							updateForCodeSnippet: currentSource
-							inClass: selectedClass ] ];
+							inClass: selectedClass ] ];"
 		addShortcut:
 			(BlShortcutWithAction new
 				combination: BlKeyCombination builder primary backspace build;
