@@ -119,6 +119,10 @@ GtSnippet >> playAll [
 	^ nil
 ]
 
+{ #category : #accessing }
+GtSnippet >> receiver: anObject [
+]
+
 { #category : #'api - requests' }
 GtSnippet >> requestNewSnippetBelow [
 	self announce: (GtSnippetBelowRequestedAnnouncement snippet: self).

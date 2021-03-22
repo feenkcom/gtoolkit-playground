@@ -78,6 +78,7 @@ GtPlayPage >> asElement [
 { #category : #'announcement registration' }
 GtPlayPage >> attachToSnippet: aGtSnippet [
 	aGtSnippet variableBindings: self bindings.
+	aGtSnippet receiver: self receiver.
 	aGtSnippet
 		when: GtSnippetBelowRequestedAnnouncement
 			send: #snippetBelowRequestedAnnouncement:
@@ -135,6 +136,7 @@ GtPlayPage >> bindingsDo: aBlock [
 { #category : #'announcement registration' }
 GtPlayPage >> detachFromSnippet: aGtSnippet [
 	aGtSnippet variableBindings: GtNoBindings uniqueInstance.
+	aGtSnippet receiver: nil.
 	aGtSnippet unsubscribe: self.
 ]
 
@@ -215,7 +217,8 @@ GtPlayPage >> receiver [
 
 { #category : #accessing }
 GtPlayPage >> receiver: anObject [
-	self bindings receiver: anObject
+	self bindings receiver: anObject.
+	self snippets do: [ :eachSnippet | eachSnippet receiver: anObject ]
 ]
 
 { #category : #'api - modification' }

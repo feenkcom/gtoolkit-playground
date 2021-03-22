@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtCodeSnippet,
 	#instVars : [
 		'coder',
-		'shouldSpawn'
+		'shouldSpawn',
+		'coderViewModel'
 	],
 	#category : #'GToolkit-Playground-Model'
 }
@@ -56,7 +57,7 @@ GtCoderSnippet >> appendText: aNewText [
 GtCoderSnippet >> asElement [
 	| aCoderElement |
 	
-	aCoderElement := coder asCoderUIModel asElement.
+	aCoderElement := coderViewModel asElement.
 	aCoderElement margin: (BlInsets all: 0).
 
 	self announcer
@@ -191,6 +192,8 @@ GtCoderSnippet >> initialize [
 	super initialize.
 	coder completionStrategy: GtSnippetCompletionStrategy new.
 	shouldSpawn := false.
+	
+	coderViewModel := coder asCoderViewModel.
 	
 	coder announcer weak
 		when: GtCoderEvaluationAnnouncement
@@ -356,6 +359,11 @@ GtCoderSnippet >> moveUp: anElement [
 { #category : #actions }
 GtCoderSnippet >> playAll [
 	^ coder doItAll
+]
+
+{ #category : #accessing }
+GtCoderSnippet >> receiver: anObject [
+	coderViewModel selfObject: anObject
 ]
 
 { #category : #testing }
@@ -562,17 +570,17 @@ GtCoderSnippet >> textEditor [
 
 { #category : #accessing }
 GtCoderSnippet >> variableBindings [
-	^ coder variableBindings
+	^ coderViewModel bindingStrategy bindings
 ]
 
 { #category : #accessing }
 GtCoderSnippet >> variableBindings: aGtPlaygroundBindings [
-	coder variableBindings: aGtPlaygroundBindings
+	coderViewModel bindingStrategy bindings: aGtPlaygroundBindings
 ]
 
 { #category : #'as yet unclassified' }
 GtCoderSnippet >> xDocLoadSavedContent [
 	"Load the saved content from the XdKeyDocumentStore"
 
-	coder xDocLoadSavedContent
+	coder xDocLoadSavedContentForReceiverObject: self variableBindings receiver
 ]
