@@ -575,7 +575,7 @@ GtCoderSnippet >> variableBindings [
 
 { #category : #accessing }
 GtCoderSnippet >> variableBindings: aGtPlaygroundBindings [
-	coderViewModel bindingStrategy bindings: aGtPlaygroundBindings
+	coderViewModel sharedBindings: aGtPlaygroundBindings
 ]
 
 { #category : #'as yet unclassified' }
