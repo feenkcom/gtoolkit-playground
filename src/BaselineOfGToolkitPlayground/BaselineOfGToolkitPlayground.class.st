@@ -38,17 +38,17 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.306/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.307/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.290/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.291/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.301/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.302/src' ];
 			baseline: 'GToolkitVariableBindings' with: [
-				spec repository: 'github://feenkcom/gtoolkit-playground:v0.8.344/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-playground:v0.8.345/src' ];
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.17/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.18/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.8.317/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.8.318/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
 				spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkitVariableBindings' ). ];
