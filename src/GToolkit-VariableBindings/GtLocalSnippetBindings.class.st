@@ -25,10 +25,14 @@ Class {
 
 { #category : #comparing }
 GtLocalSnippetBindings >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
 
-	self class == anObject class and:
-		[ sharedBindings = anObject sharedBindings and:
-		[ localBindings = anObject localBindings ] ]
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+	^ sharedBindings = anObject sharedBindings
+		and: [ localBindings = anObject localBindings ]
 ]
 
 { #category : #accessing }
