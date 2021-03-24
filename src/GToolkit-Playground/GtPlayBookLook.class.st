@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPlayBookLook,
-	#superclass : #BrLook,
+	#superclass : #BrAptitude,
 	#instVars : [
 		'tabGroup',
 		'playBook'
