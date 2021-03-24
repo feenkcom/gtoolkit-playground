@@ -24,6 +24,12 @@ GtNoBindings class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
+{ #category : #comparing }
+GtNoBindings >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	^ self class = anObject class
+]
+
 { #category : #converting }
 GtNoBindings >> asDictionary [
 	<return: #Dictionary>
@@ -43,6 +49,11 @@ GtNoBindings >> bindingOf: aSymbol [
 { #category : #binding }
 GtNoBindings >> hasBindingOf: aSymbol [
 	^ false
+]
+
+{ #category : #comparing }
+GtNoBindings >> hash [
+	^ self class hash
 ]
 
 { #category : #accessing }
