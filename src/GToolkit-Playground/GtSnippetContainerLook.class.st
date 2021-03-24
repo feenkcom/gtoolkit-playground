@@ -1,6 +1,6 @@
 Class {
 	#name : #GtSnippetContainerLook,
-	#superclass : #BrLook,
+	#superclass : #BrAptitude,
 	#instVars : [
 		'bottomToolbar',
 		'snippet',

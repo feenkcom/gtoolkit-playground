@@ -12,7 +12,7 @@ GtSnippetElement new
 "
 Class {
 	#name : #GtCollectionSnippetLook,
-	#superclass : #BrLook,
+	#superclass : #BrAptitude,
 	#instVars : [
 		'snippet',
 		'toolbar'
