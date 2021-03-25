@@ -4,6 +4,11 @@ Trait {
 }
 
 { #category : #converting }
+GtBindingsTrait >> allNames [ 
+	^ self asDictionary keys
+]
+
+{ #category : #converting }
 GtBindingsTrait >> asDictionary [
 	<return: #Dictionary>
 	^ self explicitRequirement
