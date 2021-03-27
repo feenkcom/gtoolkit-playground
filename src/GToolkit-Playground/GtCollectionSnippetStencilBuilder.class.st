@@ -13,5 +13,5 @@ GtCollectionSnippetStencilBuilder >> buildDefault [
 		constraintsDo: [ :c |
 			c horizontal matchParent.
 			c vertical fitContent ];
-		look: GtSnippetContainerLook + GtCollectionSnippetLook
+		aptitude: GtSnippetContainerAptitude + GtCollectionSnippetAptitude
 ]

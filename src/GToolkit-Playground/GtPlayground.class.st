@@ -53,7 +53,7 @@ GtPlayground >> initialize [
 	self initializeTitleNotifier.
 	self
 		viewModel: GtPlayBookWidgetModel new;
-		look: GtPlayBookLook;
+		aptitude: GtPlayBookAptitude;
 		layout: BlLinearLayout horizontal;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.

@@ -29,15 +29,15 @@ GtDocumentSnippet >> asElement [
 		vFitContent;
 		hMatchParent;
 		expand;
-		look: GtCoderExpanderLook new;
-		addLook: (BrLayoutResizerLook new inherit: document);
+		aptitude: GtCoderExpanderAptitude new;
+		addAptitude: (BrLayoutResizerAptitude new inherit: document);
 		header: [ BlElement new ];
 		content: [ document ].
 	
 	^ BrFrame new
 		vFitContent;
 		hMatchParent;
-		look: (GtSnippetContainerLook new snippet: self);
+		aptitude: (GtSnippetContainerAptitude new snippet: self);
 		addChild: anExpanderElement
 ]
 

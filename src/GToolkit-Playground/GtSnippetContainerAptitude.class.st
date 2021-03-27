@@ -1,5 +1,5 @@
 Class {
-	#name : #GtSnippetContainerLook,
+	#name : #GtSnippetContainerAptitude,
 	#superclass : #BrAptitude,
 	#instVars : [
 		'bottomToolbar',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #initialization }
-GtSnippetContainerLook >> initialize [
+GtSnippetContainerAptitude >> initialize [
 	super initialize.
 		
 	closeButton := self newCloseElement
@@ -41,21 +41,21 @@ GtSnippetContainerLook >> initialize [
 ]
 
 { #category : #initialization }
-GtSnippetContainerLook >> initializeListeners [
+GtSnippetContainerAptitude >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtSnippetChanged do: [ :anEvent | self snippet: anEvent snippet ]
 ]
 
 { #category : #initialization }
-GtSnippetContainerLook >> initializeRequests [
+GtSnippetContainerAptitude >> initializeRequests [
 	super initializeRequests.
 	
 	self request: GtSnippetRequest new.
 ]
 
 { #category : #'instance creation' }
-GtSnippetContainerLook >> newCloseElement [
+GtSnippetContainerAptitude >> newCloseElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
@@ -64,7 +64,7 @@ GtSnippetContainerLook >> newCloseElement [
 ]
 
 { #category : #'instance creation' }
-GtSnippetContainerLook >> newPlusElement [
+GtSnippetContainerAptitude >> newPlusElement [
 	<return: #BlElement>
 
 	^ GtInspectorRoundButtonStencil small asElement
@@ -73,23 +73,23 @@ GtSnippetContainerLook >> newPlusElement [
 ]
 
 { #category : #accessing }
-GtSnippetContainerLook >> snippet [
+GtSnippetContainerAptitude >> snippet [
 	^ snippet
 ]
 
 { #category : #accessing }
-GtSnippetContainerLook >> snippet: aGtSnippet [
+GtSnippetContainerAptitude >> snippet: aGtSnippet [
 	snippet := aGtSnippet.
 ]
 
 { #category : #private }
-GtSnippetContainerLook >> snippetBelowRequested [
+GtSnippetContainerAptitude >> snippetBelowRequested [
 	self snippet ifNil: [ ^ self inform: 'A snippet must be attached' ].
 	self snippet requestNewSnippetBelow.
 ]
 
 { #category : #private }
-GtSnippetContainerLook >> snippetRemoveRequested [
+GtSnippetContainerAptitude >> snippetRemoveRequested [
 	self snippet ifNil: [ ^ self inform: 'A snippet must be attached' ].
 	self snippet requestSnippetRemoval.
 ]
