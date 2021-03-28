@@ -1,8 +1,6 @@
 Class {
 	#name : #GtBindingStrategyWithRequestor,
 	#superclass : #Object,
-	#traits : 'TBlDebug',
-	#classTraits : 'TBlDebug classTrait',
 	#instVars : [
 		'requestor',
 		'bindingStrategy'
