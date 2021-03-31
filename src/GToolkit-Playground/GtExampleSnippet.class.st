@@ -36,7 +36,7 @@ GtExampleSnippet >> asElement [
 	^ BrFrame new
 		vFitContent;
 		hMatchParent;
-		look: (GtSnippetContainerLook new snippet: self);
+		aptitude: (GtSnippetContainerAptitude new snippet: self);
 		addChild: aCoderElement
 ]
 

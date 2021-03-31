@@ -68,7 +68,7 @@ GtCoderSnippet >> asElement [
 	^ BrFrame new
 		vFitContent;
 		hMatchParent;
-		addLook: (GtSnippetContainerLook new snippet: self);
+		addAptitude: (GtSnippetContainerAptitude new snippet: self);
 		addChild: aCoderElement
 ]
 

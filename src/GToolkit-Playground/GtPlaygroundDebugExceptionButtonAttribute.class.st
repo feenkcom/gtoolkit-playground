@@ -22,7 +22,7 @@ GtPlaygroundDebugExceptionButtonAttribute >> affect: aTBrTextEditorTextualPiece 
 	container layout: (BlGridLayout horizontal cellSpacing: 3).
 	container addChild: textElement.
 	debugButton := BrButton new.
-	debugButton look: BrGlamorousButtonWithLabelLook.
+	debugButton aptitude: BrGlamorousButtonWithLabelAptitude.
 	debugButton label: 'Debug'.
 	debugButton action: [ [ self result defaultAction] fork ].
 	container addChild: debugButton.
