@@ -67,6 +67,8 @@ GtDocumentSnippet >> documentContent: aStringOrRope [
 GtDocumentSnippet >> initialize [
 	super initialize.
 	document := GtDocumenter new.
+	document normalFontSize: 14.
+	document vFitContent.
 	self documentContent: ''.
 ]
 
