@@ -54,11 +54,6 @@ GtExampleSnippet >> coder [
 	^ coder
 ]
 
-{ #category : #initialization }
-GtExampleSnippet >> defaultStyler [
-	^ BrRBTextStyler new
-]
-
 { #category : #'announcement handling' }
 GtExampleSnippet >> handleEditorChanges: anAnnouncement [
 ]

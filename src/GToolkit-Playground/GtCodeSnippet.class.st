@@ -14,11 +14,6 @@ GtCodeSnippet >> defaultSourceCode [
 	^ ''
 ]
 
-{ #category : #initialization }
-GtCodeSnippet >> defaultStyler [
-	^ self subclassResponsibility
-]
-
 { #category : #accessing }
 GtCodeSnippet >> editor [
 	self halt.
