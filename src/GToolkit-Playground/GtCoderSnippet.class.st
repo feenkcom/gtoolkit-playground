@@ -101,11 +101,6 @@ GtCoderSnippet >> codeModified: aCoderTextModifiedAnnouncement [
 	self announce: (GtPageSnippetChangedAnnouncement new snippet: self)
 ]
 
-{ #category : #initialization }
-GtCoderSnippet >> defaultStyler [
-	^ BrRBTextStyler new workspace: GtHighlightingBindingStrategy new
-]
-
 { #category : #actions }
 GtCoderSnippet >> evaluate [
 	self halt.
