@@ -44,7 +44,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 			baseline: 'GToolkitCompleter' with: [
 				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.332/src' ];
 			baseline: 'GToolkit4Pharo' with: [
-				spec repository: 'github://feenkcom/gt4pharo:v0.6.34/src' ];
+				spec repository: 'github://feenkcom/gt4pharo:v0.6.35/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.22/src' ];
 			baseline: 'XdocClient' with: [
