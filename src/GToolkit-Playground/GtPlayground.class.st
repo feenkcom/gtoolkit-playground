@@ -14,6 +14,11 @@ GtPlayground class >> create [
 	^ self createOn: GtPlayBook newDefault.
 ]
 
+{ #category : #accessing }
+GtPlayground class >> defaultIcon [
+	^ BrGlamorousVectorIcons playground
+]
+
 { #category : #'instance creation' }
 GtPlayground class >> newOn: aPlayBook [
 	"create a tool element on a given object"
