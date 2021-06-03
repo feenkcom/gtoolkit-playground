@@ -33,6 +33,9 @@ GtSnippetType class >> of: aSnippet [
 
 { #category : #comparing }
 GtSnippetType >> = anotherSnippetType [
+	self class = anotherSnippetType class
+		ifFalse: [ ^ self ].
+
 	^ self snippet class = anotherSnippetType snippet class
 ]
 
