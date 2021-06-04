@@ -1,5 +1,7 @@
 "
 A button to add a new snippet
+
+
 "
 Class {
 	#name : #GtSnippetAddButtonId,

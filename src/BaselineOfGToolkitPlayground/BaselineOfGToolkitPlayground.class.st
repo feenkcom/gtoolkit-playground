@@ -1,26 +1,30 @@
 "
-!Playground
+1. Playground
 Playground is the place to play with live code.
 
-In the snippet below we see a simple example. If you evaluate the code with ==PrimaryModifier+G==, you will get an inspector with the resulting object to the right. 
+In the snippet below we see a simple example. If you evaluate the code with `PrimaryModifier+G`, you will get an inspector with the resulting object to the right. 
 
-${example:GtPlaygroundExamples>>#pageWithCode|noCode|previewShow=#gtLiveFor:|previewHeight=100}$
-!!Snippets
+{{gtExample:GtPlaygroundExamples>>#pageWithCode|noCode|previewShow=#gtLiveFor:|previewHeight=100}}
+1. # Snippets
+
 Playgrounds can have multiple snippets. Each snippet provides a scope and allows you to manipulate the code in isolation from the rest of the code. At the same time, the overall page still behaves like one contiguous page sharing the same set of variables.
 
-For example, in the page below we have two snippets. Evaluating the first one, initializes ==aValue== with ==42==. Evaluating the second snippet increases the value.
+For example, in the page below we have two snippets. Evaluating the first one, initializes `aValue` with `42`. Evaluating the second snippet increases the value.
 
-${example:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previewShow=#gtLiveFor:|previewHeight=200}$
-!!Usages
+{{gtExample:GtPlaygroundExamples>>#pageWithTwoDependingPharoSnippets|noCode|previewShow=#gtLiveFor:|previewHeight=200}}
+1. # Usages
+
 The Playground is a versatile tool with many different kinds of applications. See a couple of them below.
-!!!Code queries
+1. ## Code queries
+
 Any Playground is a code query box. For example, in the example below, inspect the result of the query.
 
-${example:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=100}$
-!!!Data exploration
+{{gtExample:GtPlaygroundExamples>>#pageWithCodeQuery|noCode=|previewShow=#gtLiveFor:|previewHeight=100}}
+1. ## Data exploration
+
 Snippets are useful in various situations. For example, when analyzing data, we often want to retrieve the data and then to visualize it. These are different activities that benefit from distinct snippets. The playground below provides such a case.
 
-${example:GtPlaygroundExamples>>#pageWithClassesAndMondrianView|noCode|previewShow=#gtLiveFor:|previewHeight=300}$
+{{gtExample:GtPlaygroundExamples>>#pageWithClassesAndMondrianView|noCode|previewShow=#gtLiveFor:|previewHeight=300}}
 
 
 

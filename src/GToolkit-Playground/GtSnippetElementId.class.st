@@ -1,5 +1,7 @@
 "
 A snippet in the playground
+
+
 "
 Class {
 	#name : #GtSnippetElementId,

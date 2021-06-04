@@ -1,5 +1,7 @@
 "
 A button to open spotter on pages in playground
+
+
 "
 Class {
 	#name : #GtPlaygroundSpotterButtonId,

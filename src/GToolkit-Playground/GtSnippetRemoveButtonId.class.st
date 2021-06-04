@@ -1,5 +1,7 @@
 "
 A button to remove a snippet
+
+
 "
 Class {
 	#name : #GtSnippetRemoveButtonId,
