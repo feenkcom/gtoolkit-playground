@@ -1,5 +1,6 @@
 "
-I create an ${class:GtPageElement}$ for a given ${class:GtPlayPage}$ with a ${method:GtPlayPageStencil>>#receiver}$. ${class:GtPlayPageStencil|label=Example:|expanded|show=#gtLiveFor:}$
+I create an {{gtClass:GtPageElement}} for a given {{gtClass:GtPlayPage}} with a {{gtMethod:GtPlayPageStencil>>#receiver}}. {{gtClass:GtPlayPageStencil|label=Example:|expanded|show=#gtLiveFor:}}
+
 
 "
 Class {
