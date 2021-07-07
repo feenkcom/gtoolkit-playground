@@ -42,17 +42,17 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.372/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.373/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.356/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.357/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.366/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.367/src' ];
 			baseline: 'GToolkit4Pharo' with: [
-				spec repository: 'github://feenkcom/gt4pharo:v0.6.72/src' ];
+				spec repository: 'github://feenkcom/gt4pharo:v0.6.73/src' ];
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.25/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.8.388/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.8.389/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
 				spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkit4Pharo' ). ];
