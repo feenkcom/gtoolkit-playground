@@ -42,24 +42,24 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
 		spec 
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:main/src' ];
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:main/src' ];
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:main/src' ];
 			baseline: 'GToolkit4Pharo' with: [
 				spec repository: 'github://feenkcom/gt4pharo:main/src' ];
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-examples:main/src' ];
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc/src' ].
+				spec repository: 'github://feenkcom/xdoc:main/src' ].
 		spec 
 			package: 'GToolkit-Playground' with: [
-				spec requires: #(#GToolkitPager #GToolkitCompleter #GToolkit4Pharo). ];
+				spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkit4Pharo' ). ];
 			package: 'GToolkit-Playground-XDoc' with: [
 				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
 			package: 'GToolkit-Playground-Examples' with: [
-				spec requires: #(#GToolkitExamples #'GToolkit-Playground' ). ]. ].
+				spec requires: #('GToolkitExamples' 'GToolkit-Playground' ). ]. ].
 
 ]
 
