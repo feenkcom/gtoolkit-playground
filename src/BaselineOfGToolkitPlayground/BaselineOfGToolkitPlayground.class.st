@@ -39,7 +39,7 @@ Class {
 BaselineOfGToolkitPlayground >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
-		spec postLoadDoIt: #'postLoadInitializeSettings:'.
+		"spec postLoadDoIt: #'postLoadInitializeSettings:'."
 		spec 
 			baseline: 'GToolkitPager' with: [
 				spec repository: 'github://feenkcom/gtoolkit-pager/src' ];
