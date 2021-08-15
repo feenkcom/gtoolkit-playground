@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGToolkitPlayground }
+Package { #name : 'BaselineOfGToolkitPlayground' }
