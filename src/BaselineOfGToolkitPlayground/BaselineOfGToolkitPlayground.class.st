@@ -40,27 +40,32 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec postLoadDoIt: #'postLoadInitializeSettings:'.
-		spec 
+		spec
 			baseline: 'GToolkitPager' with: [
-				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.397/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-pager:v0.8.397/src' ].
+		spec
 			baseline: 'GToolkitSpotter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.378/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-spotter:v0.8.378/src' ].
+		spec
 			baseline: 'GToolkitCompleter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.388/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.388/src' ].
+		spec
 			baseline: 'GToolkit4Pharo' with: [
-				spec repository: 'github://feenkcom/gt4pharo:v0.6.101/src' ];
+				spec repository: 'github://feenkcom/gt4pharo:v0.6.102/src' ].
+		spec
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.31/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.31/src' ].
+		spec
 			baseline: 'XdocClient' with: [
 				spec repository: 'github://feenkcom/xdoc:v0.8.413/src' ].
-		spec 
-			package: 'GToolkit-Playground' with: [
-				spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkit4Pharo' ). ];
-			package: 'GToolkit-Playground-XDoc' with: [
-				spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter' ). ];
-			package: 'GToolkit-Playground-Examples' with: [
-				spec requires: #('GToolkitExamples' 'GToolkit-Playground' ). ]. ].
 
+		spec package: 'GToolkit-Playground' with: [
+			spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkit4Pharo') ].
+		spec package: 'GToolkit-Playground-XDoc' with: [
+			spec requires: #('GToolkit-Playground' 'XdocClient' 'GToolkitExamples' 'GToolkitSpotter') ].
+		spec package: 'GToolkit-Playground-Examples' with: [
+			spec requires: #('GToolkitExamples' 'GToolkit-Playground') ].
+	]
 ]
 
 { #category : 'post load' }
