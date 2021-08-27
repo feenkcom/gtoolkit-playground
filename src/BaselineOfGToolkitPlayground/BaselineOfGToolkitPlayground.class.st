@@ -51,7 +51,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-completer:v0.8.395/src' ].
 		spec
 			baseline: 'GToolkit4Pharo' with: [
-				spec repository: 'github://feenkcom/gt4pharo:v0.6.114/src' ].
+				spec repository: 'github://feenkcom/gt4pharo:v0.6.115/src' ].
 		spec
 			baseline: 'GToolkitExamples' with: [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.32/src' ].
