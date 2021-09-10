@@ -57,7 +57,7 @@ BaselineOfGToolkitPlayground >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.33/src' ].
 		spec
 			baseline: 'XdocClient' with: [
-				spec repository: 'github://feenkcom/xdoc:v0.8.429/src' ].
+				spec repository: 'github://feenkcom/xdoc:v0.8.430/src' ].
 
 		spec package: 'GToolkit-Playground' with: [
 			spec requires: #('GToolkitPager' 'GToolkitCompleter' 'GToolkit4Pharo') ].
