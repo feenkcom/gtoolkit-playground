@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtPlayPage',
-	#superclass : 'Object',
+	#name : #GtPlayPage,
+	#superclass : #Object,
 	#traits : 'TGtAssert + TGtAnnouncer',
 	#classTraits : 'TGtAssert classTrait + TGtAnnouncer classTrait',
 	#instVars : [
@@ -9,10 +9,10 @@ Class {
 		'announcer',
 		'title'
 	],
-	#category : 'GToolkit-Playground-Model'
+	#category : #'GToolkit-Playground-Model'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayPage class >> forObject: anObject [
 	| aPlayPage |
 	aPlayPage := self newDefault.
@@ -21,7 +21,7 @@ GtPlayPage class >> forObject: anObject [
 	^ aPlayPage
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayPage class >> newDefault [
 	"Open a new play book with one page and one default snippet"
 	<return: #GtPlayPage>
@@ -31,18 +31,18 @@ GtPlayPage class >> newDefault [
 	^ aPage
 ]
 
-{ #category : 'visitor' }
+{ #category : #visitor }
 GtPlayPage >> accept: aVisitor [
 	^ aVisitor visitGtPlayPage: self
 ]
 
-{ #category : 'api - modification' }
+{ #category : #'api - modification' }
 GtPlayPage >> addSnippet: aGtSnippet [ 
 	"Add a playground snippet"
 	self addSnippet: aGtSnippet at: self snippets size + 1.
 ]
 
-{ #category : 'api - modification' }
+{ #category : #'api - modification' }
 GtPlayPage >> addSnippet: aGtSnippet at: anIndex [
 	"Add a playground snippet"
 
@@ -58,20 +58,24 @@ GtPlayPage >> addSnippet: aGtSnippet at: anIndex [
 	aGtSnippet requestSnippetFocus.
 ]
 
-{ #category : 'announcer' }
+{ #category : #announcer }
 GtPlayPage >> announcer [
 	<return: #Announcer>
 	^ announcer
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtPlayPage >> asElement [
 	<return: #BlElement>
 	
-	^ BlElement new
+	^ GtPageElement new
+		constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical matchParent ];
+		page: self
 ]
 
-{ #category : 'announcement registration' }
+{ #category : #'announcement registration' }
 GtPlayPage >> attachToSnippet: aGtSnippet [
 	aGtSnippet variableBindings: self bindings.
 	aGtSnippet receiver: self receiver.
@@ -110,13 +114,13 @@ GtPlayPage >> attachToSnippet: aGtSnippet [
 			for: self
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> bindings [
 	<return: #GtBindingsTrait>
 	^ bindings
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> bindings: aGtBindingsTrait [
 	self 
 		assert: [ aGtBindingsTrait notNil ] 
@@ -124,19 +128,19 @@ GtPlayPage >> bindings: aGtBindingsTrait [
 	bindings := aGtBindingsTrait
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> bindingsDo: aBlock [
 	aBlock cull: self bindings cull: self
 ]
 
-{ #category : 'announcement registration' }
+{ #category : #'announcement registration' }
 GtPlayPage >> detachFromSnippet: aGtSnippet [
 	aGtSnippet variableBindings: GtNoBindings uniqueInstance.
 	aGtSnippet receiver: nil.
 	aGtSnippet unsubscribe: self.
 ]
 
-{ #category : 'gt-extension' }
+{ #category : #'gt-extension' }
 GtPlayPage >> gtLiveFor: aView [
 	<gtView>
 	^ aView explicit
@@ -145,7 +149,7 @@ GtPlayPage >> gtLiveFor: aView [
 		priority: 10
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayPage >> initialize [
 	super initialize.
 	snippets := OrderedCollection new.
@@ -154,17 +158,17 @@ GtPlayPage >> initialize [
 	title := 'Page'.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayPage >> newCollectionSnippet [
 	^ GtCollectionSnippet new.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayPage >> newDefaultSnippet [
 	^ GtCoderSnippet new.
 ]
 
-{ #category : 'notifying' }
+{ #category : #notifying }
 GtPlayPage >> notifySnippet: anOldGtSnippet replactedBy: aNewGtSnippet at: anIndex [
 	self announce: (GtPageSnippetReplacedAnnoucement new 
 		page: self; 
@@ -173,12 +177,12 @@ GtPlayPage >> notifySnippet: anOldGtSnippet replactedBy: aNewGtSnippet at: anInd
 		index: anIndex)
 ]
 
-{ #category : 'notifying' }
+{ #category : #notifying }
 GtPlayPage >> notifySnippetAdded: aGtSnippet at: anIndex [
 	self announce: (GtPageSnippetAddedAnnoucement new page: self; snippet: aGtSnippet; index: anIndex)
 ]
 
-{ #category : 'notifying' }
+{ #category : #notifying }
 GtPlayPage >> notifySnippetChanged: aGtPageSnippetChangedAnnouncement [
 	| anIndex |
 	anIndex := self snippets
@@ -188,17 +192,17 @@ GtPlayPage >> notifySnippetChanged: aGtPageSnippetChangedAnnouncement [
 	self announce: aGtPageSnippetChangedAnnouncement
 ]
 
-{ #category : 'notifying' }
+{ #category : #notifying }
 GtPlayPage >> notifySnippetRemoved: aGtSnippet at: anIndex [
 	self announce: (GtPageSnippetRemovedAnnoucement new page: self; snippet: aGtSnippet; index: anIndex)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> numberOfSnippets [
 	^ self snippets size
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 GtPlayPage >> playAll [
 	| aLastResult |
 	aLastResult := nil.
@@ -206,18 +210,18 @@ GtPlayPage >> playAll [
 	^ aLastResult
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> receiver [
 	^ self bindings receiver
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> receiver: anObject [
 	self bindings receiver: anObject.
 	self snippets do: [ :eachSnippet | eachSnippet receiver: anObject ]
 ]
 
-{ #category : 'api - modification' }
+{ #category : #'api - modification' }
 GtPlayPage >> removeSnippet: aGtSnippet [
 	"Remove a playground snippet"
 
@@ -234,7 +238,7 @@ GtPlayPage >> removeSnippet: aGtSnippet [
 
 ]
 
-{ #category : 'api - modification' }
+{ #category : #'api - modification' }
 GtPlayPage >> replaceSnippet: anExistingGtSnippet by: aNewGtSnippet [
 	"Replace a snippet by a new one"
 	| anIndex |
@@ -251,18 +255,18 @@ GtPlayPage >> replaceSnippet: anExistingGtSnippet by: aNewGtSnippet [
 	self notifySnippet: anExistingGtSnippet replactedBy: aNewGtSnippet at: anIndex.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPlayPage >> restyleSnippets [
 	snippets do: [ :each | each requestStyleText ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> snippetAt: anInteger [ 
 	<return: #GtSnippet>
 	^ self snippets at: anInteger
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnouncement [ 
 	| anSnippet anIndex aNewSnippet |
 	anSnippet := aGtSnippetBelowRequestedAnnouncement snippet.
@@ -275,13 +279,13 @@ GtPlayPage >> snippetBelowRequestedAnnouncement: aGtSnippetBelowRequestedAnnounc
 	self addSnippet: aNewSnippet at: anIndex + 1.
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetChangedAnnouncement: aGtPageSnippetChangedAnnouncement [
 	self notifySnippetChanged: aGtPageSnippetChangedAnnouncement.
 	self updateImplicitVariables
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetEvaluatedAnnouncement: aGtSnippetEvaluatedAnnouncement [ 
 	| anIndex anAnnouncement |
 	self restyleSnippets.
@@ -297,7 +301,7 @@ GtPlayPage >> snippetEvaluatedAnnouncement: aGtSnippetEvaluatedAnnouncement [
 	self announce: anAnnouncement.
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetExternalCursorAnnouncement: aGtSnippetExternalCursorAnnouncement [
 	| index direction snippet |
 	index := self snippets
@@ -317,7 +321,7 @@ GtPlayPage >> snippetExternalCursorAnnouncement: aGtSnippetExternalCursorAnnounc
 			snippet focusAndPlaceCursorAtBeginning ]
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetMergeRequestedAnnouncement: aGtSnippetMergeRequestedAnnouncement [ 
 	| anSnippet anIndex anAboveSnippet |
 	anSnippet := aGtSnippetMergeRequestedAnnouncement snippet.
@@ -330,7 +334,7 @@ GtPlayPage >> snippetMergeRequestedAnnouncement: aGtSnippetMergeRequestedAnnounc
 	anAboveSnippet mergeWith: anSnippet.
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetRemovalRequestedAnnouncement: aGtSnippetRemovalRequestedAnnouncement [ 
 	| anSnippet |
 	anSnippet := aGtSnippetRemovalRequestedAnnouncement snippet.
@@ -340,7 +344,7 @@ GtPlayPage >> snippetRemovalRequestedAnnouncement: aGtSnippetRemovalRequestedAnn
 	self removeSnippet: anSnippet.
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetRenameRequestedAnnouncement: aGtSnippetRepnameRequestedAnnouncement [
 	| others |
 	others := OrderedCollection new.
@@ -351,7 +355,7 @@ GtPlayPage >> snippetRenameRequestedAnnouncement: aGtSnippetRepnameRequestedAnno
 	aGtSnippetRepnameRequestedAnnouncement interestedSnippets: others
 ]
 
-{ #category : 'announcement handling' }
+{ #category : #'announcement handling' }
 GtPlayPage >> snippetReplacementRequestedAnnouncement: aGtSnippetReplacementRequestedAnnouncement [ 
 	| anExistingSnippet aNewSnippetClass newSnippet |
 	anExistingSnippet := aGtSnippetReplacementRequestedAnnouncement snippet.
@@ -367,20 +371,20 @@ GtPlayPage >> snippetReplacementRequestedAnnouncement: aGtSnippetReplacementRequ
 	self replaceSnippet: anExistingSnippet by: newSnippet.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> snippets [
 	<return: #OrderedCollection>
 	^ snippets
 ]
 
-{ #category : 'api - modification' }
+{ #category : #'api - modification' }
 GtPlayPage >> snippets: aCollectionOfGtSnippets [
 	"Add snippets"
 	aCollectionOfGtSnippets do: [ :eachSnippet | 
 		self addSnippet: eachSnippet ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> string [
 	<return: #String>
 	^ String streamContents: [ :aStream | 
@@ -394,18 +398,18 @@ GtPlayPage >> string [
 			separatedBy: [ aStream crlf; crlf ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> title [
 	<return: #String>
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayPage >> title: aString [
 	title := aString
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPlayPage >> updateImplicitVariables [
 	| variables |
 	variables := GtPrefixTree new.
@@ -414,7 +418,7 @@ GtPlayPage >> updateImplicitVariables [
 	self snippets do: [ :each | each allImplicitVariables: variables ]
 ]
 
-{ #category : 'store' }
+{ #category : #store }
 GtPlayPage >> xDocLoadSavedContent [
 	"Load the saved content from the XdKeyDocumentStore"
 

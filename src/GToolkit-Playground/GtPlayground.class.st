@@ -1,31 +1,31 @@
 Class {
-	#name : 'GtPlayground',
-	#superclass : 'BlElement',
+	#name : #GtPlayground,
+	#superclass : #BlElement,
 	#traits : 'TGtPagerWindowOpener',
 	#classTraits : 'TGtPagerWindowOpener classTrait',
 	#instVars : [
 		'titleNotifier'
 	],
-	#category : 'GToolkit-Playground-UI'
+	#category : #'GToolkit-Playground-UI'
 }
 
-{ #category : 'window creation' }
+{ #category : #'window creation' }
 GtPlayground class >> create [
 	^ self createOn: GtPlayBook newDefault.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayground class >> defaultIcon [
 	^ BrGlamorousVectorIcons playground
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayground class >> newOn: aPlayBook [
 	"create a tool element on a given object"
 	^ self new playBook: aPlayBook
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPlayground class >> newWithSnippets: snippets [
 	| playbook playground |
 	playbook := GtPlayBook newWithCodeSnippetContent: snippets first.
@@ -35,24 +35,24 @@ GtPlayground class >> newWithSnippets: snippets [
 	^ self newOn: playbook
 ]
 
-{ #category : 'window creation' }
+{ #category : #'window creation' }
 GtPlayground class >> open [
 	^ self openOn: GtPlayBook newDefault.
 ]
 
-{ #category : 'window creation' }
+{ #category : #'window creation' }
 GtPlayground class >> openFrom: aSourceElement [
 	^ self openOn: GtPlayBook newDefault from: aSourceElement.
 ]
 
-{ #category : 'window creation' }
+{ #category : #'window creation' }
 GtPlayground class >> openWithSnippets: snippets [
 	| aTool |
 	aTool := self newWithSnippets: snippets.
 	^ aTool openInPager
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayground >> initialize [
 	super initialize.
 	self initializeTitleNotifier.
@@ -66,7 +66,7 @@ GtPlayground >> initialize [
 	self when: BlClickEvent do: [ self requestFocus ].
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayground >> initializeTitleNotifier [
 	titleNotifier := GtPhlowTitleIconAndLabelNotifier new
 		shortLabel: 'Playground';
@@ -74,35 +74,35 @@ GtPlayground >> initializeTitleNotifier [
 	self addEventHandler: titleNotifier
 ]
 
-{ #category : 'opening' }
+{ #category : #opening }
 GtPlayground >> pagerWindowTitle [
 	<return: #String>
 	^ 'Playground'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayground >> playBook [
 	^ self viewModel playBook
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayground >> playBook: aGtPlayBook [
 	self viewModel playBook: aGtPlayBook
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayground >> playgroundWithSnippets [
 	<gtExample>
 	^ GtPlayground newWithSnippets: { '3+4' . '42' }
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtPlayground >> titleNotifier [
 	<return: #GtPhlowTitleNotifier>
 	^ titleNotifier
 ]
 
-{ #category : 'private - updating' }
+{ #category : #'private - updating' }
 GtPlayground >> updateTabLabel [
 	self titleNotifier notifyIfFocused
 ]

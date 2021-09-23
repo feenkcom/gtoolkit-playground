@@ -1,19 +1,19 @@
 Class {
-	#name : 'GtPlayBookChanged',
-	#superclass : 'BrResponse',
+	#name : #GtPlayBookChanged,
+	#superclass : #BrResponse,
 	#instVars : [
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Model'
+	#category : #'GToolkit-Playground-PlayBook - Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayBookChanged >> playBook [
 	<return: #GtPlayBook>
 	^ playBook
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayBookChanged >> playBook: aGtPlayground [
 	playBook := aGtPlayground
 ]

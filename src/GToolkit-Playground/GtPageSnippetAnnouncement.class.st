@@ -1,20 +1,20 @@
 Class {
-	#name : 'GtPageSnippetAnnouncement',
-	#superclass : 'GtPageAnnoucement',
+	#name : #GtPageSnippetAnnouncement,
+	#superclass : #GtPageAnnoucement,
 	#instVars : [
 		'snippet',
 		'index'
 	],
-	#category : 'GToolkit-Playground-Announcements'
+	#category : #'GToolkit-Playground-Announcements'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPageSnippetAnnouncement >> index [
 	<return: #Number>
 	^ index
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPageSnippetAnnouncement >> index: anIndex [
 	self 
 		assert: [ anIndex notNil ] 
@@ -22,13 +22,13 @@ GtPageSnippetAnnouncement >> index: anIndex [
 	index := anIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPageSnippetAnnouncement >> snippet [
 	<return: #GtSnippet>
 	^ snippet
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPageSnippetAnnouncement >> snippet: aGtSnippet [
 	self 
 		assert: [ aGtSnippet notNil ] 

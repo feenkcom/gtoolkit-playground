@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtCollectionSnippetStencilBuilder',
-	#superclass : 'GtSnippetStencilBuilder',
-	#category : 'GToolkit-Playground-Snippet - Stencils'
+	#name : #GtCollectionSnippetStencilBuilder,
+	#superclass : #GtSnippetStencilBuilder,
+	#category : #'GToolkit-Playground-Snippet - Stencils'
 }
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtCollectionSnippetStencilBuilder >> buildDefault [
 	<return: #BlElement>
 

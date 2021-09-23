@@ -1,36 +1,36 @@
 Class {
-	#name : 'GtSnippetStencilBuilder',
-	#superclass : 'BrStencilBuilder',
+	#name : #GtSnippetStencilBuilder,
+	#superclass : #BrStencilBuilder,
 	#instVars : [
 		'snippet'
 	],
-	#category : 'GToolkit-Playground-Snippet - Stencils'
+	#category : #'GToolkit-Playground-Snippet - Stencils'
 }
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtSnippetStencilBuilder class >> isAbstract [
 	^ self name = #GtSnippetStencilBuilder
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtSnippetStencilBuilder >> bind: aSnippet to: aSnippetElement [
 	aSnippetElement snippet: aSnippet
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtSnippetStencilBuilder >> buildDefault [
 	<return: #BlElement>
 
 	^ GtSnippetElement new snippet: self snippet.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetStencilBuilder >> snippet [
 	<return: #GtSnippet>
 	^ snippet
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetStencilBuilder >> snippet: aGtSnippet [
 	self 
 		assert: [ aGtSnippet notNil ] 

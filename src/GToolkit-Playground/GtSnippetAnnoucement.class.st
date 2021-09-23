@@ -1,25 +1,25 @@
 Class {
-	#name : 'GtSnippetAnnoucement',
-	#superclass : 'Announcement',
+	#name : #GtSnippetAnnoucement,
+	#superclass : #Announcement,
 	#traits : 'TGtAssert',
 	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'snippet'
 	],
-	#category : 'GToolkit-Playground-Announcements'
+	#category : #'GToolkit-Playground-Announcements'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetAnnoucement class >> snippet: aGtSnippet [
 	^ self new snippet: aGtSnippet
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetAnnoucement >> snippet [
 	^ snippet
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetAnnoucement >> snippet: aGtSnippet [
 	snippet := aGtSnippet
 ]

@@ -1,14 +1,14 @@
 Class {
-	#name : 'GtPlayBookAptitude',
-	#superclass : 'BrAptitude',
+	#name : #GtPlayBookAptitude,
+	#superclass : #BrAptitude,
 	#instVars : [
 		'tabGroup',
 		'playBook'
 	],
-	#category : 'GToolkit-Playground-PlayBook - Look'
+	#category : #'GToolkit-Playground-PlayBook - Look'
 }
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayBookAptitude >> initialize [
 	super initialize.
 
@@ -19,21 +19,21 @@ GtPlayBookAptitude >> initialize [
 	self addChangeAddChildAs: #(pages) with: [ tabGroup ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayBookAptitude >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtPlayBookChanged do: [ :anEvent | self playBook: anEvent playBook ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayBookAptitude >> initializeRequests [
 	super initializeRequests.
 	
 	self request: GtPlayBookRequest new.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPlayBookAptitude >> mayAddActionsFor: aGtPage in: aTab [
 	| theActions |
 	theActions := GtPhlowActionsCollector new
@@ -48,18 +48,18 @@ GtPlayBookAptitude >> mayAddActionsFor: aGtPage in: aTab [
 		aView actionsToolbarForElement: aTab ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayBookAptitude >> playBook [
 	^ playBook
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlayBookAptitude >> playBook: aGtPlayground [
 	playBook := aGtPlayground.
 	self updateTabs.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPlayBookAptitude >> updateTab: aGtPage [
 	| aTab |
 	aTab := BrTab new
@@ -71,7 +71,7 @@ GtPlayBookAptitude >> updateTab: aGtPage [
 	tabGroup addTab: aTab
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtPlayBookAptitude >> updateTabs [
 	tabGroup viewModel tabs copy do: [ :eachTab | 
 		tabGroup removeTab: eachTab widget ].

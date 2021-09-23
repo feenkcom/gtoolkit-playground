@@ -1,14 +1,14 @@
 Trait {
-	#name : 'GtPlaygroundConstantsTrait',
-	#category : 'GToolkit-Playground-Constants'
+	#name : #GtPlaygroundConstantsTrait,
+	#category : #'GToolkit-Playground-Constants'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlaygroundConstantsTrait classSide >> constants [
 	^ GtPlaygroundConstants
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPlaygroundConstantsTrait >> constants [
 	^ GtPlaygroundConstants
 ]

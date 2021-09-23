@@ -12,26 +12,26 @@ GtSnippetElement new
 
 "
 Class {
-	#name : 'GtCollectionSnippetAptitude',
-	#superclass : 'BrAptitude',
+	#name : #GtCollectionSnippetAptitude,
+	#superclass : #BrAptitude,
 	#instVars : [
 		'snippet',
 		'toolbar'
 	],
-	#category : 'GToolkit-Playground-Snippet - Looks'
+	#category : #'GToolkit-Playground-Snippet - Looks'
 }
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtCollectionSnippetAptitude >> addSnippet: aClass [ 
 	self snippet requestSnippetReplacement: aClass
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtCollectionSnippetAptitude >> availableSnippetClasses [
 	^ self snippet availableSnippetClasses
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtCollectionSnippetAptitude >> initialize [
 	super initialize.
 
@@ -61,27 +61,27 @@ GtCollectionSnippetAptitude >> initialize [
 				yourself).
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtCollectionSnippetAptitude >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtSnippetChanged do: [ :anEvent | self snippet: anEvent snippet ].
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtCollectionSnippetAptitude >> initializeRequests [
 	super initializeRequests.
 	
 	self request: GtSnippetRequest new.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtCollectionSnippetAptitude >> snippet [
 	snippet ifNil: [ self snippet: GtCollectionSnippet new ].
 	^ snippet
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtCollectionSnippetAptitude >> snippet: aGtSnippet [
 	snippet := aGtSnippet.
 ]

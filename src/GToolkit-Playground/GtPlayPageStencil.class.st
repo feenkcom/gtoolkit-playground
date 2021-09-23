@@ -4,20 +4,21 @@ I create an {{gtClass:GtPageElement}} for a given {{gtClass:GtPlayPage}} with a 
 
 "
 Class {
-	#name : 'GtPlayPageStencil',
-	#superclass : 'BrStencil',
+	#name : #GtPlayPageStencil,
+	#superclass : #BrStencil,
 	#instVars : [
 		'playPage',
 		'receiver'
 	],
-	#category : 'GToolkit-Playground-Snippet - Stencils'
+	#category : #'GToolkit-Playground-Snippet - Stencils'
 }
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtPlayPageStencil >> create [
+	<return: #GtPageElement>
 	| aPlayPageElement |
 	aPlayPageElement := self playPage asElement.
-	"aPlayPageElement 
+	aPlayPageElement 
 		layout: BlLinearLayout vertical;
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
@@ -25,44 +26,44 @@ GtPlayPageStencil >> create [
 	self playPage bindingsDo: [ :eachBinding | 
 		eachBinding at: #thisPlayground put: aPlayPageElement ].
 	self playPage receiver: self receiver.
-	self playPage xDocLoadSavedContent."
+	self playPage xDocLoadSavedContent.
 	^ aPlayPageElement
 ]
 
-{ #category : 'defaults' }
+{ #category : #defaults }
 GtPlayPageStencil >> defaultPlayPage [
 	^ GtPlayPage newDefault.
 ]
 
-{ #category : 'defaults' }
+{ #category : #defaults }
 GtPlayPageStencil >> defaultReceiver [
 	^ nil
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPlayPageStencil >> initialize [
 	super initialize.
 	playPage := self defaultPlayPage.
 	receiver := self defaultReceiver.
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtPlayPageStencil >> playPage [
 	<return: #GtPlayPage>
 	^ playPage
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtPlayPageStencil >> playPage: aGtPlayPage [
 	playPage := aGtPlayPage
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtPlayPageStencil >> receiver [
 	^ receiver
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtPlayPageStencil >> receiver: anObject [
 	receiver := anObject
 ]

@@ -4,7 +4,7 @@ I am sent by snippet widget looks when they request to receive a snippet model f
 
 "
 Class {
-	#name : 'GtSnippetRequest',
-	#superclass : 'BrRequest',
-	#category : 'GToolkit-Playground-Snippet - Model'
+	#name : #GtSnippetRequest,
+	#superclass : #BrRequest,
+	#category : #'GToolkit-Playground-Snippet - Model'
 }

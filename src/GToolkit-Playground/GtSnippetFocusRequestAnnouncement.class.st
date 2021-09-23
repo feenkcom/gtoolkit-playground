@@ -1,5 +1,5 @@
 Class {
-	#name : 'GtSnippetFocusRequestAnnouncement',
-	#superclass : 'GtSnippetAnnoucement',
-	#category : 'GToolkit-Playground-Announcements'
+	#name : #GtSnippetFocusRequestAnnouncement,
+	#superclass : #GtSnippetAnnoucement,
+	#category : #'GToolkit-Playground-Announcements'
 }

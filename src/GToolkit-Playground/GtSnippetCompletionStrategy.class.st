@@ -1,13 +1,13 @@
 Class {
-	#name : 'GtSnippetCompletionStrategy',
-	#superclass : 'GtPharoCompletionStrategy',
+	#name : #GtSnippetCompletionStrategy,
+	#superclass : #GtPharoCompletionStrategy,
 	#instVars : [
 		'snippetVariables'
 	],
-	#category : 'GToolkit-Playground-Completion'
+	#category : #'GToolkit-Playground-Completion'
 }
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 GtSnippetCompletionStrategy >> initialize [
 	super initialize.
 	self isMethod: false.
@@ -15,7 +15,7 @@ GtSnippetCompletionStrategy >> initialize [
 	snippetVariables := GtPrefixTree new
 ]
 
-{ #category : 'private-variables' }
+{ #category : #'private-variables' }
 GtSnippetCompletionStrategy >> localVariablesFor: aVariableNode [
 	| vars |
 	vars := super localVariablesFor: aVariableNode.
@@ -25,12 +25,12 @@ GtSnippetCompletionStrategy >> localVariablesFor: aVariableNode [
 	^ vars
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetCompletionStrategy >> snippetVariables [
 	^ snippetVariables
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSnippetCompletionStrategy >> snippetVariables: anObject [
 	snippetVariables := anObject
 ]
