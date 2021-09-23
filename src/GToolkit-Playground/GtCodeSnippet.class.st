@@ -1,38 +1,38 @@
 Class {
-	#name : #GtCodeSnippet,
-	#superclass : #GtSnippet,
-	#category : #'GToolkit-Playground-Model'
+	#name : 'GtCodeSnippet',
+	#superclass : 'GtSnippet',
+	#category : 'GToolkit-Playground-Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCodeSnippet class >> isAbstract [
 	^ self name = #GtCodeSnippet 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCodeSnippet >> defaultSourceCode [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCodeSnippet >> editor [
 	self halt.
 	^ nil
 ]
 
-{ #category : #'announcement handling' }
+{ #category : 'announcement handling' }
 GtCodeSnippet >> handleEditorChanges: anAnnouncement [
 	self announce: (GtPageSnippetChangedAnnouncement new snippet: self)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCodeSnippet >> initialize [
 	super initialize.
 	self sourceCode: self defaultSourceCode.
 	self subscribeToEditorChanges.
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 GtCodeSnippet >> notifyAboutResult: aResult exception: isExceptionBoolean spawn: wantsToSpawn [
 	self
 		announce:
@@ -43,13 +43,13 @@ GtCodeSnippet >> notifyAboutResult: aResult exception: isExceptionBoolean spawn:
 				isSpawnResultRequested: wantsToSpawn)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCodeSnippet >> selection [
 	self halt.
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCodeSnippet >> sourceCode [
 	<return: #String>
 
@@ -57,7 +57,7 @@ GtCodeSnippet >> sourceCode [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCodeSnippet >> sourceCode: aStringOrRope [
 	self 
 		assert: [ aStringOrRope notNil ] 
@@ -66,7 +66,7 @@ GtCodeSnippet >> sourceCode: aStringOrRope [
 	self halt.
 ]
 
-{ #category : #subscriptions }
+{ #category : 'subscriptions' }
 GtCodeSnippet >> subscribeToEditorChanges [
 	"editor 
 		addEventHandlerOn: BrTextEditorInsertedEvent 
@@ -78,7 +78,7 @@ GtCodeSnippet >> subscribeToEditorChanges [
 	"self halt"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCodeSnippet >> text [
 	<return: #BlText>
 	self halt.

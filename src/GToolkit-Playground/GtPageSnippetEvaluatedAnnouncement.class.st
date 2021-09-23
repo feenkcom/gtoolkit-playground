@@ -1,40 +1,40 @@
 Class {
-	#name : #GtPageSnippetEvaluatedAnnouncement,
-	#superclass : #GtPageSnippetAnnouncement,
+	#name : 'GtPageSnippetEvaluatedAnnouncement',
+	#superclass : 'GtPageSnippetAnnouncement',
 	#instVars : [
 		'result',
 		'isException',
 		'isSpawnResultRequested'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> isException [
 	^ isException
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> isException: anObject [
 	isException := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> isSpawnResultRequested [
 	^ isSpawnResultRequested
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> isSpawnResultRequested: anObject [
 	isSpawnResultRequested := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> result [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageSnippetEvaluatedAnnouncement >> result: anObject [
 	result := anObject
 ]

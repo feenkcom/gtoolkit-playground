@@ -1,21 +1,21 @@
 Class {
-	#name : #GtPlayBook,
-	#superclass : #Object,
+	#name : 'GtPlayBook',
+	#superclass : 'Object',
 	#traits : 'TBlDebug + TGtAnnouncer',
 	#classTraits : 'TBlDebug classTrait + TGtAnnouncer classTrait',
 	#instVars : [
 		'pages',
 		'announcer'
 	],
-	#category : #'GToolkit-Playground-Model'
+	#category : 'GToolkit-Playground-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBook class >> empty [
 	^ self new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPlayBook class >> fromXdFile: anXdFile [
 
 	self flag: 'XDoc API proposeal [feenkcom/gtoolkit#888]'.
@@ -38,7 +38,7 @@ GtPlayBook class >> fromXdFile: anXdFile [
 			ifNone: [ self newDefault ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPlayBook class >> newDefault [
 	"Open a new play book with one page and one default snippet"
 	<return: #GtPlayBook>
@@ -47,7 +47,7 @@ GtPlayBook class >> newDefault [
 		subscribeExternalTools
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPlayBook class >> newWithCodeSnippetContent: aString [
 	| aPlayBook aSnippet |
 	self
@@ -59,7 +59,7 @@ GtPlayBook class >> newWithCodeSnippetContent: aString [
 	^ aPlayBook
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPlayBook class >> open [
 	| aPlayground aSpace |
 
@@ -74,12 +74,12 @@ GtPlayBook class >> open [
 	^ aPlayground
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 GtPlayBook >> accept: aVisitor [
 	^ aVisitor visitGtPlayBook: self
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtPlayBook >> addPlayPage: aGtPlayPage [
 	self 
 		assert: [ aGtPlayPage notNil ] 
@@ -88,19 +88,19 @@ GtPlayBook >> addPlayPage: aGtPlayPage [
 	self attachToPage: aGtPlayPage.
 ]
 
-{ #category : #announcer }
+{ #category : 'announcer' }
 GtPlayBook >> announcer [
 	<return: #Announcer>
 	^ announcer
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtPlayBook >> asElement [
 	<return: #BlElement>
 	^ GtPlayground new playBook: self
 ]
 
-{ #category : #subscriptions }
+{ #category : 'subscriptions' }
 GtPlayBook >> attachToPage: aGtPlayPage [
 	aGtPlayPage
 		when: GtPageAnnoucement
@@ -109,7 +109,7 @@ GtPlayBook >> attachToPage: aGtPlayPage [
 		for: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBook >> bindingsDo: aBlock [
 	"Enumerate ${class:GtSnippetBindings}$ bindings and call aBlock for every bindings instance.
 	Since ${class:GtPlayBook}$ has be default only one ${class:GtPlayPage}$, there is usually only one ${class:GtSnippetBindings}$ instance."
@@ -117,7 +117,7 @@ GtPlayBook >> bindingsDo: aBlock [
 		eachPage bindingsDo: aBlock ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtPlayBook >> copyContentToClipboard [
 	| aContent |	
 	aContent := self string trimBoth.
@@ -129,7 +129,7 @@ GtPlayBook >> copyContentToClipboard [
 
 ]
 
-{ #category : #'gt-extension' }
+{ #category : 'gt-extension' }
 GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
 	<gtAction>
 	^ anAction button
@@ -140,7 +140,7 @@ GtPlayBook >> gtCopyContentToClipboardActionFor: anAction [
 			action: [ :aButton | self copyContentToClipboard ] 
 ]
 
-{ #category : #'gt-extension' }
+{ #category : 'gt-extension' }
 GtPlayBook >> gtLiveFor: aView [
 	<gtView>
 	^ aView explicit
@@ -149,7 +149,7 @@ GtPlayBook >> gtLiveFor: aView [
 		stencil: [ self asElement ]
 ]
 
-{ #category : #'gt-extension' }
+{ #category : 'gt-extension' }
 GtPlayBook >> gtRunAllActionFor: anAction [
 	"<gtAction>"
 	^ anAction button
@@ -160,7 +160,7 @@ GtPlayBook >> gtRunAllActionFor: anAction [
 			action: [ :aButton | self playAllAndSelectResult: aButton ] 
 ]
 
-{ #category : #'gt-extension' }
+{ #category : 'gt-extension' }
 GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
 	"<gtAction>"
 	^ anAction button
@@ -171,36 +171,36 @@ GtPlayBook >> gtRunAllAndInspectActionFor: anAction [
 			action: [ :aButton | self playAllAndSpawnResult: aButton ] 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPlayBook >> initialize [
 	super initialize.
 	pages := OrderedCollection new.
 	announcer := Announcer new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBook >> numberOfPages [
 	^ self pages size
 ]
 
-{ #category : #'announcement handling' }
+{ #category : 'announcement handling' }
 GtPlayBook >> pageAnnouncement: aGtPageAnnouncement [ 
 	self announce: aGtPageAnnouncement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBook >> pages [
 	<return: #OrderedCollection>
 	^ pages
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtPlayBook >> pages: aCollectionOfPages [
 	aCollectionOfPages do: [ :eachPage | 
 		self addPlayPage: eachPage ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtPlayBook >> playAll [
 	| aLastResult |
 	aLastResult := nil.
@@ -208,21 +208,21 @@ GtPlayBook >> playAll [
 	^ aLastResult
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtPlayBook >> playAllAndSelectResult: anElement [
 	| aLastResult |
 	aLastResult := self playAll.
 	anElement phlow selectObject: aLastResult
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtPlayBook >> playAllAndSpawnResult: anElement [
 	| aLastResult |
 	aLastResult := self playAll.
 	anElement phlow spawnObject: aLastResult
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBook >> string [
 	<return: #String>
 	^ String streamContents: [ :aStream | 
@@ -234,7 +234,7 @@ GtPlayBook >> string [
 			separatedBy: [ aStream crlf ] ]
 ]
 
-{ #category : #subscriptions }
+{ #category : 'subscriptions' }
 GtPlayBook >> subscribeExternalTools [
 	| thePragmas |
 	thePragmas := Pragma 

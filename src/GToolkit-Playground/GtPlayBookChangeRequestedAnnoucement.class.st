@@ -1,21 +1,21 @@
 Class {
-	#name : #GtPlayBookChangeRequestedAnnoucement,
-	#superclass : #Announcement,
+	#name : 'GtPlayBookChangeRequestedAnnoucement',
+	#superclass : 'Announcement',
 	#traits : 'TGtAssert',
 	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'oldPlayBook',
 		'newPlayBook'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookChangeRequestedAnnoucement >> newPlayBook [
 	^ newPlayBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookChangeRequestedAnnoucement >> newPlayBook: aGtPlayBook [
 	self 
 		assert: [ aGtPlayBook notNil ] 
@@ -23,12 +23,12 @@ GtPlayBookChangeRequestedAnnoucement >> newPlayBook: aGtPlayBook [
 	newPlayBook := aGtPlayBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookChangeRequestedAnnoucement >> oldPlayBook [
 	^ oldPlayBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookChangeRequestedAnnoucement >> oldPlayBook: aGtPlayBook [
 	self 
 		assert: [ aGtPlayBook notNil ] 

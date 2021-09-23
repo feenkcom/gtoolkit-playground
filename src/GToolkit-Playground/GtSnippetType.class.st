@@ -12,20 +12,20 @@ I am responsible for creation of Snippet element holders of the corresponding ty
 
 "
 Class {
-	#name : #GtSnippetType,
-	#superclass : #BlInfiniteItemType,
+	#name : 'GtSnippetType',
+	#superclass : 'BlInfiniteItemType',
 	#instVars : [
 		'snippet'
 	],
-	#category : #'GToolkit-Playground-Snippet - UI'
+	#category : 'GToolkit-Playground-Snippet - UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetType class >> new [
 	self error: 'Use of: instead'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetType class >> of: aSnippet [
 	^ self basicNew
 		snippet: aSnippet;
@@ -33,7 +33,7 @@ GtSnippetType class >> of: aSnippet [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtSnippetType >> = anotherSnippetType [
 	self class = anotherSnippetType class
 		ifFalse: [ ^ self ].
@@ -41,12 +41,12 @@ GtSnippetType >> = anotherSnippetType [
 	^ self snippet class = anotherSnippetType snippet class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtSnippetType >> hash [
 	^ self snippet class hash
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetType >> newHolder [
 	"Create a new instance of the snippet element holder for this snippet type"
 	<return: #GtSnippetElementHolder>
@@ -54,19 +54,19 @@ GtSnippetType >> newHolder [
 	^ GtSnippetElementHolder type: self
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 GtSnippetType >> snippet [
 	<return: #GtSnippet>
 
 	^ snippet
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 GtSnippetType >> snippet: aGtSnippet [
 	snippet := aGtSnippet
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 GtSnippetType >> stencilBuilder [
 	^ self snippet asStencilBuilder
 ]

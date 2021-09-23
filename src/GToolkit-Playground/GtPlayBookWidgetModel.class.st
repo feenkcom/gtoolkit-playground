@@ -1,55 +1,55 @@
 Class {
-	#name : #GtPlayBookWidgetModel,
-	#superclass : #BrWidgetModel,
+	#name : 'GtPlayBookWidgetModel',
+	#superclass : 'BrWidgetModel',
 	#instVars : [
 		'playBook'
 	],
-	#category : #'GToolkit-Playground-PlayBook - Model'
+	#category : 'GToolkit-Playground-PlayBook - Model'
 }
 
-{ #category : #'announcement handling' }
+{ #category : 'announcement handling' }
 GtPlayBookWidgetModel >> handlePlayBookChangeRequestedAnnouncement: aGtPlayBookChangeRequestedAnnoucement [
 	self playBook: aGtPlayBookChangeRequestedAnnoucement newPlayBook
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPlayBookWidgetModel >> initialize [
 	super initialize.
 	playBook := GtPlayBook new.
 	self subscribeToPlayBook.
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 GtPlayBookWidgetModel >> initializeListeners [
 	super initializeListeners.
 
 	self when: GtPlayBookRequest reply: [ :aResponse | aResponse playBook: self playBook ]
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 GtPlayBookWidgetModel >> notifyPlayBookChanged [
 	self dispatchEvent: (GtPlayBookChanged new playBook: self playBook)
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 GtPlayBookWidgetModel >> onInstalledIn: anElement [
 	super onInstalledIn: anElement.
 	self updateBindings.
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 GtPlayBookWidgetModel >> onUninstalledIn: anElement [
 	super onUninstalledIn: anElement.
 	self removeBindings.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookWidgetModel >> playBook [
 	<return: #GtPlayBook>
 	^ playBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlayBookWidgetModel >> playBook: aGtPlayBook [
 	self unsubscribeFromPlayBook.
 	playBook := aGtPlayBook.
@@ -57,18 +57,18 @@ GtPlayBookWidgetModel >> playBook: aGtPlayBook [
 	self notifyPlayBookChanged.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 GtPlayBookWidgetModel >> playgroundVariableName [
 	^ #'thisPlayground'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtPlayBookWidgetModel >> removeBindings [
 	self playBook bindingsDo: [ :eachBinding | 
 		eachBinding remove: self playgroundVariableName ].
 ]
 
-{ #category : #subscriptions }
+{ #category : 'subscriptions' }
 GtPlayBookWidgetModel >> subscribeToPlayBook [
 	self playBook ifNil: [ ^ self ].
 	self playBook
@@ -79,13 +79,13 @@ GtPlayBookWidgetModel >> subscribeToPlayBook [
 	self updateBindings.
 ]
 
-{ #category : #subscriptions }
+{ #category : 'subscriptions' }
 GtPlayBookWidgetModel >> unsubscribeFromPlayBook [
 	self playBook unsubscribe: self.
 	self removeBindings.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtPlayBookWidgetModel >> updateBindings [
 	self widgetDo: [ :aWidget | 
 		self playBook bindingsDo: [ :eachBinding | 

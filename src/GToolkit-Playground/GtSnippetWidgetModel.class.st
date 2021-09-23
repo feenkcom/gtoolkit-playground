@@ -4,22 +4,22 @@ I am a view model of all snippet widgets
 
 "
 Class {
-	#name : #GtSnippetWidgetModel,
-	#superclass : #BrWidgetModel,
+	#name : 'GtSnippetWidgetModel',
+	#superclass : 'BrWidgetModel',
 	#instVars : [
 		'snippet'
 	],
-	#category : #'GToolkit-Playground-Snippet - Model'
+	#category : 'GToolkit-Playground-Snippet - Model'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetWidgetModel >> initialize [
 	super initialize.
 	
 	snippet := GtEmptySnippet uniqueInstance
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 GtSnippetWidgetModel >> initializeListeners [
 	super initializeListeners.
 
@@ -27,19 +27,19 @@ GtSnippetWidgetModel >> initializeListeners [
 	self registerToSnippet: self snippet.
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 GtSnippetWidgetModel >> notifySnippetChanged [
 	self dispatchEvent: (GtSnippetChanged new snippet: self snippet)
 ]
 
-{ #category : #'api - hooks' }
+{ #category : 'api - hooks' }
 GtSnippetWidgetModel >> onUninstalledIn: anElement [
 	super onUninstalledIn: anElement.
 
 	self unregisterFromSnippet: self snippet.
 ]
 
-{ #category : #'announcement registration' }
+{ #category : 'announcement registration' }
 GtSnippetWidgetModel >> registerToSnippet: aGtSnippet [
 	self widgetDo: [ :aWidget | 
 		self unregisterFromSnippet: aGtSnippet.
@@ -56,14 +56,14 @@ GtSnippetWidgetModel >> registerToSnippet: aGtSnippet [
 			for: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetWidgetModel >> snippet [
 	<return: #GtSnippet>
 
 	^ snippet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetWidgetModel >> snippet: aGtSnippet [
 	self unregisterFromSnippet: snippet.
 	snippet := aGtSnippet.
@@ -71,7 +71,7 @@ GtSnippetWidgetModel >> snippet: aGtSnippet [
 	self notifySnippetChanged.
 ]
 
-{ #category : #'announcement registration' }
+{ #category : 'announcement registration' }
 GtSnippetWidgetModel >> unregisterFromSnippet: aGtSnippet [
 	aGtSnippet unsubscribe: self
 ]

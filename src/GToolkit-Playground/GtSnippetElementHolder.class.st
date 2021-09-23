@@ -5,20 +5,20 @@ I know my unique snippet type (pharo code, url, empty etc)
 
 "
 Class {
-	#name : #GtSnippetElementHolder,
-	#superclass : #BlInfiniteHolder,
+	#name : 'GtSnippetElementHolder',
+	#superclass : 'BlInfiniteHolder',
 	#instVars : [
 		'snippetType'
 	],
-	#category : #'GToolkit-Playground-Snippet - UI'
+	#category : 'GToolkit-Playground-Snippet - UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetElementHolder class >> new [
 	self error: 'Use snippetType: instead'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetElementHolder class >> type: aSnippetType [
 	^ self basicNew
 		snippetType: aSnippetType;
@@ -26,7 +26,7 @@ GtSnippetElementHolder class >> type: aSnippetType [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetElementHolder >> initialize [
 	super initialize.
 
@@ -34,7 +34,7 @@ GtSnippetElementHolder >> initialize [
 	itemElement := snippetType stencilBuilder asElement
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 GtSnippetElementHolder >> snippet: aGtSnippet [
 	"Change the snippet behind the snippet element.
 	Snippet must be of the same type as the type if a snippet element"
@@ -45,14 +45,14 @@ GtSnippetElementHolder >> snippet: aGtSnippet [
 	snippetType stencilBuilder bind: aGtSnippet to: itemElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtSnippetElementHolder >> snippetType [
 	<return: #GtSnippetType>
 
 	^ snippetType
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtSnippetElementHolder >> snippetType: aSnippetType [
 	snippetType := aSnippetType
 ]

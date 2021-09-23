@@ -1,15 +1,15 @@
 Class {
-	#name : #GtCoderSnippet,
-	#superclass : #GtCodeSnippet,
+	#name : 'GtCoderSnippet',
+	#superclass : 'GtCodeSnippet',
 	#instVars : [
 		'coder',
 		'shouldSpawn',
 		'coderViewModel'
 	],
-	#category : #'GToolkit-Playground-Model'
+	#category : 'GToolkit-Playground-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet class >> typeName [
 	"Return a playground snippet type name.
 	It should be an unique name among all playground snippet types."
@@ -18,27 +18,27 @@ GtCoderSnippet class >> typeName [
 	^ 'pharo'
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 GtCoderSnippet >> accept: aVisitor [
 	^ aVisitor visitGtPharoSnippet: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> allImplicitVariables: aCollection [
 	coder completionStrategy snippetVariables: aCollection
 ]
 
-{ #category : #'private - text' }
+{ #category : 'private - text' }
 GtCoderSnippet >> appendDotCharacter [
 	self text insertString: '.' at: self text size
 ]
 
-{ #category : #'private - text' }
+{ #category : 'private - text' }
 GtCoderSnippet >> appendNewLine [
 	self text insertString: String cr at: self text size.
 ]
 
-{ #category : #'private - text' }
+{ #category : 'private - text' }
 GtCoderSnippet >> appendText: aNewText [
 	| aLastNonSeparatorCharacterIndex |
 	aLastNonSeparatorCharacterIndex := self text finder
@@ -53,7 +53,7 @@ GtCoderSnippet >> appendText: aNewText [
 	self text append: aNewText
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 GtCoderSnippet >> asElement [
 	| aCoderElement |
 	
@@ -72,23 +72,23 @@ GtCoderSnippet >> asElement [
 		addChild: aCoderElement
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtCoderSnippet >> asStencilBuilder [
 	^ self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> ast [
 	^ GtPharoParser
 		parseWithErrors: coder currentSourceString
 		startingAt: GtPharoParser startingStateForMethodSequence
 ]
 
-{ #category : #ui }
+{ #category : 'ui' }
 GtCoderSnippet >> bind: aSnippet to: aSnippetElement [
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> codeEvaluated: anEvaluationAnnouncement [
 	self
 		notifyAboutResult: anEvaluationAnnouncement evaluationResult
@@ -96,18 +96,18 @@ GtCoderSnippet >> codeEvaluated: anEvaluationAnnouncement [
 		spawn: shouldSpawn
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> codeModified: aCoderTextModifiedAnnouncement [
 	self announce: (GtPageSnippetChangedAnnouncement new snippet: self)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> evaluate [
 	self halt.
 	"^ coder doItSelectionOrAll"
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> evaluateAndGo [
 	self halt.
 	"shouldSpawn := true.
@@ -115,7 +115,7 @@ GtCoderSnippet >> evaluateAndGo [
 		ensure: [ shouldSpawn := false ]"
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> finishRenaming: oldName to: newName in: text [
 	| ast otherNodes |
 	ast := RBParser parseFaultyExpression: text.
@@ -134,7 +134,7 @@ GtCoderSnippet >> finishRenaming: oldName to: newName in: text [
 	coder requestStyleSourceText
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> finishRenamingMessage: oldName to: newName in: text [
 	| ast otherRenames |
 	ast := RBParser parseFaultyExpression: text.
@@ -157,31 +157,31 @@ GtCoderSnippet >> finishRenamingMessage: oldName to: newName in: text [
 	coder requestStyleSourceText
 ]
 
-{ #category : #'api - cursor' }
+{ #category : 'api - cursor' }
 GtCoderSnippet >> focusAndPlaceCursorAtBeginning [
 	self flag: 'self textEditor moveCursorTo: 0.'.
 	self requestSnippetFocus
 ]
 
-{ #category : #'api - cursor' }
+{ #category : 'api - cursor' }
 GtCoderSnippet >> focusAndPlaceCursorAtEnd [
 	self flag: 'self textEditor moveCursorTo: self textEditor text size.'.
 	self requestSnippetFocus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> gtKeybindingsFor: aView [
 	<gtView>
 	^ (coder gtViewKeybindingsFor: aView)
 		priority: 60
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> implicitLocalVariables [
 	^ self ast ifNotNil: [ :ast | ast implicitLocalVariables ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCoderSnippet >> initialize [
 	coder := GtPharoSnippetCoder new.
 	super initialize.
@@ -205,7 +205,7 @@ GtCoderSnippet >> initialize [
 	self initializeCoderAddOns
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCoderSnippet >> initializeCoderAddOns [
 	coder addOns
 "		addDropDownAction: 'Create example'
@@ -250,7 +250,7 @@ GtCoderSnippet >> initializeCoderAddOns [
 				action: [ :aShortcutEvent | self moveDown: aShortcutEvent currentTarget ])
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> intervalsForRenameVariable: aString [
 	| intervals |
 	intervals := OrderedCollection new.
@@ -262,7 +262,7 @@ GtCoderSnippet >> intervalsForRenameVariable: aString [
 	^ intervals
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCoderSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
 	aGtSnippetRenameRequestedAnnouncement snippet == self
 		ifTrue: [ ^ false ].
@@ -275,7 +275,7 @@ GtCoderSnippet >> isInterestedInRename: aGtSnippetRenameRequestedAnnouncement [
 	^ false
 ]
 
-{ #category : #'api - modification' }
+{ #category : 'api - modification' }
 GtCoderSnippet >> mergeWith: aSnippet [
 	"Subclasses can define merging mechanism"
 
@@ -286,7 +286,7 @@ GtCoderSnippet >> mergeWith: aSnippet [
 	self requestSnippetFocus.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> moveDown: anElement [
 	| textEditor position |
 	textEditor := anElement editor.
@@ -303,7 +303,7 @@ GtCoderSnippet >> moveDown: anElement [
 						direction: #down) ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> moveLeft: anElement [
 	| textEditor |
 	textEditor := anElement editor.
@@ -318,7 +318,7 @@ GtCoderSnippet >> moveLeft: anElement [
 			textEditor navigator moveLeft apply ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> moveRight: anElement [
 	| textEditor |
 	textEditor := anElement editor.
@@ -334,7 +334,7 @@ GtCoderSnippet >> moveRight: anElement [
 			textEditor navigator moveRight apply ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> moveUp: anElement [
 	| textEditor position |
 	textEditor := anElement editor.
@@ -351,17 +351,17 @@ GtCoderSnippet >> moveUp: anElement [
 						direction: #up) ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> playAll [
 	^ coder doItAll
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> receiver: anObject [
 	coderViewModel selfObject: anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCoderSnippet >> referencesSelector: aSymbol [
 	coder rbAST
 		nodesDo: [ :each | 
@@ -372,7 +372,7 @@ GtCoderSnippet >> referencesSelector: aSymbol [
 	^ false
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> renameClass: node in: aTextEditorElement [
 	| announcement renameController |
 	renameController := GtRenameClassController new.
@@ -391,7 +391,7 @@ GtCoderSnippet >> renameClass: node in: aTextEditorElement [
 	renameController execute
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 	| announcement renameAction |
 	announcement := GtSnippetRenameRequestedAnnoucement snippet: self.
@@ -411,7 +411,7 @@ GtCoderSnippet >> renameImplicitTemporary: node in: aTextEditorElement [
 	renameAction install
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
 	| announcement renameController |
 	renameController := GtRenameMethodController new.
@@ -431,12 +431,12 @@ GtCoderSnippet >> renameMessage: node in: aTextEditorElement [
 	renameController execute
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> renameTemporaryIn: aTextEditorElement [
 	"coder renameIn: aTextEditorElement"
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 GtCoderSnippet >> renameVariable: node in: aTextEditorElement [
 	node whoDefines notNil
 		ifTrue: [ ^ self renameTemporaryIn: aTextEditorElement ].
@@ -448,7 +448,7 @@ GtCoderSnippet >> renameVariable: node in: aTextEditorElement [
 		ifAbsent: [ self renameImplicitTemporary: node in: aTextEditorElement ]
 ]
 
-{ #category : #'private - requests' }
+{ #category : 'private - requests' }
 GtCoderSnippet >> requestNewSnippetWith: aNewText [
 	| aNewSnippet |
 	aNewSnippet := self class new.
@@ -458,12 +458,12 @@ GtCoderSnippet >> requestNewSnippetWith: aNewText [
 		second: aNewSnippet).
 ]
 
-{ #category : #'api - requests' }
+{ #category : 'api - requests' }
 GtCoderSnippet >> requestSnippetMerge [
 	self announce: (GtSnippetMergeRequestedAnnouncement snippet: self)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> requestSnippetSplit [
 	| positions |
 	self deprecated: 'use #requestSnippetSplitInEditor:'.
@@ -472,7 +472,7 @@ GtCoderSnippet >> requestSnippetSplit [
 	self editor moveCursorTo: self editor text size
 ]
 
-{ #category : #'api - requests' }
+{ #category : 'api - requests' }
 GtCoderSnippet >> requestSnippetSplitInEditor: aTextEditor [
 	| positions |
 	positions := (aTextEditor cursors cursors
@@ -485,27 +485,27 @@ GtCoderSnippet >> requestSnippetSplitInEditor: aTextEditor [
 	aTextEditor moveCursorTo: aTextEditor text size
 ]
 
-{ #category : #'api - requests' }
+{ #category : 'api - requests' }
 GtCoderSnippet >> requestStyleText [
 	coder requestStyleSourceText
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> snippetType [
 	^ GtCoderSnippetType of: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> sourceCode [
 	^ self text asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> sourceCode: aString [
 	coder currentSourceString: aString
 ]
 
-{ #category : #'private - text' }
+{ #category : 'private - text' }
 GtCoderSnippet >> splitTextAt: aSplitIndex [
 	"Return a part that is deleted"
 	| aDeletedPart anUpdatedText |
@@ -523,7 +523,7 @@ GtCoderSnippet >> splitTextAt: aSplitIndex [
 	^ aDeletedPart
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtCoderSnippet >> startRenameIn: aTextEditorElement [
 	| node aTextPosition |
 	
@@ -545,35 +545,35 @@ GtCoderSnippet >> startRenameIn: aTextEditorElement [
 		ifTrue: [ ^ self renameMessage: node in: aTextEditorElement ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtCoderSnippet >> stencilBuilderClass [
 	"Return a stencil builder class that knows how to display a snippet in Bloc"
 	<return: #GtSnippetStencilBuilder>
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> text [
 	<return: #BlText>
 	^ coder sourceCode sourceText
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCoderSnippet >> textEditor [
 	^ coder sourceEditor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> variableBindings [
 	^ coderViewModel bindingStrategy bindings
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSnippet >> variableBindings: aGtPlaygroundBindings [
 	coderViewModel sharedBindings: aGtPlaygroundBindings
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCoderSnippet >> xDocLoadSavedContent [
 	"Load the saved content from the XdKeyDocumentStore"
 

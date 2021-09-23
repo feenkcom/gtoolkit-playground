@@ -1,18 +1,18 @@
 Class {
-	#name : #GtSnippetExternalCursorAnnouncement,
-	#superclass : #GtSnippetAnnoucement,
+	#name : 'GtSnippetExternalCursorAnnouncement',
+	#superclass : 'GtSnippetAnnoucement',
 	#instVars : [
 		'direction'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetExternalCursorAnnouncement >> direction [
 	^ direction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetExternalCursorAnnouncement >> direction: aSymbol [
 	direction := aSymbol
 ]

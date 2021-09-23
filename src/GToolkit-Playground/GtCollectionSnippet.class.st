@@ -1,15 +1,15 @@
 Class {
-	#name : #GtCollectionSnippet,
-	#superclass : #GtSnippet,
-	#category : #'GToolkit-Playground-Model'
+	#name : 'GtCollectionSnippet',
+	#superclass : 'GtSnippet',
+	#category : 'GToolkit-Playground-Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCollectionSnippet class >> isUserSnippet [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCollectionSnippet class >> typeName [
 	<return: #String>
 	"Return a playground snippet type name.
@@ -17,17 +17,17 @@ GtCollectionSnippet class >> typeName [
 	^ 'collection'
 ]
 
-{ #category : #visitor }
+{ #category : 'visitor' }
 GtCollectionSnippet >> accept: aVisitor [
 	^ aVisitor visitGtCollectionSnippet: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCollectionSnippet >> availableSnippetClasses [
 	^ GtSnippet availableSnippetClasses
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtCollectionSnippet >> stencilBuilderClass [
 	"Return a stencil builder class that knows how to display a snippet in Bloc"
 	<return: #GtSnippetStencilBuilder>

@@ -1,21 +1,21 @@
 Class {
-	#name : #GtPageAnnoucement,
-	#superclass : #Announcement,
+	#name : 'GtPageAnnoucement',
+	#superclass : 'Announcement',
 	#traits : 'TGtAssert',
 	#classTraits : 'TGtAssert classTrait',
 	#instVars : [
 		'page'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageAnnoucement >> page [
 	<return: #GtPlayPage>
 	^ page
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPageAnnoucement >> page: aGtPage [
 	self 
 		assert: [ aGtPage notNil ] 

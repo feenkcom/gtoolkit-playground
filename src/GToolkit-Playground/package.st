@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-Playground' }
+Package { #name : 'GToolkit-Playground' }

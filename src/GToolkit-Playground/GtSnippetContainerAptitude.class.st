@@ -1,6 +1,6 @@
 Class {
-	#name : #GtSnippetContainerAptitude,
-	#superclass : #BrAptitude,
+	#name : 'GtSnippetContainerAptitude',
+	#superclass : 'BrAptitude',
 	#instVars : [
 		'bottomToolbar',
 		'snippet',
@@ -9,10 +9,10 @@ Class {
 	#pools : [
 		'BrGlamorousColors'
 	],
-	#category : #'GToolkit-Playground-Snippet - Looks'
+	#category : 'GToolkit-Playground-Snippet - Looks'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetContainerAptitude >> initialize [
 	super initialize.
 		
@@ -40,21 +40,21 @@ GtSnippetContainerAptitude >> initialize [
 	self addChangeProperty: #(widget padding) with: [ BlInsets all: 12 ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetContainerAptitude >> initializeListeners [
 	super initializeListeners.
 	
 	self when: GtSnippetChanged do: [ :anEvent | self snippet: anEvent snippet ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetContainerAptitude >> initializeRequests [
 	super initializeRequests.
 	
 	self request: GtSnippetRequest new.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetContainerAptitude >> newCloseElement [
 	<return: #BlElement>
 
@@ -63,7 +63,7 @@ GtSnippetContainerAptitude >> newCloseElement [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtSnippetContainerAptitude >> newPlusElement [
 	<return: #BlElement>
 
@@ -72,23 +72,23 @@ GtSnippetContainerAptitude >> newPlusElement [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetContainerAptitude >> snippet [
 	^ snippet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetContainerAptitude >> snippet: aGtSnippet [
 	snippet := aGtSnippet.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtSnippetContainerAptitude >> snippetBelowRequested [
 	self snippet ifNil: [ ^ self inform: 'A snippet must be attached' ].
 	self snippet requestNewSnippetBelow.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtSnippetContainerAptitude >> snippetRemoveRequested [
 	self snippet ifNil: [ ^ self inform: 'A snippet must be attached' ].
 	self snippet requestSnippetRemoval.

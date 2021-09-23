@@ -1,25 +1,25 @@
 Class {
-	#name : #GtPlaygroundEvaluatedCodeButtonAttribute,
-	#superclass : #BrTextAdornmentAttribute,
+	#name : 'GtPlaygroundEvaluatedCodeButtonAttribute',
+	#superclass : 'BrTextAdornmentAttribute',
 	#instVars : [
 		'result',
 		'action',
 		'coder'
 	],
-	#category : #'GToolkit-Playground-Commands'
+	#category : 'GToolkit-Playground-Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> action [
 	^ action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> action: aBlock [
 	action := aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece in: anEditorElement [
 	<return: #BlElement>
 	| aButton |
@@ -55,22 +55,22 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> affect: aTBrTextEditorTextualPiece i
 		yourself
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> clickEvent: anEvent from: aButton [
 	self action cull: aButton cull: anEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> coder [
 	^ coder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> coder: anObject [
 	coder := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 	super initialize.
 	self beAppend.
@@ -80,22 +80,22 @@ GtPlaygroundEvaluatedCodeButtonAttribute >> initialize [
 			withDestination: self spawnDestination ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> mayHaveExternalReferences [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> result [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> result: anObject [
 	result := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPlaygroundEvaluatedCodeButtonAttribute >> spawnDestination [
 	^ self coder 
 		ifNil: [ GtPhlowSpawnDesiredDestination defaultDestination ]

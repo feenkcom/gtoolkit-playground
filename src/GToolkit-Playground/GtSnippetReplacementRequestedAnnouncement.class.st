@@ -1,29 +1,29 @@
 Class {
-	#name : #GtSnippetReplacementRequestedAnnouncement,
-	#superclass : #GtSnippetAnnoucement,
+	#name : 'GtSnippetReplacementRequestedAnnouncement',
+	#superclass : 'GtSnippetAnnoucement',
 	#instVars : [
 		'requestedSnippetClass',
 		'initializationBlock'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetReplacementRequestedAnnouncement >> initializationBlock [
 	^ initializationBlock ifNil: [ [  ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetReplacementRequestedAnnouncement >> initializationBlock: aBlock [
 	initializationBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetReplacementRequestedAnnouncement >> requestedSnippetClass [
 	^ requestedSnippetClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetReplacementRequestedAnnouncement >> requestedSnippetClass: anObject [
 	requestedSnippetClass := anObject
 ]

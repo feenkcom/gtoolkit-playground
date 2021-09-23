@@ -1,15 +1,15 @@
 Class {
-	#name : #GtSnippetEvaluatedAnnouncement,
-	#superclass : #GtSnippetAnnoucement,
+	#name : 'GtSnippetEvaluatedAnnouncement',
+	#superclass : 'GtSnippetAnnoucement',
 	#instVars : [
 		'result',
 		'isException',
 		'isSpawnResultRequested'
 	],
-	#category : #'GToolkit-Playground-Announcements'
+	#category : 'GToolkit-Playground-Announcements'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtSnippetEvaluatedAnnouncement >> initialize [
 	super initialize.
 	isException := false.
@@ -17,32 +17,32 @@ GtSnippetEvaluatedAnnouncement >> initialize [
 	isSpawnResultRequested := false.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> isException [
 	^ isException
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> isException: anObject [
 	isException := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> isSpawnResultRequested [
 	^ isSpawnResultRequested
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> isSpawnResultRequested: aBoolean [
 	isSpawnResultRequested := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> result [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtSnippetEvaluatedAnnouncement >> result: anObject [
 	result := anObject
 ]
